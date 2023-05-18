@@ -1,4 +1,3 @@
-'use client';
 
 import { Container, VStack } from '@chakra-ui/react';
 import { AuthorAvatar } from './AuthorAvatar';

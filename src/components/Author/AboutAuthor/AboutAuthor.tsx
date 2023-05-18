@@ -1,5 +1,3 @@
-'use client';
-
 import { Container, ContainerProps } from '@chakra-ui/react';
 
 interface AboutAuthorProps {
