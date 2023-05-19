@@ -1,15 +1,6 @@
 'use client';
 
-import { Box, Heading, VStack } from '@chakra-ui/react';
-import Link from 'next/link';
-
-import { Layout } from '@/components/Layout';
-import {
-  CenteredSpinner,
-  ErrorAlert,
-  Date,
-  PageLayout,
-} from '@/components/common';
+import { CenteredSpinner, ErrorAlert, PageLayout } from '@/components/common';
 import useParsePage from '@/hooks/useParsePage';
 
 interface PageProps {
