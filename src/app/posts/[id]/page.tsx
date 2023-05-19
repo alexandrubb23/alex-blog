@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { Box, Heading, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
+import Prism from 'prismjs';
 
 import '@/styles/prism-dracula.css';
 import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
@@ -23,6 +24,10 @@ const Post = ({ params }: PostProps) => {
     html: post.content,
     className: 'language-js',
   });
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') Prism.highlightAll();
+  }, [post]);
 
   if (error) return <ErrorAlert error={error.message} />;
 

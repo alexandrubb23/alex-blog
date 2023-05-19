@@ -1,17 +1,15 @@
 import Prism from 'prismjs';
 import { useEffect } from 'react';
 
+type HTMLTags = keyof JSX.IntrinsicElements;
+
 type HTMLObject = {
-  tags: string[];
+  tags: HTMLTags[];
   html: string;
   className?: string;
 };
 
 const useAddClassToSpecificTags = ({ className, tags, html }: HTMLObject) => {
-  useEffect(() => {
-    if (typeof window !== 'undefined') Prism.highlightAll();
-  }, [html]);
-
   if (!tags || tags.length === 0 || !html) return html;
 
   let parsedHTML = html;
