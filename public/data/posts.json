@@ -1,5 +1,10 @@
 [
   {
+    "id": "whats-new-in-javascript-es6",
+    "date": "2023-05-19",
+    "title": "Whats new in JavaScript ES6?"
+  },
+  {
     "id": "pre-rendering",
     "date": "2023-05-18",
     "title": "Two Forms of Pre-rendering"

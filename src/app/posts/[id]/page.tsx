@@ -1,10 +1,9 @@
 'use client';
 
-import { Box, Flex, Heading, Spinner, VStack } from '@chakra-ui/react';
+import { Box, Heading, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { CenteredSpinner, Date } from '@/components/common';
-import { ErrorAlert } from '@/components/common';
+import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import { Layout } from '@/components/Layout';
 import { useGetPost } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
