@@ -3,7 +3,7 @@
 import { Box, Flex, Heading, Spinner, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { Date } from '@/components/common';
+import { CenteredSpinner, Date } from '@/components/common';
 import { ErrorAlert } from '@/components/common';
 import { Layout } from '@/components/Layout';
 import { useGetPost } from '@/hooks';
@@ -14,12 +14,6 @@ interface PostProps {
     id: string;
   };
 }
-
-const CenteredSpinner = () => (
-  <Flex justifyContent='center' alignItems='center' height='100vh'>
-    <Spinner />
-  </Flex>
-);
 
 const Post = ({ params }: PostProps) => {
   const { post, error, isLoading } = useGetPost(params.id);

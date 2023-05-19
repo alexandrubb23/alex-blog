@@ -2,19 +2,14 @@ import { Box, Flex, List, ListItem, Spinner } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import usePosts from '@/hooks/usePosts';
-import { Date } from '@/components/common';
+import { CenteredSpinner, Date } from '@/components/common';
 
 const ListPosts = () => {
   const { data: posts, isLoading, error } = usePosts();
 
   if (error) return null;
 
-  if (isLoading)
-    return (
-      <Flex justifyContent='center' alignItems='center' height='200px'>
-        <Spinner />
-      </Flex>
-    );
+  if (isLoading) return <CenteredSpinner offsetHeight={500} />;
 
   return (
     <List mt={5} spacing={5}>
