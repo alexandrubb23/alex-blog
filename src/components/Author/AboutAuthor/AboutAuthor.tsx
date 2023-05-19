@@ -12,7 +12,7 @@ const AboutAuthor = ({
   textAlign = 'left',
 }: AboutAuthorProps) => {
   return (
-    <Container textAlign={textAlign}>
+    <Container textAlign={textAlign} padding={0}>
       Hello, I&apos;m <strong>{name}</strong>, {description}
     </Container>
   );
