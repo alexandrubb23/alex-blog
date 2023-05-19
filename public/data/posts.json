@@ -1,5 +1,20 @@
 [
   {
+    "id": "shallow-copy-vs-deep-copy-understanding-object-copying-in-javascript",
+    "date": "2023-05-19",
+    "title": "Shallow Copy vs. Deep Copy: Understanding Object Copying in JavaScript"
+  },
+  {
+    "id": "what-is-event-loop-in-javascript",
+    "date": "2023-05-19",
+    "title": "What is Event loop in JavaScript?"
+  },
+  {
+    "id": "what-is-event-queue-in-javascript",
+    "date": "2023-05-20",
+    "title": "What is Event queue in JavaScript?"
+  },
+  {
     "id": "whats-new-in-javascript-es6",
     "date": "2023-05-19",
     "title": "Whats new in JavaScript ES6?"
