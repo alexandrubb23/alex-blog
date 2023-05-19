@@ -33,7 +33,6 @@ const Layout = ({ children, home }: LayoutProps) => {
       )}
       <GridItem area='blog'>
         {children}
-        {!home && <Link href='/'>← Back to home</Link>}
       </GridItem>
     </Grid>
   );
