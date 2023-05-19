@@ -1,8 +1,6 @@
 'use client';
 
-import { Grid, GridItem } from '@chakra-ui/react';
-
-import { Author, Blog, NavBar } from '@/components';
+import { Blog } from '@/components';
 import './global.css';
 import { Layout } from '@/components/Layout';
 
