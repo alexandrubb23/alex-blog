@@ -27,11 +27,11 @@ const Layout = ({ children, home }: LayoutProps) => {
       <GridItem area='nav'>
         <NavBar />
       </GridItem>
-      {home && (
-        <GridItem area='main'>
-          <Author name='Alexandru Barbulescu' />
-        </GridItem>
-      )}
+
+      <GridItem area='main'>
+        <Author name='Alexandru Barbulescu' isHome={home} />
+      </GridItem>
+
       <GridItem area='content'>{children}</GridItem>
     </Grid>
   );

@@ -1,12 +1,13 @@
 import { Heading } from '@chakra-ui/react';
 
 interface AuthorNameProps {
+  as: 'h1' | 'h2';
   name: string;
 }
 
-const AuthorName = ({ name }: AuthorNameProps) => {
+const AuthorName = ({ as, name }: AuthorNameProps) => {
   return (
-    <Heading as='h1' size='2xl'>
+    <Heading as={as} size='2xl' fontSize={as === 'h2' ? '2xl' : '4xl'}>
       {name}
     </Heading>
   );

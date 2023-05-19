@@ -10,7 +10,7 @@ const SearchInput = () => {
       }}
     >
       <InputGroup>
-        <InputLeftAddon children={<BsSearch />} />
+        <InputLeftAddon />
         <Input
           borderRadius={10}
           placeholder='Search posts...'

@@ -5,6 +5,7 @@ import { AboutAuthor } from './AboutAuthor';
 
 interface AuthorProps {
   name: string;
+  isHome?: boolean;
 }
 
 const aboutAuthor = `and I'm excited to be here. 
@@ -12,12 +13,12 @@ const aboutAuthor = `and I'm excited to be here.
   I hail from Romania, specifically Bucharest, 
   where I was born and currently reside with my loving wife and two adorable kids.`;
 
-const Author = ({ name }: AuthorProps) => {
+const Author = ({ isHome, name }: AuthorProps) => {
   return (
     <VStack spacing={5}>
       <AuthorAvatar alt={name} fileName='alex.png' />
-      <AuthorName name={name} />
-      <AboutAuthor description={aboutAuthor} name={name} />
+      <AuthorName as={isHome ? 'h1' : 'h2'} name={name} />
+      {isHome && <AboutAuthor description={aboutAuthor} name={name} />}
     </VStack>
   );
 };
