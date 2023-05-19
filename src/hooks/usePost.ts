@@ -7,7 +7,7 @@ const usePost = (id: string) =>
   useQuery<Post, Error>({
     queryKey: ['post', id],
     queryFn: () =>
-      axiosInstance.get<Post>(`/${id}.md`).then(response => response.data),
+      axiosInstance.get<Post>(`/posts/${id}.md`).then(response => response.data),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   });
 

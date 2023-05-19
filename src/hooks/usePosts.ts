@@ -13,7 +13,9 @@ const usePosts = () =>
   useQuery({
     queryKey: ['posts'],
     queryFn: () =>
-      axiosInstance.get<Post[]>('/posts.json').then(response => response.data),
+      axiosInstance
+        .get<Post[]>('/posts/posts.json')
+        .then(response => response.data),
   });
 
 export default usePosts;
