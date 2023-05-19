@@ -4,6 +4,8 @@ import axiosInstance from '@/services/apiClient';
 
 export interface Page {
   content: string;
+  date: string;
+  id: string;
   title: string;
 }
 

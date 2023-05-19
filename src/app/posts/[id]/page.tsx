@@ -1,15 +1,15 @@
 'use client';
 
-import { useEffect } from 'react';
-import { Box, Heading, VStack } from '@chakra-ui/react';
-import Link from 'next/link';
 import Prism from 'prismjs';
+import { useEffect } from 'react';
 
-import '@/styles/prism-dracula.css';
-import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
-import { Layout } from '@/components/Layout';
+import {
+  CenteredSpinner,
+  ErrorAlert,
+  PageLayout
+} from '@/components/common';
 import { useAddClassToSpecificTags, useGetPost } from '@/hooks';
-import utilStyles from '@/styles/post.module.css';
+import '@/styles/prism-dracula.css';
 
 interface PostProps {
   params: {
@@ -33,31 +33,9 @@ const Post = ({ params }: PostProps) => {
 
   if (isLoading) return <CenteredSpinner />;
 
-  return (
-    <Layout>
-      <VStack spacing={5} alignItems='flex-start'>
-        <Heading
-          as='h1'
-          fontSize='2rem'
-          lineHeight='1.3'
-          fontWeight='800'
-          letterSpacing='-0.05rem'
-        >
-          {post.title}
-        </Heading>
-        <Box textColor='grey'>
-          <Date dateString={post.date} />
-        </Box>
-        <Box
-          className={utilStyles.post}
-          dangerouslySetInnerHTML={{ __html: postContent }}
-        />
-        <Box marginY={2}>
-          <Link href='/'>← Back to home</Link>
-        </Box>
-      </VStack>
-    </Layout>
-  );
+  const parsedPost = { ...post, content: postContent };
+
+  return <PageLayout data={parsedPost} />;
 };
 
 export default Post;

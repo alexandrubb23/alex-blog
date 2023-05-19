@@ -8,8 +8,10 @@ import usePage, { Page } from './usePage';
 
 const useParsePage = (pageName: string) => {
   const [page, setPage] = useState<Page>(() => ({
-    title: '',
     content: '',
+    date: '',
+    id: '',
+    title: '',
   }));
 
   const { data, isLoading, error } = usePage(pageName);
@@ -21,8 +23,10 @@ const useParsePage = (pageName: string) => {
     const content = await remark().use(html).process(parsedPage.content);
 
     setPage({
-      title: parsedPage.data.title,
       content: content.toString(),
+      date: parsedPage.data.date,
+      id: parsedPage.data.id,
+      title: parsedPage.data.title,
     });
   }, [data]);
 
