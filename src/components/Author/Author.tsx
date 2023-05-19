@@ -1,4 +1,3 @@
-
 import { Container, VStack } from '@chakra-ui/react';
 import { AuthorAvatar } from './AuthorAvatar';
 import { AuthorName } from './AuthorName';

@@ -1,4 +1,3 @@
-
 import { Heading } from '@chakra-ui/react';
 
 interface AuthorNameProps {

@@ -1,8 +1,7 @@
 import { Grid, GridItem } from '@chakra-ui/react';
-import Link from 'next/link';
 
-import { Author, Blog, NavBar } from '@/components';
 import '@/app/global.css';
+import { Author, NavBar } from '@/components';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,23 +16,23 @@ const Layout = ({ children, home }: LayoutProps) => {
       padding={5}
       rowGap={5}
       templateAreas={{
-        base: `"nav" "main" "blog"`,
+        base: `"nav" "main" "content"`,
       }}
       templateColumns={{
         base: '0.5fr',
       }}
+      maxW='1200px'
+      margin='auto'
     >
       <GridItem area='nav'>
         <NavBar />
       </GridItem>
       {home && (
-        <GridItem textAlign='center' area='main'>
+        <GridItem area='main'>
           <Author name='Alexandru Barbulescu' />
         </GridItem>
       )}
-      <GridItem area='blog'>
-        {children}
-      </GridItem>
+      <GridItem area='content'>{children}</GridItem>
     </Grid>
   );
 };

@@ -1,11 +1,13 @@
 'use client';
 
+import { useEffect } from 'react';
 import { Box, Heading, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 
+import '@/styles/prism-dracula.css';
 import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import { Layout } from '@/components/Layout';
-import { useGetPost } from '@/hooks';
+import { useAddClassToSpecificTags, useGetPost } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
 
 interface PostProps {
@@ -16,6 +18,11 @@ interface PostProps {
 
 const Post = ({ params }: PostProps) => {
   const { post, error, isLoading } = useGetPost(params.id);
+  const postContent = useAddClassToSpecificTags({
+    tags: ['pre', 'code'],
+    html: post.content,
+    className: 'language-js',
+  });
 
   if (error) return <ErrorAlert error={error.message} />;
 
@@ -38,7 +45,7 @@ const Post = ({ params }: PostProps) => {
         </Box>
         <Box
           className={utilStyles.post}
-          dangerouslySetInnerHTML={{ __html: post.content }}
+          dangerouslySetInnerHTML={{ __html: postContent }}
         />
         <Box marginY={2}>
           <Link href='/'>← Back to home</Link>
