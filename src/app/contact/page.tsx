@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 'use client';
 
 import { Layout } from '@/components/Layout';
@@ -46,7 +47,7 @@ export default function Contact() {
             <Box>
               <Heading as='h1'>Get in Touch</Heading>
               <Text mt={4} color='gray.500'>
-                Feel free to get in touch with me, and I'll be happy <br />
+                Feel free to get in touch with me, and I&apos;ll be happy <br />
                 to assist you.
               </Text>
               <Box py={5}>
