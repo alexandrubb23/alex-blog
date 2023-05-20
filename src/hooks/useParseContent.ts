@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from 'react';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-import { UseQueryResult } from '@tanstack/react-query';
 
 interface PageObject {
   content: string;
