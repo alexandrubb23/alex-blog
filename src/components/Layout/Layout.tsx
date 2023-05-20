@@ -11,14 +11,12 @@ interface LayoutProps {
 const Layout = ({ children, home }: LayoutProps) => {
   return (
     <Grid
-      alignContent='center'
-      justifyContent='center'
       padding={5}
       rowGap={5}
       templateAreas={{
         base: `"nav" "main" "content"`,
       }}
-      maxW='600px'
+      maxW='800px'
       margin='auto'
     >
       <GridItem area='nav'>

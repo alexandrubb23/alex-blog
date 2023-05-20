@@ -8,15 +8,13 @@ interface AuthorAvatarProps {
 
 const AuthorAvatar = ({ alt, fileName }: AuthorAvatarProps) => {
   return (
-    <Box alignItems='center' justifyContent='center' display='flex'>
-      <Image
-        alt={alt}
-        height={144}
-        priority
-        src={`/images/${fileName}`}
-        width={144}
-      />
-    </Box>
+    <Image
+      alt={alt}
+      height={144}
+      priority
+      src={`/images/${fileName}`}
+      width={144}
+    />
   );
 };
 
