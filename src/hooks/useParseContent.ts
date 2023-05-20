@@ -3,13 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-
-interface PageObject {
-  content: string;
-  date: string;
-  id: string;
-  title: string;
-}
+import { PageObject } from './usePage';
 
 const defaultParsedData = {
   content: '',
