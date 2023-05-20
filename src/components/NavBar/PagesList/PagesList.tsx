@@ -45,7 +45,7 @@ const PagesList = () => {
 
   const Menu = isLargeThan450 ? HorizontalMenu : HamburgerMenu;
 
-  return <HorizontalMenu data={pages} />;
+  return <HamburgerMenu data={pages} />;
 };
 
 export default PagesList;
