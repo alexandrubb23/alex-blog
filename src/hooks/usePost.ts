@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
 
 import axiosInstance from '@/services/apiClient';
-import { Post } from './usePosts';
+import { PageObject } from './usePage';
 
 const usePost = (id: string) =>
-  useQuery<Post, Error>({
+  useQuery<PageObject, Error>({
     queryKey: ['post', id],
     queryFn: () =>
-      axiosInstance.get<Post>(`/posts/${id}.md`).then(response => response.data),
+      axiosInstance
+        .get<PageObject>(`/posts/${id}.md`)
+        .then(response => response.data),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   });
 
