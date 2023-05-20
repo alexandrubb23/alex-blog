@@ -1,11 +1,12 @@
 import { HStack } from '@chakra-ui/react';
+
 import { ColorModeSwitch } from './ColorModeSwitch';
-import { SearchInput } from './SearchInput';
+import { PagesList } from './PagesList';
 
 const NavBar = () => {
   return (
-    <HStack padding='10px' flexDirection='row-reverse'>
-      {/* <SearchInput /> */}
+    <HStack padding='10px'>
+      <PagesList />
       <ColorModeSwitch />
     </HStack>
   );
