@@ -1,7 +1,7 @@
 'use client';
 
 import { CenteredSpinner, ErrorAlert, PageLayout } from '@/components/common';
-import useParsePage from '@/hooks/useParsePage';
+import { usePage } from '@/hooks';
 
 interface PageProps {
   params: {
@@ -10,17 +10,9 @@ interface PageProps {
 }
 
 const Page = ({ params }: PageProps) => {
-  const { page, isLoading, error } = useParsePage(params.id);
+  const page = usePage(params.id);
 
-  if (error) {
-    return <ErrorAlert error={error.message} />;
-  }
-
-  if (isLoading) {
-    return <CenteredSpinner />;
-  }
-
-  return <PageLayout data={page} />;
+  return <PageLayout result={page} />;
 };
 
 export default Page;
