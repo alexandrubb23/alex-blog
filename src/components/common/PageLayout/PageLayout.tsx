@@ -13,9 +13,10 @@ import utilStyles from '@/styles/post.module.css';
 
 interface PageLayoutProps {
   result: UseQueryResult<PageObject, Error>;
+  className?: string;
 }
 
-const PageLayout = ({ result }: PageLayoutProps) => {
+const PageLayout = ({ className, result }: PageLayoutProps) => {
   const { data, isLoading, error } = result;
 
   const parsedContent = useParseContent(data);
@@ -37,7 +38,7 @@ const PageLayout = ({ result }: PageLayoutProps) => {
   const { title, date, content } = parsedContent;
 
   return (
-    <Layout>
+    <Layout contentClassName={className}>
       <VStack spacing={5} alignItems='flex-start'>
         <Heading
           as='h1'

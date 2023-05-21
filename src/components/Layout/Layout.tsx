@@ -5,10 +5,11 @@ import { Author, NavBar } from '@/components';
 
 interface LayoutProps {
   children: React.ReactNode;
+  contentClassName?: string;
   home?: boolean;
 }
 
-const Layout = ({ children, home }: LayoutProps) => {
+const Layout = ({ contentClassName, children, home }: LayoutProps) => {
   return (
     <Grid
       padding={5}
@@ -27,7 +28,9 @@ const Layout = ({ children, home }: LayoutProps) => {
         <Author name='Alexandru Barbulescu' isHome={home} />
       </GridItem>
 
-      <GridItem area='content'>{children}</GridItem>
+      <GridItem area='content' className={contentClassName}>
+        {children}
+      </GridItem>
     </Grid>
   );
 };
