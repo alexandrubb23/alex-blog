@@ -3,7 +3,7 @@
 import { Box, Heading, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import { BsGithub } from 'react-icons/bs';
-import { SiDocker } from 'react-icons/si';
+import { SiDocker, SiJavascript, SiRedux } from 'react-icons/si';
 import { GrReactjs } from 'react-icons/gr';
 
 import { Layout } from '@/components/Layout';
@@ -14,11 +14,14 @@ import {
   IconLabel,
 } from '@/components/common';
 import { useCertifications } from '@/hooks';
+import React from 'react';
 
 const icons = {
   docker: SiDocker,
   git: BsGithub,
-  react: GrReactjs
+  react: GrReactjs,
+  javascript: SiJavascript,
+  redux: SiRedux,
 };
 
 const Certifications = () => {
@@ -37,8 +40,8 @@ const Certifications = () => {
           JavaScript, and Java.
         </Text>
         {technologies?.map(technology => (
-          <>
-            <Heading as='h2' key={technology.name} fontSize='22px'>
+          <React.Fragment key={technology.name}>
+            <Heading as='h2' fontSize='22px'>
               <IconLabel icon={icons[technology.id]} label={technology.name} />
             </Heading>
 
@@ -58,7 +61,7 @@ const Certifications = () => {
                 </Box>
               ))}
             </VStack>
-          </>
+          </React.Fragment>
         ))}
       </VStack>
     </Layout>

@@ -1,5 +1,46 @@
 [
   {
+    "id": "javascript",
+    "icon": "GrReactjs",
+    "name": "Javascript: The library for web and native user interfaces",
+    "data": [
+      {
+        "id": "ultimate-javascript-part-1-fundamentals",
+        "title": "Javascript: Ultimate JavaScript Part 1: Fundamentals",
+        "completionDate": "2020-11-17"
+      },
+      {
+        "id": "ultimate-javascript-part-2-advanced-topics",
+        "title": "Javascript: Ultimate JavaScript Part 2: Advanced Topics",
+        "completionDate": "2020-11-17"
+      }
+    ]
+  },
+  {
+    "id": "react",
+    "icon": "GrReactjs",
+    "name": "React: The library for web and native user interfaces",
+    "data": [
+      {
+        "id": "mastering-react-v16",
+        "title": "React: Mastering React v16",
+        "completionDate": "2020-11-17"
+      }
+    ]
+  },
+  {
+    "id": "redux",
+    "icon": "SiRedux",
+    "name": "Redux: A Predictable State Container for JS Apps",
+    "data": [
+      {
+        "id": "the-ultimate-redux-course",
+        "title": "Redux: The Ultimate Redux Course",
+        "completionDate": "2020-11-17"
+      }
+    ]
+  },
+  {
     "id": "git",
     "icon": "BsGithub",
     "name": "Git: Version Control",
@@ -20,18 +61,6 @@
         "id": "docker-accelerated-containerized-application-development",
         "title": "Docker: Mastering Docker Containerization",
         "completionDate": "2021-04-06"
-      }
-    ]
-  },
-  {
-    "id": "react",
-    "icon": "GrReactjs",
-    "name": "React: The library for web and native user interfaces",
-    "data": [
-      {
-        "id": "mastering-react-v16",
-        "title": "React: Mastering React v16",
-        "completionDate": "2020-11-17"
       }
     ]
   }
