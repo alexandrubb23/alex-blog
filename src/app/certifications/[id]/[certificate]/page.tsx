@@ -1,7 +1,7 @@
 'use client';
 
-import { CenteredSpinner, ErrorAlert, PageLayout } from '@/components/common';
-import { useCertificate, useParseContent } from '@/hooks';
+import { PageLayout } from '@/components/common';
+import { useCertificate } from '@/hooks';
 
 interface CertificateProps {
   params: {

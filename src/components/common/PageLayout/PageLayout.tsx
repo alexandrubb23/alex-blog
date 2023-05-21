@@ -1,15 +1,15 @@
+import { useEffect } from 'react';
 import { Box, Heading, VStack } from '@chakra-ui/react';
 import { UseQueryResult } from '@tanstack/react-query';
 import Link from 'next/link';
 import Prism from 'prismjs';
 
-import { Layout } from '@/components/Layout';
-import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
-import { useParseContent } from '@/hooks';
-import { PageObject } from '@/hooks/usePage';
-import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
-import { useEffect } from 'react';
+import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
+import { Layout } from '@/components/Layout';
+import { PageObject } from '@/hooks/usePage';
+import { useAddClassToSpecificTags, useParseContent } from '@/hooks';
+import utilStyles from '@/styles/post.module.css';
 
 interface PageLayoutProps {
   result: UseQueryResult<PageObject, Error>;
@@ -19,14 +19,20 @@ const PageLayout = ({ result }: PageLayoutProps) => {
   const { data, isLoading, error } = result;
 
   const parsedContent = useParseContent(data);
+  const tagsClass = useAddClassToSpecificTags({
+    tags: ['pre', 'code'],
+    className: 'language-js',
+  });
 
   useEffect(() => {
-    if (typeof window !== 'undefined') Prism.highlightAll();
-  }, [data]);
+    if (typeof window !== 'undefined') {
+      Prism.highlightAll();
+    }
+  }, [parsedContent]);
 
   if (error) return <ErrorAlert error={error.message} />;
 
-  if (isLoading) return <CenteredSpinner />;
+  if (isLoading || !parsedContent) return <CenteredSpinner />;
 
   const { title, date, content } = parsedContent;
 
@@ -47,7 +53,9 @@ const PageLayout = ({ result }: PageLayoutProps) => {
         </Box>
         <Box
           className={utilStyles.post}
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{
+            __html: tagsClass.applyClass(content),
+          }}
         />
         <Box marginY={2}>
           <Link href='/'>← Back to home</Link>

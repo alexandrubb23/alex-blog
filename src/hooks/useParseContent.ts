@@ -5,17 +5,8 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import { PageObject } from './usePage';
 
-const defaultParsedData = {
-  content: '',
-  date: '',
-  id: '',
-  title: '',
-};
-
 const useParseContent = (response: PageObject | undefined) => {
-  const [parsedData, setParsedData] = useState<PageObject>(
-    () => defaultParsedData
-  );
+  const [parsedData, setParsedData] = useState<PageObject | null>(null);
 
   const processPage = useCallback(async () => {
     if (!response) return;

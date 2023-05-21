@@ -1,28 +1,25 @@
-import Prism from 'prismjs';
-import { useEffect } from 'react';
-
 type HTMLTags = keyof JSX.IntrinsicElements;
 
 type HTMLObject = {
   tags: HTMLTags[];
-  html: string;
   className?: string;
 };
 
-const useAddClassToSpecificTags = ({ className, tags, html }: HTMLObject) => {
-  if (!tags || tags.length === 0 || !html) return html;
-
-  let parsedHTML = html;
-
-  tags.forEach(tag => {
-    const regex = new RegExp(`<${tag}>([\\s\\S]*?)<\\/${tag}>`, 'g');
-    parsedHTML = html.replace(
-      regex,
-      `<${tag} class="${className}">$1</${tag}>`
+const useAddClassToSpecificTags = ({ className, tags }: HTMLObject) => {
+  const applyClass = (html: string) => {
+    return html.replace(
+      new RegExp(`<(\/?)(${tags.join('|')})\\b`, 'gi'),
+      (_, closingSlash, tagName) => {
+        if (closingSlash) {
+          return `</${tagName}`;
+        } else {
+          return `<${tagName} class="${className}"`;
+        }
+      }
     );
-  });
+  };
 
-  return parsedHTML;
+  return { applyClass };
 };
 
 export default useAddClassToSpecificTags;
