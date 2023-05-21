@@ -5,7 +5,7 @@ date: '2023-05-19'
 
 Hello, I'm Alexandru Barbulescu, and I'm excited to be here. I'm a seasoned Software Engineer with years of experience in the field. I hail from Romania, specifically Bucharest, where I was born and currently reside with my loving wife and two adorable kids.
 
-Throughout my career, I've had the privilege of working on various projects for (estimd) esteemed companies like Vodafone and Adidas, where I've gained a lot of experience (expertise in domains such as gaming, payment systems, communication, and more.)
+Throughout my career, I've had the privilege of working on various projects for esteemed companies like Vodafone and Adidas, where I've gained a lot of experience (expertise in domains such as gaming, payment systems, communication, and more.)
 
 I'm deeply passionate about utilizing technology to solve complex problems and drive innovation.
 

@@ -1,10 +1,12 @@
 'use client';
 
-import { Box, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
 import Link from 'next/link';
 import { BsGithub } from 'react-icons/bs';
-import { SiDocker, SiJavascript, SiRedux } from 'react-icons/si';
-import { GrReactjs } from 'react-icons/gr';
+import { SiDocker, SiJavascript, SiRedux, SiTypescript } from 'react-icons/si';
+import { GrReactjs, GrMysql } from 'react-icons/gr';
+import { AiFillHtml5 } from 'react-icons/ai';
+import { FaNodeJs } from 'react-icons/fa';
 
 import { Layout } from '@/components/Layout';
 import {
@@ -22,6 +24,10 @@ const icons = {
   react: GrReactjs,
   javascript: SiJavascript,
   redux: SiRedux,
+  html: AiFillHtml5,
+  mysql: GrMysql,
+  typescript: SiTypescript,
+  nodejs: FaNodeJs,
 };
 
 const Certifications = () => {
@@ -33,19 +39,19 @@ const Certifications = () => {
 
   return (
     <Layout>
-      <VStack align='left' spacing={4}>
-        <Heading as='h1'>Certifications</Heading>
-        <Text>
-          I hold certifications in Docker, Git, React, Node.js, Python,
-          JavaScript, and Java.
-        </Text>
-        {technologies?.map(technology => (
-          <React.Fragment key={technology.name}>
-            <Heading as='h2' fontSize='22px'>
+      <Heading as='h1'>Certifications</Heading>
+      <Text mt={4}>
+        I hold certifications in Docker, Git, React, Node.js, Python,
+        JavaScript, TypeScript, MySQL, and Java.
+      </Text>
+      {technologies?.map(technology => (
+        <React.Fragment key={technology.name}>
+          <Box mt={8}>
+            <Heading as='h2' fontSize='22px' mb={4}>
               <IconLabel icon={icons[technology.id]} label={technology.name} />
             </Heading>
 
-            <VStack align='left' spacing={4}>
+            <VStack align='left' spacing={2}>
               {technology.data.map(certification => (
                 <Box key={certification.title}>
                   <Link
@@ -55,15 +61,18 @@ const Certifications = () => {
                     {certification.title}
                   </Link>
                   <Box textColor='grey'>
-                    Completion date:{' '}
                     <Date dateString={certification.completionDate} />
                   </Box>
                 </Box>
               ))}
             </VStack>
-          </React.Fragment>
-        ))}
-      </VStack>
+          </Box>
+          <Divider my={8} />
+        </React.Fragment>
+      ))}
+      <Box marginY={2}>
+        <Link href='/'>← Back to home</Link>
+      </Box>
     </Layout>
   );
 };
