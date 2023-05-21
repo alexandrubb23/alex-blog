@@ -56,17 +56,9 @@ const usePost = (id: string) =>
 
 ```code
 const Page = ({ params }: PageProps) => {
-  const { page, isLoading, error } = useParsePage(params.id);
+  const page = usPage(params.id);
 
-  if (error) {
-    return <ErrorAlert error={error.message} />;
-  }
-
-  if (isLoading) {
-    return <CenteredSpinner />;
-  }
-
-  return <PageLayout data={page} />;
+  return <PageLayout result={page} />;
 };
 
 ```
@@ -83,7 +75,9 @@ Trust me, is very simple! If you take a look [here](https://github.com/alexandru
 
 ```code
   useEffect(() => {
-    if (typeof window !== 'undefined') Prism.highlightAll();
+    if (typeof window !== 'undefined') {
+      Prism.highlightAll();
+    }
   }, [post]);
 ```
 

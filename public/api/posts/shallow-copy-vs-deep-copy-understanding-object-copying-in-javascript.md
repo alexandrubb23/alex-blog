@@ -52,7 +52,7 @@ It's important to note that while **JSON.parse** and **JSON.stringify** provide 
 
 We have mulltiple options for doing a deep copy of an object
 
-### Using lodash [deepCopy](https://lodash.com/docs/4.17.15#cloneDeep) function
+### Using lodash [cloneDeep](https://lodash.com/docs/4.17.15#cloneDeep) function
 
 ```code
 import { cloneDeep } from 'lodash/cloneDeep';
