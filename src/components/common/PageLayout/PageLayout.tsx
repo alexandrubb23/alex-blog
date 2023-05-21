@@ -1,16 +1,35 @@
 import { Box, Heading, VStack } from '@chakra-ui/react';
+import { UseQueryResult } from '@tanstack/react-query';
 import Link from 'next/link';
+import Prism from 'prismjs';
 
 import { Layout } from '@/components/Layout';
-import { Date } from '@/components/common';
+import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
+import { useParseContent } from '@/hooks';
+import { PageObject } from '@/hooks/usePage';
 import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
+import { useEffect } from 'react';
 
 interface PageLayoutProps {
-  data: { id: string; title: string; date: string; content: string };
+  result: UseQueryResult<PageObject, Error>;
 }
 
-const PageLayout = ({ data }: PageLayoutProps) => {
+const PageLayout = ({ result }: PageLayoutProps) => {
+  const { data, isLoading, error } = result;
+
+  const parsedContent = useParseContent(data);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') Prism.highlightAll();
+  }, [data]);
+
+  if (error) return <ErrorAlert error={error.message} />;
+
+  if (isLoading) return <CenteredSpinner />;
+
+  const { title, date, content } = parsedContent;
+
   return (
     <Layout>
       <VStack spacing={5} alignItems='flex-start'>
@@ -21,14 +40,14 @@ const PageLayout = ({ data }: PageLayoutProps) => {
           fontWeight='800'
           letterSpacing='-0.05rem'
         >
-          {data.title}
+          {title}
         </Heading>
         <Box textColor='grey'>
-          <Date dateString={data.date} />
+          <Date dateString={date} />
         </Box>
         <Box
           className={utilStyles.post}
-          dangerouslySetInnerHTML={{ __html: data.content }}
+          dangerouslySetInnerHTML={{ __html: content }}
         />
         <Box marginY={2}>
           <Link href='/'>← Back to home</Link>
