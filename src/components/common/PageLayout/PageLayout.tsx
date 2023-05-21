@@ -14,9 +14,17 @@ import utilStyles from '@/styles/post.module.css';
 interface PageLayoutProps {
   result: UseQueryResult<PageObject, Error>;
   className?: string;
+  backTo?: {
+    href: string;
+    text: string;
+  };
 }
 
-const PageLayout = ({ className, result }: PageLayoutProps) => {
+const PageLayout = ({
+  backTo = { href: '/', text: 'home' },
+  className,
+  result,
+}: PageLayoutProps) => {
   const { data, isLoading, error } = result;
 
   const parsedContent = useParseContent(data);
@@ -59,7 +67,7 @@ const PageLayout = ({ className, result }: PageLayoutProps) => {
           }}
         />
         <Box marginY={2}>
-          <Link href='/'>← Back to home</Link>
+          <Link href={backTo.href}>← Back to {backTo.text}</Link>
         </Box>
       </VStack>
     </Layout>

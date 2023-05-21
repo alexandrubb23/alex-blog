@@ -1,6 +1,6 @@
 ---
 title: 'Building This Project: My Approach and Implementation'
-date: '2023-05-19'
+date: '2023-05-20'
 ---
 
 _The source code of this project could be found on [GitHub](https://github.com/alexandrubb23/alex-blog)._

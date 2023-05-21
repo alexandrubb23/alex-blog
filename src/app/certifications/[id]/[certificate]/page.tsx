@@ -16,7 +16,14 @@ const Certificate = ({ params }: CertificateProps) => {
   const certificate = useCertificate(path);
 
   return (
-    <PageLayout result={certificate} className={styles.certificateLayout} />
+    <PageLayout
+      backTo={{
+        href: '/certifications',
+        text: 'certifications',
+      }}
+      className={styles.certificateLayout}
+      result={certificate}
+    />
   );
 };
 

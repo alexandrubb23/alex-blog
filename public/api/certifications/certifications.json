@@ -1,0 +1,38 @@
+[
+  {
+    "id": "git",
+    "icon": "BsGithub",
+    "name": "Git: Version Control",
+    "data": [
+      {
+        "id": "advanced-git-mastering-version-control",
+        "title": "Git: Mastering Version Control",
+        "completionDate": "2020-11-17"
+      }
+    ]
+  },
+  {
+    "id": "docker",
+    "icon": "GrDocker",
+    "name": "Docker: Empowering Containerization Expertise",
+    "data": [
+      {
+        "id": "docker-accelerated-containerized-application-development",
+        "title": "Docker: Mastering Docker Containerization",
+        "completionDate": "2021-04-06"
+      }
+    ]
+  },
+  {
+    "id": "react",
+    "icon": "GrReactjs",
+    "name": "React: The library for web and native user interfaces",
+    "data": [
+      {
+        "id": "mastering-react-v16",
+        "title": "React: Mastering React v16",
+        "completionDate": "2020-11-17"
+      }
+    ]
+  }
+]

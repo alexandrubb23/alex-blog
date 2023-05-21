@@ -1,12 +1,9 @@
 ---
-title: 'Git'
-date: '2021-08-16'
+title: 'Advanced Git: Mastering Version Control'
+date: '2020-11-17'
 ---
 
-This will be my git certificate
+In November 2020, I earned a certificate from a comprehensive Git course taught by Mosh Hamedani. Throughout the course, I gained in-depth knowledge and skills in fundamental concepts, creating snapshots, browsing project history, branching and merging, collaborating using GitHub, and rewriting history.
 
-## Create a new feature branch
-
-```code
-git switch -C new-branch-name
-```
+![Albuquerque, New Mexico](/images/certifications/git/mastering-git.png)
+_Certificate of graduation: The Ultimate Git Course - Alexandru Barbulescu_
