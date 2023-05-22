@@ -1,34 +1,13 @@
 'use client';
 
-import { Box, Divider, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Heading, Text } from '@chakra-ui/react';
 import Link from 'next/link';
-import { BsGithub } from 'react-icons/bs';
-import { SiDocker, SiJavascript, SiRedux, SiTypescript } from 'react-icons/si';
-import { GrReactjs, GrMysql } from 'react-icons/gr';
-import { AiFillHtml5 } from 'react-icons/ai';
-import { FaNodeJs } from 'react-icons/fa';
 
+import { CertificationsList } from '@/components/Certifications';
 import { Layout } from '@/components/Layout';
-import {
-  CenteredSpinner,
-  Date,
-  ErrorAlert,
-  IconLabel,
-} from '@/components/common';
+import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import { useCertifications } from '@/hooks';
-import React from 'react';
-
-const icons = {
-  docker: SiDocker,
-  git: BsGithub,
-  react: GrReactjs,
-  javascript: SiJavascript,
-  redux: SiRedux,
-  html: AiFillHtml5,
-  mysql: GrMysql,
-  typescript: SiTypescript,
-  nodejs: FaNodeJs,
-};
+import { Certificate } from '@/hooks/useCertifications';
 
 const Certifications = () => {
   const { data: technologies, isLoading, error } = useCertifications();
@@ -44,36 +23,7 @@ const Certifications = () => {
         I hold certifications in Docker, Git, React, Node.js, Python,
         JavaScript, TypeScript, MySQL, and Java.
       </Text>
-      {technologies?.map(technology => (
-        <React.Fragment key={technology.name}>
-          <Box mt={8}>
-            <Heading as='h2' fontSize='22px' mb={4}>
-              <IconLabel 
-                icon={icons[technology.id]} 
-                iconWrapperProps={{ color: 'dodgerblue'}} 
-                label={technology.name} 
-              />
-            </Heading>
-
-            <VStack align='left' spacing={2}>
-              {technology.data.map(certification => (
-                <Box key={certification.title}>
-                  <Link
-                    href={`certifications/${technology.id}/${certification.id}`}
-                    passHref
-                  >
-                    {certification.title}
-                  </Link>
-                  <Box textColor='grey'>
-                    <Date dateString={certification.completionDate} />
-                  </Box>
-                </Box>
-              ))}
-            </VStack>
-          </Box>
-          <Divider my={8} />
-        </React.Fragment>
-      ))}
+      <CertificationsList technologies={technologies} />
       <Box marginY={2}>
         <Link href='/'>← Back to home</Link>
       </Box>

@@ -1,13 +1,13 @@
 import axiosInstance from '@/services/apiClient';
 import { useQuery } from '@tanstack/react-query';
 
-interface Certificate {
+export interface Certificate {
   id: string;
   title: string;
   completionDate: string;
 }
 
-interface Certification {
+export interface Certification {
   id: 'git';
   icon: string;
   name: string;
