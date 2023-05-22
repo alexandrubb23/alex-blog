@@ -109,6 +109,18 @@
     ]
   },
   {
+    "id": "nestjs",
+    "icon": "SiNestjs",
+    "name": "Mastering NestJS: Building Scalable and Efficient Server-side Applications",
+    "data": [
+      {
+        "id": "certification-of-completion-official-nestjs-course",
+        "title": "Mastering NestJS: Official NextJS Course",
+        "completionDate": "2021-04-22"
+      }
+    ]
+  },
+  {
     "id": "git",
     "icon": "BsGithub",
     "name": "Git Mastery: Version Control for Efficient and Collaborative Software Development",

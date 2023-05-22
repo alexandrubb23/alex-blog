@@ -4,7 +4,13 @@ import { AiFillHtml5 } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { FaNodeJs } from 'react-icons/fa';
 import { GrMysql, GrReactjs } from 'react-icons/gr';
-import { SiDocker, SiJavascript, SiRedux, SiTypescript } from 'react-icons/si';
+import {
+  SiDocker,
+  SiJavascript,
+  SiNestjs,
+  SiRedux,
+  SiTypescript,
+} from 'react-icons/si';
 
 import { IconLabel } from '@/components/common';
 import { Certification } from '@/hooks/useCertifications';
@@ -13,13 +19,14 @@ import { CertificationItem } from '@/components/Certifications/CertificationItem
 const icons = {
   docker: SiDocker,
   git: BsGithub,
-  react: GrReactjs,
-  javascript: SiJavascript,
-  redux: SiRedux,
   html: AiFillHtml5,
+  javascript: SiJavascript,
   mysql: GrMysql,
-  typescript: SiTypescript,
+  nestjs: SiNestjs,
   nodejs: FaNodeJs,
+  react: GrReactjs,
+  redux: SiRedux,
+  typescript: SiTypescript,
 };
 
 interface CertificationsListProps {
