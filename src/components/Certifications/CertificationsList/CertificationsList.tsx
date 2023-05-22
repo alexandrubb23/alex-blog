@@ -1,5 +1,5 @@
-import React from 'react';
 import { Box, Divider, Heading, VStack } from '@chakra-ui/react';
+import React from 'react';
 import { AiFillHtml5 } from 'react-icons/ai';
 import { BsGithub } from 'react-icons/bs';
 import { FaNodeJs } from 'react-icons/fa';
@@ -12,9 +12,10 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 
-import { IconLabel } from '@/components/common';
-import { Certification } from '@/hooks/useCertifications';
 import { CertificationItem } from '@/components/Certifications/CertificationItem';
+import { IconLabel } from '@/components/common';
+import { Certificate, Certification } from '@/hooks/useCertifications';
+import { useIsNotMobile } from '@/hooks';
 
 const icons = {
   docker: SiDocker,
@@ -34,6 +35,8 @@ interface CertificationsListProps {
 }
 
 const CertificationsList = ({ technologies }: CertificationsListProps) => {
+  const isNotMobile = useIsNotMobile();
+
   return (
     <>
       {technologies?.map(technology => (
@@ -44,11 +47,12 @@ const CertificationsList = ({ technologies }: CertificationsListProps) => {
                 icon={icons[technology.id]}
                 iconWrapperProps={{ color: 'dodgerblue' }}
                 label={technology.name}
+                showIcon={isNotMobile}
               />
             </Heading>
 
             <VStack align='left' spacing={2}>
-              {technology.data.map(certification => (
+              {technology.data.map((certification: Certificate) => (
                 <CertificationItem
                   certification={certification}
                   key={certification.id}

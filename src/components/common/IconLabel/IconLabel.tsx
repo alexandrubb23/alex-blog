@@ -7,6 +7,7 @@ interface IconLabelProps {
   iconWrapperProps?: BoxProps;
   label: string;
   labelWrapperProps?: BoxProps;
+  showIcon?: boolean;
 }
 
 const IconLabel = ({
@@ -15,12 +16,15 @@ const IconLabel = ({
   iconWrapperProps,
   label,
   labelWrapperProps,
+  showIcon = true,
 }: IconLabelProps) => {
   return (
     <Flex alignItems='center'>
-      <Box marginRight={2} {...iconWrapperProps}>
-        <Icon size={iconSize} />
-      </Box>
+      {showIcon && (
+        <Box marginRight={2} {...iconWrapperProps}>
+          <Icon size={iconSize} />
+        </Box>
+      )}
       <Box {...labelWrapperProps}>{label}</Box>
     </Flex>
   );
