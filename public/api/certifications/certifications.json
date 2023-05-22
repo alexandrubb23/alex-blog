@@ -80,14 +80,14 @@
     "name": "React Mastery: Building Dynamic and Interactive User Interfaces",
     "data": [
       {
-        "id": "mastering-react-v16",
-        "title": "React: Mastering React v16",
-        "completionDate": "2020-11-17"
-      },
-      {
         "id": "fundamentals-react-v18",
         "title": "React: Mastering React v18 - Fundamentals",
         "completionDate": "2023-04-22"
+      },
+      {
+        "id": "mastering-react-v16",
+        "title": "React: Mastering React v16",
+        "completionDate": "2020-11-17"
       }
     ]
   },
