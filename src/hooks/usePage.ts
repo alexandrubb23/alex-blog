@@ -7,6 +7,7 @@ export interface PageObject {
   date: string;
   id: string;
   title: string;
+  topic?: string;
 }
 
 const usePage = (pageName: string) =>

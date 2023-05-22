@@ -1,37 +1,50 @@
 [
   {
+    "id": "mastering-promiseall-effective-parallel-execution-of-promises-in-javascript",
+    "date": "2023-05-22",
+    "title": "Mastering Promise.all(): Effective Parallel Execution of Promises in JavaScript",
+    "topic": "JavaScript"
+  },
+  {
     "id": "building-this-project-my-approach-and-implementation",
     "date": "2023-05-20",
-    "title": "Building This Project: My Approach and Implementation"
+    "title": "Building This Project: My Approach and Implementation",
+    "topic": "NextJS"
   },
   {
     "id": "shallow-copy-vs-deep-copy-understanding-object-copying-in-javascript",
     "date": "2023-05-19",
-    "title": "Shallow Copy vs. Deep Copy: Understanding Object Copying in JavaScript"
+    "title": "Shallow Copy vs. Deep Copy: Understanding Object Copying in JavaScript",
+    "topic": "JavaScript"
   },
   {
     "id": "what-is-event-loop-in-javascript",
     "date": "2023-05-19",
-    "title": "What is Event loop in JavaScript?"
+    "title": "What is Event loop in JavaScript?",
+    "topic": "JavaScript"
   },
   {
     "id": "what-is-event-queue-in-javascript",
     "date": "2023-05-20",
-    "title": "What is Event queue in JavaScript?"
+    "title": "What is Event queue in JavaScript?",
+    "topic": "JavaScript"
   },
   {
     "id": "whats-new-in-javascript-es6",
     "date": "2023-05-19",
-    "title": "Whats new in JavaScript ES6?"
+    "title": "Whats new in JavaScript ES6?",
+    "topic": "JavaScript"
   },
   {
     "id": "pre-rendering",
     "date": "2023-05-18",
-    "title": "Two Forms of Pre-rendering"
+    "title": "Two Forms of Pre-rendering",
+    "topic": "NextJS"
   },
   {
     "id": "ssg-ssr",
     "date": "2023-05-17",
-    "title": "When to Use Static Generation v.s. Server-side Rendering"
+    "title": "When to Use Static Generation v.s. Server-side Rendering",
+    "topic": "NextJS"
   }
 ]

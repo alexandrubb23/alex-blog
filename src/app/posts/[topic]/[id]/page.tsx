@@ -2,15 +2,14 @@
 
 import { PageLayout } from '@/components/common';
 import { usePost } from '@/hooks';
+import { QueryParams } from '@/hooks/usePost';
 
 interface PostProps {
-  params: {
-    id: string;
-  };
+  params: QueryParams;
 }
 
 const Post = ({ params }: PostProps) => {
-  const post = usePost(params.id);
+  const post = usePost({ ...params });
 
   return <PageLayout result={post} />;
 };
