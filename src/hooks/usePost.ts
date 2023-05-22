@@ -2,10 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 
 import axiosInstance from '@/services/apiClient';
 import { PageObject } from './usePage';
-import useEntitySlug, { QueryParams } from './useEntitySlug';
+import { QueryParams } from './useEntitySlug';
+import usePostSlug from './usePostSlug';
 
 const usePost = (post: QueryParams) => {
-  const { getSlug } = useEntitySlug('posts');
+  const { getSlug } = usePostSlug();
 
   const { id, topic } = post;
 

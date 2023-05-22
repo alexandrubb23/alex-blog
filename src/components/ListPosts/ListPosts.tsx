@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import { CenteredSpinner, Date } from '@/components/common';
 import usePosts from '@/hooks/usePosts';
-import { useEntitySlug } from '@/hooks';
+import { usePostSlug } from '@/hooks';
 
 const ListPosts = () => {
   const { data: posts, isLoading, error } = usePosts();
-  const { getSlug } = useEntitySlug('posts');
+  const { getSlug } = usePostSlug();
 
   if (error) return null;
 

@@ -9,3 +9,4 @@ export { default as useIsNotMobile } from './useIsNotMobile';
 export { default as usePage } from './usePage';
 export { default as useParseContent } from './useParseContent';
 export { default as usePost } from './usePost';
+export { default as usePostSlug } from './usePostSlug';
