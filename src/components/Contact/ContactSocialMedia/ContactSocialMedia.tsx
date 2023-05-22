@@ -1,34 +1,37 @@
-import { IconButton } from '@chakra-ui/react';
-import { BsDiscord, BsGithub } from 'react-icons/bs';
+import { BsGithub, BsTwitter } from 'react-icons/bs';
 import { IoLogoLinkedin } from 'react-icons/io';
+
+import { SocialButton } from './common';
+
+const socialMedia = [
+  {
+    name: 'linkedin',
+    icon: IoLogoLinkedin,
+    href: 'https://www.linkedin.com/in/barbulescu-alexandru-3b94a6121/',
+  },
+  {
+    name: 'github',
+    icon: BsGithub,
+    href: 'https://github.com/alexandrubb23',
+  },
+  {
+    name: 'twitter',
+    icon: BsTwitter,
+    href: 'https://twitter.com/alexandru_24',
+  },
+];
 
 const ContactSocialMedia = () => {
   return (
     <>
-      <IconButton
-        aria-label='facebook'
-        variant='ghost'
-        size='lg'
-        isRound={true}
-        _hover={{ bg: '#0D74FF' }}
-        icon={<IoLogoLinkedin size='28px' />}
-      />
-      <IconButton
-        aria-label='github'
-        variant='ghost'
-        size='lg'
-        isRound={true}
-        _hover={{ bg: '#0D74FF' }}
-        icon={<BsGithub size='28px' />}
-      />
-      <IconButton
-        aria-label='discord'
-        variant='ghost'
-        size='lg'
-        isRound={true}
-        _hover={{ bg: '#0D74FF' }}
-        icon={<BsDiscord size='28px' />}
-      />
+      {socialMedia.map(({ name, icon: Icon, href }) => (
+        <SocialButton
+          key={name}
+          label={name}
+          icon={Icon}
+          onClick={() => window.open(href, '_blank')}
+        />
+      ))}
     </>
   );
 };
