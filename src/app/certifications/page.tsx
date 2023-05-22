@@ -48,7 +48,11 @@ const Certifications = () => {
         <React.Fragment key={technology.name}>
           <Box mt={8}>
             <Heading as='h2' fontSize='22px' mb={4}>
-              <IconLabel icon={icons[technology.id]} label={technology.name} />
+              <IconLabel 
+                icon={icons[technology.id]} 
+                iconWrapperProps={{ color: 'dodgerblue'}} 
+                label={technology.name} 
+              />
             </Heading>
 
             <VStack align='left' spacing={2}>

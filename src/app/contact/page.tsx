@@ -131,6 +131,7 @@ export default function Contact() {
                       bg='#0D74FF'
                       color='white'
                       _hover={{}}
+                      isDisabled={true}
                     >
                       Send Message
                     </Button>
