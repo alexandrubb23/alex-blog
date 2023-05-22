@@ -6,3 +6,4 @@ export { default as useContactInfo } from './useContactInfo';
 export { default as usePage } from './usePage';
 export { default as useParseContent } from './useParseContent';
 export { default as usePost } from './usePost';
+export { default as useContactSocialMedia } from './useContactSocialMedia';
