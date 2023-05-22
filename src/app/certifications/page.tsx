@@ -5,9 +5,8 @@ import Link from 'next/link';
 
 import { CertificationsList } from '@/components/Certifications';
 import { Layout } from '@/components/Layout';
-import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
+import { CenteredSpinner, ErrorAlert } from '@/components/common';
 import { useCertifications } from '@/hooks';
-import { Certificate } from '@/hooks/useCertifications';
 
 const Certifications = () => {
   const { data: technologies, isLoading, error } = useCertifications();
