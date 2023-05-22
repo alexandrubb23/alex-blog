@@ -1,21 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 
-import axiosInstance from '@/services/apiClient';
-
-export interface PageObject {
-  content: string;
-  date: string;
-  id: string;
-  title: string;
-  topic?: string;
-}
+import axiosInstance, { FetchResponse } from '@/services/api-client';
 
 const usePage = (pageName: string) =>
-  useQuery<PageObject, Error>({
+  useQuery<FetchResponse, Error>({
     queryKey: ['page', pageName],
     queryFn: async () =>
       axiosInstance
-        .get<PageObject>(`/pages/${pageName}.md`)
+        .get<FetchResponse>(`/pages/${pageName}.md`)
         .then(res => res.data),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   });

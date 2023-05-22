@@ -1,4 +1,4 @@
-import axiosInstance from '@/services/apiClient';
+import axiosInstance from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
 
 export interface Certificate {

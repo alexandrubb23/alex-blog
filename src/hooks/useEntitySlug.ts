@@ -1,6 +1,6 @@
-import { PageObject } from './usePage';
+import { FetchResponse } from '@/services/api-client';
 
-export type QueryParams = Pick<PageObject, 'id' | 'topic'>;
+export type QueryParams = Pick<FetchResponse, 'id' | 'topic'>;
 
 const useEntitySlug = (entity: string) => {
   const getSlug = (params: QueryParams) => {

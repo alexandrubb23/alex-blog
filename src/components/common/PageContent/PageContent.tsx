@@ -2,10 +2,10 @@ import { Box, Heading, VStack } from '@chakra-ui/react';
 
 import '@/styles/prism-dracula.css';
 import { Date } from '@/components/common';
-import { PageObject } from '@/hooks/usePage';
 import utilStyles from '@/styles/post.module.css';
+import { FetchResponse } from '@/services/api-client';
 
-const PageContent = ({ title, date, content }: Omit<PageObject, 'id'>) => {
+const PageContent = ({ title, date, content }: Omit<FetchResponse, 'id'>) => {
   return (
     <VStack spacing={5} alignItems='flex-start'>
       <Heading

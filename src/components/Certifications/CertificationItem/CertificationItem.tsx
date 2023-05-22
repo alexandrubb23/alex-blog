@@ -15,7 +15,7 @@ const CertificationItem = ({
 }: CertificationItemProps) => {
   const { id, title, completionDate } = certificate;
 
-  const { getSlug } = useEntitySlug('certificates');
+  const { getSlug } = useEntitySlug('certifications');
 
   return (
     <Box key={title}>

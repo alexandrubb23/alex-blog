@@ -9,11 +9,11 @@ import {
   useCodeHighlighting,
   useParseContent,
 } from '@/hooks';
-import { PageObject } from '@/hooks/usePage';
+import { FetchResponse } from '@/services/api-client';
 import '@/styles/prism-dracula.css';
 
 interface PageLayoutProps {
-  result: UseQueryResult<PageObject, Error>;
+  result: UseQueryResult<FetchResponse, Error>;
   className?: string;
   backTo?: {
     href: string;

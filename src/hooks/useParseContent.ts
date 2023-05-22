@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 
+import { FetchResponse } from '@/services/api-client';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
-import { PageObject } from './usePage';
 
-const useParseContent = (response: PageObject | undefined) => {
-  const [parsedData, setParsedData] = useState<PageObject | null>(null);
+const useParseContent = (response: FetchResponse | undefined) => {
+  const [parsedData, setParsedData] = useState<FetchResponse | null>(null);
 
   const processPage = useCallback(async () => {
     if (!response) return;
