@@ -7,13 +7,12 @@ import { useCertificate } from '@/hooks';
 interface CertificateProps {
   params: {
     id: string;
+    topic: string;
   };
 }
 
 const Certificate = ({ params }: CertificateProps) => {
-  const path = Object.values(params).join('/');
-
-  const certificate = useCertificate(path);
+  const certificate = useCertificate({ ...params });
 
   return (
     <PageLayout

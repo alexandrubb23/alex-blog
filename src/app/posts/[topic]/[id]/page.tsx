@@ -2,7 +2,7 @@
 
 import { PageLayout } from '@/components/common';
 import { usePost } from '@/hooks';
-import { QueryParams } from '@/hooks/usePost';
+import { QueryParams } from '@/hooks/useEntitySlug';
 
 interface PostProps {
   params: QueryParams;

@@ -56,10 +56,10 @@ const CertificationsList = ({ technologies }: CertificationsListProps) => {
               spacing={2}
               pl={isNotMobile ? '2rem' : undefined}
             >
-              {technology.data.map((certification: Certificate) => (
+              {technology.data.map((certificate: Certificate) => (
                 <CertificationItem
-                  certification={certification}
-                  key={certification.id}
+                  certificate={certificate}
+                  key={certificate.id}
                   technologyId={technology.id}
                 />
               ))}

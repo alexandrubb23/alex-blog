@@ -2,12 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 
 import axiosInstance from '@/services/apiClient';
 import { PageObject } from './usePage';
-import usePostSlug from './usePostSlug';
-
-export type QueryParams = Pick<PageObject, 'id' | 'topic'>;
+import useEntitySlug, { QueryParams } from './useEntitySlug';
 
 const usePost = (post: QueryParams) => {
-  const { getPostSlug } = usePostSlug();
+  const { getSlug } = useEntitySlug('posts');
 
   const { id, topic } = post;
 
@@ -15,7 +13,7 @@ const usePost = (post: QueryParams) => {
     queryKey: ['post', topic, id],
     queryFn: () =>
       axiosInstance
-        .get<PageObject>(`${getPostSlug(post)}.md`)
+        .get<PageObject>(`${getSlug(post)}.md`)
         .then(response => response.data),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   });

@@ -3,21 +3,25 @@ import Link from 'next/link';
 
 import { Date } from '@/components/common';
 import { Certificate } from '@/hooks/useCertifications';
-
+import { useEntitySlug } from '@/hooks';
 interface CertificationItemProps {
-  certification: Certificate;
+  certificate: Certificate;
   technologyId: string;
 }
 
 const CertificationItem = ({
-  certification,
+  certificate,
   technologyId,
 }: CertificationItemProps) => {
-  const { id, title, completionDate } = certification;
+  const { id, title, completionDate } = certificate;
+
+  const { getSlug } = useEntitySlug('certificates');
 
   return (
     <Box key={title}>
-      <Link href={`certifications/${technologyId}/${id}`}>{title}</Link>
+      <Link href={getSlug({ ...certificate, topic: technologyId })}>
+        {title}
+      </Link>
       <Box textColor='grey'>
         <Date dateString={completionDate} />
       </Box>

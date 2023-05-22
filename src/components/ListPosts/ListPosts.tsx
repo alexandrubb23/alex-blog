@@ -2,12 +2,12 @@ import { Box, List, ListItem } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import { CenteredSpinner, Date } from '@/components/common';
-import { usePostSlug } from '@/hooks';
 import usePosts from '@/hooks/usePosts';
+import { useEntitySlug } from '@/hooks';
 
 const ListPosts = () => {
   const { data: posts, isLoading, error } = usePosts();
-  const { getPostSlug } = usePostSlug();
+  const { getSlug } = useEntitySlug('posts');
 
   if (error) return null;
 
@@ -17,7 +17,7 @@ const ListPosts = () => {
     <List mt={5} spacing={5}>
       {posts?.map(post => (
         <ListItem key={post.id}>
-          <Link href={getPostSlug(post)}>{post.title}</Link>
+          <Link href={getSlug(post)}>{post.title}</Link>
           <Box textColor='grey'>
             <Date dateString={post.date} />
           </Box>
