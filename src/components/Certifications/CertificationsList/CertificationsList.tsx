@@ -51,7 +51,11 @@ const CertificationsList = ({ technologies }: CertificationsListProps) => {
               />
             </Heading>
 
-            <VStack align='left' spacing={2}>
+            <VStack
+              align='left'
+              spacing={2}
+              pl={isNotMobile ? '2rem' : undefined}
+            >
               {technology.data.map((certification: Certificate) => (
                 <CertificationItem
                   certification={certification}
