@@ -1,5 +1,5 @@
 import { Box, Spinner } from '@chakra-ui/react';
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { HamburgerMenu, HorizontalMenu } from '@/components/common';
 import { useIsNotMobile } from '@/hooks';
@@ -10,7 +10,7 @@ const PagesList = () => {
 
   const isNotMobile = useIsNotMobile();
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (showMenu) return;
     setShowMenu(true);
   }, [showMenu]);

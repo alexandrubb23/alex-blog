@@ -6,18 +6,13 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react';
-import { usePathname, useRouter } from 'next/navigation';
 import { RxHamburgerMenu } from 'react-icons/rx';
 
 import { MenuProps } from '@/components/common/Menus/models';
+import { useNavigationMenu } from '@/hooks';
 
 const HamburgerMenu = ({ data }: MenuProps) => {
-  const router = useRouter();
-  const pathName = usePathname();
-
-  const handleMenuItemClick = (href: string) => {
-    router.push(href);
-  };
+  const { isActiveItem, goToPage } = useNavigationMenu();
 
   return (
     <Box w='100%'>
@@ -30,15 +25,14 @@ const HamburgerMenu = ({ data }: MenuProps) => {
         />
         <MenuList w='100%'>
           {data.map(({ id, title, icon: Icon }) => {
-            const isActive = pathName.replace(/^\/(.+)/, '$1') === id;
             const additionalProps = Icon ? { icon: <Icon /> } : {};
 
             return (
               <MenuItem
                 key={id}
-                onClick={() => handleMenuItemClick(id)}
+                onClick={() => goToPage(id)}
                 {...additionalProps}
-                color={isActive ? 'blue.500' : undefined}
+                color={isActiveItem(id) ? 'blue.500' : undefined}
               >
                 {title}
               </MenuItem>
