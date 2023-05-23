@@ -13,7 +13,7 @@ const Layout = ({ contentClassName, children, home }: LayoutProps) => {
   return (
     <Grid
       padding={5}
-      rowGap={5}
+      rowGap={8}
       templateAreas={{
         base: `"nav" "main" "content"`,
       }}
