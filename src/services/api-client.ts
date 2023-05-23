@@ -21,7 +21,7 @@ class APIClient<T> {
     path = path ? `/${path}` : '';
 
     return axiosInstance
-      .get<T>(`${this.endpoint}/${path}`)
+      .get<T>(`${this.endpoint}${path}`)
       .then(response => response.data);
   };
 
