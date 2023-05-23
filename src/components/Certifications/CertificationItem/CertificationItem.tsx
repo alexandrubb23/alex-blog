@@ -2,8 +2,8 @@ import { Box } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import { Date } from '@/components/common';
-import { Certificate } from '@/hooks/useCertifications';
-import { useEntitySlug } from '@/hooks';
+import { Certificate } from '@/services/certifications-service';
+import { useEntitySlugWithPathname } from '@/hooks';
 interface CertificationItemProps {
   certificate: Certificate;
   technologyId: string;
@@ -13,9 +13,9 @@ const CertificationItem = ({
   certificate,
   technologyId,
 }: CertificationItemProps) => {
-  const { id, title, completionDate } = certificate;
+  const { title, completionDate } = certificate;
 
-  const { getSlug } = useEntitySlug('certifications');
+  const { getSlug } = useEntitySlugWithPathname();
 
   return (
     <Box key={title}>

@@ -14,8 +14,8 @@ import {
 
 import { CertificationItem } from '@/components/Certifications/CertificationItem';
 import { IconLabel } from '@/components/common';
-import { Certificate, Certification } from '@/hooks/useCertifications';
 import { useIsNotMobile } from '@/hooks';
+import { Certificate, Certification } from '@/services/certifications-service';
 
 const icons = {
   docker: SiDocker,
