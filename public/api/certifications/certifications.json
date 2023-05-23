@@ -143,5 +143,22 @@
         "completionDate": "2021-04-06"
       }
     ]
+  },
+  {
+    "id": "java",
+    "icon": "GrDocker",
+    "name": "Java Journey: Exploring the Power of Object-Oriented Programming and Application Development",
+    "data": [
+      {
+        "id": "ultimate-java-part-1-fundamentals",
+        "title": "Ultimate Java Part 1: Fundamentals",
+        "completionDate": "2021-05-18"
+      },
+      {
+        "id": "ultimate-java-part-2-object-oriented-programming",
+        "title": "Ultimate Java Part 2: Object-oriented Programming",
+        "completionDate": "2021-05-23"
+      }
+    ]
   }
 ]

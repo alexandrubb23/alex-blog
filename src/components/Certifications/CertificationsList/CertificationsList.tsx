@@ -1,7 +1,7 @@
 import { Box, Divider, Heading, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillHtml5 } from 'react-icons/ai';
-import { BsGithub } from 'react-icons/bs';
+import { BsGithub, BsFiletypeJava } from 'react-icons/bs';
 import { FaNodeJs } from 'react-icons/fa';
 import { GrMysql, GrReactjs } from 'react-icons/gr';
 import {
@@ -28,6 +28,7 @@ const icons = {
   react: GrReactjs,
   redux: SiRedux,
   typescript: SiTypescript,
+  java: BsFiletypeJava,
 };
 
 interface CertificationsListProps {
