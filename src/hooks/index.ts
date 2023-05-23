@@ -5,6 +5,7 @@ export { default as useCodeHighlighting } from './useCodeHighlighting';
 export { default as useContactInfo } from './useContactInfo';
 export { default as useContactSocialMedia } from './useContactSocialMedia';
 export { default as useEntitySlug } from './useEntitySlug';
+export { default as useEntitySlugWithPathname } from './useEntitySlugWithPathname';
 export { default as useIsNotMobile } from './useIsNotMobile';
 export { default as useNavigationMenu } from './useNavigationMenu';
 export { default as usePage } from './usePage';
