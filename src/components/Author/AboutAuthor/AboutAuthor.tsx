@@ -1,33 +1,33 @@
-import { Box, BoxProps, Heading } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Box, BoxProps, Button, Heading } from '@chakra-ui/react';
+import { BsArrowRightShort } from 'react-icons/bs';
+import { useRouter } from 'next/navigation';
 
 interface AboutAuthorProps {
   name: string;
-  description: string;
   textAlign?: BoxProps['textAlign'];
 }
 
-const AboutAuthor = ({
-  name,
-  description,
-  textAlign = 'left',
-}: AboutAuthorProps) => {
+const AboutAuthor = ({ name, textAlign = 'left' }: AboutAuthorProps) => {
+  const router = useRouter();
+
   return (
-    <Heading as='h2' fontSize="24px">
-      <Box textAlign={textAlign} padding={0}>
-        Hello, I&apos;m{' '}
-        <Box as='span' color='green.400'>
-          {name}
-        </Box>
-        , I&apos;m a Software Engineer that companies{' '}
-        <Box as='span' color='pink.500'>
-          love to hire
-        </Box>{' '}
-        <Box as='span' ml={2} fontSize="12px">
-          <Link href='/pages/about-author'>→ Read about me</Link>
-        </Box>
-      </Box>
-    </Heading>  
+    <Box textAlign={textAlign} padding={0}>
+      <Heading as='h2' fontSize='24px'>
+        Hello, I&apos;m {name}, I&apos;m a Software Engineer that companies love
+        to hire
+      </Heading>
+      <Button
+        rightIcon={<BsArrowRightShort />}
+        colorScheme='teal'
+        bg='yellow.500'
+        color='black'
+        _hover={{ bg: 'yellow.400' }}
+        onClick={() => router.push('/pages/about-author')}
+        mt={8}
+      >
+        Read more about me
+      </Button>
+    </Box>
   );
 };
 
