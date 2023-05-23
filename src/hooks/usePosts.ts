@@ -1,14 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
-import axiosInstance, { FetchResponse } from '@/services/api-client';
+import { postsService } from '@/services';
 
 const usePosts = () =>
   useQuery({
     queryKey: ['posts'],
-    queryFn: () =>
-      axiosInstance
-        .get<FetchResponse[]>('/posts/posts.json')
-        .then(response => response.data),
+    queryFn: postsService.getAll,
   });
 
 export default usePosts;
