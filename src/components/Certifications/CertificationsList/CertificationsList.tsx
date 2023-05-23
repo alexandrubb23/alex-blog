@@ -46,7 +46,12 @@ const CertificationsList = ({ technologies }: CertificationsListProps) => {
             <Heading as='h2' fontSize='22px' mb={4}>
               <IconLabel
                 icon={icons[technology.id]}
-                iconWrapperProps={{ color: 'dodgerblue' }}
+                iconWrapperProps={{
+                  bg: 'midNightBlue.500',
+                  borderRadius: 'full',
+                  color: 'dodgerblue',
+                  padding: '10px',
+                }}
                 label={technology.name}
                 showIcon={isNotMobile}
               />
@@ -55,7 +60,7 @@ const CertificationsList = ({ technologies }: CertificationsListProps) => {
             <VStack
               align='left'
               spacing={2}
-              pl={isNotMobile ? '2rem' : undefined}
+              pl={isNotMobile ? '3rem' : undefined}
             >
               {technology.data.map((certificate: Certificate) => (
                 <CertificationItem
