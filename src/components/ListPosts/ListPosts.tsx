@@ -2,12 +2,11 @@ import { Box, List, ListItem } from '@chakra-ui/react';
 import Link from 'next/link';
 
 import { CenteredSpinner, Date } from '@/components/common';
-import usePosts from '@/hooks/usePosts';
-import { usePostSlug } from '@/hooks';
+import { useEntitySlug, usePosts } from '@/hooks';
 
 const ListPosts = () => {
   const { data: posts, isLoading, error } = usePosts();
-  const { getSlug } = usePostSlug();
+  const { getSlug } = useEntitySlug('posts');
 
   if (error) return null;
 

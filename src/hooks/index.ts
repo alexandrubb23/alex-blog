@@ -11,4 +11,4 @@ export { default as useNavigationMenu } from './useNavigationMenu';
 export { default as usePage } from './usePage';
 export { default as useParseContent } from './useParseContent';
 export { default as usePost } from './usePost';
-export { default as usePostSlug } from './usePostSlug';
+export { default as usePosts } from './usePosts';
