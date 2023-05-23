@@ -1,26 +1,13 @@
-import axiosInstance from '@/services/api-client';
 import { useQuery } from '@tanstack/react-query';
 
-export interface Certificate {
-  id: string;
-  title: string;
-  completionDate: string;
-}
+import { certificationsService } from '@/services';
+import { Certification } from '@/services/certifications-service';
 
-export interface Certification {
-  id: 'git';
-  icon: string;
-  name: string;
-  data: Certificate[];
-}
 
 const useCertifications = () =>
   useQuery<Certification[], Error>({
     queryKey: ['certifications'],
-    queryFn: () =>
-      axiosInstance
-        .get<Certification[]>('/certifications/certifications.json')
-        .then(res => res.data),
+    queryFn: certificationsService.getAll,
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 

@@ -1,19 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 
-import axiosInstance, { FetchResponse } from '@/services/api-client';
+import { FetchResponse, certificateService } from '@/services';
 import useEntitySlug, { QueryParams } from './useEntitySlug';
 
 const useCertificate = (params: QueryParams) => {
   const { id, topic } = params;
 
-  const { getSlug } = useEntitySlug('certifications');
+  const { getSlug } = useEntitySlug();
 
   return useQuery<FetchResponse, Error>({
     queryKey: ['certifications', topic, id],
-    queryFn: () =>
-      axiosInstance
-        .get<FetchResponse>(`${getSlug(params)}.md`)
-        .then(res => res.data),
+    queryFn: () => certificateService.findOne(`${getSlug(params)}.md`),
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
 };
