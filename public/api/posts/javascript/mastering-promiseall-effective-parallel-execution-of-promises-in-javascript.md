@@ -3,7 +3,7 @@ title: 'Mastering Promise.all(): Effective Parallel Execution of Promises in Jav
 date: '2023-05-22'
 ---
 
-In this article we will discuss about `Promise.all()`. What is it and how we can implement our own.
+In this article, we will explore the concept of `Promise.all()` and learn how to implement our own version of it. We'll delve into the details of what `Promise.all()` is, how it works, and the benefits it offers in `JavaScript` applications. By the end of this article, you'll have a solid understanding of `Promise.all()` and be able to implement it in your own projects.
 
 ## JavaScript Promise.all
 

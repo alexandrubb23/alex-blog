@@ -23,44 +23,62 @@ One of the highlights of this project is its well-structured architecture. I've 
 
 ```code
 class APIClient<T> {
-  constructor(private ebdpoint: string) {
-    this.ebdpoint = ebdpoint;
+  constructor(private endpoint: string) {
+    this.endpoint = endpoint;
   }
 
-  getAll = (config: AxiosRequestConfig) => {
+  private get = (path = '') => {
+    path = path ? `/${path}` : '';
+
     return axiosInstance
-      .get<FetchResponse<T>>(this.ebdpoint, config)
-      .then(res => res.data);
+      .get<T>(`${this.endpoint}${path}`)
+      .then(response => response.data);
+  };
+
+  getAll = () => {
+    return this.get();
+  };
+
+  findOne = (id: string) => {
+    return this.get(id);
   };
 }
 ```
 
-- On top of the APIClient, we have HTTP services (pageService, postService, postsService), which are dedicated instances of APIClient tailored to work with specific types of objects.
+- On top of the APIClient, we have HTTP services (page-service, post-service, posts-service, and more), which are dedicated instances of APIClient tailored to work with specific types of objects.
 
 ```code
-export default new APIClient('/posts');
+import APIClient, { FetchResponse } from './api-client';
+
+const postService = new APIClient<FetchResponse>('/posts');
+
+export default postService;
 ```
 
 - Above these layers, I've developed custom React hooks that utilize the **HTTP** services to fetch and update data. These hooks encapsulate the logic for managing data in the cache effectively.
 
 ```code
-const usePost = (id: string) =>
-  useQuery<Post, Error>({
-    queryKey: ['post', id],
-    queryFn: apiClient.getAll,
+const usePost = (params: QueryParams) => {
+  const { getSlug } = useEntitySlug();
+
+  const { id, topic } = params;
+
+  return useQuery<FetchResponse, Error>({
+    queryKey: ['post', topic, id],
+    queryFn: () => postService.findOne(`${getSlug(params)}.md`),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   });
+};
 ```
 
 - Finally, at the top layer, we have components that utilize these hooks to fetch and update data, providing a seamless user experience.
 
 ```code
-const Page = ({ params }: PageProps) => {
-  const page = usPage(params.id);
+const Post = ({ params }: PostProps) => {
+  const post = usePost({ ...params });
 
-  return <PageLayout result={page} />;
+  return <PageLayout result={post} />;
 };
-
 ```
 
 - This architectural approach adheres to the Single Responsibility Principle, resulting in a clean and well-organized codebase. By breaking down the application into distinct layers, we achieve easy code management, reduced duplication (DRY principle), and improved scalability.
@@ -71,14 +89,18 @@ Furthermore, I plan to incorporate Domain-driven Design (DDD) principles to stru
 
 You may be wondering, **How do I highlight the code?**
 
-Trust me, is very simple! If you take a look [here](https://github.com/alexandrubb23/alex-blog/blob/main/src/app/posts/%5Bid%5D/page.tsx) you will notice that I have used the PrissJS plus I've added [prism-dracula css style](https://github.com/alexandrubb23/alex-blog/blob/main/src/styles/prism-dracula.css)
+Trust me, is very simple! If you take a look [here](https://github.com/alexandrubb23/alex-blog/blob/main/src/app/posts/%5Bid%5D/page.tsx) you will notice that I have used the PrismJS plus I've added [prism-dracula css style](https://github.com/alexandrubb23/alex-blog/blob/main/src/styles/prism-dracula.css)
 
 ```code
+const useCodeHighlighting = (content: string) => {
   useEffect(() => {
+    if (!content) return;
+
     if (typeof window !== 'undefined') {
       Prism.highlightAll();
     }
-  }, [post]);
+  }, [content]);
+};
 ```
 
 _Prism is a lightweight, extensible syntax highlighter that can be used when working with code blocks in markdown files in blog posts._
@@ -95,3 +117,5 @@ const parsedPage = matter(response);
 ```
 
 This function converts an `.md` file into HTML. As an example, it precisely transforms the article you have just read into HTML format 🙂
+
+Happy coding!
