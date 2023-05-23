@@ -3,7 +3,7 @@ title: 'Ultimate JavaScript Part 2: Advanced Topics'
 date: '2023-05-21'
 ---
 
-In November 2020, I earned a certificate from a comprehensive Git course taught by Mosh Hamedani. Throughout the course, I gained in-depth knowledge and skills in fundamental concepts, creating snapshots, browsing project history, branching and merging, collaborating using GitHub, and rewriting history.
+In January 2023, I earned a certificate from a comprehensive `Ultimate JavaScript Part 2: Advanced Topics` course taught by Mosh Hamedani.
 
-![Albuquerque, New Mexico](/images/certifications/javascript/ultimate-javascript-part-2-advanced-topics.png)
+![Albuquerque, New Mexico](/images/certifications/javascript/ultimate-javascript-part-2-advanced-topics.webp)
 _Certificate of graduation: Ultimate JavaScript Part 2: Advanced Topics - Alexandru Barbulescu_

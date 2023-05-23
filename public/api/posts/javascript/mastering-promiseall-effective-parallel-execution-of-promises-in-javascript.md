@@ -3,7 +3,7 @@ title: 'Mastering Promise.all(): Effective Parallel Execution of Promises in Jav
 date: '2023-05-22'
 ---
 
-In this article we will discuss about `Promis.all()`. What is it and how we can implement our own.
+In this article we will discuss about `Promise.all()`. What is it and how we can implement our own.
 
 ## JavaScript Promise.all
 

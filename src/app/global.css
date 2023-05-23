@@ -29,6 +29,11 @@ em {
 }
 
 .chakra-ui-dark em {
-  background: #282a36;
-  color: #ffcc00;
+  border-left: 7px solid dodgerblue;
+  border-radius: 5px;
+  display: inline-block;
+  line-height: inherit;
+  padding: 5px;
+  background-color: #222;
+  color: #fff;
 }

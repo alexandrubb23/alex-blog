@@ -3,7 +3,7 @@ title: 'Docker: Accelerated, Containerized Application Development'
 date: '2021-04-06'
 ---
 
-In April 2021, I earned a certificate from a comprehensive Docker course taught by Mosh Hamedani.
+In April 2021, I earned a certificate from a comprehensive `Docker: Accelerated, Containerized Application Development` course taught by [Mosh Hamedani](https://twitter.com/moshhamedani).
 
-![Certificate of graduation: The Ultimate Git Course - Alexandru Barbulescu](/images/certifications/docker/docker-accelerated-containerized-application-development.png)
+![Certificate of graduation: The Ultimate Git Course - Alexandru Barbulescu](/images/certifications/docker/docker-accelerated-containerized-application-development.webp)
 _Certificate of graduation: The Ultimate Docker Course - Alexandru Barbulescu_
