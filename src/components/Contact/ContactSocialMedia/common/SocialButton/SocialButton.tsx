@@ -13,7 +13,7 @@ const SocialButton = ({ label, icon: Icon, onClick }: SocialButtonProps) => (
     variant='ghost'
     size='lg'
     isRound={true}
-    _hover={{ bg: '#0D74FF' }}
+    _hover={{ bg: 'blue.500' }}
     icon={<Icon size='28px' />}
     onClick={onClick}
   />

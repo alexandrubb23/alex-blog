@@ -4,17 +4,17 @@ const contactInfo = [
   {
     icon: MdPhone,
     label: '+40-735 538 558',
-    iconColor: '#1970F1',
+    iconColor: 'blue.500',
   },
   {
     icon: MdEmail,
     label: 'alex_bb23@yahoo.co.uk',
-    iconColor: '#1970F1',
+    iconColor: 'blue.500',
   },
   {
     icon: MdLocationOn,
     label: 'Bucharest, Romania',
-    iconColor: '#1970F1',
+    iconColor: 'blue.500',
   },
 ];
 
