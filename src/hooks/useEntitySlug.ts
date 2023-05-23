@@ -2,10 +2,12 @@ import { FetchResponse } from '@/services/api-client';
 
 export type QueryParams = Pick<FetchResponse, 'id' | 'topic'>;
 
-const useEntitySlug = (entity: string) => {
+const useEntitySlug = (entity?: string) => {
   const getSlug = (params: QueryParams) => {
+    const entityRoot = entity ? `/${entity.toLowerCase()}` : '';
     const topic = params.topic ? `/${params.topic.toLowerCase()}` : '';
-    return `/${entity}${topic}/${params.id}`;
+
+    return `${entityRoot}${topic}/${params.id}`;
   };
 
   return { getSlug };
