@@ -14,7 +14,7 @@ const AboutAuthor = ({ name, textAlign = 'left' }: AboutAuthorProps) => {
     <Box textAlign={textAlign} padding={0}>
       <Heading as='h2' fontSize='24px'>
         Hello, I&apos;m {name}, I&apos;m a Software Engineer that companies love
-        to hire
+        to hire.
       </Heading>
       <Button
         rightIcon={<BsArrowRightShort />}

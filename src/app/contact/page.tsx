@@ -42,7 +42,7 @@ const Contact = () => {
                   <ContactInfo />
                 </VStack>
               </Box>
-              <HStack spacing={5} alignItems='flex-start'>
+              <HStack spacing={1} alignItems='flex-start'>
                 <ContactSocialMedia />
               </HStack>
             </Box>
