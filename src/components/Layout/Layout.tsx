@@ -3,6 +3,7 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import '@/app/global.css';
 import { Author, NavBar } from '@/components';
 import Providers from '@/app/providers';
+import { AUTHOR } from '@/app/constants';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ const Layout = ({ contentClassName, children, home }: LayoutProps) => {
         </GridItem>
 
         <GridItem area='main'>
-          <Author name='Alexandru Barbulescu' isHome={home} />
+          <Author name={AUTHOR.NAME} isHome={home} />
         </GridItem>
 
         <GridItem area='content' className={contentClassName}>

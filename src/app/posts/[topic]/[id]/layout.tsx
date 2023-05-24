@@ -1,3 +1,4 @@
+import { AUTHOR } from '@/app/constants';
 import { postService } from '@/services';
 import pageMetadata, { Params } from '@/utils/pageMetadata';
 
@@ -6,7 +7,7 @@ export async function generateMetadata(params: Params) {
 
   return {
     ...metadata,
-    description: `In this article, join Alexandru Barbulescu as he explores the topic of ${metadata.description}.`,
+    description: `In this article, join ${AUTHOR.NAME} as he explores the topic of ${metadata.description}.`,
   };
 }
 

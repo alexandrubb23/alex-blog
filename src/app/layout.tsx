@@ -2,10 +2,12 @@ import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 
+import { AUTHOR } from './constants';
+
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Home | Alexandru Barbulescu',
+  title: `Home | ${AUTHOR.NAME}`,
 };
 
 export default function RootLayout({

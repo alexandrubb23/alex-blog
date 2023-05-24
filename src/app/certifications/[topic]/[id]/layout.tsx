@@ -1,3 +1,4 @@
+import { AUTHOR } from '@/app/constants';
 import { certificateService } from '@/services';
 import pageMetadata, { Params } from '@/utils/pageMetadata';
 
@@ -6,7 +7,7 @@ export async function generateMetadata(params: Params) {
 
   return {
     ...metadata,
-    description: `${metadata.description} certification - Alexandru Barbulescu`,
+    description: `${metadata.description} certification - ${AUTHOR.NAME}`,
   };
 }
 

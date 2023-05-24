@@ -1,19 +1,21 @@
 import { MdEmail, MdLocationOn, MdPhone } from 'react-icons/md';
 
+import { AUTHOR } from '@/app/constants';
+
 const contactInfo = [
   {
     icon: MdPhone,
-    label: '+40-735 538 558',
+    label: AUTHOR.PHONE_NUMBER,
     iconColor: 'blue.500',
   },
   {
     icon: MdEmail,
-    label: 'alex_bb23@yahoo.co.uk',
+    label: AUTHOR.EMAIL_ADDRESS,
     iconColor: 'blue.500',
   },
   {
     icon: MdLocationOn,
-    label: 'Bucharest, Romania',
+    label: `${AUTHOR.ADDRESS.CITY}, ${AUTHOR.ADDRESS.COUNTRY}`,
     iconColor: 'blue.500',
   },
 ];

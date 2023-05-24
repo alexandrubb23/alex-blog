@@ -2,6 +2,7 @@ import matter from 'gray-matter';
 
 import { QueryParams } from '@/hooks/useEntitySlug';
 import APIClient, { FetchResponse } from '@/services/api-client';
+import { AUTHOR } from '@/app/constants';
 
 export interface Params {
   params: QueryParams;
@@ -22,7 +23,7 @@ const pageMetadata = async (
   const { data } = matter(result);
   const { title } = data;
 
-  return { title: `${title} | Alexandru Barbulescu`, description: title };
+  return { title: `${title} | ${AUTHOR.NAME}`, description: title };
 };
 
 export default pageMetadata;

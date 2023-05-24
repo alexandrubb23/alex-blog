@@ -1,7 +1,8 @@
+import { AUTHOR } from '@/app/constants';
+
 export async function generateMetadata() {
   return {
-    title:
-      'Earned certifications in a wide range of software technologies - Alexandru Barbulescu',
+    title: `Earned certifications in a wide range of software technologies - ${AUTHOR.NAME}`,
   };
 }
 

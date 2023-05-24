@@ -1,5 +1,7 @@
+import { AUTHOR } from '@/app/constants';
+
 export async function generateMetadata() {
-  return { title: 'Contact - Alexandru Barbulescu' };
+  return { title: `Contact - ${AUTHOR.NAME}` };
 }
 
 const LayoutContact = ({ children }: { children: React.ReactNode }) => {
