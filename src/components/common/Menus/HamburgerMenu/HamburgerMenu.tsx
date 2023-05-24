@@ -16,7 +16,7 @@ import { useNavigationMenu } from '@/hooks';
 const HamburgerMenu = ({ data }: MenuProps) => {
   const { isActiveItem, goToPage } = useNavigationMenu();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  console.log({ isOpen });
+  
   return (
     <Box w='100%'>
       <Menu onClose={onClose}>
