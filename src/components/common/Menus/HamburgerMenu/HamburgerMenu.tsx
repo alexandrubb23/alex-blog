@@ -5,23 +5,27 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
+  useDisclosure,
 } from '@chakra-ui/react';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { MdOutlineClose } from 'react-icons/md';
 
 import { MenuProps } from '@/components/common/Menus/models';
 import { useNavigationMenu } from '@/hooks';
 
 const HamburgerMenu = ({ data }: MenuProps) => {
   const { isActiveItem, goToPage } = useNavigationMenu();
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  console.log({ isOpen });
   return (
     <Box w='100%'>
-      <Menu>
+      <Menu onClose={onClose}>
         <MenuButton
           as={IconButton}
           aria-label='Options'
-          icon={<RxHamburgerMenu />}
+          icon={isOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
           variant='outline'
+          onClick={onOpen}
         />
         <MenuList w='100%'>
           {data.map(({ id, title, icon: Icon }) => {
