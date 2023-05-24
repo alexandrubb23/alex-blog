@@ -11,10 +11,6 @@ import { QueryParams } from '@/hooks/useEntitySlug';
 import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
 
-interface PostProps {
-  params: QueryParams;
-}
-
 const PageContent = () => {
   const { queryHook, params } = useQueryHookProvider();
   const { data, isLoading, error } = queryHook({ ...params });
