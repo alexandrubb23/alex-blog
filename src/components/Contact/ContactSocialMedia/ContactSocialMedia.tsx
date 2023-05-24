@@ -1,7 +1,10 @@
 import { useContactSocialMedia } from '@/hooks';
-import { SocialButton } from './common';
+import { SocialButton, SocialButtonVariant } from './common/SocialButton';
+interface ContactSocialMediaProps {
+  variant?: SocialButtonVariant;
+}
 
-const ContactSocialMedia = () => {
+const ContactSocialMedia = ({ variant = 'blue' }: ContactSocialMediaProps) => {
   const { data: socialMedia } = useContactSocialMedia();
 
   return (
@@ -12,6 +15,7 @@ const ContactSocialMedia = () => {
           label={name}
           icon={Icon}
           onClick={() => window.open(href, '_blank')}
+          variant={variant}
         />
       ))}
     </>
