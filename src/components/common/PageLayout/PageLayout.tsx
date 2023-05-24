@@ -1,13 +1,11 @@
 import { Box } from '@chakra-ui/react';
-import { UseQueryResult } from '@tanstack/react-query';
 import Link from 'next/link';
 
 import { Layout } from '@/components/Layout';
 import { PageContent } from '@/components/common';
-import { QueryParams } from '@/hooks/useEntitySlug';
-import { FetchResponse } from '@/services/api-client';
-import '@/styles/prism-dracula.css';
 import { QueryHookProvider } from '@/context';
+import { QueryHookDataProvider } from '@/context/QueryHookContextProvider';
+import '@/styles/prism-dracula.css';
 
 interface PageLayoutProps {
   className?: string;
@@ -15,10 +13,7 @@ interface PageLayoutProps {
     href: string;
     text: string;
   };
-  query: {
-    params: QueryParams;
-    queryHook: (params: QueryParams) => UseQueryResult<FetchResponse, Error>;
-  };
+  query: QueryHookDataProvider
 }
 
 const PageLayout = ({

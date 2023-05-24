@@ -7,12 +7,12 @@ import {
 import { QueryParams } from '@/hooks/useEntitySlug';
 import { FetchResponse } from '@/services';
 
-export interface ContextQueryHookProvider {
+export interface QueryHookDataProvider {
   params: QueryParams;
   queryHook: (params: QueryParams) => UseQueryResult<FetchResponse, Error>;
 }
 
-const QueryHookProvider = React.createContext<ContextQueryHookProvider>({
+const QueryHookContextProvider = React.createContext<QueryHookDataProvider>({
   params: {
     id: '',
     topic: '',
@@ -32,4 +32,4 @@ const QueryHookProvider = React.createContext<ContextQueryHookProvider>({
   },
 });
 
-export default QueryHookProvider;
+export default QueryHookContextProvider;
