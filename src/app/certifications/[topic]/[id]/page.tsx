@@ -11,19 +11,18 @@ interface CertificateProps {
   };
 }
 
-const Certificate = ({ params }: CertificateProps) => {
-  const certificate = useCertificate({ ...params });
-
-  return (
-    <PageLayout
-      backTo={{
-        href: '/certifications',
-        text: 'certifications',
-      }}
-      className={styles.certificateLayout}
-      result={certificate}
-    />
-  );
-};
+const Certificate = ({ params }: CertificateProps) => (
+  <PageLayout
+    backTo={{
+      href: '/certifications',
+      text: 'certifications',
+    }}
+    className={styles.certificateLayout}
+    query={{
+      params,
+      queryHook: useCertificate,
+    }}
+  />
+);
 
 export default Certificate;

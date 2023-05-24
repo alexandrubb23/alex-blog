@@ -1,18 +1,15 @@
 'use client';
 
-import { CenteredSpinner, ErrorAlert, PageLayout } from '@/components/common';
+import { PageLayout } from '@/components/common';
 import { usePage } from '@/hooks';
+import { QueryParams } from '@/hooks/useEntitySlug';
 
 interface PageProps {
-  params: {
-    id: string;
-  };
+  params: QueryParams;
 }
 
-const Page = ({ params }: PageProps) => {
-  const page = usePage(params.id);
-
-  return <PageLayout result={page} />;
-};
+const Page = ({ params }: PageProps) => (
+  <PageLayout query={{ queryHook: usePage, params }} />
+);
 
 export default Page;

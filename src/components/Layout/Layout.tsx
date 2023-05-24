@@ -2,6 +2,7 @@ import { Grid, GridItem } from '@chakra-ui/react';
 
 import '@/app/global.css';
 import { Author, NavBar } from '@/components';
+import Providers from '@/app/providers';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -11,27 +12,29 @@ interface LayoutProps {
 
 const Layout = ({ contentClassName, children, home }: LayoutProps) => {
   return (
-    <Grid
-      padding={5}
-      rowGap={8}
-      templateAreas={{
-        base: `"nav" "main" "content"`,
-      }}
-      maxW='800px'
-      margin='auto'
-    >
-      <GridItem area='nav'>
-        <NavBar />
-      </GridItem>
+    <Providers>
+      <Grid
+        padding={5}
+        rowGap={8}
+        templateAreas={{
+          base: `"nav" "main" "content"`,
+        }}
+        maxW='800px'
+        margin='auto'
+      >
+        <GridItem area='nav'>
+          <NavBar />
+        </GridItem>
 
-      <GridItem area='main'>
-        <Author name='Alexandru Barbulescu' isHome={home} />
-      </GridItem>
+        <GridItem area='main'>
+          <Author name='Alexandru Barbulescu' isHome={home} />
+        </GridItem>
 
-      <GridItem area='content' className={contentClassName}>
-        {children}
-      </GridItem>
-    </Grid>
+        <GridItem area='content' className={contentClassName}>
+          {children}
+        </GridItem>
+      </Grid>
+    </Providers>
   );
 };
 

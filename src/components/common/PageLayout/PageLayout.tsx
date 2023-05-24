@@ -3,56 +3,38 @@ import { UseQueryResult } from '@tanstack/react-query';
 import Link from 'next/link';
 
 import { Layout } from '@/components/Layout';
-import { CenteredSpinner, ErrorAlert, PageContent } from '@/components/common';
-import {
-  useAddClassToSpecificTags,
-  useCodeHighlighting,
-  useParseContent,
-} from '@/hooks';
+import { PageContent } from '@/components/common';
+import { QueryParams } from '@/hooks/useEntitySlug';
 import { FetchResponse } from '@/services/api-client';
 import '@/styles/prism-dracula.css';
+import { QueryHookProvider } from '@/context';
 
 interface PageLayoutProps {
-  result: UseQueryResult<FetchResponse, Error>;
   className?: string;
   backTo?: {
     href: string;
     text: string;
+  };
+  query: {
+    params: QueryParams;
+    queryHook: (params: QueryParams) => UseQueryResult<FetchResponse, Error>;
   };
 }
 
 const PageLayout = ({
   backTo = { href: '/', text: 'home' },
   className,
-  result,
+  query,
 }: PageLayoutProps) => {
-  const { data, isLoading, error } = result;
-
-  const parsedContent = useParseContent(data);
-  const tagsClass = useAddClassToSpecificTags({
-    tags: ['pre', 'code'],
-    className: 'language-js',
-  });
-
-  useCodeHighlighting(parsedContent?.content || '');
-
-  if (error) return <ErrorAlert error={error.message} />;
-
-  if (isLoading || !parsedContent) return <CenteredSpinner />;
-
-  const { title, date, content } = parsedContent;
-
   return (
-    <Layout contentClassName={className}>
-      <Box marginY={2}>
-        <PageContent
-          title={title}
-          date={date}
-          content={tagsClass.applyClass(content)}
-        />
-        <Link href={backTo.href}>← Back to {backTo.text}</Link>
-      </Box>
-    </Layout>
+    <QueryHookProvider.Provider value={query}>
+      <Layout contentClassName={className}>
+        <Box marginY={2}>
+          <PageContent />
+          <Link href={backTo.href}>← Back to {backTo.text}</Link>
+        </Box>
+      </Layout>
+    </QueryHookProvider.Provider>
   );
 };
 

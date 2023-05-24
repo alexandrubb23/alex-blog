@@ -1,11 +1,38 @@
 import { Box, Heading, VStack } from '@chakra-ui/react';
 
-import '@/styles/prism-dracula.css';
-import { Date } from '@/components/common';
+import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
+import {
+  useAddClassToSpecificTags,
+  useCodeHighlighting,
+  useParseContent,
+  useQueryHookProvider,
+} from '@/hooks';
+import { QueryParams } from '@/hooks/useEntitySlug';
 import utilStyles from '@/styles/post.module.css';
-import { FetchResponse } from '@/services/api-client';
+import '@/styles/prism-dracula.css';
 
-const PageContent = ({ title, date, content }: Omit<FetchResponse, 'id'>) => {
+interface PostProps {
+  params: QueryParams;
+}
+
+const PageContent = () => {
+  const { queryHook, params } = useQueryHookProvider();
+  const { data, isLoading, error } = queryHook({ ...params });
+
+  const parsedContent = useParseContent(data);
+  const tagsClass = useAddClassToSpecificTags({
+    tags: ['pre', 'code'],
+    className: 'language-js',
+  });
+
+  useCodeHighlighting(parsedContent?.content || '');
+
+  if (error) return <ErrorAlert error={error.message} />;
+
+  if (isLoading || !parsedContent) return <CenteredSpinner />;
+
+  const { title, date, content } = parsedContent;
+
   return (
     <VStack spacing={5} alignItems='flex-start'>
       <Heading
@@ -23,7 +50,7 @@ const PageContent = ({ title, date, content }: Omit<FetchResponse, 'id'>) => {
       <Box
         className={utilStyles.post}
         dangerouslySetInnerHTML={{
-          __html: content,
+          __html: tagsClass.applyClass(content),
         }}
       />
     </VStack>

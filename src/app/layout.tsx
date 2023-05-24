@@ -1,9 +1,12 @@
-'use client';
 
+import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Providers from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const metadata: Metadata = {
+  title: 'Home | Alexandru Barbulescu',
+};
 
 export default function RootLayout({
   children,
@@ -13,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className} suppressHydrationWarning={true}>
-        <Providers>{children}</Providers>
+        {children}
       </body>
     </html>
   );

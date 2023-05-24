@@ -1,20 +1,11 @@
 'use client';
 
-import { Box, Heading, Text } from '@chakra-ui/react';
-import Link from 'next/link';
+import { Heading, Text } from '@chakra-ui/react';
 
 import { CertificationsList } from '@/components/Certifications';
 import { Layout } from '@/components/Layout';
-import { CenteredSpinner, ErrorAlert } from '@/components/common';
-import { useCertifications } from '@/hooks';
 
 const Certifications = () => {
-  const { data: technologies, isLoading, error } = useCertifications();
-
-  if (error) return <ErrorAlert error={error.message} />;
-
-  if (isLoading) return <CenteredSpinner />;
-
   return (
     <Layout>
       <Heading as='h1'>Certifications</Heading>
@@ -27,10 +18,7 @@ const Certifications = () => {
         with the knowledge and skills to excel in software development and
         contribute effectively to projects using these technologies.
       </Text>
-      <CertificationsList technologies={technologies} />
-      <Box marginY={2}>
-        <Link href='/'>← Back to home</Link>
-      </Box>
+      <CertificationsList />
     </Layout>
   );
 };

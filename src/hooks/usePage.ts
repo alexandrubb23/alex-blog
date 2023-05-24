@@ -1,11 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { FetchResponse, pageService } from '@/services';
+import { QueryParams } from './useEntitySlug';
 
-const usePage = (pageName: string) =>
+const usePage = ({ id }: QueryParams) =>
   useQuery<FetchResponse, Error>({
-    queryKey: ['page', pageName],
-    queryFn: () => pageService.findOne(`${pageName}.md`),
+    queryKey: ['page', id],
+    queryFn: () => pageService.findOne(`${id}.md`),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   });
 

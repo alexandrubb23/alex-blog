@@ -1,7 +1,7 @@
 import { Box, Divider, Heading, VStack } from '@chakra-ui/react';
 import React from 'react';
 import { AiFillHtml5 } from 'react-icons/ai';
-import { BsGithub, BsFiletypeJava } from 'react-icons/bs';
+import { BsFiletypeJava, BsGithub } from 'react-icons/bs';
 import { FaNodeJs } from 'react-icons/fa';
 import { GrMysql, GrReactjs } from 'react-icons/gr';
 import {
@@ -11,11 +11,12 @@ import {
   SiRedux,
   SiTypescript,
 } from 'react-icons/si';
+import Link from 'next/link';
 
 import { CertificationItem } from '@/components/Certifications/CertificationItem';
-import { IconLabel } from '@/components/common';
-import { useIsNotMobile } from '@/hooks';
-import { Certificate, Certification } from '@/services/certifications-service';
+import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
+import { useCertifications, useIsNotMobile } from '@/hooks';
+import { Certificate } from '@/services/certifications-service';
 
 const icons = {
   docker: SiDocker,
@@ -31,12 +32,14 @@ const icons = {
   java: BsFiletypeJava,
 };
 
-interface CertificationsListProps {
-  technologies: Certification[];
-}
-
-const CertificationsList = ({ technologies }: CertificationsListProps) => {
+const CertificationsList = () => {
   const isNotMobile = useIsNotMobile();
+
+  const { data: technologies, isLoading, error } = useCertifications();
+
+  if (error) return <ErrorAlert error={error.message} />;
+
+  if (isLoading) return <CenteredSpinner />;
 
   return (
     <>
@@ -74,6 +77,9 @@ const CertificationsList = ({ technologies }: CertificationsListProps) => {
           <Divider my={8} />
         </React.Fragment>
       ))}
+      <Box marginY={2}>
+        <Link href='/'>← Back to home</Link>
+      </Box>
     </>
   );
 };

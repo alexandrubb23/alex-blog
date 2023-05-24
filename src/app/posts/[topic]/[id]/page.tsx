@@ -8,10 +8,8 @@ interface PostProps {
   params: QueryParams;
 }
 
-const Post = ({ params }: PostProps) => {
-  const post = usePost({ ...params });
-
-  return <PageLayout result={post} />;
-};
+const Post = ({ params }: PostProps) => (
+  <PageLayout query={{ queryHook: usePost, params }} />
+);
 
 export default Post;
