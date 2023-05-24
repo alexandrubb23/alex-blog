@@ -1,4 +1,5 @@
 import { extendTheme, ThemeConfig } from '@chakra-ui/react';
+import type { StyleFunctionProps } from '@chakra-ui/styled-system'
 
 const config: ThemeConfig = {
   initialColorMode: 'light',
@@ -6,6 +7,28 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   config,
+  components: {
+    Button: {
+      variants: {
+        blue: {
+          _hover: {
+            bg: 'blue.500'
+          },
+          borderRadius: 'full',
+          color: 'white'
+        },
+        'nav-bar': (props: StyleFunctionProps) => ({
+          _hover: {
+            bg: props.colorMode === 'dark' ? 'gray.700' : 'gray.100'
+          },
+          borderRadius: '5px',
+          p: '10px',
+          minWidth: '2rem',
+          height: '2rem'
+        })
+      }  
+    }
+  },
   colors: {
     gray: {
       50: '#f9f9f9',
