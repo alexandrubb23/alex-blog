@@ -8,3 +8,7 @@ export const AUTHOR = {
     COUNTRY: 'Romania',
   },
 } as const;
+
+export const HTTP_QUERY_KEYS = {
+  PAGE_SOURCE: 'pageSource'
+} as const;

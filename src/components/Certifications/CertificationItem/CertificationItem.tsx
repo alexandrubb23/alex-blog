@@ -1,7 +1,6 @@
 import { Box } from '@chakra-ui/react';
-import Link from 'next/link';
 
-import { Date } from '@/components/common';
+import { Date, Link } from '@/components/common';
 import { Certificate } from '@/services/certifications-service';
 import { useEntitySlugWithPathname } from '@/hooks';
 interface CertificationItemProps {

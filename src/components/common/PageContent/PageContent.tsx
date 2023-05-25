@@ -7,7 +7,6 @@ import {
   useParseContent,
   useQueryHookProvider,
 } from '@/hooks';
-import { QueryParams } from '@/hooks/useEntitySlug';
 import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
 

@@ -1,7 +1,7 @@
 import { Box, List, ListItem } from '@chakra-ui/react';
-import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-import { CenteredSpinner, Date } from '@/components/common';
+import { CenteredSpinner, Date, Link } from '@/components/common';
 import { useEntitySlug, usePosts } from '@/hooks';
 
 const ListPosts = () => {
