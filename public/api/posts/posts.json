@@ -1,5 +1,11 @@
 [
   {
+    "id": "undertanding-the-differences-proto-vs-prototype-in-javascript",
+    "date": "2023-05-25",
+    "title": "Undertanding the Differences: __proto__ vs prototype in JavaScript",
+    "topic": "JavaScript"
+  },
+  {
     "id": "mastering-promiseall-effective-parallel-execution-of-promises-in-javascript",
     "date": "2023-05-22",
     "title": "Mastering Promise.all(): Effective Parallel Execution of Promises in JavaScript",

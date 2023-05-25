@@ -23,7 +23,7 @@ const PageLayout = ({ className, query }: PageLayoutProps) => {
       <Layout contentClassName={className}>
         <Box marginY={2}>
           <PageContent />
-          <Link href={`/${href}` ?? '/'}>← Back to {href || 'home'}</Link>
+          <Link href={`/${href || ''}`}>← Back to {href || 'home'}</Link>
         </Box>
       </Layout>
     </QueryHookProvider.Provider>
