@@ -14,7 +14,7 @@ const Link = ({ children, href }: LinkProps) => {
 
   const linkProps: UrlObject = {
     pathname: href,
-    query: currentPagePath
+    query: currentPagePath && currentPagePath !== '/'
       ? { [HTTP_QUERY_KEYS.PAGE_SOURCE]: currentPagePath.replace(/^\//g, '') }
       : undefined,
   };
