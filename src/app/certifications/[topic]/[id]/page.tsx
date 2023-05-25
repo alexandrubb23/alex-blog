@@ -3,14 +3,9 @@
 import styles from '@/styles/certificate-layout.module.css';
 import { PageLayout } from '@/components/common';
 import { useCertificate } from '@/hooks';
-interface CertificateProps {
-  params: {
-    id: string;
-    topic: string;
-  };
-}
+import { PageProps } from '@/models';
 
-const Certificate = ({ params }: CertificateProps) => (
+const Certificate = ({ params }: PageProps) => (
   <PageLayout
     className={styles.certificateLayout}
     query={{

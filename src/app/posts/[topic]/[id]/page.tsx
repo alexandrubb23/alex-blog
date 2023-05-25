@@ -2,13 +2,9 @@
 
 import { PageLayout } from '@/components/common';
 import { usePost } from '@/hooks';
-import { QueryParams } from '@/hooks/useEntitySlug';
+import { PageProps } from '@/models';
 
-interface PostProps {
-  params: QueryParams;
-}
-
-const Post = ({ params }: PostProps) => (
+const Post = ({ params }: PageProps) => (
   <PageLayout query={{ queryHook: usePost, params }} />
 );
 
