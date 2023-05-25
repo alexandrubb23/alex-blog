@@ -2,7 +2,6 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import { MdOutlineArticle } from 'react-icons/md';
 
 import { ListPosts } from '@/components/ListPosts';
-import { IconLabel } from '../common';
 
 const Blog = () => {
   return (
