@@ -1,5 +1,11 @@
 [
   {
+    "id": "building-a-dynamic-content-parser-in-react-simplifying-state-management-and-enhancing-modularity",
+    "date": "2023-05-26",
+    "title": "Building a Dynamic Content Parser in React: Simplifying State Management and Enhancing Modularity",
+    "topic": "React"
+  },
+  {
     "id": "undertanding-the-differences-proto-vs-prototype-in-javascript",
     "date": "2023-05-25",
     "title": "Undertanding the Differences: __proto__ vs prototype in JavaScript",
