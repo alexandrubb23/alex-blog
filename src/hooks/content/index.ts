@@ -1,1 +1,1 @@
-export { default as useParseContent } from './useParseContent';
+export { default as useParseResponse } from './useParseResponse';

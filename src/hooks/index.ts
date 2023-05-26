@@ -2,7 +2,7 @@ export {
   useAddClassToSpecificTags,
   useCodeHighlighting,
   useColorMode,
-  useIconStyle
+  useIconStyle,
 } from './style';
 export {
   useCertificate,
@@ -18,6 +18,6 @@ export {
   useEntitySlugWithPathname,
   useNavigationMenu,
 } from './router';
-export { useParseContent } from './content';
+export { useParseResponse } from './content';
 export { useQueryHookProvider } from './context';
 export { useIsNotMobile } from './layout';

@@ -10,16 +10,16 @@ _A true engineer always has their eyes set on the future, embracing the possibil
 
 ## Parsing Markdown Content to HTML
 
-The first challenge I faced was parsing **Markdown** content and converting it into **HTML** for rendering on my blog. To accomplish this, I created a function called **parseMarkdownContentToHTML**. This function utilizes the popular **remark** library to parse the **Markdown** content and transform it into **HTML**. Additionally, I leveraged the **matter** library to extract metadata from the **Markdown** files. By combining these tools, I was able to parse the **Markdown** content, extract relevant information such as the title and date, and convert it into **HTML** for rendering on my blog pages.
+The first challenge I faced was parsing **Markdown** content and converting it into **HTML** for rendering on my blog. To accomplish this, I created a function called **parseMarkdownResponseToHTML**. This function utilizes the popular **remark** library to parse the **Markdown** content and transform it into **HTML**. Additionally, I leveraged the **matter** library to extract metadata from the **Markdown** files. By combining these tools, I was able to parse the **Markdown** content, extract relevant information such as the title and date, and convert it into **HTML** for rendering on my blog pages.
 
 ```
-const parseMarkdownContentToHTML = async (response: FetchResponse) => {
+const parseMarkdownResponseToHTML = async (response: FetchResponse) => {
   try {
-    const parsedPage = matter(response);
-    const content = await remark().use(html).process(parsedPage.content);
+    const parsedResponse = matter(response);
+    const content = await remark().use(html).process(parsedResponse.content);
 
     return {
-      ...parsedPage.data,
+      ...parsedResponse.data,
       content: content.toString(),
     } as FetchResponse;
   } catch (error) {
@@ -30,10 +30,10 @@ const parseMarkdownContentToHTML = async (response: FetchResponse) => {
 
 ## Introducing the Reducer Pattern
 
-To improve the state management within my **React** application, I decided to implement the **reducer pattern** using the **React.useReducer** hook. This pattern allowed me to **separate the concerns** of updating the state from the components that consume it, promoting cleaner code organization and better **modularity**. I defined a reducer function called **parseContentReducer**, which handles state updates based on different action types. For instance, when a new parsed content is dispatched, the reducer updates the state with the parsed data.
+To improve the state management within my **React** application, I decided to implement the **reducer pattern** using the **React.useReducer** hook. This pattern allowed me to **separate the concerns** of updating the state from the components that consume it, promoting cleaner code organization and better **modularity**. I defined a reducer function called **parseResponseReducer**, which handles state updates based on different action types. For instance, when a new parsed content is dispatched, the reducer updates the state with the parsed data.
 
 ```
-const parseContentReducer = (state: FetchResponse | null, action: Action) => {
+const parseResponseReducer = (state: FetchResponse | null, action: Action) => {
   if (action.type === SET_PARSED_DATA) {
     return {
       ...state,
@@ -47,15 +47,15 @@ const parseContentReducer = (state: FetchResponse | null, action: Action) => {
 
 ## Building the Custom Reducer Hook
 
-To **encapsulate** the reducer logic and provide a reusable interface for managing state, I created a custom hook called **useParseContentReducer**. This hook accepts a parser function as a parameter, allowing me to customize the parsing logic depending on specific requirements. Within the custom hook, I utilized the **React.useReducer** hook to manage the state using the **parseContentReducer**. The hook returns the parsed data and a dispatch function, enabling components to dispatch actions to update the state.
+To **encapsulate** the reducer logic and provide a reusable interface for managing state, I created a custom hook called **useParseResponseReducer**. This hook accepts a parser function as a parameter, allowing me to customize the parsing logic depending on specific requirements. Within the custom hook, I utilized the **React.useReducer** hook to manage the state using the **parseResponseReducer**. The hook returns the parsed data and a dispatch function, enabling components to dispatch actions to update the state.
 
 ```
-const useParseContentReducer = (
+const useParseResponseReducer = (
   parse: (response: FetchResponse) => Promise<FetchResponse>
 ) => {
-  const [parsedData, dispatch] = useReducer(parseContentReducer, null);
+  const [parsedResponse, dispatch] = useReducer(parseContentReducer, null);
 
-  const dispatchParsedData = useCallback(
+  const parseResponseAndDispatch = useCallback(
     async (response: FetchResponse) => {
       parse(response)
         .then(parsedData => {
@@ -71,32 +71,33 @@ const useParseContentReducer = (
     [parse]
   );
 
-  return { parsedData, dispatchParsedData };
+  return { parsedResponse, parseResponseAndDispatch };
 };
 ```
 
 ## Enhancing the Parsing Process
 
-With the custom reducer hook in place, I integrated it into the **useParseContent** hook, which handles the overall parsing process. This hook takes in the response, typically a **FetchResponse** object, and a parser function as optional parameters. By default, it uses the **parseMarkdownContentToHTML** function, but it allows for customization if a different parser is needed. Within the **useParseContent** hook, I implemented the **processPage** function, which **asynchronously** dispatches the parsed data to the reducer. This function is called within an **React.useEffect** hook, ensuring that the parsing process occurs when the response changes.
+With the custom reducer hook in place, I integrated it into the **useParseContent** hook, which handles the overall parsing process. This hook takes in the response, typically a **FetchResponse** object, and a parser function as optional parameters. By default, it uses the **parseMarkdownResponseToHTML** function, but it allows for customization if a different parser is needed. Within the **useParseContent** hook, I implemented the **processPage** function, which **asynchronously** dispatches the parsed data to the reducer. This function is called within an **React.useEffect** hook, ensuring that the parsing process occurs when the response changes.
 
 ```
-const useParseContent = (
+const useParseResponse = (
   response: FetchResponse | undefined,
-  parser = parseMarkdownContentToHTML
+  parser = parseMarkdownResponseToHTML
 ) => {
-  const { parsedData, dispatchParsedData } = useParseContentReducer(parser);
+  const { parsedResponse, parseResponseAndDispatch } =
+    useParseResponseReducer(parser);
 
   const processPage = useCallback(async () => {
     if (!response) return;
 
-    await dispatchParsedData(response);
-  }, [dispatchParsedData, response]);
+    await parseResponseAndDispatch(response);
+  }, [parseResponseAndDispatch, response]);
 
   useEffect(() => {
     processPage();
   }, [processPage]);
 
-  return parsedData;
+  return parsedResponse;
 };
 ```
 

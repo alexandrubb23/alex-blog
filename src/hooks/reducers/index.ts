@@ -1,1 +1,1 @@
-export { default as useParseContentReducer } from './useParseContentReducer';
+export { default as useParseResponseReducer } from './useParseResponseReducer';

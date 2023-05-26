@@ -4,13 +4,13 @@ import html from 'remark-html';
 
 import { FetchResponse } from '@/services/api-client';
 
-const parseMarkdownContentToHTML = async (response: FetchResponse) => {
+const parseMarkdownResponseToHTML = async (response: FetchResponse) => {
   try {
-    const parsedPage = matter(response);
-    const content = await remark().use(html).process(parsedPage.content);
+    const parsedResponse = matter(response);
+    const content = await remark().use(html).process(parsedResponse.content);
 
     return {
-      ...parsedPage.data,
+      ...parsedResponse.data,
       content: content.toString(),
     } as FetchResponse;
   } catch (error) {
@@ -18,4 +18,4 @@ const parseMarkdownContentToHTML = async (response: FetchResponse) => {
   }
 };
 
-export default parseMarkdownContentToHTML;
+export default parseMarkdownResponseToHTML;

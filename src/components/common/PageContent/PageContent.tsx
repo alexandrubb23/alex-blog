@@ -4,7 +4,7 @@ import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import {
   useAddClassToSpecificTags,
   useCodeHighlighting,
-  useParseContent,
+  useParseResponse,
   useQueryHookProvider,
 } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
@@ -14,19 +14,19 @@ const PageContent = () => {
   const { queryHook, params } = useQueryHookProvider();
   const { data, isLoading, error } = queryHook({ ...params });
 
-  const parsedContent = useParseContent(data);
+  const parsedResponse = useParseResponse(data);
   const tagsClass = useAddClassToSpecificTags({
     tags: ['pre', 'code'],
     className: 'language-js',
   });
 
-  useCodeHighlighting(parsedContent?.content || '');
+  useCodeHighlighting(parsedResponse?.content || '');
 
   if (error) return <ErrorAlert error={error.message} />;
 
-  if (isLoading || !parsedContent) return <CenteredSpinner />;
+  if (isLoading || !parsedResponse) return <CenteredSpinner />;
 
-  const { title, date, content } = parsedContent;
+  const { title, date, content } = parsedResponse;
 
   return (
     <VStack spacing={5} alignItems='flex-start'>

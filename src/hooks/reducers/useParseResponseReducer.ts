@@ -3,14 +3,14 @@ import { useCallback, useReducer } from 'react';
 import { FetchResponse } from '@/services';
 import parseContentReducer, {
   SET_PARSED_DATA,
-} from '@/reducers/parseContentReducer';
+} from '@/reducers/parseResponseReducer';
 
-const useParseContentReducer = (
+const useParseResponseReducer = (
   parse: (response: FetchResponse) => Promise<FetchResponse>
 ) => {
-  const [parsedData, dispatch] = useReducer(parseContentReducer, null);
+  const [parsedResponse, dispatch] = useReducer(parseContentReducer, null);
 
-  const dispatchParsedData = useCallback(
+  const parseResponseAndDispatch = useCallback(
     async (response: FetchResponse) => {
       parse(response)
         .then(parsedData => {
@@ -26,7 +26,7 @@ const useParseContentReducer = (
     [parse]
   );
 
-  return { parsedData, dispatchParsedData };
+  return { parsedResponse, parseResponseAndDispatch };
 };
 
-export default useParseContentReducer;
+export default useParseResponseReducer;
