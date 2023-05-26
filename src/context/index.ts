@@ -1,1 +1,1 @@
-export { default as QueryHookProvider } from './QueryHookContextProvider';
+export { default as QueryHookContextProvider } from './QueryHookContextProvider';

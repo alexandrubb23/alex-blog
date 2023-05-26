@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { QueryHookProvider } from '@/context';
+import { QueryHookContextProvider } from '@/context';
 
-const useQueryHookProvider = () => React.useContext(QueryHookProvider);
+const useQueryHookProvider = () => React.useContext(QueryHookContextProvider);
 
 export default useQueryHookProvider;
