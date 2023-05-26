@@ -15,9 +15,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const fullImageUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/author/opengraph-image`;
+
   return (
     <html lang='en'>
       <Script src='/js/colorMode.js' />
+      <meta property='og:image' content={fullImageUrl}></meta>
       <body className={inter.className} suppressHydrationWarning={true}>
         {children}
       </body>

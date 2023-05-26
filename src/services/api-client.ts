@@ -9,7 +9,7 @@ export interface FetchResponse {
 }
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_ENDPOINT,
+  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
 });
 
 class APIClient<T> {
