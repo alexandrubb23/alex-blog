@@ -1,4 +1,13 @@
-export const AUTHOR = {
+export const AUTHOR: Readonly<{
+  NAME: string;
+  PHONE_NUMBER: string;
+  EMAIL_ADDRESS: string;
+  ADDRESS: {
+    STREET: string;
+    CITY: string;
+    COUNTRY: string;
+  };
+}> = {
   NAME: 'Alexandru Barbulescu',
   PHONE_NUMBER: '+40-735 538 558',
   EMAIL_ADDRESS: 'alex_bb23@yahoo.co.uk',
@@ -7,13 +16,21 @@ export const AUTHOR = {
     CITY: 'Bucharest',
     COUNTRY: 'Romania',
   },
-} as const;
+};
 
-export const HTTP_QUERY_KEYS = {
+export const HTTP_QUERY_KEYS: Readonly<{
+  PAGE_SOURCE: string;
+}> = {
   PAGE_SOURCE: 'pageSource',
-} as const;
+};
 
-export const QUERY_KEYS = {
+export const QUERY_KEYS: Readonly<{
+  PAGE: string;
+  POST: string;
+  POSTS: string;
+  CERTIFICATIONS: string;
+  CETIFICATE: string;
+}> = {
   CERTIFICATIONS: 'certifications',
   CETIFICATE: 'certificate',
   PAGE: 'page',
