@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import ms from 'ms';
 
 import { FetchResponse, postService } from '@/services';
 import useEntitySlug, { QueryParams } from '@/hooks/router/useEntitySlug';
@@ -12,7 +13,7 @@ const usePost = (params: QueryParams) => {
   return useQuery<FetchResponse, Error>({
     queryKey: [QUERY_KEYS.POST, topic, id],
     queryFn: () => postService.findOne(`${getSlug(params)}.md`),
-    staleTime: 24 * 60 * 60 * 1000, // 24h
+    staleTime: ms('24h'),
   });
 };
 
