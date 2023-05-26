@@ -23,3 +23,7 @@
 .post p:first-child {
   margin-top: 0;
 }
+
+.post img {
+  margin-bottom: 15px;
+}
