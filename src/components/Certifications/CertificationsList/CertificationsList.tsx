@@ -15,7 +15,12 @@ import Link from 'next/link';
 
 import { CertificationItem } from '@/components/Certifications/CertificationItem';
 import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
-import { useCertifications, useColorMode, useIsNotMobile } from '@/hooks';
+import {
+  useCertifications,
+  useColorMode,
+  useIconStyle,
+  useIsNotMobile,
+} from '@/hooks';
 import { Certificate } from '@/services/certifications-service';
 
 const icons = {
@@ -34,7 +39,7 @@ const icons = {
 
 const CertificationsList = () => {
   const isNotMobile = useIsNotMobile();
-  const { isDark } = useColorMode();
+  const iconStyle = useIconStyle();
 
   const { data: technologies, isLoading, error } = useCertifications();
 
@@ -50,12 +55,7 @@ const CertificationsList = () => {
             <Heading as='h2' fontSize='22px' mb={4}>
               <IconLabel
                 icon={icons[technology.id]}
-                iconWrapperProps={{
-                  bg: isDark ? 'midnightBlue.500' : 'blue.500',
-                  borderRadius: 'full',
-                  color: isDark ? 'blue.500' : 'white',
-                  padding: '10px',
-                }}
+                iconWrapperProps={iconStyle}
                 label={technology.name}
                 showIcon={isNotMobile}
               />

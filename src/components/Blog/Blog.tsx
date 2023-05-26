@@ -2,17 +2,14 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import { MdOutlineArticle } from 'react-icons/md';
 
 import { ListPosts } from '@/components/ListPosts';
+import { useIconStyle } from '@/hooks'
 
 const Blog = () => {
+  const iconStyle = useIconStyle();
+
   return (
     <>
-      <Box
-        display='inline-block'
-        bg='black'
-        borderRadius='full'
-        padding='10px'
-        color='yellow.500'
-      >
+      <Box display="inline-block" {...iconStyle}>
         <MdOutlineArticle size='15px' />
       </Box>
       <Heading as='h2' size='lg'>

@@ -2,6 +2,7 @@ export {
   useAddClassToSpecificTags,
   useCodeHighlighting,
   useColorMode,
+  useIconStyle
 } from './style';
 export {
   useCertificate,
