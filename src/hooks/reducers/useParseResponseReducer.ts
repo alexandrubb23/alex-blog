@@ -11,7 +11,7 @@ const useParseResponseReducer = (
   const [parsedResponse, dispatch] = useReducer(parseContentReducer, null);
 
   const parseResponseAndDispatch = useCallback(
-    async (response: FetchResponse) => {
+    (response: FetchResponse) => {
       parse(response)
         .then(parsedData => {
           dispatch({

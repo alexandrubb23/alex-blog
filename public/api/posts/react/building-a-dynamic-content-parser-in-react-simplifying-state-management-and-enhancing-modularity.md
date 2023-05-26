@@ -56,7 +56,7 @@ const useParseResponseReducer = (
   const [parsedResponse, dispatch] = useReducer(parseContentReducer, null);
 
   const parseResponseAndDispatch = useCallback(
-    async (response: FetchResponse) => {
+    (response: FetchResponse) => {
       parse(response)
         .then(parsedData => {
           dispatch({
@@ -103,9 +103,9 @@ const useParseResponse = (
 
 ## Benefits and Conclusion
 
-By implementing the dynamic content parser and utilizing the reducer pattern for state management, I achieved several benefits in my blog development process. The separation of concerns improved code organization, making it easier to understand and maintain. The custom reducer hook provided a reusable interface for managing state, promoting code reuse and reducing duplication. Additionally, the flexibility of customizing the parser allowed me to adapt to different content parsing requirements easily.
+By implementing the dynamic content parser and utilizing the **reducer pattern** for state management, I achieved several benefits in my blog development process. The separation of concerns improved code organization, making it easier to understand and maintain. The custom reducer hook provided a reusable interface for managing state, promoting code reuse and reducing duplication. Additionally, the flexibility of customizing the parser allowed me to adapt to different content parsing requirements easily.
 
-In conclusion, building a dynamic content parser and enhancing state management in my React application proved to be a valuable investment of time and effort. By leveraging the reducer pattern and creating custom hooks. I achived a more modular and maintainable codebase for my blog. This approach can be applied to various scenarios where content parsing and state management are critical. I ancourage you to explore these cocnepts and adapt them to your own projects, as they can significantly emhance the development experience.
+In conclusion, building a dynamic content parser and enhancing state management in my **React** application proved to be a valuable investment of time and effort. By leveraging the reducer pattern and creating custom hooks, I achieved a more modular and maintainable codebase for my blog. This approach can be applied to various scenarios where content parsing and state management are critical. I encourage you to explore these concepts and adapt them to your own projects, as they can significantly enhance the development experience.
 
 > A true engineer always has their eyes set on the future, embracing the possibilities and challenges ahead.
 
