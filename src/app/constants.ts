@@ -10,5 +10,13 @@ export const AUTHOR = {
 } as const;
 
 export const HTTP_QUERY_KEYS = {
-  PAGE_SOURCE: 'pageSource'
+  PAGE_SOURCE: 'pageSource',
 } as const;
+
+export const QUERY_KEYS = {
+  CERTIFICATIONS: 'certifications',
+  CETIFICATE: 'certificate',
+  PAGE: 'page',
+  POST: 'post',
+  POSTS: 'posts',
+};
