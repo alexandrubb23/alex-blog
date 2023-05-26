@@ -8,10 +8,10 @@ const Blog = () => {
     <>
       <Box
         display='inline-block'
-        bg='#181738'
+        bg='black'
         borderRadius='full'
         padding='10px'
-        color='pink.400'
+        color='yellow.500'
       >
         <MdOutlineArticle size='15px' />
       </Box>
