@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { FetchResponse, pageService } from '@/services';
-import { QueryParams } from './useEntitySlug';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
 
 const usePage = ({ id }: QueryParams) =>
   useQuery<FetchResponse, Error>({

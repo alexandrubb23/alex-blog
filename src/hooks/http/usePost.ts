@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { FetchResponse, postService } from '@/services';
-import useEntitySlug, { QueryParams } from './useEntitySlug';
+import useEntitySlug, { QueryParams } from '@/hooks/router/useEntitySlug';
 
 const usePost = (params: QueryParams) => {
   const { getSlug } = useEntitySlug();

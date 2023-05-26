@@ -1,6 +1,6 @@
 import matter from 'gray-matter';
 
-import { QueryParams } from '@/hooks/useEntitySlug';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
 import APIClient, { FetchResponse } from '@/services/api-client';
 import { AUTHOR } from '@/app/constants';
 

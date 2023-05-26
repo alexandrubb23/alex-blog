@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 
-import { useEntitySlug } from '@/hooks';
+import useEntitySlug from './useEntitySlug';
 
 const useEntitySlugWithPathname = () => {
   const pathName = usePathname();

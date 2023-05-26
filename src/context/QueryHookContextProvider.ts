@@ -4,7 +4,7 @@ import {
   UseQueryResult,
 } from '@tanstack/react-query';
 
-import { QueryParams } from '@/hooks/useEntitySlug';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
 import { FetchResponse } from '@/services';
 
 export interface QueryHookDataProvider {
