@@ -7,7 +7,7 @@ interface Action {
   payload: FetchResponse;
 }
 
-const parseResponseReducer = (state: FetchResponse | null, action: Action) => {
+const parseResponseReducer = (state: FetchResponse, action: Action) => {
   if (action.type === SET_PARSED_DATA) {
     return {
       ...state,
