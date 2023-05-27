@@ -16,7 +16,7 @@ interface PageLayoutProps {
 const PageLayout = ({ className, query }: PageLayoutProps) => {
   const searchParams = useSearchParams();
 
-  const href = searchParams.get(HTTP_QUERY_KEYS.PAGE_SOURCE);
+  const href = searchParams?.get(HTTP_QUERY_KEYS.PAGE_SOURCE);
 
   return (
     <QueryHookProvider query={query}>

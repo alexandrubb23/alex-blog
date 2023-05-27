@@ -33,7 +33,7 @@ const parseMarkdownResponseToHTML = async (response: FetchResponse) => {
 To improve the state management within my **React** application, I decided to implement the **reducer pattern** using the **React.useReducer** hook. This pattern allowed me to **separate the concerns** of updating the state from the components that consume it, promoting cleaner code organization and better **modularity**. I defined a reducer function called **parseResponseReducer**, which handles state updates based on different action types. For instance, when a new parsed content is dispatched, the reducer updates the state with the parsed data.
 
 ```
-const parseResponseReducer = (state: FetchResponse, action: Action) => {
+const parseResponseReducer = (state: FetchResponse | null, action: Action) => {
   if (action.type === SET_PARSED_DATA) {
     return {
       ...state,

@@ -1,14 +1,14 @@
 import { useCallback, useReducer } from 'react';
 
 import { FetchResponse } from '@/services';
-import parseContentReducer, {
+import parseResponseReducer, {
   SET_PARSED_DATA,
 } from '@/reducers/parseResponseReducer';
 
 const useParseResponseReducer = (
   parse: (response: FetchResponse) => Promise<FetchResponse>
 ) => {
-  const [parsedResponse, dispatch] = useReducer(parseContentReducer, null);
+  const [parsedResponse, dispatch] = useReducer(parseResponseReducer, null);
 
   const parseResponseAndDispatch = useCallback(
     (response: FetchResponse) => {
