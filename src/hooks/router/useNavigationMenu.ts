@@ -5,7 +5,7 @@ const useNavigationMenu = () => {
   const pathName = usePathname();
 
   const isActiveItem = (href: string) => {
-    return pathName.replace(/^\/(.+)/, '$1') === href;
+    return pathName?.replace(/^\/(.+)/, '$1') === href;
   };
 
   const goToPage = (href: string) => {

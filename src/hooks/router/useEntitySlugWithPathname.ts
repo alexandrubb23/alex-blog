@@ -5,7 +5,7 @@ import useEntitySlug from './useEntitySlug';
 const useEntitySlugWithPathname = () => {
   const pathName = usePathname();
 
-  const entity = pathName.replace(/\//g, '');
+  const entity = pathName?.replace(/\//g, '');
   const entitySlug = useEntitySlug(entity);
 
   return entitySlug;
