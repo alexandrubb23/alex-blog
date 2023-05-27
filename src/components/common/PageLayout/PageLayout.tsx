@@ -6,7 +6,7 @@ import '@/styles/prism-dracula.css';
 import { HTTP_QUERY_KEYS } from '@/app/constants';
 import { Layout } from '@/components/Layout';
 import { PageContent } from '@/components/common';
-import { QueryHookDataProvider } from '@/context/QueryHookContextProvider';
+import { QueryHookDataProvider } from '@/contexts/QueryHookContext';
 import { QueryHookProvider } from '@/providers';
 interface PageLayoutProps {
   className?: string;

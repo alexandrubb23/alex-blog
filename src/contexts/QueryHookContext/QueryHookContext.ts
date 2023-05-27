@@ -12,7 +12,7 @@ export interface QueryHookDataProvider {
   queryHook: (params: QueryParams) => UseQueryResult<FetchResponse, Error>;
 }
 
-const QueryHookContextProvider = React.createContext<QueryHookDataProvider>({
+const QueryHookContext = React.createContext<QueryHookDataProvider>({
   params: {
     id: '',
     topic: '',
@@ -32,4 +32,4 @@ const QueryHookContextProvider = React.createContext<QueryHookDataProvider>({
   },
 });
 
-export default QueryHookContextProvider;
+export default QueryHookContext;

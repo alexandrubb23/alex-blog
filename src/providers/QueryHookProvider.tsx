@@ -1,4 +1,7 @@
-import QueryHookContextProvider, { QueryHookDataProvider } from "@/context/QueryHookContextProvider";
+import {
+  QueryHookContext,
+  QueryHookDataProvider,
+} from '@/contexts/QueryHookContext';
 
 interface QueryHookProviderProps {
   children: React.ReactNode;
@@ -7,9 +10,9 @@ interface QueryHookProviderProps {
 
 const QueryHookProvider = ({ children, query }: QueryHookProviderProps) => {
   return (
-    <QueryHookContextProvider.Provider value={query}>
+    <QueryHookContext.Provider value={query}>
       {children}
-    </QueryHookContextProvider.Provider>
+    </QueryHookContext.Provider>
   );
 };
 

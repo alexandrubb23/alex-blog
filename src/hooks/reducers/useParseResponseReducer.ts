@@ -16,7 +16,7 @@ const useParseResponseReducer = (
         .then(parsedData => {
           dispatch({
             type: SET_PARSED_DATA,
-            payload: parsedData,
+            response: parsedData,
           });
         })
         .catch(error => {
