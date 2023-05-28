@@ -1,12 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
 
-import { certificationsService } from '@/services';
-import { Certification } from '@/services/certifications-service';
+import { APIResponse } from '@/app/api/lib/models';
 import { QUERY_KEYS } from '@/app/constants';
+import { certificationsService } from '@/services';
 
 const useCertifications = () =>
-  useQuery<Certification[], Error>({
+  useQuery<APIResponse[], Error>({
     queryKey: [QUERY_KEYS.CERTIFICATIONS],
     queryFn: certificationsService.getAll,
     staleTime: ms('24h'),

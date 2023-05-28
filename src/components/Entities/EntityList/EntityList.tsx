@@ -11,9 +11,10 @@ import {
   SiRedux,
   SiTypescript,
 } from 'react-icons/si';
+import { TbBrandNextjs } from 'react-icons/tb';
 import Link from 'next/link';
 
-import { CertificationItem } from '@/components/Certifications/CertificationItem';
+import { EntityItem } from '@/components/Entities/EntityItem';
 import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
 import {
   useCertifications,
@@ -22,26 +23,36 @@ import {
   useIsNotMobile,
 } from '@/hooks';
 import { Certificate } from '@/services/certifications-service';
+import { APIResponse } from '@/app/api/lib/models';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
+import { UseQueryResult } from '@tanstack/react-query';
+import { FetchResponse } from '@/services';
 
 const icons = {
-  docker: SiDocker,
-  git: BsGithub,
-  html: AiFillHtml5,
-  javascript: SiJavascript,
-  mysql: GrMysql,
-  nestjs: SiNestjs,
-  nodejs: FaNodeJs,
-  react: GrReactjs,
-  redux: SiRedux,
-  typescript: SiTypescript,
-  java: BsFiletypeJava,
+  Docker: SiDocker,
+  Git: BsGithub,
+  HTML: AiFillHtml5,
+  Java: BsFiletypeJava,
+  JavaScript: SiJavascript,
+  MySQL: GrMysql,
+  NestJS: SiNestjs,
+  NextJS: TbBrandNextjs,
+  NodeJS: FaNodeJs,
+  React: GrReactjs,
+  Redux: SiRedux,
+  TypeScript: SiTypescript,
 };
 
-const CertificationsList = () => {
-  const isNotMobile = useIsNotMobile();
-  const iconStyle = useIconStyle();
+interface EntityListProps {
+  entityType: 'posts' | 'certifications';
+  queryHook: () => UseQueryResult<APIResponse[], Error>;
+}
 
-  const { data: technologies, isLoading, error } = useCertifications();
+const EntityList = ({ entityType, queryHook }: EntityListProps) => {
+  const iconStyle = useIconStyle();
+  const isNotMobile = useIsNotMobile();
+
+  const { data: technologies, isLoading, error } = queryHook();
 
   if (error) return <ErrorAlert error={error.message} />;
 
@@ -66,10 +77,11 @@ const CertificationsList = () => {
               spacing={2}
               pl={isNotMobile ? '3rem' : undefined}
             >
-              {technology.data.map((certificate: Certificate) => (
-                <CertificationItem
-                  certificate={certificate}
-                  key={certificate.id}
+              {technology.data.map((entityItem: FetchResponse) => (
+                <EntityItem
+                  entityItem={entityItem}
+                  entityType={entityType}
+                  key={entityItem.id}
                   technologyId={technology.id}
                 />
               ))}
@@ -85,4 +97,4 @@ const CertificationsList = () => {
   );
 };
 
-export default CertificationsList;
+export default EntityList;

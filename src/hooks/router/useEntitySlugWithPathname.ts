@@ -1,11 +1,6 @@
-import { usePathname } from 'next/navigation';
-
 import useEntitySlug from './useEntitySlug';
 
-const useEntitySlugWithPathname = () => {
-  const pathName = usePathname();
-
-  const entity = pathName?.replace(/\//g, '');
+const useEntitySlugWithPathname = (entity: 'posts' | 'certifications') => {
   const entitySlug = useEntitySlug(entity);
 
   return entitySlug;
