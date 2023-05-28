@@ -1,12 +1,14 @@
+import { Technology } from '@/app/api/lib/models/api-response.interface';
+
 interface Category {
-  id: string;
+  id: Technology;
   icon: string;
   name: string;
 }
 
 const categories: Readonly<Category[]> = [
   {
-    id: 'Mysql',
+    id: 'MySQL',
     icon: 'GrMysql',
     name: 'Mastering Database Management: Unlocking the Power of MySQL',
   },
