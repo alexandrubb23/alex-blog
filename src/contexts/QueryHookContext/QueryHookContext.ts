@@ -1,8 +1,7 @@
-import React from 'react';
 import {
-  QueryObserverSuccessResult,
-  UseQueryResult,
+  UseQueryResult
 } from '@tanstack/react-query';
+import React from 'react';
 
 import { QueryParams } from '@/hooks/router/useEntitySlug';
 import { FetchResponse } from '@/services';
