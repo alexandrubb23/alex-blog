@@ -3,7 +3,7 @@ import { FetchResponse } from '@/services';
 import date from './date';
 
 const comparePosts = (a: FetchResponse, b: FetchResponse) =>
-  date.getTime(a.date) - date.getTime(b.date);
+  date.getTime(b.date) - date.getTime(a.date);
 
 export const sort = (a: APIResponse, b: APIResponse) => {
   const postA = a.data.sort(comparePosts)[0];
