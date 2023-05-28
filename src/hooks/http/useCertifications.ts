@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import ms from 'ms';
 
 import { certificationsService } from '@/services';
 import { Certification } from '@/services/certifications-service';
@@ -8,7 +9,7 @@ const useCertifications = () =>
   useQuery<Certification[], Error>({
     queryKey: [QUERY_KEYS.CERTIFICATIONS],
     queryFn: certificationsService.getAll,
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: ms('24h'),
   });
 
 export default useCertifications;

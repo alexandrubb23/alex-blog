@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import ms from 'ms';
 
 import { FetchResponse, certificateService } from '@/services';
 import useEntitySlug, { QueryParams } from '@/hooks/router/useEntitySlug';
@@ -12,7 +13,7 @@ const useCertificate = (params: QueryParams) => {
   return useQuery<FetchResponse, Error>({
     queryKey: [QUERY_KEYS.CETIFICATE, topic, id],
     queryFn: () => certificateService.findOne(`${getSlug(params)}.md`),
-    staleTime: 1000 * 60 * 60 * 24, // 24 hours
+    staleTime: ms('24h')
   });
 };
 
