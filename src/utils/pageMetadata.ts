@@ -18,7 +18,7 @@ const pageMetadata = async (
   { params }: Params
 ): Promise<PageMetadata> => {
   const path = Object.values(params).join('/');
-  const result = await httpService.findOne(`${path}.md`);
+  const result = await httpService.findOne(path);
 
   const { data } = matter(result);
   const { title } = data;

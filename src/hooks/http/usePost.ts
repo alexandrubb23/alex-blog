@@ -12,7 +12,7 @@ const usePost = (params: QueryParams) => {
 
   return useQuery<FetchResponse, Error>({
     queryKey: [QUERY_KEYS.POST, topic, id],
-    queryFn: () => postService.findOne(`${getSlug(params)}.md`),
+    queryFn: () => postService.findOne(getSlug(params)),
     staleTime: ms('24h'),
   });
 };

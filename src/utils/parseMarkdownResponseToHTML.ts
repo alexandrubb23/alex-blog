@@ -6,11 +6,10 @@ import { FetchResponse } from '@/services/api-client';
 
 const parseMarkdownResponseToHTML = async (response: FetchResponse) => {
   try {
-    const parsedResponse = matter(response);
-    const content = await remark().use(html).process(parsedResponse.content);
+    const content = await remark().use(html).process(response.content);
 
     return {
-      ...parsedResponse.data,
+      ...response,
       content: content.toString(),
     } as FetchResponse;
   } catch (error) {
