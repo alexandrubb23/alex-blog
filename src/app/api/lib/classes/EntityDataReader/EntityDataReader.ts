@@ -12,8 +12,12 @@ class EntityDataReader {
 
   constructor(private dirName: string) {
     this.dirName;
-    this.entityDirectory = path.join(process.cwd(), this.dirName);
+    this.entityDirectory = this.getAbsoluteEntityDirectory();
   }
+
+  private getAbsoluteEntityDirectory = () => {
+    return path.join(process.cwd(), this.dirName);
+  };
 
   read = () => {
     const topics = fs.readdirSync(this.entityDirectory);
@@ -24,7 +28,7 @@ class EntityDataReader {
 
       const fullTopicPath = path.join(this.entityDirectory, topic);
 
-      const item = {
+      const item: APIResponse = {
         id: category.id,
         icon: category.icon,
         name: category.name,
