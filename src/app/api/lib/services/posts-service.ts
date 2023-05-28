@@ -1,8 +1,10 @@
 import { EntityController } from '@/app/api/lib/classes/EntityDataReader';
 
+const ENTITY_NAME = 'posts';
+
 class Posts extends EntityController {
   constructor() {
-    super('posts');
+    super(ENTITY_NAME);
   }
 }
 
