@@ -3,6 +3,7 @@ import { BsArrowRightShort } from 'react-icons/bs';
 import { useRouter } from 'next/navigation';
 
 import { ROUTES } from '@/app/constants';
+import { useIsHomePage } from '@/hooks';
 
 interface AboutAuthorProps {
   name: string;
@@ -11,6 +12,9 @@ interface AboutAuthorProps {
 
 const AboutAuthor = ({ name, textAlign = 'left' }: AboutAuthorProps) => {
   const router = useRouter();
+  const isHomePage = useIsHomePage();
+
+  if (!isHomePage) return null;
 
   return (
     <Box textAlign={textAlign} padding={0}>

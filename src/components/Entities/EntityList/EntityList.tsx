@@ -6,7 +6,7 @@ import React from 'react';
 import { APIResponse, Entity, PostData } from '@/app/api/lib/models';
 import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
 import { EntityItem } from '@/components/Entities/EntityItem';
-import { useIconStyle, useIsNotMobile } from '@/hooks';
+import { useIsHomePage, useIconStyle, useIsNotMobile } from '@/hooks';
 import icons from '@/data/icons';
 import { EntityProvider } from '@/providers';
 interface EntityListProps {
@@ -16,6 +16,7 @@ interface EntityListProps {
 
 const EntityList = ({ entityType, queryHook }: EntityListProps) => {
   const iconStyle = useIconStyle();
+  const isHomePage = useIsHomePage();
   const isNotMobile = useIsNotMobile();
 
   const { data: technologies, isLoading, error } = queryHook();
@@ -29,7 +30,7 @@ const EntityList = ({ entityType, queryHook }: EntityListProps) => {
       {technologies?.map(technology => (
         <React.Fragment key={technology.name}>
           <Box mt={8}>
-            <Heading as='h2' fontSize='22px' mb={4}>
+            <Heading as={isHomePage ? 'h3' : 'h2'} fontSize='22px' mb={4}>
               <IconLabel
                 icon={icons[technology.id]}
                 iconWrapperProps={iconStyle}

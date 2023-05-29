@@ -16,6 +16,7 @@ export {
 export {
   useEntitySlug,
   useEntitySlugWithPathname,
+  useIsHomePage,
   useNavigationMenu,
 } from './router';
 export { useParseResponse } from './content';
