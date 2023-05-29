@@ -1,4 +1,4 @@
-import { Technology } from '@/app/api/lib/models/api-response.interface';
+import { Technology } from '@/app/api/lib/models';
 
 interface Category {
   id: Technology;
