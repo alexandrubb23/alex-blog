@@ -8,8 +8,6 @@ _The source code of this project could be found on [GitHub](https://github.com/a
 
 This project was built using [Next.js](), [Chakra UI](), [Axios](), [React Query](), and [TypeScript](). With Next.js and TypeScript, I was able to develop a powerful and scalable web application, taking advantage of server-side rendering, seamless routing, and the benefits of static typing.
 
-> _I haven't used the SSR (Server Side Rendering) given that this project is using Chakra UI_
-
 Chakra UI provided a delightful and customizable component library, enabling me to create a beautiful and responsive user interface.
 
 To handle data fetching and state management, I integrated Axios for making API requests and leveraged the capabilities of React Query for efficient caching, optimistic updates, and real-time data synchronization.
