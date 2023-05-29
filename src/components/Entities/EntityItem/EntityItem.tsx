@@ -1,14 +1,14 @@
 import { Box } from '@chakra-ui/react';
 
+import { Entity, PostData } from '@/app/api/lib/models';
 import { Date, Link } from '@/components/common';
-import { Certificate } from '@/services/certifications-service';
 import { useEntitySlugWithPathname } from '@/hooks';
-import { PostData } from '@/app/api/lib/models';
+import { Technology } from '@/app/api/lib/models';
 
 interface EntityItemProps {
   entityItem: PostData;
-  entityType: 'posts' | 'certifications';
-  technologyId: string;
+  entityType: Entity;
+  technologyId: Technology;
 }
 
 const EntityItem = ({

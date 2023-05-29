@@ -1,42 +1,16 @@
 import { Box, Divider, Heading, VStack } from '@chakra-ui/react';
+import { UseQueryResult } from '@tanstack/react-query';
 import Link from 'next/link';
 import React from 'react';
-import { AiFillHtml5 } from 'react-icons/ai';
-import { BsFiletypeJava, BsGithub } from 'react-icons/bs';
-import { FaNodeJs } from 'react-icons/fa';
-import { GrMysql, GrReactjs } from 'react-icons/gr';
-import {
-  SiDocker,
-  SiJavascript,
-  SiNestjs,
-  SiRedux,
-  SiTypescript,
-} from 'react-icons/si';
-import { TbBrandNextjs } from 'react-icons/tb';
 
-import { APIResponse, PostData } from '@/app/api/lib/models';
-import { EntityItem } from '@/components/Entities/EntityItem';
+import { APIResponse, Entity, PostData } from '@/app/api/lib/models';
 import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
+import { EntityItem } from '@/components/Entities/EntityItem';
 import { useIconStyle, useIsNotMobile } from '@/hooks';
-import { UseQueryResult } from '@tanstack/react-query';
-
-const icons = {
-  Docker: SiDocker,
-  Git: BsGithub,
-  HTML: AiFillHtml5,
-  Java: BsFiletypeJava,
-  JavaScript: SiJavascript,
-  MySQL: GrMysql,
-  NestJS: SiNestjs,
-  NextJS: TbBrandNextjs,
-  NodeJS: FaNodeJs,
-  React: GrReactjs,
-  Redux: SiRedux,
-  TypeScript: SiTypescript,
-};
+import icons from '@/data/icons';
 
 interface EntityListProps {
-  entityType: 'posts' | 'certifications';
+  entityType: Entity;
   queryHook: () => UseQueryResult<APIResponse[], Error>;
 }
 

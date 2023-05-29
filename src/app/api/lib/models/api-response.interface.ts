@@ -1,18 +1,5 @@
 import PostData from './post-data.interface';
-
-export type Technology =
-  | 'Docker'
-  | 'Git'
-  | 'HTML'
-  | 'Java'
-  | 'JavaScript'
-  | 'MySQL'
-  | 'NestJS'
-  | 'NextJS'
-  | 'NodeJS'
-  | 'React'
-  | 'Redux'
-  | 'TypeScript';
+import Technology from './technology.type';
 
 interface APIResponse {
   id: Technology;
