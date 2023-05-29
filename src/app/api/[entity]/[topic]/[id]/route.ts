@@ -9,11 +9,10 @@ interface Params extends QueryParams {
   entity: Entity;
 }
 
-export async function GET(request: Request, { params }: { params: Params }) {
-  const entity = createEntityService(params.entity);
-
+export async function GET(_: Request, { params }: { params: Params }) {
   try {
-    const result = await entity.findOne(params);
+    const entity = createEntityService(params.entity);
+    const result = await entity?.findOne(params);
 
     return NextResponse.json(result);
   } catch (error) {

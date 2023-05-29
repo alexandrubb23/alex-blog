@@ -3,6 +3,7 @@ import matter from 'gray-matter';
 import path from 'path';
 
 import categories from '@/app/api/data/categories';
+import { NotFoundError } from '@/app/api/lib/classes/Errors';
 import { APIResponse, PostData } from '@/app/api/lib/models';
 import {
   checkEntityExist,
@@ -85,7 +86,15 @@ class EntityDataReader {
   };
 
   private getAbsoluteEntityDirectory = () => {
-    return path.join(process.cwd(), `${ROOT_DIR}/${this.dirName}`);
+    const entityDirectory = path.join(
+      process.cwd(),
+      `${ROOT_DIR}/${this.dirName}`
+    );
+
+    const isDirectory = fs.existsSync(entityDirectory);
+    if (!isDirectory) throw new NotFoundError('Entity not found');
+
+    return entityDirectory;
   };
 }
 

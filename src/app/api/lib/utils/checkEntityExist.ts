@@ -6,7 +6,7 @@ const checkEntityExist = async (markdownFile: string) => {
   try {
     await access(markdownFile, constants.R_OK);
   } catch {
-    throw new NotFoundError('Entity with the given id not found.');
+    throw new NotFoundError('Invalid url.');
   }
 };
 
