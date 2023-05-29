@@ -6,7 +6,7 @@ import categories from '@/app/api/data/categories';
 import { NotFoundError } from '@/app/api/lib/classes/Errors';
 import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
 import {
-  checkEntityExist,
+  checkMarkdownFileExist,
   readMarkdownFile,
   sortData,
 } from '@/app/api/lib/utils';
@@ -46,7 +46,7 @@ class EntityDataReader {
   readOne = async ({ id, topic }: QueryParams) => {
     const markdownFile = path.join(this.entityDirectory, topic, `${id}.md`);
 
-    await checkEntityExist(markdownFile);
+    await checkMarkdownFileExist(markdownFile);
 
     const markdownFileContents = await readMarkdownFile(markdownFile);
     const matterResult = matter(markdownFileContents);
