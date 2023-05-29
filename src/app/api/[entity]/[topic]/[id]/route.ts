@@ -1,0 +1,28 @@
+import { NextResponse } from 'next/server';
+
+import { CustomError } from '@/app/api/lib/classes/Errors';
+import createEntityService from '@/app/api/lib/services/createEntityService';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
+
+type Entity = 'posts' | 'certifications';
+
+interface Params extends QueryParams {
+  entity: Entity;
+}
+
+export async function GET(request: Request, { params }: { params: Params }) {
+  const entity = createEntityService(params.entity);
+
+  try {
+    const result = await entity.findOne(params);
+
+    return NextResponse.json(result);
+  } catch (error) {
+    if (error instanceof CustomError) {
+      return new NextResponse(null, {
+        status: error.statusCode,
+        statusText: error.message,
+      });
+    }
+  }
+}
