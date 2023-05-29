@@ -1,4 +1,4 @@
-import { Technology } from './api-response.interface';
+import Technology from './technology.type';
 
 interface PostData {
   content: string;
