@@ -3,4 +3,4 @@ import handleEntityRequestService, {
 } from '@/app/api/lib/services/handleEntityRequestService';
 
 export const GET = async (_: Request, { params }: { params: Params }) =>
-  handleEntityRequestService(params);
+  handleEntityRequestService({ params });

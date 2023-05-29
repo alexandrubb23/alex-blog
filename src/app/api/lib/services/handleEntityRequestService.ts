@@ -9,7 +9,15 @@ export interface Params extends QueryParams {
   entity: Entity;
 }
 
-const handleEntityRequestService = async (params: Params, getAll = true) => {
+interface HandleEntityRequestService {
+  params: Params;
+  getAll?: boolean;
+}
+
+const handleEntityRequestService = async ({
+  params,
+  getAll = true,
+}: HandleEntityRequestService) => {
   try {
     const entity = createEntityService(params.entity);
     const result = getAll ? entity.getAll() : await entity.findOne(params);
