@@ -1,4 +1,5 @@
 import { Box, Divider, Heading, VStack } from '@chakra-ui/react';
+import Link from 'next/link';
 import React from 'react';
 import { AiFillHtml5 } from 'react-icons/ai';
 import { BsFiletypeJava, BsGithub } from 'react-icons/bs';
@@ -12,21 +13,12 @@ import {
   SiTypescript,
 } from 'react-icons/si';
 import { TbBrandNextjs } from 'react-icons/tb';
-import Link from 'next/link';
 
+import { APIResponse, PostData } from '@/app/api/lib/models';
 import { EntityItem } from '@/components/Entities/EntityItem';
 import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
-import {
-  useCertifications,
-  useColorMode,
-  useIconStyle,
-  useIsNotMobile,
-} from '@/hooks';
-import { Certificate } from '@/services/certifications-service';
-import { APIResponse } from '@/app/api/lib/models';
-import { QueryParams } from '@/hooks/router/useEntitySlug';
+import { useIconStyle, useIsNotMobile } from '@/hooks';
 import { UseQueryResult } from '@tanstack/react-query';
-import { FetchResponse } from '@/services';
 
 const icons = {
   Docker: SiDocker,
@@ -77,7 +69,7 @@ const EntityList = ({ entityType, queryHook }: EntityListProps) => {
               spacing={2}
               pl={isNotMobile ? '3rem' : undefined}
             >
-              {technology.data.map((entityItem: FetchResponse) => (
+              {technology.data.map((entityItem: PostData) => (
                 <EntityItem
                   entityItem={entityItem}
                   entityType={entityType}

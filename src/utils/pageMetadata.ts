@@ -1,8 +1,9 @@
 import matter from 'gray-matter';
 
 import { QueryParams } from '@/hooks/router/useEntitySlug';
-import APIClient, { FetchResponse } from '@/services/api-client';
+import APIClient from '@/services/api-client';
 import { AUTHOR } from '@/app/constants';
+import { PostData } from '@/app/api/lib/models';
 
 export interface Params {
   params: QueryParams;
@@ -14,7 +15,7 @@ interface PageMetadata {
 }
 
 const pageMetadata = async (
-  httpService: APIClient<FetchResponse>,
+  httpService: APIClient<PostData>,
   { params }: Params
 ): Promise<PageMetadata> => {
   const path = Object.values(params).join('/');

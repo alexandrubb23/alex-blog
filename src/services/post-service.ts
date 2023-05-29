@@ -1,5 +1,6 @@
-import APIClient, { FetchResponse } from './api-client';
+import { PostData } from '@/app/api/lib/models';
+import APIClient from './api-client';
 
-const postService = new APIClient<FetchResponse>('/posts');
+const postService = new APIClient<PostData>('/posts');
 
 export default postService;

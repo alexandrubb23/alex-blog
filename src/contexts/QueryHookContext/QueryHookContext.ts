@@ -1,14 +1,12 @@
-import {
-  UseQueryResult
-} from '@tanstack/react-query';
+import { UseQueryResult } from '@tanstack/react-query';
 import React from 'react';
 
 import { QueryParams } from '@/hooks/router/useEntitySlug';
-import { FetchResponse } from '@/services';
+import { PostData } from '@/app/api/lib/models';
 
 export interface QueryHookDataProvider {
   params: QueryParams;
-  queryHook: (params: QueryParams) => UseQueryResult<FetchResponse, Error>;
+  queryHook: (params: QueryParams) => UseQueryResult<PostData, Error>;
 }
 
 const QueryHookContext = React.createContext<QueryHookDataProvider>(

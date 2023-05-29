@@ -1,8 +1,7 @@
-import { APIResponse } from '@/app/api/lib/models';
-import { FetchResponse } from '@/services';
+import { APIResponse, PostData } from '@/app/api/lib/models';
 import date from './date';
 
-const comparePosts = (a: FetchResponse, b: FetchResponse) =>
+const comparePosts = (a: PostData, b: PostData) =>
   date.getTime(b.date) - date.getTime(a.date);
 
 export const sort = (a: APIResponse, b: APIResponse) => {

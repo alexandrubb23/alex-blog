@@ -3,10 +3,10 @@ import { Box } from '@chakra-ui/react';
 import { Date, Link } from '@/components/common';
 import { Certificate } from '@/services/certifications-service';
 import { useEntitySlugWithPathname } from '@/hooks';
-import { FetchResponse } from '@/services';
+import { PostData } from '@/app/api/lib/models';
 
 interface EntityItemProps {
-  entityItem: FetchResponse;
+  entityItem: PostData;
   entityType: 'posts' | 'certifications';
   technologyId: string;
 }

@@ -1,6 +1,6 @@
-import { FetchResponse } from '@/services/api-client';
+import { PostData } from '@/app/api/lib/models';
 
-export type QueryParams = Pick<FetchResponse, 'id' | 'topic'>;
+export type QueryParams = Pick<PostData, 'id' | 'topic'>;
 
 const useEntitySlug = (entity?: string) => {
   const getSlug = (params: QueryParams) => {

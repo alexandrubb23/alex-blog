@@ -1,17 +1,17 @@
 import { useCallback, useReducer } from 'react';
 
-import { FetchResponse } from '@/services';
 import parseResponseReducer, {
   SET_PARSED_DATA,
 } from '@/reducers/parseResponseReducer';
+import { PostData } from '@/app/api/lib/models';
 
 const useParseResponseReducer = (
-  parse: (response: FetchResponse) => Promise<FetchResponse>
+  parse: (response: PostData) => Promise<PostData>
 ) => {
   const [parsedResponse, dispatch] = useReducer(parseResponseReducer, null);
 
   const parseResponseAndDispatch = useCallback(
-    (response: FetchResponse) => {
+    (response: PostData) => {
       parse(response)
         .then(parsedData => {
           dispatch({

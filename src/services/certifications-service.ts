@@ -1,5 +1,5 @@
-import { APIResponse } from '@/app/api/lib/models';
-import APIClient, { FetchResponse } from './api-client';
+import { APIResponse, PostData } from '@/app/api/lib/models';
+import APIClient from './api-client';
 
 export interface Certificate {
   id: string;
@@ -12,7 +12,7 @@ export interface Certification {
   id: string;
   icon: string;
   name: string;
-  data: FetchResponse[];
+  data: PostData[];
 }
 
 const certificationsService = new APIClient<APIResponse[]>('/certifications');

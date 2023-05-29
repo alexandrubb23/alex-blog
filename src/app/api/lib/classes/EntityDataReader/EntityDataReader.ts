@@ -3,13 +3,12 @@ import matter from 'gray-matter';
 import path from 'path';
 
 import categories from '@/app/api/data/categories';
-import { APIResponse } from '@/app/api/lib/models';
+import { APIResponse, PostData } from '@/app/api/lib/models';
 import {
   checkEntityExist,
   readMarkdownFile,
   sortData,
 } from '@/app/api/lib/utils';
-import { FetchResponse } from '@/services';
 import { QueryParams } from '@/hooks/router/useEntitySlug';
 
 const ROOT_DIR = 'api';
@@ -61,12 +60,12 @@ class EntityDataReader {
       id,
       content: matterResult.content,
       ...matterResult.data,
-    } as FetchResponse;
+    } as PostData;
   };
 
   private data = (fullTopicPath: string) => {
     const topicDir = fs.readdirSync(fullTopicPath);
-    return topicDir.reduce<FetchResponse[]>((items, file) => {
+    return topicDir.reduce<PostData[]>((items, file) => {
       const id = file.replace(/\.md$/, '');
       const fullFilePath = `${fullTopicPath}/${file}`;
 
@@ -77,7 +76,7 @@ class EntityDataReader {
         id,
         content: matterResult.content,
         ...matterResult.data,
-      } as FetchResponse;
+      } as PostData;
 
       items.push(item);
 

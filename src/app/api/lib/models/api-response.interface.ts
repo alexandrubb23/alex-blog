@@ -1,4 +1,4 @@
-import { FetchResponse } from '@/services/api-client';
+import PostData from './post-data.interface';
 
 export type Technology =
   | 'Docker'
@@ -18,7 +18,7 @@ interface APIResponse {
   id: Technology;
   icon: string;
   name: string;
-  data: FetchResponse[];
+  data: PostData[];
 }
 
 export default APIResponse;
