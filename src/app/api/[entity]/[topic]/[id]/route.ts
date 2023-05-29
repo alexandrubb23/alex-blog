@@ -3,8 +3,7 @@ import { NextResponse } from 'next/server';
 import { CustomError } from '@/app/api/lib/classes/Errors';
 import createEntityService from '@/app/api/lib/services/createEntityService';
 import { QueryParams } from '@/hooks/router/useEntitySlug';
-
-type Entity = 'posts' | 'certifications';
+import { Entity } from '@/app/api/lib/models';
 
 interface Params extends QueryParams {
   entity: Entity;
