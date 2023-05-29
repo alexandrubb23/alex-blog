@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
+
 import { createEntityService } from '@/app/api/lib/services';
+import { Entity } from '@/app/api/lib/models';
 
-type Entity = 'posts' | 'certifications';
+interface EntityParams {
+  params: {
+    entity: Entity;
+  };
+}
 
-export async function GET(
-  request: Request,
-  { params }: { params: { entity: Entity } }
-) {
+export async function GET(_: Request, { params }: EntityParams) {
   const entity = createEntityService(params.entity);
 
   const result = entity.getAll();

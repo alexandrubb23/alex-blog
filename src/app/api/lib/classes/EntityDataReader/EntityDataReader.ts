@@ -52,7 +52,7 @@ class EntityDataReader {
       `${id}.md`
     );
 
-    await checkEntityExist('Post', markdownFile);
+    await checkEntityExist(markdownFile);
 
     const markdownFileContents = await readMarkdownFile(markdownFile);
     const matterResult = matter(markdownFileContents);
