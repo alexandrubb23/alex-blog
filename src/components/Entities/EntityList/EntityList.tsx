@@ -56,9 +56,9 @@ const EntityList = ({ entityType, queryHook }: EntityListProps) => {
           <Divider my={8} />
         </React.Fragment>
       ))}
-      <Box marginY={2}>
+      {!isHomePage && <Box marginY={2}>
         <Link href='/'>← Back to home</Link>
-      </Box>
+      </Box>}
     </EntityProvider>
   );
 };
