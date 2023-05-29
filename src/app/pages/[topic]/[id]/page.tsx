@@ -5,7 +5,7 @@ import { usePage } from '@/hooks';
 import { PageProps } from '@/models';
 
 const Page = ({ params }: PageProps) => (
-  <PageLayout query={{ queryHook: usePage, params }} />
+  <PageLayout data={{ queryHook: usePage, params }} />
 );
 
 export default Page;
