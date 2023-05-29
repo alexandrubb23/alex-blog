@@ -7,13 +7,13 @@ import { QUERY_KEYS } from '@/app/constants';
 import { PostData } from '@/app/api/lib/models';
 
 const useCertificate = (params: QueryParams) => {
-  const { id, topic } = params;
-
   const { getSlug } = useEntitySlug();
+
+  const { id, topic } = params;
 
   return useQuery<PostData, Error>({
     queryKey: [QUERY_KEYS.CETIFICATE, topic, id],
-    queryFn: () => certificateService.findOne(`${getSlug(params)}.md`),
+    queryFn: () => certificateService.findOne(getSlug(params)),
     staleTime: ms('24h'),
   });
 };
