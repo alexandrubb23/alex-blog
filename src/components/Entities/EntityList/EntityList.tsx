@@ -8,7 +8,7 @@ import { CenteredSpinner, ErrorAlert, IconLabel } from '@/components/common';
 import { EntityItem } from '@/components/Entities/EntityItem';
 import { useIconStyle, useIsNotMobile } from '@/hooks';
 import icons from '@/data/icons';
-
+import { EntityProvider } from '@/providers';
 interface EntityListProps {
   entityType: Entity;
   queryHook: () => UseQueryResult<APIResponse[], Error>;
@@ -25,7 +25,7 @@ const EntityList = ({ entityType, queryHook }: EntityListProps) => {
   if (isLoading) return <CenteredSpinner />;
 
   return (
-    <>
+    <EntityProvider data={{ entityType, queryHook }}>
       {technologies?.map(technology => (
         <React.Fragment key={technology.name}>
           <Box mt={8}>
@@ -46,7 +46,6 @@ const EntityList = ({ entityType, queryHook }: EntityListProps) => {
               {technology.data.map((entityItem: PostData) => (
                 <EntityItem
                   entityItem={entityItem}
-                  entityType={entityType}
                   key={entityItem.id}
                   technologyId={technology.id}
                 />
@@ -59,7 +58,7 @@ const EntityList = ({ entityType, queryHook }: EntityListProps) => {
       <Box marginY={2}>
         <Link href='/'>← Back to home</Link>
       </Box>
-    </>
+    </EntityProvider>
   );
 };
 

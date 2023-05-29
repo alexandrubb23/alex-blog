@@ -4,21 +4,18 @@ import { Entity, PostData } from '@/app/api/lib/models';
 import { Date, Link } from '@/components/common';
 import { useEntitySlugWithPathname } from '@/hooks';
 import { Technology } from '@/app/api/lib/models';
+import { useEntityProvider } from '@/hooks/context';
 
 interface EntityItemProps {
   entityItem: PostData;
-  entityType: Entity;
   technologyId: Technology;
 }
 
-const EntityItem = ({
-  entityItem,
-  entityType,
-  technologyId,
-}: EntityItemProps) => {
-  const { title, date } = entityItem;
-
+const EntityItem = ({ entityItem, technologyId }: EntityItemProps) => {
+  const { entityType } = useEntityProvider();
   const { getSlug } = useEntitySlugWithPathname(entityType);
+
+  const { title, date } = entityItem;
 
   return (
     <Box key={title}>
