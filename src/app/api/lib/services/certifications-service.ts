@@ -1,13 +1,5 @@
-import { EntityController } from '@/app/api/lib/classes/EntityDataReader';
+import createEntityService from './createEntityService';
 
-const ENTITY_NAME = 'certifications';
+const certificationsService = createEntityService('certifications');
 
-class Certifications extends EntityController {
-  constructor() {
-    super(ENTITY_NAME);
-  }
-}
-
-const getCertifications = () => new Certifications().getAll();
-
-export default getCertifications;
+export default certificationsService;

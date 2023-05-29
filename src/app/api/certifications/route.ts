@@ -1,5 +1,9 @@
-import { getCertifications } from '@/app/api/lib/services';
+import { NextResponse } from 'next/server';
+
+import { certificationsService } from '@/app/api/lib/services';
 
 export async function GET() {
-  return getCertifications();
+  const certifications = certificationsService.getAll();
+
+  return NextResponse.json(certifications);
 }
