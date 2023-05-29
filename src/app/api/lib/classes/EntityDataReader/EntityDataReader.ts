@@ -23,22 +23,22 @@ class EntityDataReader {
   readAll = () => {
     const topics = fs.readdirSync(this.entityDirectory);
 
-    const entityData = topics.reduce<APIResponse[]>((items, topic) => {
-      const category = categories.find(c => c.id.toLowerCase() === topic);
-      if (!category) return items;
+    const entityData = topics.reduce<APIResponse[]>((technologies, topic) => {
+      const category = this.findTopicCategory(topic);
+      if (!category) return technologies;
 
-      const fullTopicPath = path.join(this.entityDirectory, topic);
+      const { id, icon, name } = category;
 
-      const item: APIResponse = {
-        id: category.id,
-        icon: category.icon,
-        name: category.name,
-        data: this.data(fullTopicPath),
+      const technology: APIResponse = {
+        id,
+        icon,
+        name,
+        data: this.getPostsByTopicName(topic),
       };
 
-      items.push(item);
+      technologies.push(technology);
 
-      return items;
+      return technologies;
     }, []);
 
     return entityData.sort(sortData.sort);
@@ -59,25 +59,26 @@ class EntityDataReader {
     } as PostData;
   };
 
-  private data = (fullTopicPath: string) => {
-    const topicDir = fs.readdirSync(fullTopicPath);
-    
-    return topicDir.reduce<PostData[]>((items, file) => {
+  private getPostsByTopicName = (topic: string) => {
+    const fullTopicPath = path.join(this.entityDirectory, topic);
+    const topicPosts = fs.readdirSync(fullTopicPath);
+
+    return topicPosts.reduce<PostData[]>((posts, file) => {
       const id = file.replace(/\.md$/, '');
       const fullFilePath = `${fullTopicPath}/${file}`;
 
       const fileContents = fs.readFileSync(fullFilePath, 'utf8');
       const matterResult = matter(fileContents);
 
-      const item = {
+      const post = {
         id,
         content: matterResult.content,
         ...matterResult.data,
       } as PostData;
 
-      items.push(item);
+      posts.push(post);
 
-      return items;
+      return posts;
     }, []);
   };
 
@@ -91,6 +92,10 @@ class EntityDataReader {
     if (!isDirectory) throw new NotFoundError('Entity not found');
 
     return entityDirectory;
+  };
+
+  private findTopicCategory = (topic: string) => {
+    return categories.find(c => c.id.toLowerCase() === topic);
   };
 }
 
