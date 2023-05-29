@@ -4,9 +4,15 @@ import path from 'path';
 
 import categories from '@/app/api/data/categories';
 import { APIResponse } from '@/app/api/lib/models';
-import { sortData } from '@/app/api/lib/utils';
+import {
+  checkEntityExist,
+  readMarkdownFile,
+  sortData,
+} from '@/app/api/lib/utils';
 import { FetchResponse } from '@/services';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
 
+const ROOT_DIR = 'api';
 class EntityDataReader {
   private entityDirectory: string;
 
@@ -15,11 +21,7 @@ class EntityDataReader {
     this.entityDirectory = this.getAbsoluteEntityDirectory();
   }
 
-  private getAbsoluteEntityDirectory = () => {
-    return path.join(process.cwd(), this.dirName);
-  };
-
-  read = () => {
+  readAll = () => {
     const topics = fs.readdirSync(this.entityDirectory);
 
     const entityData = topics.reduce<APIResponse[]>((items, topic) => {
@@ -43,7 +45,25 @@ class EntityDataReader {
     return entityData.sort(sortData.sort);
   };
 
-  data = (fullTopicPath: string) => {
+  readOne = async ({ id, topic }: QueryParams) => {
+    const markdownFile = path.join(
+      this.entityDirectory,
+      topic as string,
+      `${id}.md`
+    );
+    await checkEntityExist('Post', markdownFile);
+
+    const markdownFileContents = await readMarkdownFile(markdownFile);
+    const matterResult = matter(markdownFileContents);
+
+    return {
+      id,
+      content: matterResult.content,
+      ...matterResult.data,
+    } as FetchResponse;
+  };
+
+  private data = (fullTopicPath: string) => {
     const topicDir = fs.readdirSync(fullTopicPath);
     return topicDir.reduce<FetchResponse[]>((items, file) => {
       const id = file.replace(/\.md$/, '');
@@ -62,6 +82,10 @@ class EntityDataReader {
 
       return items;
     }, []);
+  };
+
+  private getAbsoluteEntityDirectory = () => {
+    return path.join(process.cwd(), `${ROOT_DIR}/${this.dirName}`);
   };
 }
 

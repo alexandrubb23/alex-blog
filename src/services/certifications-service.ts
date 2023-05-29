@@ -15,8 +15,6 @@ export interface Certification {
   data: FetchResponse[];
 }
 
-const certificationsService = new APIClient<APIResponse[]>(
-  '/certifications/certifications.json'
-);
+const certificationsService = new APIClient<APIResponse[]>('/certifications');
 
 export default certificationsService;

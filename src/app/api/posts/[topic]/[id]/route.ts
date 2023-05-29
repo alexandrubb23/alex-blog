@@ -7,7 +7,7 @@ import { QueryParams } from '@/hooks/router/useEntitySlug';
 import { FetchResponse } from '@/services';
 import { checkEntityExist, readMarkdownFile } from '@/app/api/lib/utils';
 
-const topicDirectory = path.join(process.cwd(), 'posts');
+const topicDirectory = path.join(process.cwd(), 'api/posts');
 
 const getPost = async ({ id, topic }: QueryParams) => {
   const markdownFile = path.join(topicDirectory, topic as string, `${id}.md`);
