@@ -45,11 +45,7 @@ class EntityDataReader {
   };
 
   readOne = async ({ id, topic }: QueryParams) => {
-    const markdownFile = path.join(
-      this.entityDirectory,
-      topic as string,
-      `${id}.md`
-    );
+    const markdownFile = path.join(this.entityDirectory, topic, `${id}.md`);
 
     await checkEntityExist(markdownFile);
 
@@ -65,6 +61,7 @@ class EntityDataReader {
 
   private data = (fullTopicPath: string) => {
     const topicDir = fs.readdirSync(fullTopicPath);
+    
     return topicDir.reduce<PostData[]>((items, file) => {
       const id = file.replace(/\.md$/, '');
       const fullFilePath = `${fullTopicPath}/${file}`;

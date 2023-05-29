@@ -22,7 +22,7 @@ const AboutAuthor = ({ name, textAlign = 'left' }: AboutAuthorProps) => {
         bg='yellow.500'
         color='black'
         _hover={{ bg: 'yellow.400' }}
-        onClick={() => router.push('/pages/about-author')}
+        onClick={() => router.push('/pages/about/alexandru-barbulescu')}
         mt={8}
       >
         Read more about me

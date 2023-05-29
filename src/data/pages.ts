@@ -12,7 +12,7 @@ const pages = [
     icon: AiOutlineHome,
   },
   {
-    id: 'pages/about-author',
+    id: 'pages/about/alexandru-barbulescu',
     title: 'About me',
     icon: AiOutlineUser,
   },
