@@ -1,6 +1,5 @@
-import { postsService } from '@/app/api/lib/services';
 import { NextResponse } from 'next/server';
-import createEntityService from '../lib/services/createEntityService';
+import { createEntityService } from '@/app/api/lib/services';
 
 type Entity = 'posts' | 'certifications';
 
