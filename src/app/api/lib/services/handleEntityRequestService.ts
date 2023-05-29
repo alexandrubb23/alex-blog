@@ -1,20 +1,11 @@
 import { NextResponse } from 'next/server';
 
-import createEntityService, { EntityService } from './createEntityService';
 import { CustomError } from '@/app/api/lib/classes/Errors';
-import {
-  APIResponse,
-  Entity,
-  PostData,
-  QueryParams,
-} from '@/app/api/lib/models';
-
-export interface Params extends QueryParams {
-  entity: Entity;
-}
+import { APIResponse, EntityQueryParams, PostData } from '@/app/api/lib/models';
+import createEntityService, { EntityService } from './createEntityService';
 
 interface HandleEntityRequestService {
-  params: Params;
+  params: EntityQueryParams;
   dispatch: (entity: EntityService) => APIResponse[] | Promise<PostData>;
 }
 
