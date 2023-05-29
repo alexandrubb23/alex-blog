@@ -16,7 +16,6 @@ class EntityDataReader {
   private entityDirectory: string;
 
   constructor(private dirName: string) {
-    this.dirName;
     this.entityDirectory = this.getAbsoluteEntityDirectory();
   }
 
