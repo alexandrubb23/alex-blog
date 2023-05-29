@@ -1,9 +1,9 @@
 import { NextResponse } from 'next/server';
 
-import createEntityService from './createEntityService';
+import createEntityService, { EntityService } from './createEntityService';
 import { CustomError } from '@/app/api/lib/classes/Errors';
 import { QueryParams } from '@/hooks/router/useEntitySlug';
-import { Entity } from '@/app/api/lib/models';
+import { APIResponse, Entity, PostData } from '@/app/api/lib/models';
 
 export interface Params extends QueryParams {
   entity: Entity;
@@ -11,16 +11,16 @@ export interface Params extends QueryParams {
 
 interface HandleEntityRequestService {
   params: Params;
-  getAll?: boolean;
+  dispatch: (entity: EntityService) => APIResponse[] | Promise<PostData>;
 }
 
 const handleEntityRequestService = async ({
   params,
-  getAll = true,
+  dispatch,
 }: HandleEntityRequestService) => {
   try {
     const entity = createEntityService(params.entity);
-    const result = getAll ? entity.getAll() : await entity.findOne(params);
+    const result = await dispatch(entity);
 
     return NextResponse.json(result);
   } catch (error) {

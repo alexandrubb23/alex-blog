@@ -1,7 +1,13 @@
 import { EntityController } from '@/app/api/lib/classes/EntityDataReader';
 import { QueryParams } from '@/hooks/router/useEntitySlug';
+import { APIResponse, PostData } from '@/app/api/lib/models';
 
-const createEntityService = (entityName: string) => {
+export interface EntityService {
+  getAll(): APIResponse[];
+  findOne(params: QueryParams): Promise<PostData>;
+}
+
+const createEntityService = (entityName: string): EntityService => {
   const entity = new EntityController(entityName);
 
   return {
