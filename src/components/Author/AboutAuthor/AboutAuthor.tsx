@@ -2,6 +2,8 @@ import { Box, BoxProps, Button, Heading } from '@chakra-ui/react';
 import { BsArrowRightShort } from 'react-icons/bs';
 import { useRouter } from 'next/navigation';
 
+import { ROUTES } from '@/app/constants';
+
 interface AboutAuthorProps {
   name: string;
   textAlign?: BoxProps['textAlign'];
@@ -22,7 +24,7 @@ const AboutAuthor = ({ name, textAlign = 'left' }: AboutAuthorProps) => {
         bg='yellow.500'
         color='black'
         _hover={{ bg: 'yellow.400' }}
-        onClick={() => router.push('/pages/about/alexandru-barbulescu')}
+        onClick={() => router.push(ROUTES.ABOUT_AUTHOR)}
         mt={8}
       >
         Read more about me

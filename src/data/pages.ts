@@ -1,3 +1,4 @@
+import { ROUTES } from '@/app/constants';
 import {
   AiFillFilePdf,
   AiOutlineHome,
@@ -7,22 +8,22 @@ import {
 
 const pages = [
   {
-    id: '/',
+    id: ROUTES.HOME,
     title: 'Home',
     icon: AiOutlineHome,
   },
   {
-    id: 'pages/about/alexandru-barbulescu',
+    id: ROUTES.ABOUT_AUTHOR,
     title: 'About me',
     icon: AiOutlineUser,
   },
   {
-    id: 'certifications',
+    id: ROUTES.CERTIFICATIONS,
     title: 'Certifications',
     icon: AiFillFilePdf,
   },
   {
-    id: 'contact',
+    id: ROUTES.CONTACT,
     title: 'Contact',
     icon: AiOutlinePhone,
   },
