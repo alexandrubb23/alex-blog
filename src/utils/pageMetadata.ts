@@ -1,7 +1,5 @@
-
-import { PostData } from '@/app/api/lib/models';
+import { PostData, QueryParams } from '@/app/api/lib/models';
 import { AUTHOR } from '@/app/constants';
-import { QueryParams } from '@/hooks/router/useEntitySlug';
 import APIClient from '@/services/api-client';
 
 export interface Params {

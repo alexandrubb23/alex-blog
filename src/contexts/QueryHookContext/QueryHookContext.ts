@@ -1,8 +1,7 @@
 import { UseQueryResult } from '@tanstack/react-query';
 import React from 'react';
 
-import { QueryParams } from '@/hooks/router/useEntitySlug';
-import { PostData } from '@/app/api/lib/models';
+import { PostData, QueryParams } from '@/app/api/lib/models';
 
 export interface QueryHookDataProvider {
   params: QueryParams;

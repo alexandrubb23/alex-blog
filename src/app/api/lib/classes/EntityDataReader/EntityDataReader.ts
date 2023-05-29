@@ -4,13 +4,12 @@ import path from 'path';
 
 import categories from '@/app/api/data/categories';
 import { NotFoundError } from '@/app/api/lib/classes/Errors';
-import { APIResponse, PostData } from '@/app/api/lib/models';
+import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
 import {
   checkEntityExist,
   readMarkdownFile,
   sortData,
 } from '@/app/api/lib/utils';
-import { QueryParams } from '@/hooks/router/useEntitySlug';
 
 const ROOT_DIR = 'api';
 class EntityDataReader {

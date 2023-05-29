@@ -2,8 +2,12 @@ import { NextResponse } from 'next/server';
 
 import createEntityService, { EntityService } from './createEntityService';
 import { CustomError } from '@/app/api/lib/classes/Errors';
-import { QueryParams } from '@/hooks/router/useEntitySlug';
-import { APIResponse, Entity, PostData } from '@/app/api/lib/models';
+import {
+  APIResponse,
+  Entity,
+  PostData,
+  QueryParams,
+} from '@/app/api/lib/models';
 
 export interface Params extends QueryParams {
   entity: Entity;

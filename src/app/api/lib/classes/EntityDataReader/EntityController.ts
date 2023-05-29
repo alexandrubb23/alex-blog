@@ -1,6 +1,5 @@
-import { NextResponse } from 'next/server';
+import { QueryParams } from '@/app/api/lib/models';
 import EntityDataReader from './EntityDataReader';
-import { QueryParams } from '@/hooks/router/useEntitySlug';
 
 class EntityController {
   private entityDataReader: EntityDataReader;

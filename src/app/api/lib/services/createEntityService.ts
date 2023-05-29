@@ -1,6 +1,5 @@
 import { EntityController } from '@/app/api/lib/classes/EntityDataReader';
-import { QueryParams } from '@/hooks/router/useEntitySlug';
-import { APIResponse, PostData } from '@/app/api/lib/models';
+import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
 
 export interface EntityService {
   getAll(): APIResponse[];

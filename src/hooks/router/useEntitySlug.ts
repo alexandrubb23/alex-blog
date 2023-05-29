@@ -1,6 +1,4 @@
-import { PostData } from '@/app/api/lib/models';
-
-export type QueryParams = Pick<PostData, 'id' | 'topic'>;
+import { QueryParams } from '@/app/api/lib/models';
 
 const useEntitySlug = (entity?: string) => {
   const getSlug = (params: QueryParams) => {
