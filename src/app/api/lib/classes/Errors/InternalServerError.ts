@@ -1,6 +1,6 @@
-import CustomError from './CustomError';
+import HTTPStatusError from './HTTPStatusError';
 
-class InternalServerError extends CustomError {
+class InternalServerError extends HTTPStatusError {
   constructor(message: string) {
     super(message, 500);
   }

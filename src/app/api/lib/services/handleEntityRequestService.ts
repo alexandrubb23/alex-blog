@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-import { CustomError } from '@/app/api/lib/classes/Errors';
+import { HTTPStatusError } from '@/app/api/lib/classes/Errors';
 import { APIResponse, EntityQueryParams, PostData } from '@/app/api/lib/models';
 import createEntityService, { EntityService } from './createEntityService';
 
@@ -19,7 +19,7 @@ const handleEntityRequestService = async ({
 
     return NextResponse.json(result);
   } catch (error) {
-    if (error instanceof CustomError) {
+    if (error instanceof HTTPStatusError) {
       return new NextResponse(null, {
         status: error.statusCode,
         statusText: error.message,

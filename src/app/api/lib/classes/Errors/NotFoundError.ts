@@ -1,6 +1,6 @@
-import CustomError from './CustomError';
+import HTTPStatusError from './HTTPStatusError';
 
-class NotFoundError extends CustomError {
+class NotFoundError extends HTTPStatusError {
   constructor(public message: string) {
     super(message, 404);
   }
