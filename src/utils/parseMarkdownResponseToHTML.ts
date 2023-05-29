@@ -1,18 +1,16 @@
+import { PostData } from '@/app/api/lib/models';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-import { FetchResponse } from '@/services/api-client';
-
-const parseMarkdownResponseToHTML = async (response: FetchResponse) => {
+const parseMarkdownResponseToHTML = async (response: PostData) => {
   try {
-    const parsedResponse = matter(response);
-    const content = await remark().use(html).process(parsedResponse.content);
+    const content = await remark().use(html).process(response.content);
 
     return {
-      ...parsedResponse.data,
+      ...response,
       content: content.toString(),
-    } as FetchResponse;
+    } as PostData;
   } catch (error) {
     throw new Error('Error occurred during content parsing');
   }

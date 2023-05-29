@@ -8,7 +8,7 @@ import { PageProps } from '@/models';
 const Certificate = ({ params }: PageProps) => (
   <PageLayout
     className={styles.certificateLayout}
-    query={{
+    data={{
       params,
       queryHook: useCertificate,
     }}

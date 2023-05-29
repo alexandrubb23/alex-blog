@@ -1,11 +1,15 @@
+import { useIsHomePage } from '@/hooks';
 import { Heading } from '@chakra-ui/react';
 
 interface AuthorNameProps {
-  as: 'h1' | 'h2';
   name: string;
 }
 
-const AuthorName = ({ as, name }: AuthorNameProps) => {
+const AuthorName = ({ name }: AuthorNameProps) => {
+  const isHomePage = useIsHomePage();
+
+  const as = isHomePage ? 'h1' : 'h2';
+
   return (
     <Heading as={as} size='2xl' fontSize={as === 'h2' ? '2xl' : '4xl'}>
       {name}

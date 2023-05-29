@@ -1,19 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
 
-import { FetchResponse, certificateService } from '@/services';
-import useEntitySlug, { QueryParams } from '@/hooks/router/useEntitySlug';
+import { certificateService } from '@/services';
+import useEntitySlug from '@/hooks/router/useEntitySlug';
 import { QUERY_KEYS } from '@/app/constants';
+import { PostData, QueryParams } from '@/app/api/lib/models';
 
 const useCertificate = (params: QueryParams) => {
-  const { id, topic } = params;
-
   const { getSlug } = useEntitySlug();
 
-  return useQuery<FetchResponse, Error>({
+  const { id, topic } = params;
+
+  return useQuery<PostData, Error>({
     queryKey: [QUERY_KEYS.CETIFICATE, topic, id],
-    queryFn: () => certificateService.findOne(`${getSlug(params)}.md`),
-    staleTime: ms('24h')
+    queryFn: () => certificateService.findOne(getSlug(params)),
+    staleTime: ms('24h'),
   });
 };
 

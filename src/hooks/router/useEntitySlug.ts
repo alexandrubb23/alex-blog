@@ -1,8 +1,6 @@
-import { FetchResponse } from '@/services/api-client';
+import { Entity, QueryParams } from '@/app/api/lib/models';
 
-export type QueryParams = Pick<FetchResponse, 'id' | 'topic'>;
-
-const useEntitySlug = (entity?: string) => {
+const useEntitySlug = (entity?: Entity) => {
   const getSlug = (params: QueryParams) => {
     const entityRoot = entity ? `/${entity.toLowerCase()}` : '';
     const topic = params.topic ? `/${params.topic.toLowerCase()}` : '';

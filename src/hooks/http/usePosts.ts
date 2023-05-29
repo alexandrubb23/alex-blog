@@ -3,9 +3,10 @@ import ms from 'ms';
 
 import { postsService } from '@/services';
 import { QUERY_KEYS } from '@/app/constants';
+import { APIResponse } from '@/app/api/lib/models';
 
 const usePosts = () =>
-  useQuery({
+  useQuery<APIResponse[], Error>({
     queryKey: [QUERY_KEYS.POSTS],
     queryFn: postsService.getAll,
     staleTime: ms('24h'),

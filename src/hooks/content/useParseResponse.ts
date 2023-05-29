@@ -1,11 +1,11 @@
 import { useCallback, useEffect } from 'react';
 
 import { useParseResponseReducer } from '@/hooks/reducers';
-import { FetchResponse } from '@/services/api-client';
 import parseMarkdownResponseToHTML from '@/utils/parseMarkdownResponseToHTML';
+import { PostData } from '@/app/api/lib/models';
 
 const useParseResponse = (
-  response: FetchResponse | undefined,
+  response: PostData | undefined,
   parser = parseMarkdownResponseToHTML
 ) => {
   const { parsedResponse, parseResponseAndDispatch } =

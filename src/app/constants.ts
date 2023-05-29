@@ -37,3 +37,15 @@ export const QUERY_KEYS: Readonly<{
   POST: 'post',
   POSTS: 'posts',
 };
+
+export const ROUTES: Readonly<{
+  HOME: string;
+  ABOUT_AUTHOR: string;
+  CERTIFICATIONS: string;
+  CONTACT: string;
+}> = {
+  HOME: '/',
+  ABOUT_AUTHOR: '/pages/about/alexandru-barbulescu',
+  CERTIFICATIONS: 'certifications',
+  CONTACT: 'contact',
+};

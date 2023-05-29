@@ -1,4 +1,4 @@
-import { QueryParams } from '@/hooks/router/useEntitySlug';
+import { QueryParams } from '@/app/api/lib/models';
 
 interface PageProps {
   params: QueryParams;

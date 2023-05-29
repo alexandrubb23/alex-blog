@@ -1,11 +1,7 @@
-import { usePathname } from 'next/navigation';
-
+import { Entity } from '@/app/api/lib/models';
 import useEntitySlug from './useEntitySlug';
 
-const useEntitySlugWithPathname = () => {
-  const pathName = usePathname();
-
-  const entity = pathName?.replace(/\//g, '');
+const useEntitySlugWithPathname = (entity: Entity) => {
   const entitySlug = useEntitySlug(entity);
 
   return entitySlug;

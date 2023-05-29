@@ -2,17 +2,18 @@ import { Box, Heading, Text } from '@chakra-ui/react';
 import { MdOutlineArticle } from 'react-icons/md';
 
 import { ListPosts } from '@/components/ListPosts';
-import { useIconStyle } from '@/hooks'
+import { useIsHomePage, useIconStyle } from '@/hooks';
 
 const Blog = () => {
   const iconStyle = useIconStyle();
+  const isHomePage = useIsHomePage();
 
   return (
     <>
-      <Box display="inline-block" {...iconStyle}>
+      <Box display='inline-block' {...iconStyle}>
         <MdOutlineArticle size='15px' />
       </Box>
-      <Heading as='h2' size='lg'>
+      <Heading as={isHomePage ? 'h2' : 'h1'} size='lg'>
         Blog
       </Heading>
       <Text mt={2}>

@@ -5,7 +5,7 @@ import { usePost } from '@/hooks';
 import { PageProps } from '@/models';
 
 const Post = ({ params }: PageProps) => (
-  <PageLayout query={{ queryHook: usePost, params }} />
+  <PageLayout data={{ queryHook: usePost, params }} />
 );
 
 export default Post;
