@@ -1,13 +1,15 @@
 import { EntityController } from '@/app/api/lib/classes/EntityDataReader';
+import { QueryParams } from '@/hooks/router/useEntitySlug';
 
-const ENTITY_NAME = 'posts';
+const createPostsService = () => {
+  const posts = new EntityController('posts');
 
-class Posts extends EntityController {
-  constructor() {
-    super(ENTITY_NAME);
-  }
-}
+  return {
+    getAll: () => posts.getAll(),
+    findOne: (params: QueryParams) => posts.findOne(params),
+  };
+};
 
-const getPosts = () => new Posts().getAll();
+const postsService = createPostsService();
 
-export default getPosts;
+export default postsService;

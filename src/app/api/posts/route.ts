@@ -1,5 +1,8 @@
-import { getPosts } from '@/app/api/lib/services';
+import { postsService } from '@/app/api/lib/services';
+import { NextResponse } from 'next/server';
 
 export async function GET() {
-  return getPosts();
+  const posts = postsService.getAll();
+
+  return NextResponse.json(posts);
 }

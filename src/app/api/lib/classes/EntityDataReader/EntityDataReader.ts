@@ -51,6 +51,7 @@ class EntityDataReader {
       topic as string,
       `${id}.md`
     );
+
     await checkEntityExist('Post', markdownFile);
 
     const markdownFileContents = await readMarkdownFile(markdownFile);

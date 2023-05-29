@@ -10,15 +10,11 @@ class EntityController {
   }
 
   getAll = () => {
-    const data = this.entityDataReader.readAll();
-
-    return NextResponse.json(data);
+    return this.entityDataReader.readAll();
   };
 
-  findOne = (params: QueryParams) => {
-    const data = this.entityDataReader.readOne(params);
-
-    return NextResponse.json(data);
+  findOne = async (params: QueryParams) => {
+    return this.entityDataReader.readOne(params);
   };
 }
 
