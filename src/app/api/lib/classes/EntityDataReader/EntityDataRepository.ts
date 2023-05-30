@@ -20,7 +20,7 @@ class EntityDataRepository {
     this.entityDirectory = this.getAbsoluteEntityDirectory();
   }
 
-  readAll = () => {
+  getAll = () => {
     const topics = fs.readdirSync(this.entityDirectory);
 
     const entityData = topics.reduce<APIResponse[]>((technologies, topic) => {
@@ -44,7 +44,7 @@ class EntityDataRepository {
     return entityData.sort(sortData.sort);
   };
 
-  readOne = async ({ id, topic }: QueryParams) => {
+  findOne = async ({ id, topic }: QueryParams) => {
     const markdownFile = path.join(this.entityDirectory, topic, `${id}.md`);
 
     await checkMarkdownFileExist(markdownFile);

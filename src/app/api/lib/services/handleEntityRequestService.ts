@@ -2,11 +2,14 @@ import { NextResponse } from 'next/server';
 
 import { HTTPStatusError } from '@/app/api/lib/classes/Errors';
 import { APIResponse, EntityQueryParams, PostData } from '@/app/api/lib/models';
-import createEntityService, { EntityService } from './createEntityService';
+import createEntityService from './createEntityService';
+import { EntityDataRepositoryInterface } from '@/app/api/lib/classes/EntityDataReader';
 
 interface HandleEntityRequestService {
   params: EntityQueryParams;
-  dispatch: (entity: EntityService) => APIResponse[] | Promise<PostData>;
+  dispatch: (
+    entity: EntityDataRepositoryInterface
+  ) => APIResponse[] | Promise<PostData>;
 }
 
 const handleEntityRequestService = async ({

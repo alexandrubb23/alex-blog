@@ -1,13 +1,15 @@
-import { EntityController } from '@/app/api/lib/classes/EntityDataReader';
-import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
+import {
+  EntityController,
+  EntityDataRepository,
+  EntityDataRepositoryInterface,
+} from '@/app/api/lib/classes/EntityDataReader';
+import { QueryParams } from '@/app/api/lib/models';
 
-export interface EntityService {
-  getAll(): APIResponse[];
-  findOne(params: QueryParams): Promise<PostData>;
-}
-
-const createEntityService = (entityName: string): EntityService => {
-  const entity = new EntityController(entityName);
+const createEntityService = (
+  entityName: string
+): EntityDataRepositoryInterface => {
+  const entityDataRepository = new EntityDataRepository(entityName);
+  const entity = new EntityController(entityDataRepository);
 
   return {
     getAll: () => entity.getAll(),
