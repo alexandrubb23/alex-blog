@@ -1,20 +1,13 @@
 import {
   EntityController,
-  EntityDataRepository,
   EntityDataRepositoryInterface,
 } from '@/app/api/lib/classes/EntityDataReader';
-import { QueryParams } from '@/app/api/lib/models';
+import { Entity } from '@/app/api/lib/models';
+import entityRepositoryFactory from './entityRepositoryFactory';
 
 const createEntityService = (
-  entityName: string
-): EntityDataRepositoryInterface => {
-  const entityDataRepository = new EntityDataRepository(entityName);
-  const entity = new EntityController(entityDataRepository);
-
-  return {
-    getAll: () => entity.getAll(),
-    findOne: (params: QueryParams) => entity.findOne(params),
-  };
-};
+  entityName: Entity
+): EntityDataRepositoryInterface =>
+  new EntityController(entityRepositoryFactory(entityName));
 
 export default createEntityService;

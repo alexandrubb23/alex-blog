@@ -1,5 +1,4 @@
 import { QueryParams } from '@/app/api/lib/models';
-import EntityDataRepository from './EntityDataRepository';
 import EntityDataRepositoryInterface from './EntityDataRepositoryInterface';
 
 class EntityController {
