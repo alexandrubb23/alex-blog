@@ -14,7 +14,7 @@ import EntityDataRepositoryInterface from './EntityDataRepositoryInterface';
 
 const ROOT_DIR = 'api';
 
-class EntityDataRepository implements EntityDataRepositoryInterface {
+class EntityFileSystemRepository implements EntityDataRepositoryInterface {
   private entityDirectory: string;
 
   constructor(private dirName: string) {
@@ -122,4 +122,4 @@ class EntityDataRepository implements EntityDataRepositoryInterface {
   };
 }
 
-export default EntityDataRepository;
+export default EntityFileSystemRepository;
