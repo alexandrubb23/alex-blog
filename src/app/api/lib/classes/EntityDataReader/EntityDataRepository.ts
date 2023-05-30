@@ -12,7 +12,8 @@ import {
 } from '@/app/api/lib/utils';
 
 const ROOT_DIR = 'api';
-class EntityDataReader {
+
+class EntityDataRepository {
   private entityDirectory: string;
 
   constructor(private dirName: string) {
@@ -98,4 +99,4 @@ class EntityDataReader {
   };
 }
 
-export default EntityDataReader;
+export default EntityDataRepository;

@@ -1,11 +1,11 @@
 import { QueryParams } from '@/app/api/lib/models';
-import EntityDataReader from './EntityDataReader';
+import EntityDataRepository from './EntityDataRepository';
 
 class EntityController {
-  private entityDataReader: EntityDataReader;
+  private entityDataReader: EntityDataRepository;
 
   constructor(private dirName: string) {
-    this.entityDataReader = new EntityDataReader(this.dirName);
+    this.entityDataReader = new EntityDataRepository(this.dirName);
   }
 
   getAll = () => {
