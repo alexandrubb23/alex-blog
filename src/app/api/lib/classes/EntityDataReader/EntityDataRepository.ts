@@ -1,19 +1,20 @@
+import { access, constants, readFile } from 'fs/promises';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 
 import categories from '@/app/api/data/categories';
-import { NotFoundError } from '@/app/api/lib/classes/Errors';
-import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
 import {
-  checkMarkdownFileExist,
-  readMarkdownFile,
-  sortData,
-} from '@/app/api/lib/utils';
+  InternalServerError,
+  NotFoundError,
+} from '@/app/api/lib/classes/Errors';
+import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
+import { sortData } from '@/app/api/lib/utils';
+import EntityDataRepositoryInterface from './EntityDataRepositoryInterface';
 
 const ROOT_DIR = 'api';
 
-class EntityDataRepository {
+class EntityDataRepository implements EntityDataRepositoryInterface {
   private entityDirectory: string;
 
   constructor(private dirName: string) {
@@ -21,24 +22,24 @@ class EntityDataRepository {
   }
 
   getAll = () => {
-    const topics = fs.readdirSync(this.entityDirectory);
+    const topics = this.readDirectory(this.entityDirectory);
 
-    const entityData = topics.reduce<APIResponse[]>((technologies, topic) => {
+    const entityData = topics.reduce<APIResponse[]>((entities, topic) => {
       const category = this.findTopicCategory(topic);
-      if (!category) return technologies;
+      if (!category) return entities;
 
       const { id, icon, name } = category;
 
-      const technology: APIResponse = {
+      const entity: APIResponse = {
         id,
         icon,
         name,
         data: this.getPostsByTopicName(topic),
       };
 
-      technologies.push(technology);
+      entities.push(entity);
 
-      return technologies;
+      return entities;
     }, []);
 
     return entityData.sort(sortData.sort);
@@ -47,9 +48,9 @@ class EntityDataRepository {
   findOne = async ({ id, topic }: QueryParams) => {
     const markdownFile = path.join(this.entityDirectory, topic, `${id}.md`);
 
-    await checkMarkdownFileExist(markdownFile);
+    await this.checkMarkdownFileExist(markdownFile);
 
-    const markdownFileContents = await readMarkdownFile(markdownFile);
+    const markdownFileContents = await this.readMarkdownFile(markdownFile);
     const matterResult = matter(markdownFileContents);
 
     return {
@@ -96,6 +97,28 @@ class EntityDataRepository {
 
   private findTopicCategory = (topic: string) => {
     return categories.find(c => c.id.toLowerCase() === topic);
+  };
+
+  private checkMarkdownFileExist = async (markdownFile: string) => {
+    try {
+      await access(markdownFile, constants.R_OK);
+    } catch {
+      throw new NotFoundError('The post with the given id not found.');
+    }
+  };
+
+  private readDirectory(directory: string): string[] {
+    return fs.readdirSync(directory);
+  }
+
+  private readMarkdownFile = async (markdownFile: string) => {
+    try {
+      return await readFile(markdownFile, { encoding: 'utf-8' });
+    } catch (error) {
+      // TODO: Log error
+      console.error(error);
+      throw new InternalServerError('An error occured.');
+    }
   };
 }
 
