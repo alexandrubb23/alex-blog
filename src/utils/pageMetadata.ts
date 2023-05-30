@@ -21,7 +21,7 @@ const pageMetadata = async ({
     `${process.env.NEXT_PUBLIC_BASE_URL}/api/${entity}/${path}`
   );
 
-  if (response.status >= 400) throw new Error('Bad response.');
+  if (!response.ok) return { title: response.statusText, description: '' };
 
   const body: PostData = await response.json();
   const { title } = body;

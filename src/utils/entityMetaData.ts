@@ -9,18 +9,12 @@ interface EntityMetaData {
 
 const entityMetaData = ({ entity, entityMetadata }: EntityMetaData) => {
   return async (params: PageProps) => {
-    try {
-      const metadata = await pageMetadata({
-        entity,
-        params,
-      });
+    const metadata = await pageMetadata({
+      entity,
+      params,
+    });
 
-      return entityMetadata(metadata);
-    } catch {
-      return {
-        title: 'Page not found',
-      };
-    }
+    return entityMetadata(metadata);
   };
 };
 

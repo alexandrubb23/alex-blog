@@ -90,7 +90,7 @@ class EntityFileSystemRepository implements EntityDataRepositoryInterface {
     );
 
     const isDirectory = fs.existsSync(entityDirectory);
-    if (!isDirectory) throw new NotFoundError('Entity not found');
+    if (!isDirectory) throw new NotFoundError();
 
     return entityDirectory;
   };
@@ -103,7 +103,7 @@ class EntityFileSystemRepository implements EntityDataRepositoryInterface {
     try {
       await access(markdownFile, constants.R_OK);
     } catch {
-      throw new NotFoundError('The post with the given id not found.');
+      throw new NotFoundError();
     }
   };
 
@@ -117,7 +117,7 @@ class EntityFileSystemRepository implements EntityDataRepositoryInterface {
     } catch (error) {
       // TODO: Log error
       console.error(error);
-      throw new InternalServerError('An error occured.');
+      throw new InternalServerError();
     }
   };
 }
