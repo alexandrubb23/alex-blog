@@ -1,11 +1,12 @@
-import { pageService } from '@/services';
-import pageMetadata, { Params } from '@/utils/pageMetadata';
+import { entityMetaData } from '@/utils';
+import { PageMetadata } from '@/utils/pageMetadata';
 
-export async function generateMetadata(params: Params) {
-  const metadata = await pageMetadata(pageService, params);
+const entityMetadata = (metadata: PageMetadata) => metadata;
 
-  return metadata;
-}
+export const generateMetadata = entityMetaData({
+  entity: 'pages',
+  entityMetadata,
+});
 
 const PageLayout = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;

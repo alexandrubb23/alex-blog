@@ -4,7 +4,7 @@ import { PageLayout } from '@/components/common';
 import { usePost } from '@/hooks';
 import { PageProps } from '@/models';
 
-const Post = ({ params }: PageProps) => (
+const Post = ({ params, ...rest }: PageProps) => (
   <PageLayout data={{ queryHook: usePost, params }} />
 );
 

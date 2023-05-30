@@ -1,18 +1,21 @@
 import { AUTHOR } from '@/app/constants';
-import { postService } from '@/services';
-import pageMetadata, { Params } from '@/utils/pageMetadata';
+import { entityMetaData } from '@/utils';
+import { PageMetadata } from '@/utils/pageMetadata';
 
-export async function generateMetadata(params: Params) {
-  const metadata = await pageMetadata(postService, params);
-
+const entityMetadata = (metadata: PageMetadata) => {
   return {
     ...metadata,
     description: `In this article, join ${AUTHOR.NAME} as he explores the topic of ${metadata.description}.`,
   };
-}
+};
 
-const LayoutPost = ({ children }: { children: React.ReactNode }) => {
+export const generateMetadata = entityMetaData({
+  entity: 'posts',
+  entityMetadata,
+});
+
+const PostLayout = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
 };
 
-export default LayoutPost;
+export default PostLayout;

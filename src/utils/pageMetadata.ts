@@ -1,22 +1,30 @@
-import { PostData, QueryParams } from '@/app/api/lib/models';
+import { Entity, PostData, QueryParams } from '@/app/api/lib/models';
 import { AUTHOR } from '@/app/constants';
-import APIClient from '@/services/api-client';
+import { PageProps } from '@/models';
 
-export interface Params {
-  params: QueryParams;
-}
-
-interface PageMetadata {
+export interface PageMetadata {
   title: string;
   description: string;
 }
 
-const pageMetadata = async (
-  httpService: APIClient<PostData>,
-  { params }: Params
-): Promise<PageMetadata> => {
+interface PageMetadataProps {
+  entity: Entity;
+  params: PageProps;
+}
+
+const pageMetadata = async ({
+  entity,
+  params: { params },
+}: PageMetadataProps): Promise<PageMetadata> => {
   const path = Object.values(params).join('/');
-  const { title } = await httpService.findOne(path);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/${entity}/${path}`
+  );
+
+  if (response.status >= 400) throw new Error('Bad response.');
+
+  const body: PostData = await response.json();
+  const { title } = body;
 
   return { title: `${title} | ${AUTHOR.NAME}`, description: title };
 };
