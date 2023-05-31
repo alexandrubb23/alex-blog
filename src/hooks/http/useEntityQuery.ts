@@ -4,8 +4,8 @@ import ms from 'ms';
 import { APIResponse, Entity } from '@/app/api/lib/models';
 import { factoryEntity } from '@/services';
 
-const useEntity = (entity: Entity) => {
-  const httpService = factoryEntity(entity);
+const useEntityQuery = (entity: Entity) => {
+  const httpService = factoryEntity<APIResponse[]>(entity);
 
   return useQuery<APIResponse[], Error>({
     queryKey: [entity],
@@ -14,4 +14,4 @@ const useEntity = (entity: Entity) => {
   });
 };
 
-export default useEntity;
+export default useEntityQuery;

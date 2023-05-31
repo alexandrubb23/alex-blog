@@ -5,12 +5,12 @@ import {
 
 interface QueryHookProviderProps {
   children: React.ReactNode;
-  data: QueryHookDataType;
+  value: QueryHookDataType;
 }
 
-const QueryHookProvider = ({ children, data }: QueryHookProviderProps) => {
+const QueryHookProvider = ({ children, value }: QueryHookProviderProps) => {
   return (
-    <QueryHookContext.Provider value={data}>
+    <QueryHookContext.Provider value={value}>
       {children}
     </QueryHookContext.Provider>
   );

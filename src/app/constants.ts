@@ -25,21 +25,13 @@ export const HTTP_QUERY_KEYS: Readonly<{
 };
 
 export const QUERY_KEYS: Readonly<{
-  PAGE: string;
-  POST: string;
-  POSTS: string;
   CERTIFICATIONS: string;
-  CETIFICATE: string;
   EXERCISES: string;
-  EXERCISE: string;
+  POSTS: string;
 }> = {
   CERTIFICATIONS: 'certifications',
-  CETIFICATE: 'certificate',
-  PAGE: 'page',
-  POST: 'post',
-  POSTS: 'posts',
   EXERCISES: 'exercises',
-  EXERCISE: 'exercise',
+  POSTS: 'posts',
 };
 
 export const ROUTES: Readonly<{

@@ -1,17 +1,14 @@
 'use client';
 
-import styles from '@/styles/certificate-layout.module.css';
+import { ENTITIES } from '@/app/api/lib/constants';
 import { PageLayout } from '@/components/common';
-import { useCertificate } from '@/hooks';
 import { PageProps } from '@/models';
+import styles from '@/styles/certificate-layout.module.css';
 
 const Certificate = ({ params }: PageProps) => (
   <PageLayout
     className={styles.certificateLayout}
-    data={{
-      params,
-      queryHook: useCertificate,
-    }}
+    value={{ entity: ENTITIES.CERTIFICATIONS, params }}
   />
 );
 

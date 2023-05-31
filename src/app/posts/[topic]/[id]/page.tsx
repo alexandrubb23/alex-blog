@@ -1,11 +1,11 @@
 'use client';
 
+import { ENTITIES } from '@/app/api/lib/constants';
 import { PageLayout } from '@/components/common';
-import { usePost } from '@/hooks';
 import { PageProps } from '@/models';
 
 const Post = ({ params }: PageProps) => (
-  <PageLayout data={{ queryHook: usePost, params }} />
+  <PageLayout value={{ entity: ENTITIES.POSTS, params }} />
 );
 
 export default Post;

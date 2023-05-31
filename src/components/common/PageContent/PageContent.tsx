@@ -4,6 +4,7 @@ import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import {
   useAddClassToSpecificTags,
   useCodeHighlighting,
+  useEntityItemQuery,
   useParseResponse,
   useQueryHookProvider,
 } from '@/hooks';
@@ -11,8 +12,8 @@ import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
 
 const PageContent = () => {
-  const { queryHook, params } = useQueryHookProvider();
-  const { data, isLoading, error } = queryHook({ ...params });
+  const { entity, params } = useQueryHookProvider();
+  const { data, isLoading, error } = useEntityItemQuery({ entity, params });
 
   const parsedResponse = useParseResponse(data);
   const tagsClass = useAddClassToSpecificTags({

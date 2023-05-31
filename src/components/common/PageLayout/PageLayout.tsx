@@ -8,12 +8,12 @@ import { QueryHookDataType } from '@/contexts/QueryHookContext';
 import { QueryHookProvider } from '@/providers';
 interface PageLayoutProps {
   className?: string;
-  data: QueryHookDataType;
+  value: QueryHookDataType;
 }
 
-const PageLayout = ({ className, data }: PageLayoutProps) => {
+const PageLayout = ({ className, value }: PageLayoutProps) => {
   return (
-    <QueryHookProvider data={data}>
+    <QueryHookProvider value={value}>
       <Layout contentClassName={className}>
         <Box marginY={2}>
           <PageContent />

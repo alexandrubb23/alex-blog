@@ -5,12 +5,10 @@ export {
   useIconStyle,
 } from './style';
 export {
-  useCertificate,
   useContactInfo,
   useContactSocialMedia,
-  useEntity,
-  usePage,
-  usePost,
+  useEntityQuery,
+  useEntityItemQuery,
 } from './http';
 export {
   useEntitySlug,
