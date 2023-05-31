@@ -2,10 +2,10 @@ import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
 
 import { APIResponse, Entity } from '@/app/api/lib/models';
-import APIClient from '@/services/api-client';
+import { factoryEntity } from '@/services';
 
 const useEntity = (entity: Entity) => {
-  const httpService = new APIClient<APIResponse[]>(`/${entity}`);
+  const httpService = factoryEntity(entity);
 
   return useQuery<APIResponse[], Error>({
     queryKey: [entity],
