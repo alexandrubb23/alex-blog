@@ -47,4 +47,4 @@ In the example above, `Person.prototype` is the prototype object that contains t
 
 ⚠️ It's important to note that while `__proto__` is non-standard and should be avoided in favor of `Object.getPrototypeOf` and `Object.setPrototypeOf()`, the `prototype` is a fundamental concept for defining the prototype-based inheritance in JavaScript.
 
-Happy coding 🙂
+Happy coding!
