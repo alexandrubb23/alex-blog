@@ -1,8 +1,7 @@
-import { usePosts } from '@/hooks';
 import { EntityList } from '@/components/Entities';
 
 const ListPosts = () => {
-  return <EntityList entityType='posts' queryHook={usePosts} />;
+  return <EntityList entity='posts' />;
 };
 
 export default ListPosts;

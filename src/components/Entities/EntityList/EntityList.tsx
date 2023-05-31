@@ -1,25 +1,23 @@
-import { UseQueryResult } from '@tanstack/react-query';
-
-import { APIResponse, Entity } from '@/app/api/lib/models';
-import { BackToPreviousLocationLink } from '@/components/common/Link/BackToPreviousLocationLink';
-import { CenteredSpinner, ErrorAlert } from '@/components/common';
-import { EntityProvider } from '@/providers';
+import { Entity } from '@/app/api/lib/models';
 import { EntityTechnologiesList } from '@/components/Entities/EntityTechnologiesList';
+import { CenteredSpinner, ErrorAlert } from '@/components/common';
+import { BackToPreviousLocationLink } from '@/components/common/Link/BackToPreviousLocationLink';
+import { useEntity } from '@/hooks';
+import { EntityProvider } from '@/providers';
 
 interface EntityListProps {
-  entityType: Entity;
-  queryHook: () => UseQueryResult<APIResponse[], Error>;
+  entity: Entity;
 }
 
-const EntityList = ({ entityType, queryHook }: EntityListProps) => {
-  const { data: technologies, isLoading, error } = queryHook();
+const EntityList = ({ entity }: EntityListProps) => {
+  const { data: technologies, isLoading, error } = useEntity(entity);
 
   if (isLoading) return <CenteredSpinner />;
 
   if (error) return <ErrorAlert error={error.message} />;
 
   return (
-    <EntityProvider data={{ entityType, queryHook }}>
+    <EntityProvider value={{ entity }}>
       <EntityTechnologiesList technologies={technologies} />
       <BackToPreviousLocationLink />
     </EntityProvider>

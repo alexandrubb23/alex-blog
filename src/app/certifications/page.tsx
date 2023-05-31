@@ -4,7 +4,6 @@ import { Heading, Text } from '@chakra-ui/react';
 
 import { EntityList } from '@/components/Entities';
 import { Layout } from '@/components/Layout';
-import { useCertifications } from '@/hooks';
 
 const Certifications = () => {
   return (
@@ -19,7 +18,7 @@ const Certifications = () => {
         with the knowledge and skills to excel in software development and
         contribute effectively to projects using these technologies.
       </Text>
-      <EntityList entityType='certifications' queryHook={useCertifications} />
+      <EntityList entity='certifications' />
     </Layout>
   );
 };

@@ -4,12 +4,12 @@ import EntityContext, {
 
 interface EntityProviderProps {
   children: React.ReactNode;
-  data: EntityContextType;
+  value: EntityContextType;
 }
 
-const EntityProvider = ({ children, data }: EntityProviderProps) => {
+const EntityProvider = ({ children, value }: EntityProviderProps) => {
   return (
-    <EntityContext.Provider value={data}>{children}</EntityContext.Provider>
+    <EntityContext.Provider value={value}>{children}</EntityContext.Provider>
   );
 };
 

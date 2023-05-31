@@ -6,12 +6,11 @@ export {
 } from './style';
 export {
   useCertificate,
-  useCertifications,
   useContactInfo,
   useContactSocialMedia,
+  useEntity,
   usePage,
   usePost,
-  usePosts,
 } from './http';
 export {
   useEntitySlug,

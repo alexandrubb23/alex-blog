@@ -11,8 +11,8 @@ interface EntityItemProps {
 }
 
 const EntityItem = ({ entityItem, technologyId }: EntityItemProps) => {
-  const { entityType } = useEntityProvider();
-  const { getSlug } = useEntitySlugWithPathname(entityType);
+  const { entity } = useEntityProvider();
+  const { getSlug } = useEntitySlugWithPathname(entity);
 
   const { title, date } = entityItem;
 

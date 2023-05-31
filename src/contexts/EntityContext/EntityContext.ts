@@ -1,11 +1,9 @@
 import React from 'react';
-import { UseQueryResult } from '@tanstack/react-query';
 
-import { APIResponse, Entity, QueryParams } from '@/app/api/lib/models';
+import { Entity } from '@/app/api/lib/models';
 
 export interface EntityContextType {
-  entityType: Entity;
-  queryHook: (params: QueryParams) => UseQueryResult<APIResponse[], Error>;
+  entity: Entity;
 }
 
 const EntityContext = React.createContext<EntityContextType>(
