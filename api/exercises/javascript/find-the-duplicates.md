@@ -18,7 +18,7 @@ output: [3, 6, 7] # since only these three values are both in arr1 and arr2
 
 ## JavaScript FP solution
 
-First, the JavaScript Gigher Order Functions solution
+First, the JavaScript Higher Order Functions solution
 
 ```
 function findDuplicates(arr1, arr2) {
