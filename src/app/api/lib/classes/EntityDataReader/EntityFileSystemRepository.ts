@@ -18,6 +18,7 @@ class EntityFileSystemRepository implements EntityDataRepositoryInterface {
   private entityDirectory: string;
 
   constructor(private dirName: string) {
+    this.dirName = dirName;
     this.entityDirectory = this.getAbsoluteEntityDirectory();
   }
 
