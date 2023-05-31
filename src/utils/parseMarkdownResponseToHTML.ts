@@ -1,5 +1,4 @@
 import { PostData } from '@/app/api/lib/models';
-import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 

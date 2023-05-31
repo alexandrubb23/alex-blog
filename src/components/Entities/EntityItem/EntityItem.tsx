@@ -1,9 +1,8 @@
 import { Box } from '@chakra-ui/react';
 
-import { Entity, PostData } from '@/app/api/lib/models';
+import { PostData, Technology } from '@/app/api/lib/models';
 import { Date, Link } from '@/components/common';
 import { useEntitySlugWithPathname } from '@/hooks';
-import { Technology } from '@/app/api/lib/models';
 import { useEntityProvider } from '@/hooks/context';
 
 interface EntityItemProps {

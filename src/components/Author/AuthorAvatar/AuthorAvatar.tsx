@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Box } from '@chakra-ui/react';
 
 interface AuthorAvatarProps {
   alt: string;

@@ -1,4 +1,4 @@
-import { Entity, PostData, QueryParams } from '@/app/api/lib/models';
+import { Entity, PostData } from '@/app/api/lib/models';
 import { AUTHOR } from '@/app/constants';
 import { PageProps } from '@/models';
 
