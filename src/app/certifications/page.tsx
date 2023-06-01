@@ -2,6 +2,7 @@
 
 import { Heading, Text } from '@chakra-ui/react';
 
+import { ENTITIES } from '@/app/api/lib/constants';
 import { EntityList } from '@/components/Entities';
 import { Layout } from '@/components/Layout';
 
@@ -18,7 +19,7 @@ const Certifications = () => {
         with the knowledge and skills to excel in software development and
         contribute effectively to projects using these technologies.
       </Text>
-      <EntityList entity='certifications' />
+      <EntityList entity={ENTITIES.CERTIFICATIONS} />
     </Layout>
   );
 };
