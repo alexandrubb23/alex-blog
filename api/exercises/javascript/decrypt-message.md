@@ -82,9 +82,6 @@ function decrypt(word) {
       newLetterAscii += 26;
 
     decryption = decryption + String.fromCharCode(newLetterAscii);
-
-    console.log(newLetterAscii);
-
     secondStep += newLetterAscii;
   }
 
