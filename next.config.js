@@ -23,7 +23,6 @@ const nextConfig = {
       },
     ];
   },
-  routes,
 };
 
 module.exports = nextConfig;
