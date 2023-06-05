@@ -12,3 +12,5 @@ _Software Architecture_
 The blog project is built using Next.js v13. While I won't delve into the specifics of Next.js v13 as it is beyond the scope of this discussion, it's worth noting that with Next.js, we can seamlessly integrate routing, UI, and back-end functionalities into a single framework.
 
 ## Folder structure
+
+To be continued...
