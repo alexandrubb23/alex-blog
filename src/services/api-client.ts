@@ -4,9 +4,6 @@ import { Entity } from '@/app/api/lib/models';
 
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-  },
 });
 
 class APIClient<T> {
