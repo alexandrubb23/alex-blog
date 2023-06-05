@@ -20,12 +20,7 @@ const handleEntityRequestService = async ({
     const entity = createEntityService(params.entity);
     const result = await dispatch(entity);
 
-    return new NextResponse(JSON.stringify(result), {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    return NextResponse.json(result, {});
   } catch (error) {
     if (error instanceof HTTPStatusError) {
       return new NextResponse(null, {
