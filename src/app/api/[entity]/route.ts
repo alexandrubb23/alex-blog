@@ -4,6 +4,6 @@ import { EntityDataRepositoryInterface } from '@/app/api/lib/classes/EntityDataR
 
 export const GET = async (_: Request, { params }: RequestQueryParams) =>
   handleEntityRequestService({
-    params,
     dispatch: (entity: EntityDataRepositoryInterface) => entity.getAll(),
+    params,
   });
