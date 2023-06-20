@@ -5,6 +5,8 @@ const comparePosts = (a: PostData, b: PostData) =>
   date.getTime(b.date) - date.getTime(a.date);
 
 export const sort = (a: APIResponse, b: APIResponse) => {
+  if (a.data.length === 0 || b.data.length === 0) return 0;
+
   const postA = a.data.sort(comparePosts)[0];
   const postB = b.data.sort(comparePosts)[0];
 

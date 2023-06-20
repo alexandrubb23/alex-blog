@@ -1,9 +1,7 @@
 import PostData from './post-data.interface';
-import Technology from './technology.type';
 
 interface APIResponse {
-  id: Technology;
-  icon: string;
+  id: string;
   name: string;
   data: PostData[];
 }

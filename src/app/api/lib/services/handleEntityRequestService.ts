@@ -9,7 +9,7 @@ interface HandleEntityRequestService {
   params: EntityQueryParams;
   dispatch: (
     entity: EntityDataRepositoryInterface
-  ) => APIResponse[] | Promise<PostData>;
+  ) => Promise<APIResponse[]> | Promise<PostData>;
 }
 
 const handleEntityRequestService = async ({

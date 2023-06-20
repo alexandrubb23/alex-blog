@@ -1,7 +1,7 @@
 import { APIResponse, PostData, QueryParams } from '@/app/api/lib/models';
 
 interface EntityDataRepositoryInterface {
-  getAll(): APIResponse[];
+  getAll(): Promise<APIResponse[]>;
   findOne(params: QueryParams): Promise<PostData>;
 }
 
