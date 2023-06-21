@@ -9,10 +9,8 @@ export {
   useContactSocialMedia,
   useEntityQuery,
   useEntityItemQuery,
+  useItemQuery,
 } from './http';
-export {
-  useIsHomePage,
-  useNavigationMenu,
-} from './router';
+export { useIsHomePage, useNavigationMenu } from './router';
 export { useParseResponse } from './content';
 export { useIsNotMobile } from './layout';

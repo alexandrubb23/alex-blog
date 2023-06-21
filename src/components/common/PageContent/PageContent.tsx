@@ -1,39 +1,25 @@
 import { Box, Heading, VStack } from '@chakra-ui/react';
 
+import '@/styles/prism-dracula.css';
 import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import {
   useAddClassToSpecificTags,
   useCodeHighlighting,
-  useEntityItemQuery,
   useParseResponse,
+  useItemQuery,
 } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
-import '@/styles/prism-dracula.css';
-import { usePathname } from 'next/navigation';
-import { Entity } from '@/app/api/lib/models';
+import { HTMLObject } from '@/hooks/style/useAddClassToSpecificTags';
+
+const htmlObject: HTMLObject = {
+  tags: ['pre', 'code'],
+  className: 'language-js',
+};
 
 const PageContent = () => {
-  const pathname = usePathname();
-  const chunks = pathname.split('/');
-
-  if (chunks.length < 3) {
-    throw new Error('Invalid pathname: Insufficient number of chunks');
-  }
-
-  const entity: Entity = chunks[1] as Entity;
-  const [topic, slug] = chunks.slice(2);
-
-  const { data, isLoading, error } = useEntityItemQuery({
-    entity,
-    topic,
-    slug,
-  });
-
+  const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
-  const tagsClass = useAddClassToSpecificTags({
-    tags: ['pre', 'code'],
-    className: 'language-js',
-  });
+  const tagsClass = useAddClassToSpecificTags(htmlObject);
 
   useCodeHighlighting(parsedResponse?.content || '');
 

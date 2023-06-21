@@ -9,20 +9,18 @@ import { usePostHref } from '../router';
 interface EntityItemQuery {
   entity: Entity;
   slug: QueryParams['id'];
-  topic: QueryParams['topic'];
 }
 
-const useEntityItemQuery = ({ entity, slug, topic }: EntityItemQuery) => {
+const useEntityItemQuery = ({ entity, slug }: EntityItemQuery) => {
   const httpService = factoryEntity<PostData>(entity);
 
   const path = usePostHref({
     postType: '',
     id: slug,
-    topic: topic,
   });
 
   return useQuery<PostData, Error>({
-    queryKey: [singular(entity), topic, slug],
+    queryKey: [singular(entity), slug],
     queryFn: () => httpService.findOne(path),
     staleTime: ms('24h'),
   });
