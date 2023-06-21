@@ -3,13 +3,14 @@ import { BsFiletypeJava, BsGithub } from 'react-icons/bs';
 import { FaNodeJs } from 'react-icons/fa';
 import { GrMysql, GrReactjs } from 'react-icons/gr';
 import {
+  SiAlwaysdata,
+  SiDjango,
   SiDocker,
   SiJavascript,
   SiNestjs,
   SiPython,
   SiRedux,
   SiTypescript,
-  SiDjango,
 } from 'react-icons/si';
 import { GiGearStickPattern } from 'react-icons/gi';
 import { TbBrandNextjs } from 'react-icons/tb';
@@ -30,6 +31,7 @@ const icons = {
   Redux: SiRedux,
   TypeScript: SiTypescript,
   DesignPatterns: GiGearStickPattern,
+  DataStructures: SiAlwaysdata,
 };
 
 export default icons;
