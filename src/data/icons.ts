@@ -11,6 +11,7 @@ import {
   SiTypescript,
   SiDjango,
 } from 'react-icons/si';
+import { GiGearStickPattern } from 'react-icons/gi';
 import { TbBrandNextjs } from 'react-icons/tb';
 
 const icons = {
@@ -28,6 +29,7 @@ const icons = {
   React: GrReactjs,
   Redux: SiRedux,
   TypeScript: SiTypescript,
+  DesignPatterns: GiGearStickPattern,
 };
 
 export default icons;
