@@ -1,1 +1,1 @@
-export { default as factoryEntity } from './api-client';
+export { default as factoryEntity } from './factory-entity';

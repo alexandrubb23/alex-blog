@@ -1,25 +1,25 @@
 import { Box, Heading, VStack } from '@chakra-ui/react';
 
+import '@/styles/prism-dracula.css';
 import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
 import {
   useAddClassToSpecificTags,
   useCodeHighlighting,
-  useEntityItemQuery,
   useParseResponse,
-  useQueryHookProvider,
+  useItemQuery,
 } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
-import '@/styles/prism-dracula.css';
+import { HTMLObject } from '@/hooks/style/useAddClassToSpecificTags';
+
+const htmlObject: HTMLObject = {
+  tags: ['pre', 'code'],
+  className: 'language-js',
+};
 
 const PageContent = () => {
-  const { entity, params } = useQueryHookProvider();
-  const { data, isLoading, error } = useEntityItemQuery({ entity, params });
-
+  const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
-  const tagsClass = useAddClassToSpecificTags({
-    tags: ['pre', 'code'],
-    className: 'language-js',
-  });
+  const tagsClass = useAddClassToSpecificTags(htmlObject);
 
   useCodeHighlighting(parsedResponse?.content || '');
 

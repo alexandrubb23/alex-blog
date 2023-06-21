@@ -1,12 +1,10 @@
 import axios from 'axios';
 
-import { Entity } from '@/app/api/lib/models';
-
 const axiosInstance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
 });
 
-class APIClient<T> {
+export class APIClient<T> {
   constructor(private endpoint: string) {
     this.endpoint = endpoint;
   }
@@ -28,6 +26,4 @@ class APIClient<T> {
   };
 }
 
-const factoryEntity = <T>(entity: Entity) => new APIClient<T>(`/${entity}`);
-
-export default factoryEntity;
+export default APIClient;

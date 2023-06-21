@@ -1,11 +1,10 @@
-import Technology from './technology.type';
-
 interface PostData {
   content: string;
   date: string;
   id: string;
+  postType: string;
   title: string;
-  topic: Technology;
+  topic: string;
 }
 
 export default PostData;

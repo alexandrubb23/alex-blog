@@ -41,7 +41,7 @@ export const ROUTES: Readonly<{
   CONTACT: string;
 }> = {
   HOME: '/',
-  ABOUT_AUTHOR: '/pages/about/alexandru-barbulescu',
-  CERTIFICATIONS: 'certifications',
-  CONTACT: 'contact',
+  ABOUT_AUTHOR: '/pages/alexandru-barbulescu',
+  CERTIFICATIONS: '/certifications',
+  CONTACT: '/contact',
 };

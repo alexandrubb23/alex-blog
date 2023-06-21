@@ -3,7 +3,6 @@ import { EntityTechnologiesList } from '@/components/Entities/EntityTechnologies
 import { CenteredSpinner, ErrorAlert } from '@/components/common';
 import { BackToPreviousLocationLink } from '@/components/common/Link/BackToPreviousLocationLink';
 import { useEntityQuery } from '@/hooks';
-import { EntityProvider } from '@/providers';
 
 interface EntityListProps {
   entity: Entity;
@@ -17,10 +16,10 @@ const EntityList = ({ entity }: EntityListProps) => {
   if (error) return <ErrorAlert error={error.message} />;
 
   return (
-    <EntityProvider value={{ entity }}>
+    <>
       <EntityTechnologiesList technologies={technologies} />
       <BackToPreviousLocationLink />
-    </EntityProvider>
+    </>
   );
 };
 

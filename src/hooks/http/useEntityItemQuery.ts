@@ -3,24 +3,25 @@ import { useQuery } from '@tanstack/react-query';
 import ms from 'ms';
 
 import { Entity, PostData, QueryParams } from '@/app/api/lib/models';
-import useEntitySlug from '@/hooks/router/useEntitySlug';
 import { factoryEntity } from '@/services';
+import { usePostHref } from '../router';
 
 interface EntityItemQuery {
   entity: Entity;
-  params: QueryParams;
+  slug: QueryParams['id'];
 }
 
-const useEntityItemQuery = ({ entity, params }: EntityItemQuery) => {
+const useEntityItemQuery = ({ entity, slug }: EntityItemQuery) => {
   const httpService = factoryEntity<PostData>(entity);
 
-  const { getSlug } = useEntitySlug();
-
-  const { id, topic } = params;
+  const path = usePostHref({
+    postType: '',
+    id: slug,
+  });
 
   return useQuery<PostData, Error>({
-    queryKey: [singular(entity), topic, id],
-    queryFn: () => httpService.findOne(getSlug(params)),
+    queryKey: [singular(entity), slug],
+    queryFn: () => httpService.findOne(path),
     staleTime: ms('24h'),
   });
 };

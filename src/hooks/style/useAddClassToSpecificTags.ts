@@ -1,6 +1,6 @@
 type HTMLTags = keyof JSX.IntrinsicElements;
 
-type HTMLObject = {
+export type HTMLObject = {
   tags: HTMLTags[];
   className?: string;
 };
