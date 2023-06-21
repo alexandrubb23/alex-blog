@@ -6,6 +6,7 @@ import {
   SiDocker,
   SiJavascript,
   SiNestjs,
+  SiPython,
   SiRedux,
   SiTypescript,
 } from 'react-icons/si';
@@ -24,6 +25,7 @@ const icons = {
   React: GrReactjs,
   Redux: SiRedux,
   TypeScript: SiTypescript,
+  Python: SiPython,
 };
 
 export default icons;
