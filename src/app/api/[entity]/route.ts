@@ -30,10 +30,7 @@ const traversePosts = (topic: string, posts: PostData[]) => {
   }, []);
 };
 
-const parseData = async (
-  topics: Topic[],
-  posts: PostData[]
-): Promise<APIResponse[]> => {
+const parseData = (topics: Topic[], posts: PostData[]): APIResponse[] => {
   const entityData = topics.reduce<APIResponse[]>(
     (entities, { topic, description }) => {
       const entity: APIResponse = {

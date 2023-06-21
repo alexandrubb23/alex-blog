@@ -1,12 +1,11 @@
-import { Entity, PostData } from '@/app/api/lib/models';
-import { posts, topics } from '@/db/schema';
 import { and, eq } from 'drizzle-orm';
+
+import { Entity, PostData } from '@/app/api/lib/models';
+import { NotFoundError } from '@/app/api/lib/classes/Errors';
+import { posts, topics } from '@/db/schema';
 import Planetscale from './planetscale';
 
-const getOnePost = async (
-  entity: Entity,
-  slug: string
-): Promise<PostData[]> => {
+const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
   const db = Planetscale.connect();
 
   const result: PostData[] = await db
@@ -22,7 +21,11 @@ const getOnePost = async (
     .innerJoin(topics, eq(posts.topicId, topics.id))
     .where(and(eq(posts.postType, entity), eq(posts.slug, slug)));
 
-  return result;
+  if (result.length === 0) {
+    throw new NotFoundError('The post with the given id not found.');
+  }
+
+  return result[0];
 };
 
 export default getOnePost;
