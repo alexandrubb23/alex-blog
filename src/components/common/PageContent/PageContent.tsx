@@ -6,14 +6,28 @@ import {
   useCodeHighlighting,
   useEntityItemQuery,
   useParseResponse,
-  useQueryHookProvider,
 } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
+import { usePathname } from 'next/navigation';
+import { Entity } from '@/app/api/lib/models';
 
 const PageContent = () => {
-  const { entity, params } = useQueryHookProvider();
-  const { data, isLoading, error } = useEntityItemQuery({ entity, params });
+  const pathname = usePathname();
+  const chunks = pathname.split('/');
+
+  if (chunks.length < 3) {
+    throw new Error('Invalid pathname: Insufficient number of chunks');
+  }
+
+  const entity: Entity = chunks[1] as Entity;
+  const [topic, slug] = chunks.slice(2);
+
+  const { data, isLoading, error } = useEntityItemQuery({
+    entity,
+    topic,
+    slug,
+  });
 
   const parsedResponse = useParseResponse(data);
   const tagsClass = useAddClassToSpecificTags({

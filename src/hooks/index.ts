@@ -15,5 +15,4 @@ export {
   useNavigationMenu,
 } from './router';
 export { useParseResponse } from './content';
-export { useQueryHookProvider } from './context';
 export { useIsNotMobile } from './layout';
