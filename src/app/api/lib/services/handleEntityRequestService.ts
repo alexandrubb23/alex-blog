@@ -1,26 +1,15 @@
 import { NextResponse } from 'next/server';
 
 import { HTTPStatusError } from '@/app/api/lib/classes/Errors';
-import { APIResponse, EntityQueryParams, PostData } from '@/app/api/lib/models';
-import createEntityService from './createEntityService';
-import { EntityDataRepositoryInterface } from '@/app/api/lib/classes/EntityDataReader';
+import { APIResponse, PostData } from '@/app/api/lib/models';
 
-interface HandleEntityRequestService {
-  params: EntityQueryParams;
-  dispatch: (
-    entity: EntityDataRepositoryInterface
-  ) => Promise<APIResponse[]> | Promise<PostData>;
-}
-
-const handleEntityRequestService = async ({
-  params,
-  dispatch,
-}: HandleEntityRequestService) => {
+const handleEntityRequestService = async (
+  getData: () => Promise<APIResponse[]> | Promise<PostData>
+) => {
   try {
-    const entity = createEntityService(params.entity);
-    const result = await dispatch(entity);
+    const data = await getData();
 
-    return NextResponse.json(result);
+    return NextResponse.json(data);
   } catch (error) {
     if (error instanceof HTTPStatusError) {
       return new NextResponse(null, {
