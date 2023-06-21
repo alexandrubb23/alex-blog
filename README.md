@@ -13,8 +13,8 @@ This is my personal website showcasing information about myself, my certificates
 - [Next.js](https://nextjs.org/) - A React framework for building server-side rendered and statically generated web applications.
 - [React Query](https://react-query.tanstack.com/) - A library for managing and caching server-state in React applications.
 - [Chakra UI](https://chakra-ui.com/) - A simple and modular component library for building accessible and responsive React applications.
-- [Planetscale Serverless SQL](https://planetscale.com/serverless) - A serverless SQL database platform for modern applications.
-- [Drizzle ORM](https://github.com/jpoon/drizzle-orm) - A lightweight ORM for Node.js that supports MySQL, PostgreSQL, and SQLite.
+- [Planetscale Serverless SQL](https://planetscale.com) - A serverless SQL database platform for modern applications.
+- [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - A lightweight ORM for Node.js that supports MySQL, PostgreSQL, and SQLite.
 
 ## Features
 
