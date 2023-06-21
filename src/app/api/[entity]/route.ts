@@ -2,13 +2,12 @@ import matter from 'gray-matter';
 
 import {
   APIResponse,
+  Entity,
   PostData,
   RequestQueryParams,
 } from '@/app/api/lib/models';
-import { handleEntityRequestService } from '@/app/api/lib/services';
-
 import { getAllPosts, getAllTopics } from '@/app/api/lib/sql';
-
+import { handleEntityRequestService } from '@/app/api/lib/services';
 import { sortData } from '@/app/api/lib/utils';
 
 const traversePosts = (topic: string, posts: PostData[]) => {
@@ -51,17 +50,19 @@ const parseData = async (
   return entityData.sort(sortData.sort);
 };
 
+const getData = async (entity: Entity): Promise<APIResponse[]> => {
+  const posts = await getAllPosts(entity);
+  const topics = await getAllTopics(entity);
+
+  const parsedData = parseData(topics, posts);
+
+  return parsedData;
+};
+
 export const GET = async (_: Request, { params }: RequestQueryParams) => {
-  const getData = async (): Promise<APIResponse[]> => {
-    const { entity } = params;
+  const response = await handleEntityRequestService(() =>
+    getData(params.entity)
+  );
 
-    const posts = await getAllPosts(entity);
-    const topics = await getAllTopics(entity);
-
-    const parsedData = parseData(topics, posts);
-
-    return parsedData;
-  };
-
-  return handleEntityRequestService(getData);
+  return response;
 };
