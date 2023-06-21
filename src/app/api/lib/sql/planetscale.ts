@@ -8,7 +8,7 @@ import {
 /**
  * Provides a connection to the Planetscale database.
  */
-class Planetscale {
+class PlanetScale {
   private static db: PlanetScaleDatabase;
 
   private constructor() {
@@ -23,17 +23,17 @@ class Planetscale {
    * @throws Any connection or initialization errors.
    */
   static connect(): PlanetScaleDatabase {
-    if (!Planetscale.db) {
+    if (!PlanetScale.db) {
       try {
         const connection = connect(config);
-        Planetscale.db = drizzle(connection);
+        PlanetScale.db = drizzle(connection);
       } catch (error) {
         throw error;
       }
     }
 
-    return Planetscale.db;
+    return PlanetScale.db;
   }
 }
 
-export default Planetscale;
+export default PlanetScale;

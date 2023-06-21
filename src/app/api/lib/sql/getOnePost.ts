@@ -3,10 +3,10 @@ import { and, eq } from 'drizzle-orm';
 import { Entity, PostData } from '@/app/api/lib/models';
 import { NotFoundError } from '@/app/api/lib/classes/Errors';
 import { posts, topics } from '@/db/schema';
-import Planetscale from './planetscale';
+import PlanetScale from './planetscale';
 
 const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
-  const db = Planetscale.connect();
+  const db = PlanetScale.connect();
 
   const result: PostData[] = await db
     .select({

@@ -1,10 +1,10 @@
 import { Entity } from '@/app/api/lib/models';
 import { posts, topics } from '@/db/schema';
 import { eq } from 'drizzle-orm';
-import Planetscale from './planetscale';
+import PlanetScale from './planetscale';
 
 const getAllTopics = async (entity: Entity) => {
-  const db = Planetscale.connect();
+  const db = PlanetScale.connect();
 
   const results: Topic[] = await db
     .select({
