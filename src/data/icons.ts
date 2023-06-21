@@ -9,10 +9,12 @@ import {
   SiPython,
   SiRedux,
   SiTypescript,
+  SiDjango,
 } from 'react-icons/si';
 import { TbBrandNextjs } from 'react-icons/tb';
 
 const icons = {
+  Django: SiDjango,
   Docker: SiDocker,
   Git: BsGithub,
   HTML: AiFillHtml5,
@@ -22,10 +24,10 @@ const icons = {
   NestJS: SiNestjs,
   NextJS: TbBrandNextjs,
   NodeJS: FaNodeJs,
+  Python: SiPython,
   React: GrReactjs,
   Redux: SiRedux,
   TypeScript: SiTypescript,
-  Python: SiPython,
 };
 
 export default icons;
