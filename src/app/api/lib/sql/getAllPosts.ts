@@ -1,9 +1,17 @@
+import { desc, eq } from 'drizzle-orm';
+
 import { Entity, PostData } from '@/app/api/lib/models';
 import { posts, topics } from '@/db/schema';
-import { desc, eq } from 'drizzle-orm';
 import Planetscale from './planetscale';
+import { NotFoundError } from '@/app/api/lib/classes/Errors';
+import { ENTITIES } from '@/app/api/lib/constants';
 
 const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
+  const entities = Object.values(ENTITIES);
+  if (!entities.find(e => e === entity)) {
+    throw new NotFoundError('The provided entity is not valid.');
+  }
+
   const db = Planetscale.connect();
 
   const results: PostData[] = await db

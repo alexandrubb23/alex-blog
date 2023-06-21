@@ -6,10 +6,9 @@ import {
   PostData,
   RequestQueryParams,
 } from '@/app/api/lib/models';
-import { getAllPosts, getAllTopics } from '@/app/api/lib/sql';
 import { handleEntityRequestService } from '@/app/api/lib/services';
+import { getAllPosts, getAllTopics } from '@/app/api/lib/sql';
 import { sortData } from '@/app/api/lib/utils';
-import { InternalServerError } from '@/app/api/lib/classes/Errors';
 
 const traversePosts = (topic: string, posts: PostData[]) => {
   return posts.reduce<PostData[]>((posts, post) => {
@@ -59,7 +58,7 @@ const getData = async (entity: Entity): Promise<APIResponse[]> => {
     return parsedData;
   } catch (error) {
     console.error(error);
-    throw new InternalServerError('An error occurred while fetching the data.');
+    throw error;
   }
 };
 
