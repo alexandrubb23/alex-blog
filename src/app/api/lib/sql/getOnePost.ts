@@ -16,6 +16,7 @@ const getOnePost = async (
       date: posts.date,
       content: posts.content,
       topic: topics.topic,
+      postType: posts.postType,
     })
     .from(posts)
     .innerJoin(topics, eq(posts.topicId, topics.id))
