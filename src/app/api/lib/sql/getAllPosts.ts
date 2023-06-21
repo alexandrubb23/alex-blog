@@ -13,7 +13,7 @@ const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
       date: posts.date,
       content: posts.content,
       topic: topics.topic,
-      topicDescription: topics.description,
+      postType: posts.postType,
     })
     .from(posts)
     .innerJoin(topics, eq(posts.topicId, topics.id))

@@ -1,26 +1,21 @@
 import { Box } from '@chakra-ui/react';
 
-import { PostData, Technology } from '@/app/api/lib/models';
+import { PostData } from '@/app/api/lib/models';
 import { Date, Link } from '@/components/common';
-import { useEntitySlugWithPathname } from '@/hooks';
-import { useEntityProvider } from '@/hooks/context';
+import { usePostHref } from '@/hooks/router';
 
 interface EntityItemProps {
-  entityItem: PostData;
-  technologyId: Technology;
+  postData: PostData;
 }
 
-const EntityItem = ({ entityItem, technologyId }: EntityItemProps) => {
-  const { entity } = useEntityProvider();
-  const { getSlug } = useEntitySlugWithPathname(entity);
+const EntityItem = ({ postData }: EntityItemProps) => {
+  const href = usePostHref(postData);
 
-  const { title, date } = entityItem;
+  const { date, title } = postData;
 
   return (
     <Box key={title}>
-      <Link href={getSlug({ ...entityItem, topic: technologyId })}>
-        {title}
-      </Link>
+      <Link href={href}>{title}</Link>
       <Box textColor='grey'>
         <Date dateString={date} />
       </Box>

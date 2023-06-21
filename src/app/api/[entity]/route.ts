@@ -19,6 +19,7 @@ const traversePosts = (topic: string, posts: PostData[]) => {
     const newPost = {
       id: post.id,
       content: matterResult.content,
+      postType: post.postType,
       ...matterResult.data,
     } as PostData;
 

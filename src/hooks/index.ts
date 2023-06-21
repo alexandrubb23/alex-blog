@@ -11,7 +11,6 @@ export {
   useEntityItemQuery,
 } from './http';
 export {
-  useEntitySlug,
   useEntitySlugWithPathname,
   useIsHomePage,
   useNavigationMenu,

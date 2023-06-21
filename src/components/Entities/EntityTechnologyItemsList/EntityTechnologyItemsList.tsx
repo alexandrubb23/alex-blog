@@ -15,12 +15,8 @@ const EntityTechnologyItemsList = ({
 
   return (
     <VStack align='left' spacing={2} pl={isNotMobile ? '3rem' : undefined}>
-      {technology.data.map((entityItem: PostData) => (
-        <EntityItem
-          entityItem={entityItem}
-          key={entityItem.id}
-          technologyId={technology.id}
-        />
+      {technology.data.map((postData: PostData) => (
+        <EntityItem postData={postData} key={postData.id} />
       ))}
     </VStack>
   );
