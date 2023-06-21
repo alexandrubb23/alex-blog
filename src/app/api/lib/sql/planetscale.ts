@@ -28,8 +28,7 @@ class Planetscale {
         const connection = connect(config);
         Planetscale.db = drizzle(connection);
       } catch (error) {
-        // Handle connection errors and initialization errors.
-        throw new Error('Failed to connect to the Planetscale database.');
+        throw error;
       }
     }
 

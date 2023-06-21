@@ -9,6 +9,7 @@ import {
 import { getAllPosts, getAllTopics } from '@/app/api/lib/sql';
 import { handleEntityRequestService } from '@/app/api/lib/services';
 import { sortData } from '@/app/api/lib/utils';
+import { InternalServerError } from '@/app/api/lib/classes/Errors';
 
 const traversePosts = (topic: string, posts: PostData[]) => {
   return posts.reduce<PostData[]>((posts, post) => {
@@ -52,12 +53,17 @@ const parseData = async (
 };
 
 const getData = async (entity: Entity): Promise<APIResponse[]> => {
-  const posts = await getAllPosts(entity);
-  const topics = await getAllTopics(entity);
+  try {
+    const posts = await getAllPosts(entity);
+    const topics = await getAllTopics(entity);
 
-  const parsedData = parseData(topics, posts);
+    const parsedData = parseData(topics, posts);
 
-  return parsedData;
+    return parsedData;
+  } catch (error) {
+    console.error(error);
+    throw new InternalServerError('An error occurred while fetching the data.');
+  }
 };
 
 export const GET = async (_: Request, { params }: RequestQueryParams) => {
