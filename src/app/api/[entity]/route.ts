@@ -8,7 +8,6 @@ import {
 } from '@/app/api/lib/models';
 import { handleEntityRequestService } from '@/app/api/lib/services';
 import { getAllPosts, getAllTopics } from '@/app/api/lib/sql';
-import { sortData } from '@/app/api/lib/utils';
 
 const traversePosts = (topic: string, posts: PostData[]) => {
   return posts.reduce<PostData[]>((posts, post) => {
@@ -45,7 +44,7 @@ const parseData = (topics: Topic[], posts: PostData[]): APIResponse[] => {
     []
   );
 
-  return entityData.sort(sortData.sort);
+  return entityData;
 };
 
 const getData = async (entity: Entity): Promise<APIResponse[]> => {

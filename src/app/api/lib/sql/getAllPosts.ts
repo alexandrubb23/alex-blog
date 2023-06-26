@@ -1,4 +1,5 @@
-import { desc, eq } from 'drizzle-orm';
+import { desc, eq, sql } from 'drizzle-orm';
+import { PlanetScaleDatabase } from 'drizzle-orm/planetscale-serverless';
 
 import { Entity, PostData } from '@/app/api/lib/models';
 import { posts, topics } from '@/db/schema';
@@ -29,6 +30,24 @@ const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
     .orderBy(desc(posts.date));
 
   return results;
+};
+
+export const getPostsAccessSQL = (db: PlanetScaleDatabase, entity: Entity) => {
+  const { date, postType, topicId } = posts;
+
+  const fields = {
+    topicId,
+    date: sql<string>`MAX(${date})`.as('latestDate'),
+  };
+
+  const postTypeEqEntity = eq(postType, entity);
+
+  return db
+    .select(fields)
+    .from(posts)
+    .where(postTypeEqEntity)
+    .groupBy(topicId)
+    .as('postsSQL');
 };
 
 export default getAllPosts;

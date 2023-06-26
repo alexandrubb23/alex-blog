@@ -1,20 +1,22 @@
+import { desc, eq } from 'drizzle-orm';
+
 import { Entity } from '@/app/api/lib/models';
-import { posts, topics } from '@/db/schema';
-import { eq } from 'drizzle-orm';
+import { topics } from '@/db/schema';
 import PlanetScale from './planetscale';
+import { getPostsAccessSQL } from './getAllPosts';
 
 const getAllTopics = async (entity: Entity) => {
   const db = PlanetScale.connect();
 
+  const postsSQL = getPostsAccessSQL(db, entity);
+
+  const { description, id, topic } = topics;
+
   const results: Topic[] = await db
-    .select({
-      topic: topics.topic,
-      description: topics.description,
-    })
+    .select({ topic, description })
     .from(topics)
-    .innerJoin(posts, eq(topics.id, posts.topicId))
-    .where(eq(posts.postType, entity))
-    .groupBy(topics.id);
+    .innerJoin(postsSQL, eq(id, postsSQL.topicId))
+    .orderBy(desc(postsSQL.date));
 
   return results;
 };
