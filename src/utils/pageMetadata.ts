@@ -1,6 +1,7 @@
 import { Entity, PostData } from '@/app/api/lib/models';
 import { AUTHOR } from '@/app/constants';
 import { PageProps } from '@/models';
+import { APIClient } from '@/services/api-client';
 
 export interface PageMetadata {
   title: string;
@@ -16,15 +17,13 @@ const pageMetadata = async ({
   entity,
   params: { params },
 }: PageMetadataProps): Promise<PageMetadata> => {
-  const path = Object.values(params).join('/');
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/${entity}/${path}`
-  );
+  const apiClient = new APIClient<PostData>(`/${entity}`);
 
-  if (!response.ok) return { title: response.statusText, description: '' };
+  const promiseParams = await params;
+  const path = Object.values(promiseParams).join('/');
+  const response = await apiClient.findOne(path);
 
-  const body: PostData = await response.json();
-  const { title } = body;
+  const { title } = response;
 
   return { title: `${title} | ${AUTHOR.NAME}`, description: title };
 };

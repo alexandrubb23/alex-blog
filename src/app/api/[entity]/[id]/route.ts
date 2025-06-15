@@ -26,7 +26,7 @@ const getData = async (id: string, entity: Entity): Promise<PostData> => {
 };
 
 export const GET = async (_: Request, { params }: RequestQueryParams) => {
-  const { entity, id } = params;
+  const { entity, id } = await params;
 
   const response = await handleEntityRequestService(() => getData(id, entity));
 
