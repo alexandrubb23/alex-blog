@@ -1,4 +1,6 @@
 import { ImageResponse } from 'next/og';
+import NextImage from 'next/image';
+
 import { AUTHOR } from '../constants';
 
 export const runtime = 'edge';
@@ -35,13 +37,14 @@ export default async function Image() {
           alignItems: 'center',
         }}
       >
-        <img
-          width='256'
-          height='256'
+        <NextImage
+          width={256}
+          height={256}
           src={`https://github.com/alexandrubb23.png`}
           style={{
             borderRadius: 128,
           }}
+          alt='Alexandru Barbulescu'
         />
         <h1 style={{ color: 'white', fontSize: '1.25rem' }}>{AUTHOR.NAME}</h1>
       </div>
