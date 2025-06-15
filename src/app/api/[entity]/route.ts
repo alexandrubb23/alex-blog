@@ -64,9 +64,10 @@ const getData = async (entity: Entity): Promise<APIResponse[]> => {
 };
 
 export const GET = async (_: Request, { params }: RequestQueryParams) => {
-  const response = await handleEntityRequestService(() =>
-    getData(params.entity)
-  );
+  const response = await handleEntityRequestService(async () => {
+    const promiseParams = await params;
+    return getData(promiseParams.entity);
+  });
 
   return response;
 };

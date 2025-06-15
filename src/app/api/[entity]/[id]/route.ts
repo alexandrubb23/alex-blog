@@ -1,4 +1,5 @@
 import matter from 'gray-matter';
+import type { NextRequest } from 'next/server';
 
 import { Entity, PostData, RequestQueryParams } from '@/app/api/lib/models';
 import { handleEntityRequestService } from '@/app/api/lib/services';
@@ -25,7 +26,7 @@ const getData = async (id: string, entity: Entity): Promise<PostData> => {
   }
 };
 
-export const GET = async (_: Request, { params }: RequestQueryParams) => {
+export const GET = async (_: NextRequest, { params }: RequestQueryParams) => {
   const { entity, id } = await params;
 
   const response = await handleEntityRequestService(() => getData(id, entity));

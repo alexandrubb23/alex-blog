@@ -1,4 +1,4 @@
-import { ImageResponse } from 'next/server';
+import { ImageResponse } from 'next/og';
 import { AUTHOR } from '../constants';
 
 export const runtime = 'edge';

@@ -1,7 +1,7 @@
 import { QueryParams } from '@/app/api/lib/models';
 
 interface PageProps {
-  params: QueryParams;
+  params: Promise<QueryParams>;
 }
 
 export default PageProps;
