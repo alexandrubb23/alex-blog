@@ -1,4 +1,3 @@
-import { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 
@@ -6,7 +5,7 @@ import { AUTHOR } from './constants';
 
 const inter = Inter({ subsets: ['latin'] });
 
-const title = `Home | ${AUTHOR.NAME}`
+const title = `Home | ${AUTHOR.NAME}`;
 
 export function generateMetadata() {
   return {
