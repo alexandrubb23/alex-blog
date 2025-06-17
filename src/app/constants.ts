@@ -7,6 +7,7 @@ export const AUTHOR: Readonly<{
     CITY: string;
     COUNTRY: string;
   };
+  PICTURE: string;
 }> = {
   NAME: 'Alexandru Barbulescu',
   PHONE_NUMBER: '+40-735 538 558',
@@ -16,6 +17,7 @@ export const AUTHOR: Readonly<{
     CITY: 'Bucharest',
     COUNTRY: 'Romania',
   },
+  PICTURE: 'https://github.com/alexandrubb23.png',
 };
 
 export const HTTP_QUERY_KEYS: Readonly<{

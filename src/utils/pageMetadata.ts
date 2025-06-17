@@ -3,9 +3,15 @@ import { AUTHOR } from '@/app/constants';
 import { PageProps } from '@/models';
 import { APIClient } from '@/services/api-client';
 
+import { extractImageFromMarkdown } from './parseMarkdownResponseToHTML';
+
 export interface PageMetadata {
   title: string;
   description: string;
+  openGraph: {
+    title: string;
+    images: string[];
+  };
 }
 
 interface PageMetadataProps {
@@ -23,9 +29,16 @@ const pageMetadata = async ({
   const path = Object.values(promiseParams).join('/');
   const response = await apiClient.findOne(path);
 
-  const { title } = response;
+  const { title, content } = response;
 
-  return { title: `${title} | ${AUTHOR.NAME}`, description: title };
+  return {
+    title: `${title} | ${AUTHOR.NAME}`,
+    description: title,
+    openGraph: {
+      title,
+      images: [extractImageFromMarkdown(content)],
+    },
+  };
 };
 
 export default pageMetadata;

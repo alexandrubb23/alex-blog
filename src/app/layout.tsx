@@ -20,7 +20,6 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <Script src='/js/colorMode.js' />
-      <meta property='og:image' content={fullImageUrl}></meta>
       <body className={inter.className} suppressHydrationWarning={true}>
         {children}
       </body>

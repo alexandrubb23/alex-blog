@@ -1,4 +1,5 @@
 import { PostData } from '@/app/api/lib/models';
+import { AUTHOR } from '@/app/constants';
 import { remark } from 'remark';
 import html from 'remark-html';
 
@@ -14,5 +15,10 @@ const parseMarkdownResponseToHTML = async (response: PostData) => {
     throw new Error('Error occurred during content parsing');
   }
 };
+
+export function extractImageFromMarkdown(markdown: string) {
+  const match = markdown.match(/!\[[^\]]*\]\(([^)]+\.(webp|png|jpg|jpeg))\)/i);
+  return match?.[1] ?? AUTHOR.PICTURE;
+}
 
 export default parseMarkdownResponseToHTML;
