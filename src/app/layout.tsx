@@ -6,17 +6,23 @@ import { AUTHOR } from './constants';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: `Home | ${AUTHOR.NAME}`,
-};
+const title = `Home | ${AUTHOR.NAME}`
+
+export function generateMetadata() {
+  return {
+    title,
+    openGraph: {
+      title,
+      images: [AUTHOR.PICTURE],
+    },
+  };
+}
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const fullImageUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/author/opengraph-image`;
-
   return (
     <html lang='en'>
       <Script src='/js/colorMode.js' />
