@@ -1,15 +1,15 @@
 import { Box, Heading, VStack } from '@chakra-ui/react';
 
-import '@/styles/prism-dracula.css';
-import { CenteredSpinner, Date, ErrorAlert } from '@/components/common';
+import { CenteredSpinner, ErrorAlert } from '@/components/common';
 import {
   useAddClassToSpecificTags,
   useCodeHighlighting,
-  useParseResponse,
   useItemQuery,
+  useParseResponse,
 } from '@/hooks';
-import utilStyles from '@/styles/post.module.css';
 import { HTMLObject } from '@/hooks/style/useAddClassToSpecificTags';
+import utilStyles from '@/styles/post.module.css';
+import '@/styles/prism-dracula.css';
 import { formatReadingTime } from '@/utils/formatReadingTime';
 import { PostMeta } from '../PostMeta';
 

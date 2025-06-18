@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/react';
 
 import { PostData } from '@/app/api/lib/models';
-import { Date, Link } from '@/components/common';
+import { Link } from '@/components/common';
+import { PostMeta } from '@/components/common/PostMeta';
 import { usePostHref } from '@/hooks/router';
 import { formatReadingTime } from '@/utils/formatReadingTime';
-import { PostMeta } from '@/components/common/PostMeta';
 
 interface EntityItemProps {
   postData: PostData;
