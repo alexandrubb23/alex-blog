@@ -10,6 +10,8 @@ import {
 } from '@/hooks';
 import utilStyles from '@/styles/post.module.css';
 import { HTMLObject } from '@/hooks/style/useAddClassToSpecificTags';
+import { formatReadingTime } from '@/utils/formatReadingTime';
+import { PostMeta } from '../PostMeta';
 
 const htmlObject: HTMLObject = {
   tags: ['pre', 'code'],
@@ -19,6 +21,7 @@ const htmlObject: HTMLObject = {
 const PageContent = () => {
   const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
+
   const tagsClass = useAddClassToSpecificTags(htmlObject);
 
   useCodeHighlighting(parsedResponse?.content || '');
@@ -27,7 +30,8 @@ const PageContent = () => {
 
   if (isLoading || !parsedResponse) return <CenteredSpinner />;
 
-  const { title, date, content } = parsedResponse;
+  const { id, title, date, content } = parsedResponse;
+  const readingTime = formatReadingTime(content, id);
 
   return (
     <VStack spacing={5} alignItems='flex-start'>
@@ -40,9 +44,7 @@ const PageContent = () => {
       >
         {title}
       </Heading>
-      <Box textColor='grey'>
-        <Date dateString={date} />
-      </Box>
+      <PostMeta readingTime={readingTime} date={date} />
       <Box
         className={utilStyles.post}
         dangerouslySetInnerHTML={{
