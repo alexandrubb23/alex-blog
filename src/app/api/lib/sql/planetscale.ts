@@ -9,10 +9,13 @@ import {
 
 type Data = Record<string, unknown>;
 
+const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
+
 const queryCache = new LRUCache<string, Data>({
   max: 100,
-  ttl: 1000 * 60, // 1 minute default TTL
+  ttl: CACHE_TTL,
 });
+
 class PlanetScale {
   private static db: PlanetScaleDatabase;
 
