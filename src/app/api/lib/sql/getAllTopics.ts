@@ -6,19 +6,23 @@ import PlanetScale from './planetscale';
 import { getPostsAccessSQL } from './getAllPosts';
 
 const getAllTopics = async (entity: Entity) => {
-  const db = PlanetScale.connect();
+  const queryFn = async () => {
+    const db = PlanetScale.connect();
 
-  const postsSQL = getPostsAccessSQL(db, entity);
+    const postsSQL = getPostsAccessSQL(db, entity);
 
-  const { description, id, topic } = topics;
+    const { description, id, topic } = topics;
 
-  const results: Topic[] = await db
-    .select({ topic, description })
-    .from(topics)
-    .innerJoin(postsSQL, eq(id, postsSQL.topicId))
-    .orderBy(desc(postsSQL.date));
+    const results: Topic[] = await db
+      .select({ topic, description })
+      .from(topics)
+      .innerJoin(postsSQL, eq(id, postsSQL.topicId))
+      .orderBy(desc(postsSQL.date));
 
-  return results;
+    return results;
+  };
+
+  return PlanetScale.cachedQuery(`topics:${entity}`, queryFn);
 };
 
 export default getAllTopics;
