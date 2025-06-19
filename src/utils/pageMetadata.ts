@@ -1,10 +1,9 @@
-import { Entity, PostData } from '@/app/api/lib/models';
+import { Entity } from '@/app/api/lib/models';
 import { AUTHOR } from '@/app/constants';
 import { PageProps } from '@/models';
-import { APIClient } from '@/services/api-client';
 
-import { extractImageFromMarkdown } from './parseMarkdownResponseToHTML';
 import getOnePost from '@/app/api/lib/sql/getOnePost';
+import { extractImageFromMarkdown } from './parseMarkdownResponseToHTML';
 
 export interface PageMetadata {
   title: string;
