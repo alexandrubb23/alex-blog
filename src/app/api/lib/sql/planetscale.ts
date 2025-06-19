@@ -1,3 +1,5 @@
+import { LRUCache } from 'lru-cache';
+
 import { config } from '@/db/config';
 import { connect } from '@planetscale/database';
 import {
@@ -5,15 +7,17 @@ import {
   drizzle,
 } from 'drizzle-orm/planetscale-serverless';
 
-/**
- * Provides a connection to the Planetscale database.
- */
+type Data = Record<string, unknown>;
+
+const queryCache = new LRUCache<string, Data>({
+  max: 100,
+  ttl: 1000 * 60, // 1 minute default TTL
+});
 class PlanetScale {
   private static db: PlanetScaleDatabase;
 
-  private constructor() {
-    // Private constructor to prevent direct instantiation.
-  }
+  // Private constructor to prevent direct instantiation.
+  private constructor() {}
 
   /**
    * Establishes a connection to the Planetscale database and returns a singleton instance of the database object.
@@ -33,6 +37,29 @@ class PlanetScale {
     }
 
     return PlanetScale.db;
+  }
+
+  /**
+   * Caches the result of a query function based on a computed cache key.
+   *
+   * @param key Unique string representing the query (e.g., a hash of SQL + params).
+   * @param queryFn Function to execute if result is not cached.
+   * @param ttl Optional TTL in milliseconds (default: 1 min)
+   */
+  static async cachedQuery<T>(
+    key: string,
+    queryFn: () => Promise<T>,
+    ttl?: number
+  ) {
+    const cached = queryCache.get(key) as T | undefined;
+    if (cached) {
+      console.log(`Cache hit for ${key}`);
+      return cached;
+    }
+
+    const result = await queryFn();
+    queryCache.set(key, result as Data, { ttl });
+    return result;
   }
 }
 
