@@ -9,7 +9,7 @@ interface EntityListProps {
 }
 
 const EntityList = ({ entity }: EntityListProps) => {
-  const { data: technologies, isLoading, error } = useEntityQuery(entity);
+  const { data: technologies = [], isLoading, error } = useEntityQuery(entity);
 
   if (isLoading) return <CenteredSpinner />;
 

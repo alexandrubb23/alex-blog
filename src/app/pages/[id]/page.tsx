@@ -1,7 +1,10 @@
-'use client';
+import { ENTITIES } from '@/app/api/lib/constants';
+import hydratedPage, { type EntityProps } from '@/app/hydratedPage';
 
-import { PageLayout } from '@/components/common';
-
-const Page = () => <PageLayout />;
+const Page = ({ params }: EntityProps) =>
+  hydratedPage({
+    params,
+    entity: ENTITIES.PAGES,
+  });
 
 export default Page;

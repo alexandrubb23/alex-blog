@@ -1,10 +1,10 @@
-'use client';
+import { ENTITIES } from '@/app/api/lib/constants';
+import hydratedPage, { type EntityProps } from '@/app/hydratedPage';
 
-import { PageLayout } from '@/components/common';
-import styles from '@/styles/certificate-layout.module.css';
-
-const Certificate = () => (
-  <PageLayout className={styles.certificateLayout} />
-);
+const Certificate = ({ params }: EntityProps) =>
+  hydratedPage({
+    params,
+    entity: ENTITIES.CERTIFICATIONS,
+  });
 
 export default Certificate;
