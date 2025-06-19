@@ -1,16 +1,13 @@
 import { and, eq } from 'drizzle-orm';
 
 import { Entity, PostData } from '@/app/api/lib/models';
-import { LRUCache } from 'lru-cache';
 
 import { NotFoundError } from '@/app/api/lib/classes/Errors';
 import { posts, topics } from '@/db/schema';
 import PlanetScale from './planetscale';
 
-const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
-
 const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
-  const cacheKey = `post:${entity}:${slug}`;
+  const cacheKey = `${entity}:${slug}`;
 
   const queryFn = async () => {
     const db = PlanetScale.connect();
@@ -34,7 +31,7 @@ const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
     return result[0];
   };
 
-  return PlanetScale.cachedQuery(cacheKey, queryFn, CACHE_TTL);
+  return PlanetScale.cachedQuery(cacheKey, queryFn);
 };
 
 export default getOnePost;
