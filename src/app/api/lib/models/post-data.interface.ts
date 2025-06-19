@@ -7,4 +7,6 @@ interface PostData {
   topic: string;
 }
 
+export type PostDataOrUndefined = PostData | undefined;
+
 export default PostData;

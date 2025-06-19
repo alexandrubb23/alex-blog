@@ -14,6 +14,8 @@ const entityMetaData = ({ entity, entityMetadata }: EntityMetaData) => {
       params,
     });
 
+    if (!metadata) return null;
+
     return entityMetadata(metadata);
   };
 };

@@ -4,6 +4,7 @@ import type { NextRequest } from 'next/server';
 import { Entity, PostData, RequestQueryParams } from '@/app/api/lib/models';
 import { handleEntityRequestService } from '@/app/api/lib/services';
 import getOnePost from '@/app/api/lib/sql/getOnePost';
+import type { PostDataOrUndefined } from '@/app/api/lib/models/post-data.interface';
 
 const parseData = (id: string, post: PostData) => {
   const matterResult = matter(post.content);
@@ -15,15 +16,15 @@ const parseData = (id: string, post: PostData) => {
   } as PostData;
 };
 
-const getData = async (id: string, entity: Entity): Promise<PostData> => {
-  try {
-    const post = await getOnePost(entity, id);
-    const result = parseData(id, post);
+const getData = async (
+  id: string,
+  entity: Entity
+): Promise<PostDataOrUndefined> => {
+  const post = await getOnePost(entity, id);
+  if (!post) return undefined;
 
-    return result;
-  } catch (error) {
-    throw error;
-  }
+  const result = parseData(id, post);
+  return result;
 };
 
 export const GET = async (_: NextRequest, { params }: RequestQueryParams) => {

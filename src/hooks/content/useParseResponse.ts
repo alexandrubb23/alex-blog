@@ -1,20 +1,20 @@
 import { useCallback, useEffect } from 'react';
 
+import type { PostDataOrUndefined } from '@/app/api/lib/models/post-data.interface';
 import { useParseResponseReducer } from '@/hooks/reducers';
 import parseMarkdownResponseToHTML from '@/utils/parseMarkdownResponseToHTML';
-import { PostData } from '@/app/api/lib/models';
 
 const useParseResponse = (
-  response: PostData | undefined,
+  response: PostDataOrUndefined,
   parser = parseMarkdownResponseToHTML
 ) => {
   const { parsedResponse, parseResponseAndDispatch } =
     useParseResponseReducer(parser);
 
-  const processPage = useCallback(async () => {
+  const processPage = useCallback(() => {
     if (!response) return;
 
-    await parseResponseAndDispatch(response);
+    parseResponseAndDispatch(response);
   }, [parseResponseAndDispatch, response]);
 
   useEffect(() => {

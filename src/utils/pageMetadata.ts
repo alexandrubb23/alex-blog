@@ -4,6 +4,7 @@ import { PageProps } from '@/models';
 import { APIClient } from '@/services/api-client';
 
 import { extractImageFromMarkdown } from './parseMarkdownResponseToHTML';
+import getOnePost from '@/app/api/lib/sql/getOnePost';
 
 export interface PageMetadata {
   title: string;
@@ -22,12 +23,12 @@ interface PageMetadataProps {
 const pageMetadata = async ({
   entity,
   params: { params },
-}: PageMetadataProps): Promise<PageMetadata> => {
-  const apiClient = new APIClient<PostData>(`/${entity}`);
-
+}: PageMetadataProps): Promise<PageMetadata | undefined> => {
   const promiseParams = await params;
   const path = Object.values(promiseParams).join('/');
-  const response = await apiClient.findOne(path);
+
+  const response = await getOnePost(entity, path);
+  if (!response) return;
 
   const { title, content } = response;
 
