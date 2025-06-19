@@ -7,11 +7,9 @@ import {
   drizzle,
 } from 'drizzle-orm/planetscale-serverless';
 
-type Data = Record<string, unknown>;
-
 const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
 
-const queryCache = new LRUCache<string, Data>({
+const queryCache = new LRUCache<string, any>({
   max: 100,
   ttl: CACHE_TTL,
 });
@@ -55,13 +53,13 @@ class PlanetScale {
     ttl?: number
   ) {
     const cached = queryCache.get(key) as T | undefined;
-    if (cached) {
+    if (cached !== undefined) {
       console.log(`Cache hit for ${key}`);
       return cached;
     }
 
     const result = await queryFn();
-    queryCache.set(key, result as Data, { ttl });
+    queryCache.set(key, result, { ttl });
     return result;
   }
 }
