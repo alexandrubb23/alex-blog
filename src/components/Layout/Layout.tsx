@@ -19,7 +19,7 @@ const Layout = ({ contentClassName, children }: LayoutProps) => {
         templateAreas={{
           base: `"nav" "main" "content"`,
         }}
-        maxW='800px'
+        maxW='1024px'
         margin='auto'
       >
         <GridItem area='nav'>
