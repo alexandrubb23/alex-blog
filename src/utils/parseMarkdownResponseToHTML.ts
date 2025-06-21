@@ -3,14 +3,29 @@ import { AUTHOR } from '@/app/constants';
 import { remark } from 'remark';
 import html from 'remark-html';
 
+const CACHE_KEY_SEPARATOR = ':';
+
+// TODO: Replace in-memory markdownCache with persistent cache (e.g., Redis)
+const markdownCache = new Map<string, PostData>();
+
 const parseMarkdownResponseToHTML = async (response: PostData) => {
+  const { id, topic } = response;
+  const cacheKey = `${topic}${CACHE_KEY_SEPARATOR}${id}`;
+
   try {
+    if (markdownCache.has(cacheKey)) {
+      return markdownCache.get(cacheKey) as PostData;
+    }
+
     const content = await remark().use(html).process(response.content);
 
-    return {
+    const result = {
       ...response,
       content: content.toString(),
     } as PostData;
+
+    markdownCache.set(cacheKey, result);
+    return result;
   } catch (error) {
     throw new Error('Error occurred during content parsing');
   }
