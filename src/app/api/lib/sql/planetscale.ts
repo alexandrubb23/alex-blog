@@ -1,11 +1,11 @@
 import { LRUCache } from 'lru-cache';
 
-import { config } from '@/db/config';
-import { connect } from '@planetscale/database';
 import {
   PlanetScaleDatabase,
   drizzle,
 } from 'drizzle-orm/planetscale-serverless';
+
+import { env } from '@/env';
 
 const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
 
@@ -30,8 +30,7 @@ class PlanetScale {
   static connect(): PlanetScaleDatabase {
     if (!PlanetScale.db) {
       try {
-        const connection = connect(config);
-        PlanetScale.db = drizzle(connection);
+        PlanetScale.db = drizzle(env.DATABASE_URL);
       } catch (error) {
         throw error;
       }

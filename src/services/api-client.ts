@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+import { env } from '@/env';
+
 const axiosInstance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/api`,
+  baseURL: `${env.NEXT_PUBLIC_BASE_URL}/api`,
 });
 
 export class APIClient<T> {
