@@ -10,11 +10,9 @@ import * as schema from '@/db/schema';
 
 export type DB = PlanetScaleDatabase<typeof schema>;
 
-const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
-
 const queryCache = new LRUCache<string, any>({
   max: 100,
-  ttl: CACHE_TTL,
+  ttl: env.DATABASE_CACHE_TTL,
 });
 
 class PlanetScale {

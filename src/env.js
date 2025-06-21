@@ -8,6 +8,7 @@ export const env = createEnv({
    */
   server: {
     DATABASE_URL: z.string().url(),
+    DATABASE_CACHE_TTL: z.coerce.number().int().positive(),
     NODE_ENV: z
       .enum(['development', 'test', 'production'])
       .default('development'),
@@ -29,6 +30,7 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
     DATABASE_URL: process.env.DATABASE_URL,
+    DATABASE_CACHE_TTL: process.env.DATABASE_CACHE_TTL,
     NODE_ENV: process.env.NODE_ENV,
   },
   /**
