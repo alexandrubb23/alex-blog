@@ -6,6 +6,9 @@ import {
 } from 'drizzle-orm/planetscale-serverless';
 
 import { env } from '@/env';
+import * as schema from '@/db/schema';
+
+export type DB = PlanetScaleDatabase<typeof schema>;
 
 const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
 
@@ -15,7 +18,7 @@ const queryCache = new LRUCache<string, any>({
 });
 
 class PlanetScale {
-  private static db: PlanetScaleDatabase;
+  private static db: DB;
 
   // Private constructor to prevent direct instantiation.
   private constructor() {}
@@ -27,10 +30,10 @@ class PlanetScale {
    * @returns The Planetscale database object.
    * @throws Any connection or initialization errors.
    */
-  static connect(): PlanetScaleDatabase {
+  static connect(): DB {
     if (!PlanetScale.db) {
       try {
-        PlanetScale.db = drizzle(env.DATABASE_URL);
+        PlanetScale.db = drizzle(env.DATABASE_URL, { schema });
       } catch (error) {
         throw error;
       }

@@ -1,11 +1,10 @@
 import { desc, eq, sql } from 'drizzle-orm';
-import { PlanetScaleDatabase } from 'drizzle-orm/planetscale-serverless';
 
-import { Entity, PostData } from '@/app/api/lib/models';
-import { posts, topics } from '@/db/schema';
-import PlanetScale from './planetscale';
 import { NotFoundError } from '@/app/api/lib/classes/Errors';
 import { ENTITIES } from '@/app/api/lib/constants';
+import { Entity, PostData } from '@/app/api/lib/models';
+import { posts, topics } from '@/db/schema';
+import PlanetScale, { type DB } from './planetscale';
 
 const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
   const queryFn = async () => {
@@ -36,7 +35,7 @@ const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
   return PlanetScale.cachedQuery(entity, queryFn);
 };
 
-export const getPostsAccessSQL = (db: PlanetScaleDatabase, entity: Entity) => {
+export const getPostsAccessSQL = (db: DB, entity: Entity) => {
   const { date, postType, topicId } = posts;
 
   const fields = {
