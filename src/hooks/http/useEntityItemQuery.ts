@@ -23,8 +23,6 @@ const useEntityItemQuery = ({ entity, slug }: EntityItemQuery) => {
     queryKey: [singular(entity), slug],
     queryFn: () => httpService.findOne(path),
     staleTime: getStaleTime(),
-    refetchOnWindowFocus: false,
-    refetchOnMount: false,
   });
 };
 

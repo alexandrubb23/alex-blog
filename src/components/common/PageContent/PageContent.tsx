@@ -1,3 +1,4 @@
+import { notFound } from 'next/navigation';
 import { Box, Heading, VStack } from '@chakra-ui/react';
 
 import { CenteredSpinner, ErrorAlert } from '@/components/common';
@@ -27,6 +28,8 @@ const PageContent = () => {
   const tagsClass = useAddClassToSpecificTags(htmlObject);
 
   if (error) return <ErrorAlert error={error.message} />;
+
+  if (!data) notFound();
 
   if (isLoading || !parsedResponse) return <CenteredSpinner />;
 
