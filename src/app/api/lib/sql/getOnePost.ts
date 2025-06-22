@@ -17,6 +17,7 @@ const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
         date: posts.date,
         content: posts.content,
         topic: topics.topic,
+        description: topics.description,
         postType: posts.postType,
       })
       .from(posts)

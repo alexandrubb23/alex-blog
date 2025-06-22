@@ -5,6 +5,7 @@ import { topics } from '@/db/schema';
 import PlanetScale from './planetscale';
 import { getPostsAccessSQL } from './getAllPosts';
 
+// TODO: This is not in use anymore, but it is still needed later for the new design.
 const getAllTopics = async (entity: Entity) => {
   const queryFn = async () => {
     const db = PlanetScale.connect();

@@ -22,6 +22,7 @@ const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
         date: posts.date,
         content: posts.content,
         topic: topics.topic,
+        description: topics.description,
         postType: posts.postType,
       })
       .from(posts)

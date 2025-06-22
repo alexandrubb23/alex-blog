@@ -5,6 +5,7 @@ interface PostData {
   postType: string;
   title: string;
   topic: string;
+  description: string;
 }
 
 export type PostDataOrUndefined = PostData | undefined;

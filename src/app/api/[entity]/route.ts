@@ -7,7 +7,7 @@ import {
   RequestQueryParams,
 } from '@/app/api/lib/models';
 import { handleEntityRequestService } from '@/app/api/lib/services';
-import { getAllPosts, getAllTopics } from '@/app/api/lib/sql';
+import { getAllPosts } from '@/app/api/lib/sql';
 
 const traversePosts = (topic: string, posts: PostData[]) => {
   return posts.reduce<PostData[]>((posts, post) => {
@@ -30,31 +30,29 @@ const traversePosts = (topic: string, posts: PostData[]) => {
   }, []);
 };
 
-const parseData = (topics: Topic[], posts: PostData[]): APIResponse[] => {
-  const entityData = topics.reduce<APIResponse[]>(
-    (entities, { topic, description }) => {
-      const entity: APIResponse = {
-        id: topic,
-        name: description,
-        data: traversePosts(topic, posts),
-      };
+const parseData = (posts: PostData[]): APIResponse[] => {
+  const seen = new Set<string>();
+  const result: APIResponse[] = [];
 
-      entities.push(entity);
+  for (const post of posts) {
+    if (!seen.has(post.topic)) {
+      seen.add(post.topic);
 
-      return entities;
-    },
-    []
-  );
+      result.push({
+        id: post.topic,
+        name: post.description,
+        data: traversePosts(post.topic, posts),
+      });
+    }
+  }
 
-  return entityData;
+  return result;
 };
 
 const getData = async (entity: Entity): Promise<APIResponse[]> => {
   try {
     const posts = await getAllPosts(entity);
-    const topics = await getAllTopics(entity);
-
-    const parsedData = parseData(topics, posts);
+    const parsedData = parseData(posts);
 
     return parsedData;
   } catch (error) {
