@@ -10,10 +10,11 @@ const markdownCache = new Map<string, PostData>();
 
 const parseMarkdownResponseToHTML = async (response: PostData) => {
   const { id, topic } = response;
-  const cacheKey = `${topic}${CACHE_KEY_SEPARATOR}${id}`;
+  const cacheKey = `${topic}${CACHE_KEY_SEPARATOR}${id}`.toLowerCase();
 
   try {
     if (markdownCache.has(cacheKey)) {
+      console.log(`Cache hit for ${cacheKey}`);
       return markdownCache.get(cacheKey) as PostData;
     }
 
