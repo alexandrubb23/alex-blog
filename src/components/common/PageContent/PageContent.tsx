@@ -19,12 +19,12 @@ const htmlObject: HTMLObject = {
 };
 
 const PageContent = () => {
+  useCodeHighlighting();
+
   const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
 
   const tagsClass = useAddClassToSpecificTags(htmlObject);
-
-  useCodeHighlighting(parsedResponse?.content || '');
 
   if (error) return <ErrorAlert error={error.message} />;
 
