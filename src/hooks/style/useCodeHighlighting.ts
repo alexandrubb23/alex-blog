@@ -1,10 +1,14 @@
 import Prism from 'prismjs';
-import { useTimeout } from '@chakra-ui/react';
+import { useLayoutEffect } from 'react';
 
 import '@/styles/prism-dracula.css';
 
 const useCodeHighlighting = () => {
-  useTimeout(Prism.highlightAll, 1);
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      Prism.highlightAll();
+    }, 100);
+  }, []);
 };
 
 export default useCodeHighlighting;
