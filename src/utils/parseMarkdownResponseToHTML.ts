@@ -14,7 +14,6 @@ const parseMarkdownResponseToHTML = async (response: PostData) => {
 
   try {
     if (markdownCache.has(cacheKey)) {
-      console.log(`Cache hit for ${cacheKey}`);
       return markdownCache.get(cacheKey) as PostData;
     }
 

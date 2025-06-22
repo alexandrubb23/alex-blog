@@ -25,6 +25,10 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <Script src='/js/colorMode.js' />
+      <meta
+        name='google-site-verification'
+        content='Za2lcQmbSqNcRvTWGWgwuI40EhMTDycc60wkj3rfp_c'
+      />
       <body className={inter.className} suppressHydrationWarning={true}>
         {children}
       </body>
