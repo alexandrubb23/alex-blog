@@ -10,7 +10,6 @@ import {
 } from '@/hooks';
 import { HTMLObject } from '@/hooks/style/useAddClassToSpecificTags';
 import utilStyles from '@/styles/post.module.css';
-import '@/styles/prism-dracula.css';
 import { formatReadingTime } from '@/utils/formatReadingTime';
 import { PostMeta } from '../PostMeta';
 import CopyButtonsInjector from '../CopyButton/CopyButton';
@@ -39,6 +38,7 @@ const PageContent = () => {
 
   return (
     <VStack spacing={5} alignItems='flex-start'>
+      <CopyButtonsInjector />
       <Heading
         as='h1'
         fontSize='2rem'
@@ -49,7 +49,7 @@ const PageContent = () => {
         {title}
       </Heading>
       <PostMeta readingTime={readingTime} date={date} />
-      <CopyButtonsInjector />
+
       <Box
         className={utilStyles.post}
         dangerouslySetInnerHTML={{

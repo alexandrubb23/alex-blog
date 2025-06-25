@@ -5,7 +5,7 @@ const useColorMode = () => {
 
   const isDark = colorMode === 'dark';
 
-  return { isDark, toggleColorMode };
+  return { colorMode, isDark, toggleColorMode };
 };
 
 export default useColorMode;

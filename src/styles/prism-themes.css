@@ -1,0 +1,242 @@
+.chakra-ui-dark code[class*='language-'],
+.chakra-ui-dark pre[class*='language-'] {
+  color: #f8f8f2;
+  background: none;
+  /* text-shadow: 0 1px rgba(0, 0, 0, 0.3); */
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  white-space: pre-wrap; /* Preserve line breaks */
+  word-break: break-word; /* Wrap long words */
+  max-width: 100%;
+}
+
+/* Code blocks */
+.chakra-ui-dark pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+.chakra-ui-dark :not(pre) > code[class*='language-'],
+.chakra-ui-dark pre[class*='language-'] {
+  background: #282a36;
+}
+
+/* Inline code */
+.chakra-ui-dark :not(pre) > code[class*='language-'] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.chakra-ui-dark .token.comment,
+.chakra-ui-dark .token.prolog,
+.chakra-ui-dark .token.doctype,
+.chakra-ui-dark .token.cdata {
+  color: #6272a4;
+}
+
+.chakra-ui-dark .token.punctuation {
+  color: #f8f8f2;
+}
+
+.chakra-ui-dark .namespace {
+  opacity: 0.7;
+}
+
+.chakra-ui-dark .token.property,
+.chakra-ui-dark .token.tag,
+.chakra-ui-dark .token.constant,
+.chakra-ui-dark .token.symbol,
+.chakra-ui-dark .token.deleted {
+  color: #ff79c6;
+}
+
+.chakra-ui-dark .token.boolean,
+.chakra-ui-dark .token.number {
+  color: #bd93f9;
+}
+
+.chakra-ui-dark .token.selector,
+.chakra-ui-dark .token.attr-name,
+.chakra-ui-dark .token.string,
+.chakra-ui-dark .token.char,
+.chakra-ui-dark .token.builtin,
+.chakra-ui-dark .token.inserted {
+  color: #50fa7b;
+}
+
+.chakra-ui-dark .token.operator,
+.chakra-ui-dark .token.entity,
+.chakra-ui-dark .token.url,
+.chakra-ui-dark .language-css .token.string,
+.chakra-ui-dark .style .token.string,
+.chakra-ui-dark .token.variable {
+  color: #f8f8f2;
+}
+
+.chakra-ui-dark .token.atrule,
+.chakra-ui-dark .token.attr-value,
+.chakra-ui-dark .token.function,
+.chakra-ui-dark .token.class-name {
+  color: #f1fa8c;
+}
+
+.chakra-ui-dark .token.keyword {
+  color: #8be9fd;
+}
+
+.chakra-ui-dark .token.regex,
+.chakra-ui-dark .token.important {
+  color: #ffb86c;
+}
+
+.chakra-ui-dark .token.important,
+.chakra-ui-dark .token.bold {
+  font-weight: bold;
+}
+
+.chakra-ui-dark .token.italic {
+  font-style: italic;
+}
+
+.chakra-ui-dark .token.entity {
+  cursor: help;
+}
+
+.chakra-ui-light code[class*='language-'],
+.chakra-ui-light pre[class*='language-'] {
+  color: #393a34;
+  background: none;
+  /* text-shadow: 0 1px rgba(0, 0, 0, 0.3); */
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  white-space: pre-wrap; /* Preserve line breaks */
+  word-break: break-word; /* Wrap long words */
+  max-width: 100%;
+}
+
+.chakra-ui-light pre > code[class*='language-'] {
+  font-size: 1em;
+}
+
+.chakra-ui-light pre[class*='language-']::-moz-selection,
+.chakra-ui-light pre[class*='language-'] ::-moz-selection,
+.chakra-ui-light code[class*='language-']::-moz-selection,
+.chakra-ui-light code[class*='language-'] ::-moz-selection {
+  background: #b3d4fc;
+}
+
+.chakra-ui-light pre[class*='language-']::selection,
+.chakra-ui-light pre[class*='language-'] ::selection,
+.chakra-ui-light code[class*='language-']::selection,
+.chakra-ui-light code[class*='language-'] ::selection {
+  background: #b3d4fc;
+}
+
+/* Code blocks */
+.chakra-ui-light pre[class*='language-'] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border: 1px solid #dddddd;
+  background-color: white;
+}
+
+/* Inline code */
+.chakra-ui-light :not(pre) > code[class*='language-'] {
+  padding: 0.2em;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #f8f8f8;
+  border: 1px solid #dddddd;
+}
+
+.chakra-ui-light .token.comment,
+.chakra-ui-light .token.prolog,
+.chakra-ui-light .token.doctype,
+.chakra-ui-light .token.cdata {
+  color: #999988;
+  font-style: italic;
+}
+
+.chakra-ui-light .token.namespace {
+  opacity: 0.7;
+}
+
+.chakra-ui-light .token.string,
+.chakra-ui-light .token.attr-value {
+  color: #e3116c;
+}
+
+.chakra-ui-light .token.punctuation,
+.chakra-ui-light .token.operator {
+  color: #393a34; /* no highlight */
+}
+
+.chakra-ui-light .token.entity,
+.chakra-ui-light .token.url,
+.chakra-ui-light .token.symbol,
+.chakra-ui-light .token.number,
+.chakra-ui-light .token.boolean,
+.chakra-ui-light .token.variable,
+.chakra-ui-light .token.constant,
+.chakra-ui-light .token.property,
+.chakra-ui-light .token.regex,
+.chakra-ui-light .token.inserted {
+  color: #36acaa;
+}
+
+.chakra-ui-light .token.atrule,
+.chakra-ui-light .token.keyword,
+.chakra-ui-light .token.attr-name,
+.chakra-ui-light .language-autohotkey .token.selector {
+  color: #00a4db;
+}
+
+.chakra-ui-light .token.function,
+.chakra-ui-light .token.deleted,
+.language-autohotkey .token.tag {
+  color: #9a050f;
+}
+
+.chakra-ui-light .token.tag,
+.chakra-ui-light .token.selector,
+.chakra-ui-light.language-autohotkey .token.keyword {
+  color: #00009f;
+}
+
+.chakra-ui-light .token.important,
+.chakra-ui-light .token.function,
+.chakra-ui-light .token.bold {
+  font-weight: bold;
+}
+
+.chakra-ui-light .token.italic {
+  font-style: italic;
+}

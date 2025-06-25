@@ -1,19 +1,18 @@
 'use client';
 
-import React, { useEffect } from 'react';
-import { createRoot } from 'react-dom/client';
-import { IconButton, useClipboard, ChakraProvider } from '@chakra-ui/react';
 import { CheckIcon, CopyIcon } from '@chakra-ui/icons';
+import { ChakraProvider, IconButton, useClipboard } from '@chakra-ui/react';
+import { useLayoutEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 
-
-function CopyButton({ code }: { code: string }) {
+export const CopyButton = ({ code }: { code: string }) => {
   const { hasCopied, onCopy } = useClipboard(code);
 
   return (
     <IconButton
       aria-label='Copy code'
       size='sm'
-      icon={hasCopied ? <CheckIcon color="green" /> : <CopyIcon />}
+      icon={hasCopied ? <CheckIcon color='green' /> : <CopyIcon />}
       onClick={onCopy}
       position='absolute'
       top='0.5rem'
@@ -23,10 +22,23 @@ function CopyButton({ code }: { code: string }) {
       colorScheme='gray'
     />
   );
-}
+};
 
+// TODO: Also MutationObserver can be used to watch for new <pre> elements.
+// It’s reliable, and with a proper .copy-btn-wrapper check, it's safe and idempotent.
+// We can safely remove the dependency
+/**
+ * example:
+ * const observer = new MutationObserver(() => {
+ *   const pres = document.querySelectorAll('pre');
+ *   pres.forEach(pre => {...});
+ * });
+ * const target = document.getElementById('post-content');
+ * observer.observe(target, { childList: true, subtree: true });
+ * return () => observer.disconnect();
+ */
 const CopyButtonsInjector = () => {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const pres = document.querySelectorAll('pre');
 
     pres.forEach(pre => {
@@ -49,7 +61,7 @@ const CopyButtonsInjector = () => {
         </ChakraProvider>
       );
     });
-  }, []);
+  });
 
   return null;
 };
