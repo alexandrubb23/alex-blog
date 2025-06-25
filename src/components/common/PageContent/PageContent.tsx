@@ -13,6 +13,7 @@ import utilStyles from '@/styles/post.module.css';
 import '@/styles/prism-dracula.css';
 import { formatReadingTime } from '@/utils/formatReadingTime';
 import { PostMeta } from '../PostMeta';
+import CopyButtonsInjector from '../CopyButton/CopyButton';
 
 const htmlObject: HTMLObject = {
   tags: ['pre', 'code'],
@@ -48,6 +49,7 @@ const PageContent = () => {
         {title}
       </Heading>
       <PostMeta readingTime={readingTime} date={date} />
+      <CopyButtonsInjector />
       <Box
         className={utilStyles.post}
         dangerouslySetInnerHTML={{
