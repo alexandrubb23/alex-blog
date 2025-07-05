@@ -11,6 +11,9 @@ const tokens = defineTokens({
   },
   colors: {
     header: { value: "#F2EFE5" },
+    bg: {
+      primary: { value: "#6D54D0" },
+    },
   },
   sizes: {
     container: { value: "920px" },

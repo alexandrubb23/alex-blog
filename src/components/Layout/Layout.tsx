@@ -61,9 +61,8 @@ const Layout = ({ contentClassName, children }: LayoutProps) => {
         <GridItem
           area="content"
           className={contentClassName}
-          maxW="{sizes.container}"
+          w="{sizes.container}"
           margin="auto"
-          padding="{spacing.space}"
         >
           {children}
         </GridItem>

@@ -1,9 +1,10 @@
-import { Box } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
 
 import { APIResponse } from "@/app/api/lib/models";
 import { EntityTechnologyItemsList } from "@/components/Entities/EntityTechnologyItemsList";
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import icons from "@/data/icons";
+import { Divider } from "@/components/Divider";
 
 interface EntityTechnologiesListProps {
   technologies: APIResponse[];
@@ -20,15 +21,19 @@ const EntityTechnologiesList = ({
   return (
     <>
       {technologies?.map((technology) => (
-        <Box mt={8} key={technology.name} divideY="2px" divideColor="gray.200">
-          <TechnologyHeadingWithIcon
-            icon={getTechnologyIcon(technology.id)}
-            label={technology.name}
-          />
-          <EntityTechnologyItemsList technology={technology} />
-        </Box>
+        <>
+          <VStack mt={8} gap="24px" key={technology.name}>
+            <TechnologyHeadingWithIcon
+              icon={getTechnologyIcon(technology.id)}
+              label={technology.name}
+            />
+            <EntityTechnologyItemsList technology={technology} />
+          </VStack>
+          <Divider mt="40px" mb="40px" />
+        </>
       ))}
     </>
   );
 };
+
 export default EntityTechnologiesList;

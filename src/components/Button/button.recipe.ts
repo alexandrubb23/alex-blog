@@ -11,7 +11,7 @@ const buttonRecipe = defineRecipe({
   },
   variants: {
     visual: {
-      solid: { bg: "#6D54D0", color: "white" },
+      solid: { bg: "{colors.bg.primary}", color: "white" },
     },
     size: {
       lg: { padding: "12px 16px 12px 20px", fontSize: "16px", fontWeight: 500 },

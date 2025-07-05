@@ -1,27 +1,32 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import { MdOutlineArticle } from 'react-icons/md';
+import { Box, Heading, List } from "@chakra-ui/react";
 
-import { ListPosts } from '@/components/ListPosts';
-import { useIsHomePage, useIconStyle } from '@/hooks';
+import { ListPosts } from "@/components/ListPosts";
+import { useIconStyle, useIsHomePage } from "@/hooks";
+import { Divider } from "../Divider";
 
 const Blog = () => {
-  const iconStyle = useIconStyle();
   const isHomePage = useIsHomePage();
 
   return (
     <>
-      <Box display='inline-block' {...iconStyle}>
-        <MdOutlineArticle size='15px' />
+      <Box display="flex" justifyContent="space-between">
+        <Heading as={isHomePage ? "h2" : "h1"} fontSize="28px" fontWeight={500}>
+          From the Blog
+        </Heading>
+        <List.Root
+          display="flex"
+          flexDirection="row"
+          gap="28px"
+          listStyleType="none"
+        >
+          <List.Item textDecoration="underline">All</List.Item>
+          <List.Item>TypeScript</List.Item>
+          <List.Item>React</List.Item>
+          <List.Item>JavaScript</List.Item>
+        </List.Root>
       </Box>
-      <Heading as={isHomePage ? 'h2' : 'h1'} size='lg'>
-        Blog
-      </Heading>
-      <Text mt={2}>
-        Welcome to my blog section, where I share insightful articles on various
-        technologies such as Java, JavaScript, TypeScript, React, and more.
-        Explore a wealth of knowledge, practical tips, and in-depth discussions
-        on these popular tech topics.
-      </Text>
+      <Divider mt="24px" />
+      <Divider mt="6px" />
       <ListPosts />
     </>
   );

@@ -1,5 +1,5 @@
-import { Box, BoxProps, Flex } from '@chakra-ui/react';
-import { IconType } from 'react-icons/lib';
+import { Box, BoxProps, Flex } from "@chakra-ui/react";
+import { IconType } from "react-icons/lib";
 
 interface IconLabelProps {
   icon: IconType;
@@ -19,9 +19,9 @@ const IconLabel = ({
   showIcon = true,
 }: IconLabelProps) => {
   return (
-    <Flex alignItems='center'>
+    <Flex alignItems="center">
       {showIcon && (
-        <Box marginRight={2} {...iconWrapperProps}>
+        <Box marginRight="12px" {...iconWrapperProps}>
           <Icon size={iconSize} />
         </Box>
       )}

@@ -1,10 +1,10 @@
-import { Alert, AlertIcon, AlertTitle } from '@chakra-ui/react';
+import { Alert } from "@chakra-ui/react";
 
 const ErrorAlert = ({ error }: { error: string }) => (
-  <Alert status='error'>
-    <AlertIcon />
-    <AlertTitle>{error}</AlertTitle>
-  </Alert>
+  <Alert.Root status="error">
+    <Alert.Indicator />
+    <Alert.Title>{error}</Alert.Title>
+  </Alert.Root>
 );
 
 export default ErrorAlert;
