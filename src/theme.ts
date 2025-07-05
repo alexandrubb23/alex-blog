@@ -6,19 +6,22 @@ import {
 } from "@chakra-ui/react";
 
 const tokens = defineTokens({
+  fonts: {
+    libre: { value: "Libre Baskerville" },
+  },
   colors: {
     header: { value: "#F2EFE5" },
   },
   sizes: {
     container: { value: "920px" },
   },
-  spacing: {},
 });
 
 const config = defineConfig({
   globalCss: {
     body: {
       backgroundColor: "#F9F7F1",
+      fontFamily: "inter",
     },
   },
   theme: { tokens },

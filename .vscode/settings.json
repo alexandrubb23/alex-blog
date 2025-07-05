@@ -1,3 +1,14 @@
 {
-  "cSpell.words": ["Chakra"]
+  "cSpell.words": ["Chakra"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "files.watcherExclude": {
+    "**/.next/**": true,
+    "**/node_modules/**": true
+  },
+  "search.exclude": {
+    "**/.next": true
+  },
+  "files.exclude": {
+    "**/.next": true
+  }
 }

@@ -1,8 +1,8 @@
-import { VStack } from '@chakra-ui/react';
+import { VStack } from "@chakra-ui/react";
 
-import { AboutAuthor } from './AboutAuthor';
-import { AuthorAvatar } from './AuthorAvatar';
-import { AuthorName } from './AuthorName';
+import { AboutAuthor } from "./AboutAuthor";
+import { AuthorAvatar } from "./AuthorAvatar";
+import { AuthorName } from "./AuthorName";
 
 interface AuthorProps {
   name: string;
@@ -10,10 +10,10 @@ interface AuthorProps {
 
 const Author = ({ name }: AuthorProps) => {
   return (
-    <VStack spacing={5}>
-      <AuthorAvatar alt={name} fileName='alex.png' />
+    <VStack gap={5}>
+      <AuthorAvatar alt={name} fileName="alex.png" />
       <AuthorName name={name} />
-      <AboutAuthor name={name} />
+      <AboutAuthor />
     </VStack>
   );
 };

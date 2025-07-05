@@ -1,10 +1,9 @@
 a {
-  color: #1970f1 !important;
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 form {
