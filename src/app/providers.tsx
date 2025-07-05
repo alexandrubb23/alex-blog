@@ -2,7 +2,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
-import theme from '@/theme';
+import config from '@/config';
 import { getQueryClient } from '@/utils/createQueryClient';
 
 interface ProvidersProps {
@@ -11,7 +11,7 @@ interface ProvidersProps {
 
 const Providers = ({ children }: ProvidersProps) => {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider value={config}>
       <QueryClientProvider client={getQueryClient()}>
         {children}
         <ReactQueryDevtools />
