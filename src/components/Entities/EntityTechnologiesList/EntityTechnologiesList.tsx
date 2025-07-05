@@ -10,6 +10,8 @@ interface EntityTechnologiesListProps {
   technologies: APIResponse[];
 }
 
+export const DIVIDER_MARGIN = "6px";
+
 const EntityTechnologiesList = ({
   technologies,
 }: EntityTechnologiesListProps) => {
@@ -20,7 +22,7 @@ const EntityTechnologiesList = ({
 
   return (
     <>
-      {technologies?.map((technology) => (
+      {technologies?.map((technology, i) => (
         <>
           <VStack mt={8} gap="24px" key={technology.name}>
             <TechnologyHeadingWithIcon
@@ -29,7 +31,10 @@ const EntityTechnologiesList = ({
             />
             <EntityTechnologyItemsList technology={technology} />
           </VStack>
-          <Divider mt="40px" mb="40px" />
+          <Divider
+            mt="40px"
+            mb={technologies.length - 1 !== i ? "40px" : DIVIDER_MARGIN}
+          />
         </>
       ))}
     </>

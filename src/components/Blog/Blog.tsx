@@ -1,8 +1,9 @@
 import { Box, Heading, List } from "@chakra-ui/react";
 
 import { ListPosts } from "@/components/ListPosts";
-import { useIconStyle, useIsHomePage } from "@/hooks";
+import { useIsHomePage } from "@/hooks";
 import { Divider } from "../Divider";
+import { DIVIDER_MARGIN } from "../Entities/EntityTechnologiesList/EntityTechnologiesList";
 
 const Blog = () => {
   const isHomePage = useIsHomePage();
@@ -26,8 +27,9 @@ const Blog = () => {
         </List.Root>
       </Box>
       <Divider mt="24px" />
-      <Divider mt="6px" />
+      <Divider mt={DIVIDER_MARGIN} />
       <ListPosts />
+      <Divider />
     </>
   );
 };
