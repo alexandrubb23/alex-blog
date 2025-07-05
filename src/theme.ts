@@ -8,15 +8,19 @@ import {
 const tokens = defineTokens({
   fonts: {
     libre: { value: "Libre Baskerville" },
+    nothingYouCouldDo: { value: "Nothing You Could Do" },
   },
   colors: {
     header: { value: "#F2EFE5" },
-    bg: {
-      primary: { value: "#6D54D0" },
-    },
+    primary: { value: "#6D54D0" },
   },
   sizes: {
-    container: { value: "920px" },
+    container: {
+      lg: { value: "980px" },
+      md: { value: "768px" },
+      sm: { value: "100%" },
+      base: { value: "100%" },
+    },
   },
 });
 

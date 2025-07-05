@@ -18,7 +18,7 @@ const TechnologyHeadingWithIcon = ({
   const isNotMobile = useIsNotMobile();
 
   return (
-    <Heading as={isHomePage ? "h3" : "h2"} fontSize="28px">
+    <Heading as={isHomePage ? "h3" : "h2"} fontSize="28px" w="full">
       <IconLabel
         icon={icon}
         iconWrapperProps={iconStyle}

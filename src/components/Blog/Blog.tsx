@@ -1,12 +1,23 @@
 import { Box, Heading, List } from "@chakra-ui/react";
 
-import { ListPosts } from "@/components/ListPosts";
-import { useIsHomePage } from "@/hooks";
+import { ENTITIES } from "@/app/api/lib/constants";
+import { useEntityQuery, useIsHomePage } from "@/hooks";
 import { Divider } from "../Divider";
+import { EntityList } from "../Entities";
 import { DIVIDER_MARGIN } from "../Entities/EntityTechnologiesList/EntityTechnologiesList";
+import { CenteredSpinner, ErrorAlert } from "../common";
 
 const Blog = () => {
   const isHomePage = useIsHomePage();
+
+  const { data: posts, isLoading, error } = useEntityQuery(ENTITIES.POSTS);
+
+  if (isLoading) return <CenteredSpinner />;
+
+  if (error) return <ErrorAlert error={error.message} />;
+
+  if (!posts || posts.length === 0)
+    return <ErrorAlert error="No posts found." />;
 
   return (
     <>
@@ -20,7 +31,10 @@ const Blog = () => {
           gap="28px"
           listStyleType="none"
         >
-          <List.Item textDecoration="underline">All</List.Item>
+          <List.Item>
+            All
+            <Divider />
+          </List.Item>
           <List.Item>TypeScript</List.Item>
           <List.Item>React</List.Item>
           <List.Item>JavaScript</List.Item>
@@ -28,7 +42,7 @@ const Blog = () => {
       </Box>
       <Divider mt="24px" />
       <Divider mt={DIVIDER_MARGIN} />
-      <ListPosts />
+      <EntityList posts={posts} />
       <Divider />
     </>
   );

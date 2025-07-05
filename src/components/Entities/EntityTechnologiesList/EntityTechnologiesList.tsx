@@ -5,6 +5,7 @@ import { EntityTechnologyItemsList } from "@/components/Entities/EntityTechnolog
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import icons from "@/data/icons";
 import { Divider } from "@/components/Divider";
+import { Fragment } from "react";
 
 interface EntityTechnologiesListProps {
   technologies: APIResponse[];
@@ -23,8 +24,8 @@ const EntityTechnologiesList = ({
   return (
     <>
       {technologies?.map((technology, i) => (
-        <>
-          <VStack mt={8} gap="24px" key={technology.name}>
+        <Fragment key={technology.id}>
+          <VStack mt={8} gap="24px">
             <TechnologyHeadingWithIcon
               icon={getTechnologyIcon(technology.id)}
               label={technology.name}
@@ -35,7 +36,7 @@ const EntityTechnologiesList = ({
             mt="40px"
             mb={technologies.length - 1 !== i ? "40px" : DIVIDER_MARGIN}
           />
-        </>
+        </Fragment>
       ))}
     </>
   );

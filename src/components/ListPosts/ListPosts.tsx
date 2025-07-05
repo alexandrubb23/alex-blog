@@ -1,6 +1,6 @@
-import { ENTITIES } from '@/app/api/lib/constants';
-import { EntityList } from '@/components/Entities';
+// import { ENTITIES } from '@/app/api/lib/constants';
+// import { EntityList } from '@/components/Entities';
 
-const ListPosts = () => <EntityList entity={ENTITIES.POSTS} />;
+// const ListPosts = () => <EntityList entity={ENTITIES.POSTS} />;
 
-export default ListPosts;
+// export default ListPosts;

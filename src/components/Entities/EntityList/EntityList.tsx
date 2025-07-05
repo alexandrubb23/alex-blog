@@ -1,23 +1,11 @@
-import { Entity } from '@/app/api/lib/models';
-import { EntityTechnologiesList } from '@/components/Entities/EntityTechnologiesList';
-import { CenteredSpinner, ErrorAlert } from '@/components/common';
-import { BackToPreviousLocationLink } from '@/components/common/Link/BackToPreviousLocationLink';
-import { useEntityQuery } from '@/hooks';
+import { APIResponse } from "@/app/api/lib/models";
+import { EntityTechnologiesList } from "@/components/Entities/EntityTechnologiesList";
+import { BackToPreviousLocationLink } from "@/components/common/Link/BackToPreviousLocationLink";
 
-interface EntityListProps {
-  entity: Entity;
-}
-
-const EntityList = ({ entity }: EntityListProps) => {
-  const { data: technologies = [], isLoading, error } = useEntityQuery(entity);
-
-  if (isLoading) return <CenteredSpinner />;
-
-  if (error) return <ErrorAlert error={error.message} />;
-
+const EntityList = ({ posts }: { posts: APIResponse[] }) => {
   return (
     <>
-      <EntityTechnologiesList technologies={technologies} />
+      <EntityTechnologiesList technologies={posts} />
       <BackToPreviousLocationLink />
     </>
   );

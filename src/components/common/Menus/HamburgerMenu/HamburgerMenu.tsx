@@ -1,51 +1,54 @@
-// import {
-//   Box,
-//   IconButton,
-//   Menu,
-//   MenuButton,
-//   MenuItem,
-//   MenuList,
-//   useDisclosure,
-// } from '@chakra-ui/react';
-// import { RxHamburgerMenu } from 'react-icons/rx';
-// import { MdOutlineClose } from 'react-icons/md';
+import {
+  Box,
+  Button,
+  IconButton,
+  Menu,
+  MenuItem,
+  Portal,
+  useDisclosure,
+} from "@chakra-ui/react";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { MdOutlineClose } from "react-icons/md";
 
-// import { MenuProps } from '@/components/common/Menus/models';
-// import { useNavigationMenu } from '@/hooks';
+import { MenuProps } from "@/components/common/Menus/models";
+import { useNavigationMenu } from "@/hooks";
 
-// const HamburgerMenu = ({ data }: MenuProps) => {
-//   const { isActiveItem, goToPage } = useNavigationMenu();
-//   const { isOpen, onOpen, onClose } = useDisclosure();
+const HamburgerMenu = ({ data }: MenuProps) => {
+  const { open, onOpen, onClose } = useDisclosure();
+  const { isActiveItem, goToPage } = useNavigationMenu();
 
-//   return (
-//     <Box w='100%'>
-//       <Menu onClose={onClose}>
-//         <MenuButton
-//           as={IconButton}
-//           aria-label='Options'
-//           icon={isOpen ? <MdOutlineClose /> : <RxHamburgerMenu />}
-//           variant='outline'
-//           onClick={onOpen}
-//         />
-//         <MenuList w='100%'>
-//           {data.map(({ id, title, icon: Icon }) => {
-//             const additionalProps = Icon ? { icon: <Icon /> } : {};
+  return (
+    <Box w="100%">
+      <Menu.Root onExitComplete={onClose}>
+        <Menu.Trigger asChild>
+          <Button variant="outline" size="sm" onClick={onOpen}>
+            {open ? <MdOutlineClose /> : <RxHamburgerMenu />}
+          </Button>
+        </Menu.Trigger>
+        <Portal>
+          <Menu.Positioner>
+            <Menu.Content>
+              {data.map(({ id, title, icon: Icon }) => {
+                const additionalProps = Icon ? { icon: <Icon /> } : {};
 
-//             return (
-//               <MenuItem
-//                 key={id}
-//                 onClick={() => goToPage(id)}
-//                 {...additionalProps}
-//                 color={isActiveItem(id) ? 'blue.500' : undefined}
-//               >
-//                 {title}
-//               </MenuItem>
-//             );
-//           })}
-//         </MenuList>
-//       </Menu>
-//     </Box>
-//   );
-// };
+                return (
+                  <Menu.Item
+                    key={id}
+                    onClick={() => goToPage(id)}
+                    {...additionalProps}
+                    value={title}
+                    color={isActiveItem(id) ? "blue.500" : undefined}
+                  >
+                    {title}
+                  </Menu.Item>
+                );
+              })}
+            </Menu.Content>
+          </Menu.Positioner>
+        </Portal>
+      </Menu.Root>
+    </Box>
+  );
+};
 
-// export default HamburgerMenu;
+export default HamburgerMenu;
