@@ -1,28 +1,28 @@
 'use client';
 
-import { CheckIcon, CopyIcon } from '@chakra-ui/icons';
-import { ChakraProvider, IconButton, useClipboard } from '@chakra-ui/react';
+// import { CheckIcon, CopyIcon } from '@chakra-ui/icons';
+import { ChakraProvider, IconButton, defaultSystem, useClipboard } from '@chakra-ui/react';
 import { useLayoutEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
-export const CopyButton = ({ code }: { code: string }) => {
-  const { hasCopied, onCopy } = useClipboard(code);
+// export const CopyButton = ({ code }: { code: string }) => {
+//   const { hasCopied, onCopy } = useClipboard(code);
 
-  return (
-    <IconButton
-      aria-label='Copy code'
-      size='sm'
-      icon={hasCopied ? <CheckIcon color='green' /> : <CopyIcon />}
-      onClick={onCopy}
-      position='absolute'
-      top='0.5rem'
-      right='0.5rem'
-      zIndex={10}
-      variant='outline'
-      colorScheme='gray'
-    />
-  );
-};
+//   return (
+//     <IconButton
+//       aria-label='Copy code'
+//       size='sm'
+//       icon={hasCopied ? <CheckIcon color='green' /> : <CopyIcon />}
+//       onClick={onCopy}
+//       position='absolute'
+//       top='0.5rem'
+//       right='0.5rem'
+//       zIndex={10}
+//       variant='outline'
+//       colorScheme='gray'
+//     />
+//   );
+// };
 
 // TODO: Also MutationObserver can be used to watch for new <pre> elements.
 // It’s reliable, and with a proper .copy-btn-wrapper check, it's safe and idempotent.
@@ -56,8 +56,8 @@ const CopyButtonsInjector = () => {
 
       const root = createRoot(wrapper);
       root.render(
-        <ChakraProvider>
-          <CopyButton code={pre.textContent || ''} />
+        <ChakraProvider value={defaultSystem}>
+          {/* <CopyButton code={pre.textContent || ''} /> */}
         </ChakraProvider>
       );
     });
