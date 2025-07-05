@@ -2,7 +2,7 @@ import { Box, Heading, List } from "@chakra-ui/react";
 
 import { ENTITIES } from "@/app/api/lib/constants";
 import { useEntityQuery, useIsHomePage } from "@/hooks";
-import { Divider } from "../Divider";
+import { Separator } from "../Separator";
 import { EntityList } from "../Entities";
 import { DIVIDER_MARGIN } from "../Entities/EntityTechnologiesList/EntityTechnologiesList";
 import { CenteredSpinner, ErrorAlert } from "../common";
@@ -33,17 +33,17 @@ const Blog = () => {
         >
           <List.Item>
             All
-            <Divider />
+            <Separator size="md" borderColor="black" />
           </List.Item>
           <List.Item>TypeScript</List.Item>
           <List.Item>React</List.Item>
           <List.Item>JavaScript</List.Item>
         </List.Root>
       </Box>
-      <Divider mt="24px" />
-      <Divider mt={DIVIDER_MARGIN} />
+      <Separator mt="24px" />
+      <Separator mt={DIVIDER_MARGIN} />
       <EntityList posts={posts} />
-      <Divider />
+      <Separator />
     </>
   );
 };

@@ -3,7 +3,7 @@ import { VStack } from "@chakra-ui/react";
 import { APIResponse, PostData } from "@/app/api/lib/models";
 import { EntityItem } from "@/components/Entities/EntityItem";
 import { useIsNotMobile } from "@/hooks";
-import { Divider } from "@/components/Divider";
+import { Separator } from "@/components/Separator";
 import { Fragment } from "react";
 
 interface EntityTechnologyItemsListProps {
@@ -25,7 +25,7 @@ const EntityTechnologyItemsList = ({
       {technology.data.map((postData: PostData) => (
         <Fragment key={postData.id}>
           <EntityItem postData={postData} />
-          <Divider divideStyle="dashed" />
+          <Separator variant="dashed" />
         </Fragment>
       ))}
     </VStack>

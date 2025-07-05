@@ -4,7 +4,7 @@ import { APIResponse } from "@/app/api/lib/models";
 import { EntityTechnologyItemsList } from "@/components/Entities/EntityTechnologyItemsList";
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import icons from "@/data/icons";
-import { Divider } from "@/components/Divider";
+import { Separator } from "@/components/Separator";
 import { Fragment } from "react";
 
 interface EntityTechnologiesListProps {
@@ -32,7 +32,7 @@ const EntityTechnologiesList = ({
             />
             <EntityTechnologyItemsList technology={technology} />
           </VStack>
-          <Divider
+          <Separator
             mt="40px"
             mb={technologies.length - 1 !== i ? "40px" : DIVIDER_MARGIN}
           />
