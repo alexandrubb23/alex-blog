@@ -17,7 +17,7 @@ const Footer = () => (
     <Box bg="primary" px={{ base: 4, md: 10 }} py={{ base: 10, md: 20 }}>
       <Box maxW="container" margin="auto">
         <VStack gap="24px">
-          <Heading as="h3" fontSize="26px" fontWeight="500">
+          <Heading as="h5" fontSize="26px" fontWeight="500">
             Got a project in mind? Let’s chat and turn your ideas into impactful
             solutions!
           </Heading>
@@ -62,9 +62,9 @@ const Footer = () => (
         {AUTHOR.EMAIL_ADDRESS}
         <Separator bg="white" height="5px" />
       </Box>
-      <Box>
+      <Heading as="h6" fontSize="16px">
         © {new Date().getFullYear()} {AUTHOR.NAME}. All rights reserved.
-      </Box>
+      </Heading>
     </VStack>
   </GridItem>
 );

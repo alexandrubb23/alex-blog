@@ -10,7 +10,7 @@ interface AuthorProps {
 
 const Author = ({ name }: AuthorProps) => {
   return (
-    <VStack gap={5}>
+    <VStack gap={5} mt="56px">
       <AuthorAvatar alt={name} fileName="alex.png" />
       <AuthorName name={name} />
       <AboutAuthor />

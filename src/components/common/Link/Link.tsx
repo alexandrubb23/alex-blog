@@ -3,14 +3,13 @@ import { usePathname } from "next/navigation";
 import { UrlObject } from "url";
 
 import { HTTP_QUERY_KEYS } from "@/app/constants";
-import { Box, BoxProps } from "@chakra-ui/react";
 
 interface LinkProps {
   children: string;
   href: string;
 }
 
-const Link = ({ children, href, ...props }: LinkProps & BoxProps) => {
+const Link = ({ children, href }: LinkProps) => {
   const currentPagePath = usePathname();
 
   const linkProps: UrlObject = {
@@ -21,11 +20,7 @@ const Link = ({ children, href, ...props }: LinkProps & BoxProps) => {
         : undefined,
   };
 
-  return (
-    <Box {...props}>
-      <NextLink href={linkProps}>{children}</NextLink>
-    </Box>
-  );
+  return <NextLink href={linkProps}>{children}</NextLink>;
 };
 
 export default Link;
