@@ -1,7 +1,7 @@
-import { AiFillHtml5 } from 'react-icons/ai';
-import { BsFiletypeJava, BsGithub } from 'react-icons/bs';
-import { FaNodeJs } from 'react-icons/fa';
-import { GrMysql, GrReactjs } from 'react-icons/gr';
+import { AiFillHtml5 } from "react-icons/ai";
+import { BsFiletypeJava, BsGithub } from "react-icons/bs";
+import { FaNodeJs } from "react-icons/fa";
+import { GrMysql, GrReactjs } from "react-icons/gr";
 import {
   SiAlwaysdata,
   SiDjango,
@@ -11,9 +11,11 @@ import {
   SiPython,
   SiRedux,
   SiTypescript,
-} from 'react-icons/si';
-import { GiGearStickPattern } from 'react-icons/gi';
-import { TbBrandNextjs } from 'react-icons/tb';
+} from "react-icons/si";
+import { GiGearStickPattern } from "react-icons/gi";
+import { TbBrandNextjs } from "react-icons/tb";
+
+type Technology = keyof typeof icons;
 
 const icons = {
   Django: SiDjango,
@@ -32,6 +34,6 @@ const icons = {
   TypeScript: SiTypescript,
   DesignPatterns: GiGearStickPattern,
   DataStructures: SiAlwaysdata,
-};
+} as const;
 
 export default icons;
