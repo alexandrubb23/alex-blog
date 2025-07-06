@@ -13,12 +13,12 @@ interface EntityTechnologyItemsListProps {
 const EntityTechnologyItemsList = ({
   technology,
 }: EntityTechnologyItemsListProps) => (
-  <VStack align="left" gap="24px" paddingRight={{ base: "0", sm: "48px" }}>
+  <VStack align="left" paddingRight={{ base: "0", sm: "48px" }}>
     {technology.data.map((postData: PostData, index) => (
       <Fragment key={postData.id}>
         <EntityItem postData={postData} />
         {isNotLastElement(technology.data, index) && (
-          <Separator variant="dashed" />
+          <Separator variant="dashed" mt="24px" mb="24px" />
         )}
       </Fragment>
     ))}
