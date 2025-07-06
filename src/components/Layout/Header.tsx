@@ -18,19 +18,31 @@ const Header = () => (
       }}
     >
       <Box display="flex" justifyContent="space-between" alignItems="center">
-        <LinkBox fontFamily="libre" fontSize="28px" fontWeight="700">
-          <Link href="/">AB</Link>
-        </LinkBox>
-        <NavBar />
-        <Button
-          variant="outline"
-          border="2px solid"
-          borderColor="black"
-          borderRadius="2rem"
-        >
-          <RiDownload2Fill />
-          My Resume
-        </Button>
+        <Box display="flex" flex="0 0 100px">
+          <LinkBox
+            fontFamily="libre"
+            fontSize="28px"
+            fontWeight="700"
+            display="flex"
+            flex="0 0 140px"
+          >
+            <Link href="/">AB</Link>
+          </LinkBox>
+        </Box>
+        <Box display="flex" flex="1 1 1">
+          <NavBar />
+        </Box>
+        <Box display="flex" flex="0 0 100px">
+          <Button
+            variant="outline"
+            border="2px solid"
+            borderColor="black"
+            borderRadius="2rem"
+          >
+            <RiDownload2Fill />
+            My Resume
+          </Button>
+        </Box>
       </Box>
       <Author name={AUTHOR.NAME} />
     </Container>

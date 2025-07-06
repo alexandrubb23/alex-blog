@@ -22,6 +22,7 @@ const Layout = ({ contentClassName, children }: LayoutProps) => (
       <GridItem
         area="main"
         className={contentClassName}
+        minHeight="calc(100vh - 128px)"
         maxWidth={{
           base: "100%",
           sm: "100%",
