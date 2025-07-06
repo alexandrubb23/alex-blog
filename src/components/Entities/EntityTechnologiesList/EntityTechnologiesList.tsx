@@ -7,6 +7,7 @@ import icons from "@/data/icons";
 import { Separator } from "@/components/Separator";
 import { Fragment } from "react";
 import { isNotLastElement } from "@/utils/array";
+import { AnimatedBox } from "@/components/common/Layout";
 
 interface EntityTechnologiesListProps {
   technologies: APIResponse[];
@@ -26,15 +27,7 @@ const EntityTechnologiesList = ({
     <>
       {technologies?.map((technology, index) => (
         <Fragment key={technology.id}>
-          <Box
-            key={Date.now()}
-            animationName="fade-in"
-            animationDuration="600ms"
-            animationFillMode="forwards"
-            animationTimingFunction="ease-out"
-            animationDelay={`${index * 100}ms`}
-            opacity={0}
-          >
+          <AnimatedBox delay={index * 100}>
             <VStack mt={8} gap="24px">
               <TechnologyHeadingWithIcon
                 icon={getTechnologyIcon(technology.id)}
@@ -49,7 +42,7 @@ const EntityTechnologiesList = ({
                 isNotLastElement(technologies, index) ? "40px" : DIVIDER_MARGIN
               }
             />
-          </Box>
+          </AnimatedBox>
         </Fragment>
       ))}
     </>

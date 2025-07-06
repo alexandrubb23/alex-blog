@@ -5,26 +5,18 @@ import "@/styles/prism-themes.css";
 import { Layout } from "@/components/Layout";
 import { PageContent } from "@/components/common";
 import { BackToPreviousLocationLink } from "../Link/BackToPreviousLocationLink";
+import { AnimatedBox } from "../Layout";
 interface PageLayoutProps {
   className?: string;
 }
 
-const PageLayout = ({ className }: PageLayoutProps) => {
-  return (
-    <Layout contentClassName={className}>
-      <Box
-        marginY={2}
-        key={Date.now()}
-        animationName="fade-in"
-        animationDuration="600ms"
-        animationFillMode="forwards"
-        animationTimingFunction="ease-out"
-      >
-        <PageContent />
-        <BackToPreviousLocationLink />
-      </Box>
-    </Layout>
-  );
-};
+const PageLayout = ({ className }: PageLayoutProps) => (
+  <Layout contentClassName={className}>
+    <AnimatedBox marginY={2}>
+      <PageContent />
+      <BackToPreviousLocationLink />
+    </AnimatedBox>
+  </Layout>
+);
 
 export default PageLayout;
