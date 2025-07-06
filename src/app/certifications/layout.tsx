@@ -1,4 +1,4 @@
-import { AUTHOR } from '@/app/constants';
+import { AUTHOR } from "@/app/constants";
 
 export async function generateMetadata() {
   return {

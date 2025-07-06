@@ -1,4 +1,4 @@
-import { Box, LinkBox } from "@chakra-ui/react";
+import { Box, Link as ChakraLink } from "@chakra-ui/react";
 
 import { PostData } from "@/app/api/lib/models";
 import { Link } from "@/components/common";
@@ -18,9 +18,9 @@ const EntityItem = ({ postData }: EntityItemProps) => {
 
   return (
     <Box key={title}>
-      <LinkBox fontSize="24px" fontWeight={500}>
-        <Link href={href}>{title}</Link>
-      </LinkBox>
+      <Link href={href} fontSize="24px" fontWeight={500}>
+        {title}
+      </Link>
       <PostMeta readingTime={readingTime} date={date} />
     </Box>
   );

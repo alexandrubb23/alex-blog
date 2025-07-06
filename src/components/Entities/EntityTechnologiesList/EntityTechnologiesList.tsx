@@ -6,6 +6,7 @@ import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadi
 import icons from "@/data/icons";
 import { Separator } from "@/components/Separator";
 import { Fragment } from "react";
+import { isNotLastElement } from "@/utils/array";
 
 interface EntityTechnologiesListProps {
   technologies: APIResponse[];
@@ -23,19 +24,32 @@ const EntityTechnologiesList = ({
 
   return (
     <>
-      {technologies?.map((technology, i) => (
+      {technologies?.map((technology, index) => (
         <Fragment key={technology.id}>
-          <VStack mt={8} gap="24px">
-            <TechnologyHeadingWithIcon
-              icon={getTechnologyIcon(technology.id)}
-              label={technology.name}
+          <Box
+            key={Date.now()}
+            animationName="fade-in"
+            animationDuration="600ms"
+            animationFillMode="forwards"
+            animationTimingFunction="ease-out"
+            animationDelay={`${index * 100}ms`}
+            opacity={0}
+          >
+            <VStack mt={8} gap="24px">
+              <TechnologyHeadingWithIcon
+                icon={getTechnologyIcon(technology.id)}
+                label={technology.name}
+              />
+              <EntityTechnologyItemsList technology={technology} />
+            </VStack>
+
+            <Separator
+              mt="40px"
+              mb={
+                isNotLastElement(technologies, index) ? "40px" : DIVIDER_MARGIN
+              }
             />
-            <EntityTechnologyItemsList technology={technology} />
-          </VStack>
-          <Separator
-            mt="40px"
-            mb={technologies.length - 1 !== i ? "40px" : DIVIDER_MARGIN}
-          />
+          </Box>
         </Fragment>
       ))}
     </>

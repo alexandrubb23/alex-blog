@@ -5,6 +5,7 @@ import { EntityItem } from "@/components/Entities/EntityItem";
 import { useIsNotMobile } from "@/hooks";
 import { Separator } from "@/components/Separator";
 import { Fragment } from "react";
+import { isNotLastElement } from "@/utils/array";
 
 interface EntityTechnologyItemsListProps {
   technology: APIResponse;
@@ -22,10 +23,12 @@ const EntityTechnologyItemsList = ({
       pl={isNotMobile ? "3rem" : undefined}
       w="full"
     >
-      {technology.data.map((postData: PostData) => (
+      {technology.data.map((postData: PostData, index) => (
         <Fragment key={postData.id}>
           <EntityItem postData={postData} />
-          <Separator variant="dashed" />
+          {isNotLastElement(technology.data, index) && (
+            <Separator variant="dashed" />
+          )}
         </Fragment>
       ))}
     </VStack>
