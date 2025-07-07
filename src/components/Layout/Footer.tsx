@@ -7,6 +7,10 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { LuVoicemail } from "react-icons/lu";
+import { FaLinkedinIn } from "react-icons/fa6";
+import { FaGithub } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebook } from "react-icons/fa";
 
 import { AUTHOR } from "@/app/constants";
 import SolidButton from "../Button/SolidButton";
@@ -46,16 +50,16 @@ const Footer = () => (
       </Heading>
       <HStack gap="40px">
         <IconButton aria-label="Call support" rounded="full">
-          <LuVoicemail />
+          <FaLinkedinIn />
         </IconButton>
         <IconButton aria-label="Call support" rounded="full">
-          <LuVoicemail />
+          <FaGithub />
         </IconButton>
         <IconButton aria-label="Call support" rounded="full">
-          <LuVoicemail />
+          <FaXTwitter />
         </IconButton>
         <IconButton aria-label="Call support" rounded="full">
-          <LuVoicemail />
+          <FaFacebook />
         </IconButton>
       </HStack>
       <Box fontSize="40px">
