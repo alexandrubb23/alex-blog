@@ -24,12 +24,12 @@ const EntityTechnologiesList = ({
 
   return (
     <>
-      {technologies.map((technology, index) => (
-        <Fragment key={technology.id}>
+      {technologies.map(({ id, name, data }, index) => (
+        <Fragment key={id}>
           <AnimatedBox delay={index * 100}>
             <Grid templateColumns="auto 1fr" mt="24px">
               <GridItem>
-                <TechnologyHeadingWithIcon technology={technology} />
+                <TechnologyHeadingWithIcon technology={id} />
               </GridItem>
               <GridItem pl={isNotMobile ? "12px" : 0}>
                 <Grid templateRows="auto auto" gap={4}>
@@ -38,9 +38,9 @@ const EntityTechnologiesList = ({
                     fontSize="28px"
                     w="full"
                   >
-                    {technology.name}
+                    {name}
                   </Heading>
-                  <EntityTechnologyItemsList technology={technology} />
+                  <EntityTechnologyItemsList data={data} />
                 </Grid>
               </GridItem>
             </Grid>

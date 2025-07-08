@@ -6,7 +6,7 @@ import { AUTHOR } from "@/app/constants";
 import { NavBar, Author } from "..";
 
 const Header = () => (
-  <GridItem area="header" bg="header" pb="54px">
+  <GridItem area="header" bg="header">
     <Container
       margin="auto"
       padding="5"

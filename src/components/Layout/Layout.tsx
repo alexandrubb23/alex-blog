@@ -29,7 +29,6 @@ const Layout = ({ contentClassName, children }: LayoutProps) => (
           md: "container.md",
           lg: "container.lg",
         }}
-        margin="64px auto 64px auto"
         padding="5"
       >
         {children}

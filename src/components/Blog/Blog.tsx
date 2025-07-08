@@ -7,6 +7,7 @@ import { DIVIDER_MARGIN } from "../Entities/EntityTechnologiesList/EntityTechnol
 import { Separator } from "../Separator";
 import { CenteredSpinner, ErrorAlert } from "../common";
 import BlogHeader from "./BlogHeader";
+import { Box } from "@chakra-ui/react";
 
 const Blog = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -29,7 +30,7 @@ const Blog = () => {
   };
 
   return (
-    <>
+    <Box margin="64px auto 64px auto">
       <BlogHeader
         data={data}
         isHomePage={isHomePage}
@@ -40,7 +41,7 @@ const Blog = () => {
       <Separator mt={DIVIDER_MARGIN} />
       <EntityList data={posts} />
       <Separator />
-    </>
+    </Box>
   );
 };
 

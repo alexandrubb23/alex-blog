@@ -1,11 +1,9 @@
-import { Box } from "@chakra-ui/react";
-
 import "@/styles/prism-themes.css";
 
 import { Layout } from "@/components/Layout";
 import { PageContent } from "@/components/common";
-import { BackToPreviousLocationLink } from "../Link/BackToPreviousLocationLink";
 import { AnimatedBox } from "../Layout";
+import { BackToPreviousLocationLink } from "../Link/BackToPreviousLocationLink";
 interface PageLayoutProps {
   className?: string;
 }

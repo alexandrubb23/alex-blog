@@ -1,12 +1,12 @@
 import { useMemo } from "react";
 
-import { APIResponse } from "@/app/api/lib/models";
+import { APIResponse, Technology } from "@/app/api/lib/models";
 import { IconLabel } from "@/components/common";
 import icons from "@/data/icons";
 import { useIconStyle, useIsNotMobile } from "@/hooks";
 
 interface TechnologyHeadingWithIconProps {
-  technology: APIResponse;
+  technology: Technology;
 }
 
 const TechnologyHeadingWithIcon = ({
@@ -19,7 +19,7 @@ const TechnologyHeadingWithIcon = ({
 
   return (
     <IconLabel
-      icon={getIcon(technology.id)}
+      icon={getIcon(technology)}
       iconWrapperProps={iconStyle}
       showIcon={isNotMobile}
     />

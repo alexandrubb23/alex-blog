@@ -1,23 +1,14 @@
+import { VStack } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
-import { Box, Heading, VStack } from "@chakra-ui/react";
 
 import { CenteredSpinner, ErrorAlert } from "@/components/common";
-import {
-  useAddClassToSpecificTags,
-  useCodeHighlighting,
-  useItemQuery,
-  useParseResponse,
-} from "@/hooks";
-import { HTMLObject } from "@/hooks/style/useAddClassToSpecificTags";
-import utilStyles from "@/styles/post.module.css";
+import { useCodeHighlighting, useItemQuery, useParseResponse } from "@/hooks";
 import { formatReadingTime } from "@/utils/formatReadingTime";
 import { PostMeta } from "../PostMeta";
-import CopyButtonsInjector from "../CopyButton/CopyButton";
+import PageBody from "./PageBody";
+import PageHeader from "./PageHeader";
 
-const htmlObject: HTMLObject = {
-  tags: ["pre", "code"],
-  className: "language-js",
-};
+// import CopyButtonsInjector from "../CopyButton/CopyButton";
 
 const PageContent = () => {
   useCodeHighlighting();
@@ -25,11 +16,9 @@ const PageContent = () => {
   const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
 
-  const tagsClass = useAddClassToSpecificTags(htmlObject);
+  if (!data) notFound();
 
   if (error) return <ErrorAlert error={error.message} />;
-
-  if (!data) notFound();
 
   if (isLoading || !parsedResponse) return <CenteredSpinner />;
 
@@ -38,24 +27,10 @@ const PageContent = () => {
 
   return (
     <VStack gap={5} alignItems="flex-start">
-      <CopyButtonsInjector />
-      <Heading
-        as="h1"
-        fontSize="2rem"
-        lineHeight="1.3"
-        fontWeight="800"
-        letterSpacing="-0.05rem"
-      >
-        {title}
-      </Heading>
+      {/* <CopyButtonsInjector /> */}
+      <PageHeader>{title}</PageHeader>
       <PostMeta readingTime={readingTime} date={date} />
-
-      <Box
-        className={utilStyles.post}
-        dangerouslySetInnerHTML={{
-          __html: tagsClass.applyClass(content),
-        }}
-      />
+      <PageBody>{content}</PageBody>
     </VStack>
   );
 };

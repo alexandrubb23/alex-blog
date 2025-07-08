@@ -7,17 +7,17 @@ import { isNotLastElement } from "@/utils/array";
 import { Fragment } from "react";
 
 interface EntityTechnologyItemsListProps {
-  technology: APIResponse;
+  data: PostData[];
 }
 
 const EntityTechnologyItemsList = ({
-  technology,
+  data,
 }: EntityTechnologyItemsListProps) => (
   <VStack align="left" paddingRight={{ base: "0", sm: "48px" }}>
-    {technology.data.map((postData: PostData, index) => (
+    {data.map((postData: PostData, index) => (
       <Fragment key={postData.id}>
         <EntityItem postData={postData} />
-        {isNotLastElement(technology.data, index) && (
+        {isNotLastElement(data, index) && (
           <Separator variant="dashed" mt="24px" mb="24px" />
         )}
       </Fragment>
