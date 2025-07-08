@@ -15,7 +15,7 @@ import { useNavigationMenu } from "@/hooks";
 
 const HamburgerMenu = ({ data }: MenuProps) => {
   const { open, onOpen, onClose } = useDisclosure();
-  const { isActiveItem, goToPage } = useNavigationMenu();
+  const { isActiveItem, handleItemClick } = useNavigationMenu();
 
   return (
     <Box w="100%">
@@ -34,7 +34,7 @@ const HamburgerMenu = ({ data }: MenuProps) => {
                 return (
                   <Menu.Item
                     key={id}
-                    onClick={() => goToPage(id)}
+                    onClick={handleItemClick(id)}
                     {...additionalProps}
                     value={title}
                     color={isActiveItem(id) ? "blue.500" : undefined}

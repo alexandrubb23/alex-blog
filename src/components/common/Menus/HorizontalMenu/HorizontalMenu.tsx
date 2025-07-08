@@ -4,7 +4,7 @@ import { MenuProps } from "@/components/common/Menus/models";
 import { useColorMode, useNavigationMenu } from "@/hooks";
 
 const HorizontalMenu = ({ data }: MenuProps) => {
-  const { isActiveItem, goToPage } = useNavigationMenu();
+  const { isActiveItem, handleItemClick } = useNavigationMenu();
   const { isDark } = useColorMode();
 
   return (
@@ -21,7 +21,7 @@ const HorizontalMenu = ({ data }: MenuProps) => {
             paddingX="10px"
             fontFamily="inter"
             paddingY="2px"
-            onClick={() => goToPage(item.id)}
+            onClick={handleItemClick(item.id)}
             height={7}
             fontSize="14px"
             fontWeight="500"

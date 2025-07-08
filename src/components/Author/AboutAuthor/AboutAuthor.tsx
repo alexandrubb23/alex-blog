@@ -1,15 +1,16 @@
 import { Box, Heading, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/navigation";
+import { useCallback } from "react";
 
 import { ROUTES } from "@/app/constants";
 import SolidButton from "@/components/Button/SolidButton";
-import { useIsHomePage } from "@/hooks";
 
 const AboutAuthor = () => {
   const router = useRouter();
-  const isHomePage = useIsHomePage();
 
-  if (!isHomePage) return null;
+  const handleReadAboutMe = useCallback(() => {
+    router.push(ROUTES.ABOUT_AUTHOR);
+  }, [router]);
 
   return (
     <VStack>
@@ -17,9 +18,7 @@ const AboutAuthor = () => {
         I&apos;m a Software Engineer that companies love to hire.
       </Heading>
       <Box mt="24px">
-        <SolidButton onClick={() => router.push(ROUTES.ABOUT_AUTHOR)}>
-          Read about me
-        </SolidButton>
+        <SolidButton onClick={handleReadAboutMe}>Read about me</SolidButton>
       </Box>
     </VStack>
   );
