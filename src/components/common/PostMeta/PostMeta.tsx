@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 
 import { Date } from "../Date";
 
-interface PostMetaProps {
+export interface PostMetaProps {
   readingTime: string;
   date: string;
 }

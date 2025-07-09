@@ -7,8 +7,7 @@ import { formatReadingTime } from "@/utils/formatReadingTime";
 import { PostMeta } from "../PostMeta";
 import PageBody from "./PageBody";
 import PageHeader from "./PageHeader";
-
-// import CopyButtonsInjector from "../CopyButton/CopyButton";
+import PageSubHeader from "./PageSubHeader";
 
 const PageContent = () => {
   useCodeHighlighting();
@@ -27,9 +26,8 @@ const PageContent = () => {
 
   return (
     <VStack gap={5} alignItems="flex-start">
-      {/* <CopyButtonsInjector /> */}
       <PageHeader>{title}</PageHeader>
-      <PostMeta readingTime={readingTime} date={date} />
+      <PageSubHeader readingTime={readingTime} date={date} />
       <PageBody>{content}</PageBody>
     </VStack>
   );

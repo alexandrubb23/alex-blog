@@ -30,6 +30,7 @@ const Layout = ({ contentClassName, children }: LayoutProps) => (
           lg: "container.lg",
         }}
         padding="5"
+        margin="0 auto"
       >
         {children}
       </GridItem>

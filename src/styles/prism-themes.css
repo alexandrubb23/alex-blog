@@ -1,9 +1,9 @@
-.chakra-ui-dark code[class*='language-'],
-.chakra-ui-dark pre[class*='language-'] {
+.chakra-ui-dark code[class*="language-"],
+.chakra-ui-dark pre[class*="language-"] {
   color: #f8f8f2;
   background: none;
   /* text-shadow: 0 1px rgba(0, 0, 0, 0.3); */
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -23,20 +23,20 @@
 }
 
 /* Code blocks */
-.chakra-ui-dark pre[class*='language-'] {
+.chakra-ui-dark pre[class*="language-"] {
   padding: 1em;
   margin: 0.5em 0;
   overflow: auto;
   border-radius: 0.3em;
 }
 
-.chakra-ui-dark :not(pre) > code[class*='language-'],
-.chakra-ui-dark pre[class*='language-'] {
+.chakra-ui-dark :not(pre) > code[class*="language-"],
+.chakra-ui-dark pre[class*="language-"] {
   background: #282a36;
 }
 
 /* Inline code */
-.chakra-ui-dark :not(pre) > code[class*='language-'] {
+.chakra-ui-dark :not(pre) > code[class*="language-"] {
   padding: 0.1em;
   border-radius: 0.3em;
   white-space: normal;
@@ -117,12 +117,12 @@
   cursor: help;
 }
 
-.chakra-ui-light code[class*='language-'],
-.chakra-ui-light pre[class*='language-'] {
+.chakra-ui-light code[class*="language-"],
+.chakra-ui-light pre[class*="language-"] {
   color: #393a34;
   background: none;
   /* text-shadow: 0 1px rgba(0, 0, 0, 0.3); */
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -141,35 +141,36 @@
   max-width: 100%;
 }
 
-.chakra-ui-light pre > code[class*='language-'] {
+.chakra-ui-light pre > code[class*="language-"] {
   font-size: 1em;
 }
 
-.chakra-ui-light pre[class*='language-']::-moz-selection,
-.chakra-ui-light pre[class*='language-'] ::-moz-selection,
-.chakra-ui-light code[class*='language-']::-moz-selection,
-.chakra-ui-light code[class*='language-'] ::-moz-selection {
+.chakra-ui-light pre[class*="language-"]::-moz-selection,
+.chakra-ui-light pre[class*="language-"] ::-moz-selection,
+.chakra-ui-light code[class*="language-"]::-moz-selection,
+.chakra-ui-light code[class*="language-"] ::-moz-selection {
   background: #b3d4fc;
 }
 
-.chakra-ui-light pre[class*='language-']::selection,
-.chakra-ui-light pre[class*='language-'] ::selection,
-.chakra-ui-light code[class*='language-']::selection,
-.chakra-ui-light code[class*='language-'] ::selection {
+.chakra-ui-light pre[class*="language-"]::selection,
+.chakra-ui-light pre[class*="language-"] ::selection,
+.chakra-ui-light code[class*="language-"]::selection,
+.chakra-ui-light code[class*="language-"] ::selection {
   background: #b3d4fc;
 }
 
 /* Code blocks */
-.chakra-ui-light pre[class*='language-'] {
-  padding: 1em;
+.chakra-ui-light pre[class*="language-"] {
+  background-color: white;
+  border-radius: 12px;
+  border: 1px solid #dddddd;
   margin: 0.5em 0;
   overflow: auto;
-  border: 1px solid #dddddd;
-  background-color: white;
+  padding: 1em;
 }
 
 /* Inline code */
-.chakra-ui-light :not(pre) > code[class*='language-'] {
+.chakra-ui-light :not(pre) > code[class*="language-"] {
   padding: 0.2em;
   padding-top: 1px;
   padding-bottom: 1px;
