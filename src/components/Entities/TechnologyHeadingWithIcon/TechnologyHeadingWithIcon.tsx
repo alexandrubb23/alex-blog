@@ -6,10 +6,12 @@ import icons from "@/data/icons";
 import { useIconStyle, useIsNotMobile } from "@/hooks";
 
 interface TechnologyHeadingWithIconProps {
+  label?: string;
   technology: Technology;
 }
 
 const TechnologyHeadingWithIcon = ({
+  label,
   technology,
 }: TechnologyHeadingWithIconProps) => {
   const iconStyle = useIconStyle();
@@ -21,6 +23,7 @@ const TechnologyHeadingWithIcon = ({
     <IconLabel
       icon={getIcon(technology)}
       iconWrapperProps={iconStyle}
+      label={label}
       showIcon={isNotMobile}
     />
   );

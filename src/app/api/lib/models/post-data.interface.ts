@@ -1,10 +1,12 @@
+import type { Technology } from ".";
+
 interface PostData {
   content: string;
   date: string;
   id: string;
   postType: string;
   title: string;
-  topic: string;
+  topic: Technology;
   description: string;
 }
 

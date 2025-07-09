@@ -10,9 +10,9 @@ interface PageLayoutProps {
 
 const PageLayout = ({ className }: PageLayoutProps) => (
   <Layout contentClassName={className}>
-    <AnimatedBox marginY={2}>
+    <AnimatedBox>
       <PageContent />
-      <BackToPreviousLocationLink />
+      {/* <BackToPreviousLocationLink /> */}
     </AnimatedBox>
   </Layout>
 );

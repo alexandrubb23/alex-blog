@@ -12,7 +12,7 @@ interface IconLabelProps {
 
 const IconLabel = ({
   icon: Icon,
-  iconSize,
+  iconSize = 22,
   iconWrapperProps,
   label,
   labelWrapperProps,

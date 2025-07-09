@@ -8,6 +8,7 @@ import { Separator } from "../Separator";
 import { CenteredSpinner, ErrorAlert } from "../common";
 import BlogHeader from "./BlogHeader";
 import { Box } from "@chakra-ui/react";
+import Container from "../Layout/Container";
 
 const Blog = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -30,18 +31,20 @@ const Blog = () => {
   };
 
   return (
-    <Box margin="64px auto 64px auto">
-      <BlogHeader
-        data={data}
-        isHomePage={isHomePage}
-        onSelect={handleSelected}
-        selectedId={selectedId}
-      />
-      <Separator mt="24px" />
-      <Separator mt={DIVIDER_MARGIN} />
-      <EntityList data={posts} />
-      <Separator />
-    </Box>
+    <Container>
+      <Box margin="64px auto 64px auto">
+        <BlogHeader
+          data={data}
+          isHomePage={isHomePage}
+          onSelect={handleSelected}
+          selectedId={selectedId}
+        />
+        <Separator mt="24px" />
+        <Separator mt={DIVIDER_MARGIN} />
+        <EntityList data={posts} />
+        <Separator />
+      </Box>
+    </Container>
   );
 };
 
