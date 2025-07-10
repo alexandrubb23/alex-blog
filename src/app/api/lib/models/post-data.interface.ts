@@ -6,7 +6,7 @@ interface PostData {
   id: string;
   postType: string;
   title: string;
-  topic: string;
+  topic: Technology;
   description: string;
   // TODO: Create migration
   image: string;

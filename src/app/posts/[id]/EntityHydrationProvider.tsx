@@ -1,19 +1,26 @@
-'use client';
+"use client";
 
-import Providers from '@/app/providers';
-import { PageLayout } from '@/components/common';
-import { HydrationBoundary } from '@tanstack/react-query';
+import type { PropsWithChildren } from "react";
+import { HydrationBoundary } from "@tanstack/react-query";
+
+import Providers from "@/app/providers";
+import { PageLayout } from "@/components/common";
 
 type Props = {
   dehydratedState: unknown;
 };
 
-export default function EntityHydrationProvider({ dehydratedState }: Props) {
+const EntityHydrationProvider = ({
+  children,
+  dehydratedState,
+}: PropsWithChildren<Props>) => {
   return (
     <Providers>
       <HydrationBoundary state={dehydratedState}>
-        <PageLayout />
+        <PageLayout>{children}</PageLayout>
       </HydrationBoundary>
     </Providers>
   );
-}
+};
+
+export default EntityHydrationProvider;

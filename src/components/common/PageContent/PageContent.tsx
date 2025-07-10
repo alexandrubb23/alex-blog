@@ -1,29 +1,12 @@
-import { Box, HStack, Heading, VStack } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
 
-import { ENTITIES } from "@/app/api/lib/constants";
-import type { Technology } from "@/app/api/lib/models";
-import { MoreEntities } from "@/components/Entities/MoreEntities";
-import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
-import Container from "@/components/Layout/Container";
+import type { PropsWithChildren } from "react";
+
 import { CenteredSpinner, ErrorAlert } from "@/components/common";
-import {
-  useCodeHighlighting,
-  useEntityQuery,
-  useItemQuery,
-  useParseResponse,
-} from "@/hooks";
-import { formatReadingTime } from "@/utils/formatReadingTime";
-import PageBody from "./PageBody";
-import PageHeader from "./PageHeader";
-import PageSubHeader from "./PageSubHeader";
-import MoreFromEntity from "./MoreFromEntity";
+import { useItemQuery, useParseResponse } from "@/hooks";
+import { PostProvider } from "./PostProvider";
 
-const NUMBER_OF_MORE_POSTS = "2";
-
-const PageContent = () => {
-  useCodeHighlighting();
-
+const PageContent = ({ children }: PropsWithChildren) => {
   const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
 
@@ -33,26 +16,7 @@ const PageContent = () => {
 
   if (isLoading || !parsedResponse) return <CenteredSpinner />;
 
-  const { id, title, date, content, topic } = parsedResponse;
-  const readingTime = formatReadingTime(content, id);
-
-  return (
-    <>
-      <Container>
-        <VStack gap={5} alignItems="flex-start">
-          <PageHeader>{title}</PageHeader>
-          <PageSubHeader readingTime={readingTime} date={date} />
-          <PageBody>{content}</PageBody>
-        </VStack>
-      </Container>
-      {/* TODO: Topic */}
-      <MoreFromEntity
-        excludePost={id}
-        limit={NUMBER_OF_MORE_POSTS}
-        topic={topic as Technology}
-      />
-    </>
-  );
+  return <PostProvider value={{ ...parsedResponse }}>{children}</PostProvider>;
 };
-// http://localhost:3000/api/posts?excludePost=project-structure-analysis-with-ai-insights-alex-blog&limit=aaa2&topic=React
+
 export default PageContent;

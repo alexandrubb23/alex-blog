@@ -1,21 +1,39 @@
 import { Box, HStack, Heading } from "@chakra-ui/react";
 
 import { ENTITIES } from "@/app/api/lib/constants";
-import type { Technology } from "@/app/api/lib/models";
 import { MoreEntities } from "@/components/Entities/MoreEntities";
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import Container from "@/components/Layout/Container";
-import { ErrorAlert } from "@/components/common";
+import { CenteredSpinner, ErrorAlert } from "@/components/common";
 import { useEntityQuery } from "@/hooks";
-import type { QueryFilter } from "@/app/api/lib/sql/getAllPosts";
+import { usePostContext } from "./PostProvider";
 
-const MoreFromEntity = (queryFilter: Required<QueryFilter>) => {
-  const { data } = useEntityQuery({ entity: ENTITIES.POSTS, queryFilter });
+const MoreFromEntity = ({ limit }: { limit: string }) => {
+  const { topic, id } = usePostContext();
 
-  if (!data) return <ErrorAlert error="No related posts found." />;
+  const { data: posts, isLoading } = useEntityQuery({
+    entity: ENTITIES.POSTS,
+    queryFilter: {
+      limit,
+      topic,
+      excludePost: id,
+    },
+  });
 
-  const topic = queryFilter.topic;
-  const relatedPost = data[0].data;
+  if (isLoading)
+    return (
+      <Container>
+        <CenteredSpinner height="200px" />
+      </Container>
+    );
+
+  if (!posts) return <ErrorAlert error="No related posts found. aa" />;
+
+  const { data: relatePosts = [] } = posts[0] ?? {};
+
+  if (relatePosts.length === 0) {
+    return null;
+  }
 
   return (
     <Box bg="header">
@@ -33,7 +51,7 @@ const MoreFromEntity = (queryFilter: Required<QueryFilter>) => {
           />
         </Heading>
         <HStack mt="25px" gap="1rem">
-          <MoreEntities data={relatedPost} />
+          <MoreEntities data={relatePosts} />
         </HStack>
       </Container>
     </Box>
