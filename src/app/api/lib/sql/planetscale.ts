@@ -1,12 +1,12 @@
-import { LRUCache } from 'lru-cache';
+import { LRUCache } from "lru-cache";
 
 import {
   PlanetScaleDatabase,
   drizzle,
-} from 'drizzle-orm/planetscale-serverless';
+} from "drizzle-orm/planetscale-serverless";
 
-import { env } from '@/env';
-import * as schema from '@/db/schema';
+import { env } from "@/env";
+import * as schema from "@/db/schema";
 
 export type DB = PlanetScaleDatabase<typeof schema>;
 
@@ -50,12 +50,14 @@ class PlanetScale {
   static async cachedQuery<T>(
     key: string,
     queryFn: () => Promise<T>,
-    ttl?: number
+    ttl?: number,
   ) {
     const cached = queryCache.get(key) as T | undefined;
     if (cached !== undefined) {
       console.log(`Cache hit for ${key}`);
       return cached;
+    } else {
+      console.log(`Cache miss for ${key}`);
     }
 
     const result = await queryFn();

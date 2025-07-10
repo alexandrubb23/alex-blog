@@ -1,8 +1,7 @@
-import { Technology } from ".";
 import PostData from "./post-data.interface";
 
 interface APIResponse {
-  id: Technology;
+  id: string;
   name: string;
   data: PostData[];
 }

@@ -14,7 +14,7 @@ const Blog = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const isHomePage = useIsHomePage();
-  const { data, isLoading } = useEntityQuery(ENTITIES.POSTS);
+  const { data, isLoading } = useEntityQuery({ entity: ENTITIES.POSTS });
 
   const posts = useMemo(() => {
     if (!selectedId || selectedId === "All") return data;

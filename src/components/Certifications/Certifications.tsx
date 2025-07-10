@@ -6,9 +6,9 @@ import { CenteredSpinner, ErrorAlert } from "@/components/common";
 import { useEntityQuery } from "@/hooks";
 
 const Certifications = () => {
-  const { data: certifications, isLoading } = useEntityQuery(
-    ENTITIES.CERTIFICATIONS,
-  );
+  const { data: certifications, isLoading } = useEntityQuery({
+    entity: ENTITIES.CERTIFICATIONS,
+  });
 
   if (isLoading) return <CenteredSpinner />;
 

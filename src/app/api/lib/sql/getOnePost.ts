@@ -1,16 +1,16 @@
-import { and, eq } from 'drizzle-orm';
+import { and, eq } from "drizzle-orm";
 
-import { Entity, PostData } from '@/app/api/lib/models';
+import { Entity, PostData } from "@/app/api/lib/models";
 
-import { posts, topics } from '@/db/schema';
-import PlanetScale from './planetscale';
+import { posts, topics } from "@/db/schema";
+import PlanetScale from "./planetscale";
 
 const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
   const cacheKey = `${entity}:${slug}`;
 
   const queryFn = async () => {
     const db = PlanetScale.connect();
-    const result = await db
+    const result = (await db
       .select({
         id: posts.slug,
         title: posts.title,
@@ -23,7 +23,7 @@ const getOnePost = async (entity: Entity, slug: string): Promise<PostData> => {
       .from(posts)
       .innerJoin(topics, eq(posts.topicId, topics.id))
       .where(and(eq(posts.postType, entity), eq(posts.slug, slug)))
-      .limit(1);
+      .limit(1)) as PostData[];
 
     return result[0];
   };

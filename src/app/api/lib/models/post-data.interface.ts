@@ -6,8 +6,10 @@ interface PostData {
   id: string;
   postType: string;
   title: string;
-  topic: Technology;
+  topic: string;
   description: string;
+  // TODO: Create migration
+  image: string;
 }
 
 export type PostDataOrUndefined = PostData | undefined;

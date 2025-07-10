@@ -1,15 +1,25 @@
 import { Box, HStack, Heading, VStack } from "@chakra-ui/react";
 import { notFound } from "next/navigation";
 
+import { ENTITIES } from "@/app/api/lib/constants";
+import type { Technology } from "@/app/api/lib/models";
+import { MoreEntities } from "@/components/Entities/MoreEntities";
+import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
+import Container from "@/components/Layout/Container";
 import { CenteredSpinner, ErrorAlert } from "@/components/common";
-import { useCodeHighlighting, useItemQuery, useParseResponse } from "@/hooks";
+import {
+  useCodeHighlighting,
+  useEntityQuery,
+  useItemQuery,
+  useParseResponse,
+} from "@/hooks";
 import { formatReadingTime } from "@/utils/formatReadingTime";
 import PageBody from "./PageBody";
 import PageHeader from "./PageHeader";
 import PageSubHeader from "./PageSubHeader";
-import { MoreEntities } from "@/components/Entities/MoreEntities";
-import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
-import Container from "@/components/Layout/Container";
+import MoreFromEntity from "./MoreFromEntity";
+
+const NUMBER_OF_MORE_POSTS = "2";
 
 const PageContent = () => {
   useCodeHighlighting();
@@ -35,27 +45,14 @@ const PageContent = () => {
           <PageBody>{content}</PageBody>
         </VStack>
       </Container>
-      <Box bg="header">
-        <Container>
-          <Heading
-            as="h2"
-            borderBottom="1.5px solid black"
-            fontSize="2rem"
-            fontWeight="500"
-            pb="1rem"
-          >
-            <TechnologyHeadingWithIcon
-              label={`More from ${topic}`}
-              technology={topic}
-            />
-          </Heading>
-          <HStack mt="25px">
-            <MoreEntities />
-          </HStack>
-        </Container>
-      </Box>
+      {/* TODO: Topic */}
+      <MoreFromEntity
+        excludePost={id}
+        limit={NUMBER_OF_MORE_POSTS}
+        topic={topic as Technology}
+      />
     </>
   );
 };
-
+// http://localhost:3000/api/posts?excludePost=project-structure-analysis-with-ai-insights-alex-blog&limit=aaa2&topic=React
 export default PageContent;
