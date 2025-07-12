@@ -1,14 +1,12 @@
-import { Flex, Grid, GridItem, Heading, VStack } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
 
 import { APIResponse } from "@/app/api/lib/models";
-import { EntityTechnologyItemsList } from "@/components/Entities/EntityTechnologyItemsList";
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import { Separator } from "@/components/Separator";
 import { AnimatedBox } from "@/components/common/Layout";
-import icons from "@/data/icons";
 import { isNotLastElement } from "@/utils/array";
 import { Fragment } from "react";
-import { useIsHomePage, useIsNotMobile } from "@/hooks";
+import TechnologyList from "./TechnologyList";
 
 interface EntityTechnologiesListProps {
   technologies: APIResponse[];
@@ -19,9 +17,6 @@ export const DIVIDER_MARGIN = "6px";
 const EntityTechnologiesList = ({
   technologies,
 }: EntityTechnologiesListProps) => {
-  const isHomePage = useIsHomePage();
-  const isNotMobile = useIsNotMobile();
-
   return (
     <>
       {technologies.map(({ id, name, data }, index) => (
@@ -31,18 +26,7 @@ const EntityTechnologiesList = ({
               <GridItem>
                 <TechnologyHeadingWithIcon technology={id} />
               </GridItem>
-              <GridItem pl={isNotMobile ? "12px" : 0}>
-                <Grid templateRows="auto auto" gap={4}>
-                  <Heading
-                    as={isHomePage ? "h3" : "h2"}
-                    fontSize="28px"
-                    w="full"
-                  >
-                    {name}
-                  </Heading>
-                  <EntityTechnologyItemsList data={data} />
-                </Grid>
-              </GridItem>
+              <TechnologyList name={name} data={data} />
             </Grid>
 
             <Separator

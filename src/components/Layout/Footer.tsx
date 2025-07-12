@@ -1,19 +1,16 @@
 import {
-  GridItem,
   Box,
-  VStack,
-  Heading,
+  GridItem,
   HStack,
+  Heading,
   IconButton,
+  VStack,
 } from "@chakra-ui/react";
-import { LuVoicemail } from "react-icons/lu";
-import { FaLinkedinIn } from "react-icons/fa6";
-import { FaGithub } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebook } from "react-icons/fa";
+import { FaFacebook, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 import { AUTHOR } from "@/app/constants";
-import SolidButton from "../Button/SolidButton";
+import SolidAnimatedButton from "../Button/SolidAnimatedButton";
 import { Separator } from "../Separator";
 
 const Footer = () => (
@@ -25,11 +22,13 @@ const Footer = () => (
             Got a project in mind? Let’s chat and turn your ideas into impactful
             solutions!
           </Heading>
-          <SolidButton visual="solidWhite">
-            <Box as="span" mr={2} color="black">
-              Let&apos;s work together
-            </Box>
-          </SolidButton>
+          <Box>
+            <SolidAnimatedButton visual="solidWhite">
+              <Box as="span" mr={2} color="black">
+                Let&apos;s work together
+              </Box>
+            </SolidAnimatedButton>
+          </Box>
         </VStack>
       </Box>
     </Box>

@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
 import { ROUTES } from "@/app/constants";
-import SolidButton from "@/components/Button/SolidButton";
+import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
 
 const AboutAuthor = () => {
   const router = useRouter();
@@ -18,7 +18,9 @@ const AboutAuthor = () => {
         I&apos;m a Software Engineer that companies love to hire.
       </Heading>
       <Box mt="24px">
-        <SolidButton onClick={handleReadAboutMe}>Read about me</SolidButton>
+        <SolidAnimatedButton onClick={handleReadAboutMe}>
+          Read about me
+        </SolidAnimatedButton>
       </Box>
     </VStack>
   );

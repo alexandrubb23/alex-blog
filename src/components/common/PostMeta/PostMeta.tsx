@@ -1,8 +1,8 @@
-import { Box } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 
 import { Date } from "../Date";
 
-export interface PostMetaProps {
+export interface PostMetaProps extends BoxProps {
   readingTime: string;
   date: string;
 }

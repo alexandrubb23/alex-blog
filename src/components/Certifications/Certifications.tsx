@@ -1,11 +1,12 @@
 "use client";
 
 import { ENTITIES } from "@/app/api/lib/constants";
-import { EntityList } from "@/components/Entities";
 import { CenteredSpinner, ErrorAlert } from "@/components/common";
 import { useEntityQuery } from "@/hooks";
 import Container from "../Layout/Container";
-import { Heading, Text } from "@chakra-ui/react";
+import { DoubleSeparator } from "../common/DoubleSeparator";
+import CertificationsList from "./CertificationsList";
+import CertificationsHeading from "./CertificationsHeading";
 
 const Certifications = () => {
   const { data: certifications, isLoading } = useEntityQuery({
@@ -19,17 +20,10 @@ const Certifications = () => {
 
   return (
     <Container>
-      <Heading as="h1">Certifications</Heading>
-      <Text mt={4}>
-        I have earned certifications in a wide range of software technologies,
-        including Docker, Git, React, Node.js, Python, JavaScript, TypeScript,
-        MySQL, and Java. These certifications validate my expertise and
-        proficiency in these areas, demonstrating my commitment to professional
-        growth and staying up-to-date with industry standards. I am equipped
-        with the knowledge and skills to excel in software development and
-        contribute effectively to projects using these technologies.
-      </Text>
-      <EntityList data={certifications} />
+      <CertificationsHeading />
+      <DoubleSeparator />
+      <CertificationsList certifications={certifications} />
+      <DoubleSeparator />
     </Container>
   );
 };

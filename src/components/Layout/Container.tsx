@@ -1,7 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 import type { PropsWithChildren } from "react";
 
-const Container = ({ children }: PropsWithChildren) => {
+const Container = ({ children, ...rest }: PropsWithChildren<BoxProps>) => {
   return (
     <Box
       maxWidth={{
@@ -12,6 +12,7 @@ const Container = ({ children }: PropsWithChildren) => {
       }}
       padding="5"
       margin="0 auto"
+      {...rest}
     >
       {children}
     </Box>
