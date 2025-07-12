@@ -1,52 +1,53 @@
-/* eslint-disable react/no-children-prop */
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Textarea,
-} from '@chakra-ui/react';
-import { BsPerson } from 'react-icons/bs';
-import { MdOutlineEmail } from 'react-icons/md';
+import { Box, Field, Input, Textarea, VStack } from "@chakra-ui/react";
+
+import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
 
 const ContactForm = () => {
   return (
-    <>
-      <FormControl id='name'>
-        <FormLabel>Your Name</FormLabel>
-        <InputGroup>
-          <InputLeftElement pointerEvents='none' children={<BsPerson />} />
-          <Input type='text' size='md' />
-        </InputGroup>
-      </FormControl>
-      <FormControl id='name'>
-        <FormLabel>Mail</FormLabel>
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents='none'
-            children={<MdOutlineEmail />}
-          />
-          <Input type='text' size='md' />
-        </InputGroup>
-      </FormControl>
-      <FormControl id='name'>
-        <FormLabel>Message</FormLabel>
-        <Textarea placeholder='message' />
-      </FormControl>
-      <FormControl id='name' float='right'>
-        <Button
-          variant='solid'
-          bg='#0D74FF'
-          color='white'
-          _hover={{}}
-          isDisabled={true}
-        >
-          Send Message
-        </Button>
-      </FormControl>
-    </>
+    <VStack gap={4} alignItems="flex-start">
+      <Field.Root gap={2}>
+        <Field.Label>Your Name</Field.Label>
+        <Input
+          placeholder="Enter your name"
+          borderWidth="1.5px"
+          _focus={{
+            focusRingColor: "primary",
+            focusRingWidth: "1.5px",
+            border: "none",
+          }}
+        />
+      </Field.Root>
+      <Field.Root gap={2}>
+        <Field.Label>Email</Field.Label>
+        <Input
+          placeholder="e.q. john@doe.com"
+          borderWidth="1.5px"
+          _focus={{
+            focusRingColor: "primary",
+            focusRingWidth: "1.5px",
+            border: "none",
+          }}
+        />
+      </Field.Root>
+      <Field.Root gap={2}>
+        <Field.Label>Message</Field.Label>
+        <Textarea
+          placeholder="message"
+          borderWidth="1.5px"
+          _focus={{
+            focusRingColor: "primary",
+            focusRingWidth: "1.5px",
+            border: "none",
+          }}
+          rows={6}
+        />
+      </Field.Root>
+      <Field.Root float="right" gap={2}>
+        <Box>
+          <SolidAnimatedButton type="submit">Send Message</SolidAnimatedButton>
+        </Box>
+      </Field.Root>
+    </VStack>
   );
 };
 

@@ -1,5 +1,5 @@
-import { IconLabel } from '@/components/common';
-import { useContactInfo } from '@/hooks';
+import { IconLabel } from "@/components/common";
+import { useContactInfo } from "@/hooks";
 
 const ContactInfo = () => {
   const { data: contactInfo } = useContactInfo();

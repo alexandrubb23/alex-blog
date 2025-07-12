@@ -1,7 +1,7 @@
-import { IconButton } from '@chakra-ui/react';
-import { IconType } from 'react-icons/lib';
+import { IconButton } from "@chakra-ui/react";
+import { IconType } from "react-icons/lib";
 
-export type SocialButtonVariant = 'blue' | 'nav-bar';
+export type SocialButtonVariant = "blue" | "nav-bar";
 
 interface SocialButtonProps {
   icon: IconType;
@@ -16,12 +16,9 @@ const SocialButton = ({
   onClick,
   variant,
 }: SocialButtonProps) => (
-  <IconButton
-    aria-label={label}
-    variant={variant}
-    icon={<Icon size='20px' />}
-    onClick={onClick}
-  />
+  <IconButton aria-label={label} onClick={onClick}>
+    <Icon size="20px" /> {label}
+  </IconButton>
 );
 
 export default SocialButton;

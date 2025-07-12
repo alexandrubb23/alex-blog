@@ -25,7 +25,11 @@ const IconLabel = ({
           <Icon size={iconSize} />
         </Box>
       )}
-      {label && <Box {...labelWrapperProps}>{label}</Box>}
+      {label && (
+        <Box ml={2} {...labelWrapperProps}>
+          {label}
+        </Box>
+      )}
     </Flex>
   );
 };

@@ -1,63 +1,49 @@
-/* eslint-disable react/no-children-prop */
 "use client";
 
-import {
-  ContactForm,
-  ContactInfo,
-  ContactSocialMedia,
-} from "@/components/Contact";
+import { ContactForm, ContactInfo } from "@/components/Contact";
+
 import { Layout } from "@/components/Layout";
+import Container from "@/components/Layout/Container";
+import { SocialMedia } from "@/components/SocialMedia";
+import { DoubleSeparator } from "@/components/common/DoubleSeparator";
 import {
   Box,
-  Flex,
+  Grid,
+  GridItem,
   HStack,
   Heading,
+  IconButton,
   Text,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
+import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Contact = () => {
   return (
     <Layout>
-      <Flex mt={4}>
-        <Wrap
-          gap={{
-            base: 10,
-            sm: 3,
-            md: 5,
-            lg: 10,
-          }}
-        >
-          <WrapItem>
-            <Box>
-              <Heading as="h1">Get in Touch</Heading>
-              <Text mt={4} color="gray.500">
-                Feel free to get in touch with me, and I&apos;ll be happy <br />
-                to assist you.
-              </Text>
-              <Box py={5}>
-                <VStack pl={0} gap={4} alignItems="flex-start">
-                  <ContactInfo />
-                </VStack>
-              </Box>
-              <HStack gap={1} alignItems="flex-start">
-                <ContactSocialMedia />
-              </HStack>
-            </Box>
-          </WrapItem>
-          <WrapItem>
-            <Box borderRadius="lg">
-              <Box>
-                <VStack gap={5}>
-                  <ContactForm />
-                </VStack>
-              </Box>
-            </Box>
-          </WrapItem>
-        </Wrap>
-      </Flex>
+      <Container>
+        <Box textAlign="center" mt="10px">
+          <Heading as="h1" fontSize="34px" fontWeight="700">
+            Get in touch
+          </Heading>
+          <Text mt={4}>
+            Feel free to get in touch with me, and I'll be happy to assist you.
+          </Text>
+        </Box>
+        <DoubleSeparator />
+        <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={10}>
+          <GridItem>
+            <ContactForm />
+          </GridItem>
+          <GridItem>
+            <VStack className="contact-info" gap="24px" alignItems="flex-start">
+              <ContactInfo />
+              <SocialMedia />
+            </VStack>
+          </GridItem>
+        </Grid>
+      </Container>
     </Layout>
   );
 };

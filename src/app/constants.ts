@@ -15,8 +15,8 @@ export const AUTHOR: Readonly<{
   PHONE_NUMBER: "+40-735 538 558",
   EMAIL_ADDRESS: "alex_bb23@yahoo.co.uk",
   ADDRESS: {
-    STREET: "Str. Sf. Vineri, nr. 23",
-    CITY: "Bucharest",
+    STREET: "Str. Castelului 6",
+    CITY: "Corbeanca",
     COUNTRY: "Romania",
   },
   PICTURE: "https://github.com/alexandrubb23.png",
