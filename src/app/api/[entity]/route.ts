@@ -5,17 +5,17 @@ import {
   APIResponse,
   PostData,
   RequestQueryParams,
-  Technology,
 } from "@/app/api/lib/models";
 import { handleEntityRequestService } from "@/app/api/lib/services";
 import { getAllPosts } from "@/app/api/lib/sql";
-import { NextRequest, NextResponse } from "next/server";
-import { type GetAllPosts } from "../lib/sql/getAllPosts";
 import { extractImageFromMarkdown } from "@/utils/parseMarkdownResponseToHTML";
-import { HTTPStatusError } from "../lib/classes/Errors";
+import { NextRequest } from "next/server";
+import { technologies } from "../lib/models/technology.type";
+import { type GetAllPosts } from "../lib/sql/getAllPosts";
+import { parseQuery } from "../lib/validators/parse-query";
 
-const querySchema = z.object({
-  topic: z.string().optional(),
+const schema = z.object({
+  topic: z.enum([...technologies]).optional(),
   excludePost: z.string().optional(),
   limit: z.coerce.number().int().positive().optional().default(100),
 });
@@ -82,17 +82,7 @@ const getData = async ({
 export const GET = async (req: NextRequest, { params }: RequestQueryParams) => {
   const response = await handleEntityRequestService(async () => {
     const { entity } = await params;
-
-    const searchParams = req.nextUrl.searchParams.entries();
-    const queryFilter = Object.fromEntries(searchParams);
-
-    const parsed = querySchema.safeParse(queryFilter);
-    if (!parsed.success) {
-      throw new HTTPStatusError(
-        "Invalid query parameters. Please check the request and try again.",
-        400,
-      );
-    }
+    const queryFilter = parseQuery(schema, req);
 
     return getData({ entity, queryFilter });
   });

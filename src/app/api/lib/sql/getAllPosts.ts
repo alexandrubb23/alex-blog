@@ -7,7 +7,7 @@ import { posts, topics } from "@/db/schema";
 import PlanetScale, { type DB } from "./planetscale";
 
 export type QueryFilter = {
-  limit?: string;
+  limit?: number;
   excludePost?: string;
   topic?: Technology;
 };
@@ -35,9 +35,7 @@ const getAllPosts = async ({
 
     const db = PlanetScale.connect();
 
-    const limit = queryFilter?.limit
-      ? parseInt(queryFilter.limit, 10)
-      : DEFAULT_POST_LIMIT;
+    const limit = queryFilter?.limit ? queryFilter.limit : DEFAULT_POST_LIMIT;
 
     const results: PostData[] = (await db
       .select({
