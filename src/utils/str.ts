@@ -11,3 +11,6 @@ export const buildSearchParams = (query?: Record<string, any>) => {
   const queryString = params.toString();
   return queryString ? `?${queryString}` : "";
 };
+
+export const shrunkText = (text: string, maxLength = 80) =>
+  text.length >= maxLength ? `${text.slice(0, maxLength)}...` : text;

@@ -19,25 +19,28 @@ const EntityTechnologiesList = ({
 }: EntityTechnologiesListProps) => {
   return (
     <>
-      {technologies.map(({ id, name, data }, index) => (
-        <Fragment key={id}>
-          <AnimatedBox delay={index * 100}>
-            <Grid templateColumns="auto 1fr" mt="24px">
-              <GridItem>
-                <TechnologyHeadingWithIcon technology={id} />
-              </GridItem>
-              <TechnologyList name={name} data={data} />
-            </Grid>
+      {technologies.map(({ id, name, data }, index) => {
+        const isLastElement = isNotLastElement(technologies, index);
+        return (
+          <Fragment key={id}>
+            <AnimatedBox delay={index * 100}>
+              <Grid templateColumns="auto 1fr" mt="24px">
+                <GridItem>
+                  <TechnologyHeadingWithIcon technology={id} />
+                </GridItem>
+                <TechnologyList name={name} data={data} />
+              </Grid>
 
-            <Separator
-              mt="40px"
-              mb={
-                isNotLastElement(technologies, index) ? "40px" : DIVIDER_MARGIN
-              }
-            />
-          </AnimatedBox>
-        </Fragment>
-      ))}
+              {isLastElement && (
+                <Separator
+                  mt="40px"
+                  mb={isLastElement ? "40px" : DIVIDER_MARGIN}
+                />
+              )}
+            </AnimatedBox>
+          </Fragment>
+        );
+      })}
     </>
   );
 };

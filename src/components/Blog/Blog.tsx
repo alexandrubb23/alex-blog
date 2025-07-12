@@ -2,13 +2,13 @@ import { useMemo, useState } from "react";
 
 import { ENTITIES } from "@/app/api/lib/constants";
 import { useEntityQuery, useIsHomePage } from "@/hooks";
+import { Box } from "@chakra-ui/react";
 import { EntityList } from "../Entities";
-import { DIVIDER_MARGIN } from "../Entities/EntityTechnologiesList/EntityTechnologiesList";
+import Container from "../Layout/Container";
 import { Separator } from "../Separator";
 import { CenteredSpinner, ErrorAlert } from "../common";
+import { DoubleSeparator } from "../common/DoubleSeparator";
 import BlogHeader from "./BlogHeader";
-import { Box } from "@chakra-ui/react";
-import Container from "../Layout/Container";
 
 const Blog = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -39,10 +39,9 @@ const Blog = () => {
           onSelect={handleSelected}
           selectedId={selectedId}
         />
-        <Separator mt="24px" />
-        <Separator mt={DIVIDER_MARGIN} />
+        <DoubleSeparator />
         <EntityList data={posts} />
-        <Separator />
+        <DoubleSeparator />
       </Box>
     </Container>
   );
