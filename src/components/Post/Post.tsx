@@ -3,12 +3,12 @@
 import { VStack } from "@chakra-ui/react";
 
 import Container from "@/components/Layout/Container";
-import PageHeader from "../common/PageContent/PageHeader";
-import PageSubHeader from "../common/PageContent/PageSubHeader";
-import PageBody from "../common/PageContent/PageBody";
-import MoreFromEntity from "../common/PageContent/MoreFromEntity";
 import { useCodeHighlighting } from "@/hooks";
 import { PageContent } from "../common";
+import MoreFromEntity from "../common/PageContent/MoreFromEntity";
+import PageBody from "../common/PageContent/PageBody";
+import PageHeader from "../common/PageContent/PageHeader";
+import PageSubHeader from "../common/PageContent/PageSubHeader";
 
 const NUMBER_OF_MORE_POSTS = "2";
 

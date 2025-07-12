@@ -10,6 +10,7 @@ const ContactForm = () => {
         <Input
           placeholder="Enter your name"
           borderWidth="1.5px"
+          bg="white"
           _focus={{
             focusRingColor: "primary",
             focusRingWidth: "1.5px",
@@ -22,6 +23,7 @@ const ContactForm = () => {
         <Input
           placeholder="e.q. john@doe.com"
           borderWidth="1.5px"
+          bg="white"
           _focus={{
             focusRingColor: "primary",
             focusRingWidth: "1.5px",
@@ -34,6 +36,7 @@ const ContactForm = () => {
         <Textarea
           placeholder="message"
           borderWidth="1.5px"
+          bg="white"
           _focus={{
             focusRingColor: "primary",
             focusRingWidth: "1.5px",

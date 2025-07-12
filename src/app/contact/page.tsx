@@ -1,23 +1,12 @@
 "use client";
 
-import { ContactForm, ContactInfo } from "@/components/Contact";
+import { Box, Grid, GridItem, Heading, Text, VStack } from "@chakra-ui/react";
 
-import { Layout } from "@/components/Layout";
-import Container from "@/components/Layout/Container";
-import { SocialMedia } from "@/components/SocialMedia";
+import { ContactForm, ContactInfo } from "@/components/Contact";
 import { DoubleSeparator } from "@/components/common/DoubleSeparator";
-import {
-  Box,
-  Grid,
-  GridItem,
-  HStack,
-  Heading,
-  IconButton,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import { FaFacebook, FaGithub, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { Layout } from "@/components/Layout";
+import { SocialMedia } from "@/components/SocialMedia";
+import Container from "@/components/Layout/Container";
 
 const Contact = () => {
   return (
@@ -34,13 +23,13 @@ const Contact = () => {
         <DoubleSeparator />
         <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={10}>
           <GridItem>
-            <ContactForm />
-          </GridItem>
-          <GridItem>
             <VStack className="contact-info" gap="24px" alignItems="flex-start">
               <ContactInfo />
               <SocialMedia />
             </VStack>
+          </GridItem>
+          <GridItem>
+            <ContactForm />
           </GridItem>
         </Grid>
       </Container>
