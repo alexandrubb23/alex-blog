@@ -2,11 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 
 import { APIResponse } from "@/app/api/lib/models";
 import type { GetAllPosts } from "@/app/api/lib/sql/getAllPosts";
-import { factoryEntity } from "@/services";
+import { factoryApiClient } from "@/services";
 import { getStaleTime } from "@/utils/api";
 
 const useEntityQuery = ({ entity, queryFilter }: GetAllPosts) => {
-  const httpService = factoryEntity<APIResponse[]>(entity);
+  const httpService = factoryApiClient<APIResponse[]>(entity);
 
   return useQuery<APIResponse[], Error>({
     queryKey: [entity, queryFilter],

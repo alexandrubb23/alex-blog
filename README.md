@@ -6,6 +6,7 @@
 [![Planetscale Serverless MySQL](https://img.shields.io/badge/Planetscale%20Serverless%20MySQL-1.19.0-blue?logo=planetscale)](https://planetscale.com)
 [![Drizzle ORM](https://img.shields.io/badge/Drizzle%20ORM-0.44.2-green?logo=drizzle)](https://github.com/drizzle-team/drizzle-orm)
 [![Zod](https://img.shields.io/badge/Zod-4.0.2-3E67B1?logo=zod)](https://github.com/colinhacks/zod)
+[![React Hook Form](https://img.shields.io/badge/React%20Hook%20Form-7.60.0-EC5990?logo=react)](https://github.com/react-hook-form/react-hook-form)
 
 This is my personal website showcasing information about myself, my certificates, blog posts, and contact details.
 
@@ -16,7 +17,8 @@ This is my personal website showcasing information about myself, my certificates
 - [Chakra UI](https://chakra-ui.com/) - A simple and modular component library for building accessible and responsive React applications.
 - [Planetscale Serverless SQL](https://planetscale.com) - A serverless SQL database platform for modern applications.
 - [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) - A lightweight ORM for Node.js that supports MySQL, PostgreSQL, and SQLite.
-- [Zod](https://github.com/colinhacks/zod) - For securing the API
+- [Zod](https://github.com/colinhacks/zod) - For securing API endpoints through robust security protocols.
+- [React Hook Form](https://github.com/react-hook-form/react-hook-form) - Performant, flexible and extensible forms with ease-to-use validation
 
 ## Features
 

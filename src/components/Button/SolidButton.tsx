@@ -1,10 +1,9 @@
 import { IoArrowForwardCircle } from "react-icons/io5";
 
-import { Button } from "./Button";
-import React, { PropsWithChildren } from "react";
 import { Box, ButtonProps, RecipeVariantProps } from "@chakra-ui/react";
+import React, { PropsWithChildren } from "react";
+import { Button } from "./Button";
 import buttonRecipe from "./button.recipe";
-import { IconType } from "react-icons";
 
 type ButtonVariantProps = RecipeVariantProps<typeof buttonRecipe> & ButtonProps;
 

@@ -54,6 +54,13 @@ const badges = [
     url: "https://github.com/colinhacks/zod",
     logo: "zod",
   },
+  {
+    name: "React Hook Form",
+    pkg: "react-hook-form",
+    color: "EC5990",
+    url: "https://github.com/react-hook-form/react-hook-form",
+    logo: "react",
+  },
 ];
 
 // Read README
@@ -82,7 +89,6 @@ for (const badge of badges) {
   if (badge.logoColor) queryParams.push(`logoColor=${badge.logoColor}`);
 
   const queryString = queryParams.length ? `?${queryParams.join("&")}` : "";
-
   const newBadge = `[![${badge.name}](https://img.shields.io/badge/${encodedName}-${version}-${badge.color}${queryString})](${badge.url})`;
 
   const updatedReadme = readme.replace(badgeRegex, newBadge);

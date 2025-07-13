@@ -8,7 +8,7 @@ import { CenteredSpinner, ErrorAlert } from "@/components/common";
 import { useEntityQuery } from "@/hooks";
 import { usePostContext } from "./PostProvider";
 
-const MoreFromEntity = ({ limit }: { limit: string }) => {
+const MoreFromEntity = ({ limit }: { limit: number }) => {
   const { topic, id } = usePostContext();
 
   const { data: posts, isLoading } = useEntityQuery({

@@ -29,6 +29,12 @@ export class APIClient<T> {
   findOne = (id: string) => {
     return this.get(id);
   };
+
+  post = <T extends Record<string, any>>(data: T) => {
+    return axiosInstance
+      .post<T>(this.endpoint, data)
+      .then((response) => response.data);
+  };
 }
 
 export default APIClient;

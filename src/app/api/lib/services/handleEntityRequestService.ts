@@ -22,11 +22,7 @@ export const handleRequestAndRespond = async <T>(handler: () => Promise<T>) => {
     const data = await handler();
     return NextResponse.json(data);
   } catch (error) {
-    const err =
-      error instanceof HttpError
-        ? error
-        : new HttpError("Invalid request data", 400);
-
+    const err = error as HttpError;
     return nextResponse(400, err.message);
   }
 };

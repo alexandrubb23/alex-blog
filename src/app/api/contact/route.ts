@@ -1,6 +1,8 @@
 import z from "zod";
+
 import { handleRequestAndRespond } from "../lib/services/handleEntityRequestService";
 import { validateRequest } from "../lib/validators/validate-request";
+import { sendEmail } from "@/utils/sendEmail";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -14,10 +16,11 @@ const schema = z.object({
 export const POST = async (req: Request) => {
   const handler = async () => {
     const body = await req.json();
-    validateRequest(schema, body);
-    return {
-      message: "Thank you for your message! I will get back to you soon.",
-    };
+    const result = validateRequest(schema, body);
+
+    await sendEmail(result.email, result.message);
+
+    return { success: true };
   };
 
   return handleRequestAndRespond(handler);

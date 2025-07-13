@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { singular } from "pluralize";
 
 import { Entity, PostData, QueryParams } from "@/app/api/lib/models";
-import { factoryEntity } from "@/services";
+import { factoryApiClient } from "@/services";
 import { getStaleTime } from "@/utils/api";
 import { usePostHref } from "../router";
 
@@ -12,7 +12,7 @@ interface EntityItemQuery {
 }
 
 const useEntityItemQuery = ({ entity, slug }: EntityItemQuery) => {
-  const httpService = factoryEntity<PostData>(entity);
+  const httpService = factoryApiClient<PostData>(entity);
 
   const path = usePostHref({
     postType: "",

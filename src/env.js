@@ -1,5 +1,5 @@
-import { createEnv } from '@t3-oss/env-nextjs';
-import { z } from 'zod';
+import { createEnv } from "@t3-oss/env-nextjs";
+import { z } from "zod";
 
 export const env = createEnv({
   /**
@@ -10,8 +10,9 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
     DATABASE_CACHE_TTL: z.coerce.number().int().positive(),
     NODE_ENV: z
-      .enum(['development', 'test', 'production'])
-      .default('development'),
+      .enum(["development", "test", "production"])
+      .default("development"),
+    RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required"),
   },
 
   /**
@@ -32,6 +33,7 @@ export const env = createEnv({
     DATABASE_URL: process.env.DATABASE_URL,
     DATABASE_CACHE_TTL: process.env.DATABASE_CACHE_TTL,
     NODE_ENV: process.env.NODE_ENV,
+    RESEND_API_KEY: process.env.RESEND_API_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
