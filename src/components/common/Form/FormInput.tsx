@@ -1,7 +1,7 @@
-import React, { ChangeEvent, PropsWithChildren } from "react";
 import { Field, InputProps, TextareaProps } from "@chakra-ui/react";
-import { useFormContext } from "react-hook-form";
+import React, { ChangeEvent, PropsWithChildren } from "react";
 import { ErrorMessage } from ".";
+import useFormContextProvider from "./useFormContextProvider";
 
 type Props = Partial<InputProps> | Partial<TextareaProps>;
 
@@ -16,7 +16,7 @@ const FormInput = ({
   as: Component,
   ...restProps
 }: FormInputProps) => {
-  const form = useFormContext();
+  const form = useFormContextProvider();
 
   const border = form.formState.errors[name as string]
     ? "1px dotted red"

@@ -16,50 +16,42 @@ const schema = z.object({
     .min(1, "Message is required"),
 });
 
-type FormData = z.infer<typeof schema>;
-
 const defaultValues = {
   name: "",
   email: "",
   message: "",
 };
 
-const ContactForm = () => {
-  const handleSubmit = (data: FormData) => {
-    const httpService = factoryApiClient(ENTITIES.CONTACT);
-    httpService.post(data);
-  };
-
-  return (
-    <Form
-      onSubmit={handleSubmit}
-      validationSchema={schema}
-      defaultValues={defaultValues}
-    >
-      <VStack gap={4} alignItems="flex-start">
-        <Field.Root gap={2}>
-          <Input name="name" placeholder="Enter your name">
-            Your Name
-          </Input>
-        </Field.Root>
-        <Field.Root gap={2}>
-          <Input placeholder="e.q. john@doe.com" name="email">
-            Email
-          </Input>
-        </Field.Root>
-        <Field.Root gap={2}>
-          <Textarea name="message" placeholder="Maximum 500 characters">
-            Message
-          </Textarea>
-        </Field.Root>
-        <Field.Root float="right" gap={2}>
-          <Box>
-            <SolidAnimatedButton>Send Message</SolidAnimatedButton>
-          </Box>
-        </Field.Root>
-      </VStack>
-    </Form>
-  );
-};
+const ContactForm = () => (
+  <Form
+    method="post"
+    action="contact"
+    validationSchema={schema}
+    defaultValues={defaultValues}
+  >
+    <VStack gap={4} alignItems="flex-start">
+      <Field.Root gap={2}>
+        <Input name="name" placeholder="Enter your name">
+          Your Name
+        </Input>
+      </Field.Root>
+      <Field.Root gap={2}>
+        <Input placeholder="e.q. john@doe.com" name="email">
+          Email
+        </Input>
+      </Field.Root>
+      <Field.Root gap={2}>
+        <Textarea name="message" placeholder="Maximum 500 characters">
+          Message
+        </Textarea>
+      </Field.Root>
+      <Field.Root float="right" gap={2}>
+        <Box>
+          <SolidAnimatedButton>Send Message</SolidAnimatedButton>
+        </Box>
+      </Field.Root>
+    </VStack>
+  </Form>
+);
 
 export default ContactForm;
