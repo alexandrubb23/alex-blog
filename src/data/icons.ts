@@ -30,7 +30,7 @@ const icons = {
   React: GrReactjs,
   Redux: SiRedux,
   TypeScript: SiTypescript,
-  DesignPatterns: GiGearStickPattern,
+  DesingPatterns: GiGearStickPattern,
   DataStructures: SiAlwaysdata,
 } as const;
 

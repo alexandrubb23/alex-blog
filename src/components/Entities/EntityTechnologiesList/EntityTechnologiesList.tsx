@@ -5,7 +5,6 @@ import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadi
 import { Separator } from "@/components/Separator";
 import { AnimatedBox } from "@/components/common/Layout";
 import { isNotLastElement } from "@/utils/array";
-import { Fragment } from "react";
 import TechnologyList from "./TechnologyList";
 
 interface EntityTechnologiesListProps {
@@ -22,23 +21,21 @@ const EntityTechnologiesList = ({
       {technologies.map(({ id, name, data }, index) => {
         const isLastElement = isNotLastElement(technologies, index);
         return (
-          <Fragment key={id}>
-            <AnimatedBox delay={index * 100}>
-              <Grid templateColumns="auto 1fr" mt="24px">
-                <GridItem>
-                  <TechnologyHeadingWithIcon technology={id} />
-                </GridItem>
-                <TechnologyList name={name} data={data} />
-              </Grid>
+          <AnimatedBox delay={index * 100} key={id}>
+            <Grid templateColumns="auto 1fr" mt="24px">
+              <GridItem>
+                <TechnologyHeadingWithIcon technology={id} />
+              </GridItem>
+              <TechnologyList name={name} data={data} />
+            </Grid>
 
-              {isLastElement && (
-                <Separator
-                  mt="40px"
-                  mb={isLastElement ? "40px" : DIVIDER_MARGIN}
-                />
-              )}
-            </AnimatedBox>
-          </Fragment>
+            {isLastElement && (
+              <Separator
+                mt="40px"
+                mb={isLastElement ? "40px" : DIVIDER_MARGIN}
+              />
+            )}
+          </AnimatedBox>
         );
       })}
     </>

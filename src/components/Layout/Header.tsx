@@ -9,7 +9,7 @@ const Header = () => (
   <GridItem area="header" bg="header">
     <Container
       margin="auto"
-      padding="5"
+      padding="1.25rem 1.25rem 3.375rem 1.25rem"
       maxWidth={{
         base: "100%",
         sm: "100%",

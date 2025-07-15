@@ -19,7 +19,7 @@ export const TechnologyList = ({
   return (
     <>
       <GridItem pl={isNotMobile ? "12px" : 0}>
-        <Grid templateRows="auto auto" gap={4}>
+        <Grid templateRows="auto auto" gap="1.5rem">
           <Heading as={isHomePage ? "h3" : "h2"} fontSize="28px" w="full">
             {name}
           </Heading>

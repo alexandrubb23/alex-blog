@@ -11,7 +11,7 @@ const LetsWorkTogether = () => (
         </Heading>
         <Box>
           <SolidAnimatedButton visual="solidWhite">
-            <Box as="span" mr={2} color="black">
+            <Box as="span" color="black">
               Let&apos;s work together
             </Box>
           </SolidAnimatedButton>

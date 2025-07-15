@@ -18,7 +18,13 @@ const EntityItem = ({ postData }: EntityItemProps) => {
 
   return (
     <>
-      <Heading key={title} as="h4" fontSize="24px" fontWeight={500}>
+      <Heading
+        key={title}
+        as="h4"
+        fontSize="24px"
+        fontWeight={500}
+        _hover={{ textDecoration: "underline", color: "primary" }}
+      >
         <Link href={href}>{title}</Link>
       </Heading>
       <PostMeta readingTime={readingTime} date={date} />

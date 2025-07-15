@@ -18,7 +18,7 @@ const EntityTechnologyItemsList = ({
       <Fragment key={postData.id}>
         <EntityItem postData={postData} />
         {isNotLastElement(data, index) && (
-          <Separator variant="dashed" mt="24px" mb="24px" />
+          <Separator variant="dashed" mt="15px" mb="15px" borderWidth="1px" />
         )}
       </Fragment>
     ))}
