@@ -30,6 +30,8 @@ const icons = {
   React: GrReactjs,
   Redux: SiRedux,
   TypeScript: SiTypescript,
+  DesignPatterns: GiGearStickPattern,
+  // TODO: Remove this typo after updating all references
   DesingPatterns: GiGearStickPattern,
   DataStructures: SiAlwaysdata,
 } as const;

@@ -8,7 +8,6 @@ import { shrunkText } from "@/utils/str";
 
 const PageBreadcrumb = () => {
   const { topic, title } = usePostContext();
-
   const Icon = icons[topic as keyof typeof icons];
 
   const shrunkedTitle = shrunkText(title);
