@@ -10,12 +10,7 @@ interface SocialButtonProps {
   variant?: SocialButtonVariant;
 }
 
-const SocialButton = ({
-  label,
-  icon: Icon,
-  onClick,
-  variant,
-}: SocialButtonProps) => (
+const SocialButton = ({ label, icon: Icon, onClick }: SocialButtonProps) => (
   <IconButton aria-label={label} onClick={onClick}>
     <Icon size="20px" /> {label}
   </IconButton>

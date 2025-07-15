@@ -1,9 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 
-import PostAuthor, { type PostMetaProps } from "./PostAuthor";
-import PostSocialShare from "./PostSocialShare";
-import { usePostContext } from "./PostProvider";
 import { formatReadingTime } from "@/utils/formatReadingTime";
+import PostAuthor from "./PostAuthor";
+import { usePostContext } from "./PostProvider";
+import PostSocialShare from "./PostSocialShare";
 
 const PageSubHeader = () => {
   const { id, content, date } = usePostContext();

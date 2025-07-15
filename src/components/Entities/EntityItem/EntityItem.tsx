@@ -1,4 +1,4 @@
-import { Box, Link as ChakraLink, Heading } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 import { PostData } from "@/app/api/lib/models";
 import { Link } from "@/components/common";

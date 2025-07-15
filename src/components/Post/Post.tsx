@@ -10,7 +10,7 @@ import PageBody from "../common/PageContent/PageBody";
 import PageHeader from "../common/PageContent/PageHeader";
 import PageSubHeader from "../common/PageContent/PageSubHeader";
 
-const NUMBER_OF_MORE_POSTS = "2";
+const NUMBER_OF_MORE_POSTS = 2;
 
 const Post = () => {
   useCodeHighlighting();

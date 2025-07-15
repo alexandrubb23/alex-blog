@@ -1,11 +1,8 @@
-import z from "zod";
 import { Box, Field, VStack } from "@chakra-ui/react";
+import z from "zod";
 
-import { ENTITIES } from "@/app/api/lib/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
-import { Input, Textarea } from "@/components/common/Form";
-import { factoryApiClient } from "@/services";
-import { Form } from "@/components/common/Form";
+import { Form, Input, Textarea } from "@/components/common/Form";
 
 const schema = z.object({
   name: z.string().min(1, "Name is required"),

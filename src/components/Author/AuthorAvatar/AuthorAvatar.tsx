@@ -1,11 +1,15 @@
-import Image from 'next/image';
+import { AUTHOR } from "@/app/constants";
+import Image from "next/image";
 
 interface AuthorAvatarProps {
-  alt: string;
-  fileName: string;
+  alt?: string;
+  fileName?: string;
 }
 
-const AuthorAvatar = ({ alt, fileName }: AuthorAvatarProps) => {
+const AuthorAvatar = ({
+  alt = AUTHOR.NAME,
+  fileName = AUTHOR.AVATAR,
+}: AuthorAvatarProps) => {
   return (
     <Image
       alt={alt}

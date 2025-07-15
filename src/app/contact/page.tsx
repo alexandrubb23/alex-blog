@@ -17,7 +17,8 @@ const Contact = () => {
             Get in touch
           </Heading>
           <Text mt={4}>
-            Feel free to get in touch with me, and I'll be happy to assist you.
+            Feel free to get in touch with me, and I&apos;ll be happy to assist
+            you.
           </Text>
         </Box>
         <DoubleSeparator />

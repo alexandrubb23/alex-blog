@@ -1,7 +1,7 @@
 import { IoArrowForwardCircle } from "react-icons/io5";
 
 import { Box, ButtonProps, RecipeVariantProps } from "@chakra-ui/react";
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import { Button } from "./Button";
 import buttonRecipe from "./button.recipe";
 
@@ -12,13 +12,13 @@ export interface SolidButtonProps
   icon?: React.ReactNode;
 }
 
-const SolidButton: React.FC<SolidButtonProps> = ({
+const SolidButton = ({
   children,
   onClick,
   visual = "solidPurple",
   icon = <IoArrowForwardCircle size={28} />,
   ...restProps
-}) => (
+}: SolidButtonProps) => (
   <Button
     alignItems="center"
     display="flex"

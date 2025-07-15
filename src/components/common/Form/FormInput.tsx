@@ -1,12 +1,12 @@
 import { Field, InputProps, TextareaProps } from "@chakra-ui/react";
-import React, { ChangeEvent, PropsWithChildren } from "react";
+import { ChangeEvent, PropsWithChildren, ElementType } from "react";
 import { ErrorMessage } from ".";
 import useFormContextProvider from "./useFormContextProvider";
 
 type Props = Partial<InputProps> | Partial<TextareaProps>;
 
 type FormInputProps = PropsWithChildren<{
-  as: React.ElementType;
+  as: ElementType;
 }> &
   Props;
 

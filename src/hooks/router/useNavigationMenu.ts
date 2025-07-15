@@ -7,15 +7,18 @@ const useNavigationMenu = () => {
 
   const isActiveItem = (href: string) => pathName === href;
 
-  const goToPage = (href: string) => {
-    router.push(href);
-  };
+  const goToPage = useCallback(
+    (href: string) => {
+      router.push(href);
+    },
+    [router],
+  );
 
   const handleItemClick = useCallback(
     (id: string) => () => {
       goToPage(id);
     },
-    [router],
+    [goToPage],
   );
 
   return { isActiveItem, goToPage, handleItemClick };

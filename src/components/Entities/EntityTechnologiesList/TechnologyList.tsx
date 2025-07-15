@@ -1,12 +1,8 @@
 import { Grid, GridItem, Heading } from "@chakra-ui/react";
 
-import { APIResponse, PostData } from "@/app/api/lib/models";
+import { PostData } from "@/app/api/lib/models";
 import { EntityTechnologyItemsList } from "@/components/Entities/EntityTechnologyItemsList";
 import { useIsHomePage, useIsNotMobile } from "@/hooks";
-
-interface EntityTechnologiesListProps {
-  technologies: APIResponse[];
-}
 
 export const DIVIDER_MARGIN = "6px";
 

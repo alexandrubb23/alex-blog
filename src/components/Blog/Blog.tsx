@@ -5,7 +5,6 @@ import { useEntityQuery, useIsHomePage } from "@/hooks";
 import { Box } from "@chakra-ui/react";
 import { EntityList } from "../Entities";
 import Container from "../Layout/Container";
-import { Separator } from "../Separator";
 import { CenteredSpinner, ErrorAlert } from "../common";
 import { DoubleSeparator } from "../common/DoubleSeparator";
 import BlogHeader from "./BlogHeader";

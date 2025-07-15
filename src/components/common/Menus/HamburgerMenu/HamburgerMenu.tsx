@@ -1,14 +1,6 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Menu,
-  MenuItem,
-  Portal,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { Box, Button, Menu, Portal, useDisclosure } from "@chakra-ui/react";
 import { MdOutlineClose } from "react-icons/md";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 import { MenuProps } from "@/components/common/Menus/models";
 import { useNavigationMenu } from "@/hooks";

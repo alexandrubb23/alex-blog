@@ -15,8 +15,6 @@ import {
 import { GiGearStickPattern } from "react-icons/gi";
 import { TbBrandNextjs } from "react-icons/tb";
 
-type Technology = keyof typeof icons;
-
 const icons = {
   Django: SiDjango,
   Docker: SiDocker,

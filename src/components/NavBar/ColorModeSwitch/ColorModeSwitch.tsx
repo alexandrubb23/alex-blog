@@ -1,17 +1,14 @@
-import { IconButton } from '@chakra-ui/react';
-import { FaMoon, FaSun } from 'react-icons/fa';
+import { IconButton } from "@chakra-ui/react";
 
-import { useColorMode } from '@/hooks';
+import { useColorMode } from "@/hooks";
 
 const ColorModeSwitch = () => {
   const { isDark, toggleColorMode } = useColorMode();
 
   return (
     <IconButton
-      aria-label={`switch to ${isDark ? 'light' : 'dark'} mode`}
-      icon={isDark ? <FaSun /> : <FaMoon />}
+      aria-label={`switch to ${isDark ? "light" : "dark"} mode`}
       onClick={toggleColorMode}
-      variant='nav-bar'
     />
   );
 };

@@ -1,4 +1,4 @@
-import { SQL, and, desc, eq, ne, sql } from "drizzle-orm";
+import { and, desc, eq, ne, sql } from "drizzle-orm";
 
 import { NotFoundError } from "@/app/api/lib/classes/Errors";
 import { ENTITIES } from "@/app/api/lib/constants";

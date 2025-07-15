@@ -1,6 +1,6 @@
 import { VStack } from "@chakra-ui/react";
 
-import { APIResponse, PostData } from "@/app/api/lib/models";
+import { PostData } from "@/app/api/lib/models";
 import { EntityItem } from "@/components/Entities/EntityItem";
 import { Separator } from "@/components/Separator";
 import { isNotLastElement } from "@/utils/array";
