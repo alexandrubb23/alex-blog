@@ -1,6 +1,6 @@
 import { IconLabel } from "@/components/common";
 import { useContactInfo } from "@/hooks";
-import { Box, VStack } from "@chakra-ui/react";
+import { VStack } from "@chakra-ui/react";
 
 const ContactInfo = () => {
   const { data: contactInfo } = useContactInfo();
