@@ -15,7 +15,7 @@ const Author = ({ name }: AuthorProps) => {
   if (!isHomePage) return null;
 
   return (
-    <VStack gap="1rem" mt="56px">
+    <VStack gap="1rem" mt="56px" pb="2.175rem">
       <AuthorAvatar alt={name} fileName="alex.png" />
       <AuthorName name={name} />
       <AboutAuthor />
