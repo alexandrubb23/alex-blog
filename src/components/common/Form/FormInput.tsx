@@ -1,5 +1,5 @@
 import { Field, InputProps, TextareaProps } from "@chakra-ui/react";
-import { ChangeEvent, PropsWithChildren, ElementType } from "react";
+import { ChangeEvent, ElementType, PropsWithChildren } from "react";
 import { ErrorMessage } from ".";
 import useFormContextProvider from "./useFormContextProvider";
 
@@ -35,8 +35,6 @@ const FormInput = ({
         fontSize="18px"
         _focus={{
           focusRingColor: "primary",
-          focusRingWidth: "1.5px",
-          border: "none",
         }}
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           form.setValue(name as string, e.target.value, {
