@@ -16,7 +16,7 @@ const Contact = () => {
           <Heading as="h1" fontSize="34px" fontWeight="700">
             Get in touch
           </Heading>
-          <Text mt={4}>
+          <Text mt={4} fontSize="20px">
             Feel free to get in touch with me, and I&apos;ll be happy to assist
             you.
           </Text>

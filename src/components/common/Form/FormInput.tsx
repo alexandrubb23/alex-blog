@@ -24,11 +24,15 @@ const FormInput = ({
 
   return (
     <>
-      <Field.Label>{children}</Field.Label>
+      <Field.Label fontSize="18px" fontWeight="500">
+        {children}
+      </Field.Label>
       <Component
         borderWidth="1.5px"
         bg="white"
         border={border}
+        padding="25px 16px"
+        fontSize="18px"
         _focus={{
           focusRingColor: "primary",
           focusRingWidth: "1.5px",
