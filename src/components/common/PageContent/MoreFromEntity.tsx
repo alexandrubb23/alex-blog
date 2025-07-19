@@ -27,7 +27,7 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
       </Container>
     );
 
-  if (!posts) return <ErrorAlert error="No related posts found. aa" />;
+  if (!posts) return <ErrorAlert error="No related posts found." />;
 
   const { data: relatePosts = [] } = posts[0] ?? {};
 
