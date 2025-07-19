@@ -19,27 +19,33 @@ type SocialMedia = {
   button: ({ icon, label, onClick }: ButtonProps) => JSX.Element;
 };
 
-const PostButton = ({ children, ...rest }: ChakraButtonProps) => (
-  <ChakraButton
-    border="1.5px solid black"
-    borderRadius="2rem"
-    fontWeight="500"
-    size="sm"
-    variant="outline"
-    {...rest}
-  >
-    {children}
-  </ChakraButton>
-);
+const PostButton = ({ children, ...rest }: ChakraButtonProps) => {
+  return (
+    <ChakraButton
+      border="1.5px solid black"
+      borderRadius="2rem"
+      fontWeight="500"
+      size="sm"
+      variant="outline"
+      {...rest}
+    >
+      {children}
+    </ChakraButton>
+  );
+};
 
-const SocialShareButton = ({ icon: Icon, label, onClick }: ButtonProps) => (
-  <PostButton
-    onClick={() => onClick?.(`${env.NEXT_PUBLIC_BASE_URL}${usePathname()}`)}
-  >
-    <Icon />
-    {label}
-  </PostButton>
-);
+const SocialShareButton = ({ icon: Icon, label, onClick }: ButtonProps) => {
+  const pathname = usePathname();
+
+  return (
+    <PostButton
+      onClick={() => onClick?.(`${env.NEXT_PUBLIC_BASE_URL}${pathname}`)}
+    >
+      <Icon />
+      {label}
+    </PostButton>
+  );
+};
 
 const CopyToClipboardButton = ({ icon: Icon, label }: ButtonProps) => {
   const clipboard = useClipboard({
