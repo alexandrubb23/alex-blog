@@ -3,7 +3,7 @@ import { Flex } from "@chakra-ui/react";
 import { formatReadingTime } from "@/utils/formatReadingTime";
 import PostAuthor from "./PostAuthor";
 import { usePostContext } from "./PostProvider";
-import PostSocialShare from "./PostSocialShare";
+import SocialShareButtons from "./SocialShareButtons";
 
 const PageSubHeader = () => {
   const { id, content, date } = usePostContext();
@@ -20,7 +20,7 @@ const PageSubHeader = () => {
       w="100%"
     >
       <PostAuthor readingTime={readingTime} date={date} />
-      <PostSocialShare />
+      <SocialShareButtons />
     </Flex>
   );
 };
