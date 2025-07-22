@@ -2,7 +2,7 @@ import { Grid, GridItem, Heading } from "@chakra-ui/react";
 
 import { PostData } from "@/app/api/lib/models";
 import { EntityTechnologyItemsList } from "@/components/Entities/EntityTechnologyItemsList";
-import { useIsHomePage, useIsNotMobile } from "@/hooks";
+import { useIsNotMobile } from "@/hooks";
 
 export const DIVIDER_MARGIN = "6px";
 
@@ -13,7 +13,6 @@ export const TechnologyList = ({
   name: string;
   data: PostData[];
 }) => {
-  const isHomePage = useIsHomePage();
   const isNotMobile = useIsNotMobile();
 
   return (
@@ -21,7 +20,7 @@ export const TechnologyList = ({
       <GridItem pl={isNotMobile ? "12px" : 0}>
         <Grid templateRows="auto auto" gap="1.5rem">
           <Heading
-            as={isHomePage ? "h3" : "h2"}
+            as="h3"
             fontSize={{
               sm: "1.25rem",
               md: "1.5rem",
