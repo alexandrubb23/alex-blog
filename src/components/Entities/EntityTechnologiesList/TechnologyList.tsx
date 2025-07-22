@@ -20,7 +20,24 @@ export const TechnologyList = ({
     <>
       <GridItem pl={isNotMobile ? "12px" : 0}>
         <Grid templateRows="auto auto" gap="1.5rem">
-          <Heading as={isHomePage ? "h3" : "h2"} fontSize="28px" w="full">
+          <Heading
+            as={isHomePage ? "h3" : "h2"}
+            fontSize={{
+              sm: "1.25rem",
+              md: "1.5rem",
+              lg: "1.75rem",
+              xl: "2rem",
+              "2xl": "2.25rem",
+            }}
+            w="full"
+            lineHeight={{
+              sm: "1.75rem",
+              md: "2rem",
+              lg: "2.25rem",
+              xl: "2.5rem",
+              "2xl": "2.75rem",
+            }}
+          >
             {name}
           </Heading>
           <EntityTechnologyItemsList data={data} />
