@@ -14,7 +14,17 @@ const AboutAuthor = () => {
 
   return (
     <VStack textAlign="center">
-      <Heading as="h2" fontSize="24px" fontWeight={400}>
+      <Heading
+        as="h2"
+        fontSize={{
+          smDown: "18px",
+          sm: "20px",
+          md: "22px",
+          lg: "24px",
+          xl: "26px",
+        }}
+        fontWeight={400}
+      >
         I&apos;m a Software Engineer that companies love to hire.
       </Heading>
       <Box mt="24px">
