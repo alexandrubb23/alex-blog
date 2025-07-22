@@ -17,11 +17,11 @@ const AboutAuthor = () => {
       <Heading
         as="h2"
         fontSize={{
-          smDown: "18px",
-          sm: "20px",
-          md: "22px",
-          lg: "24px",
-          xl: "26px",
+          smDown: "20px",
+          sm: "22px",
+          md: "24px",
+          lg: "26px",
+          xl: "28px",
         }}
         fontWeight={400}
       >
