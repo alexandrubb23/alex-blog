@@ -31,6 +31,7 @@ const ItemsList = ({ data, onClick, addItems, selectedId }: ItemsListProps) => {
       flexDirection="row"
       gap="28px"
       listStyleType="none"
+      hideBelow="md"
     >
       {ids?.map((id, index) => (
         <List.Item key={id} onClick={handleItemClick(id)} cursor="pointer">

@@ -13,7 +13,7 @@ const AboutAuthor = () => {
   }, [router]);
 
   return (
-    <VStack>
+    <VStack textAlign="center">
       <Heading as="h2" fontSize="24px" fontWeight={400}>
         I&apos;m a Software Engineer that companies love to hire.
       </Heading>
