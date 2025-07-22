@@ -2,9 +2,9 @@ import { Breadcrumb } from "@chakra-ui/react";
 import { LuHome } from "react-icons/lu";
 
 import icons from "@/data/icons";
-import { usePostContext } from "./PostProvider";
-import Link from "next/link";
 import { shrunkText } from "@/utils/str";
+import Link from "next/link";
+import { usePostContext } from "./PostProvider";
 
 const PageBreadcrumb = () => {
   const { topic, title } = usePostContext();
@@ -13,7 +13,7 @@ const PageBreadcrumb = () => {
   const shrunkedTitle = shrunkText(title);
 
   return (
-    <Breadcrumb.Root>
+    <Breadcrumb.Root hideBelow="md">
       <Breadcrumb.List listStyleType="none">
         <Breadcrumb.Item fontSize="16px" fontWeight="600">
           <Link
