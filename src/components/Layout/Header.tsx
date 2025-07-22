@@ -1,9 +1,9 @@
-import { GridItem, Container, Box, LinkBox, Button } from "@chakra-ui/react";
+import { Box, Container, GridItem, LinkBox } from "@chakra-ui/react";
 import Link from "next/link";
-import { RiDownload2Fill } from "react-icons/ri";
 
 import { AUTHOR } from "@/app/constants";
-import { NavBar, Author } from "..";
+import { Author, NavBar } from "..";
+import ResumeButton from "../NavBar/ResumeButton";
 
 const Header = () => (
   <GridItem area="header" bg="header">
@@ -32,17 +32,7 @@ const Header = () => (
         <Box display="flex" flex="1 1 1">
           <NavBar />
         </Box>
-        <Box display="flex" flex="0 0 100px">
-          <Button
-            variant="outline"
-            border="2px solid"
-            borderColor="black"
-            borderRadius="2rem"
-          >
-            <RiDownload2Fill />
-            My Resume
-          </Button>
-        </Box>
+        <ResumeButton />
       </Box>
       <Author name={AUTHOR.NAME} />
     </Container>

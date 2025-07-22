@@ -8,7 +8,7 @@ const HorizontalMenu = ({ data }: MenuProps) => {
   const { isDark } = useColorMode();
 
   return (
-    <HStack w="100%" fontSize="12px">
+    <HStack w="100%" fontSize="12px" hideBelow="md">
       {data.map((item) => {
         const isActive = isActiveItem(item.id);
 

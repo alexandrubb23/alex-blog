@@ -10,7 +10,7 @@ const HamburgerMenu = ({ data }: MenuProps) => {
   const { isActiveItem, handleItemClick } = useNavigationMenu();
 
   return (
-    <Box w="100%">
+    <Box w="100%" hideFrom="md">
       <Menu.Root onExitComplete={onClose}>
         <Menu.Trigger asChild>
           <Button variant="outline" size="sm" onClick={onOpen}>
