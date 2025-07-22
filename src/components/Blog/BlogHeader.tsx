@@ -17,7 +17,16 @@ const BlogHeader = ({
   selectedId,
 }: BlogHeaderProps) => (
   <Box display="flex" justifyContent="space-between">
-    <Heading as={isHomePage ? "h2" : "h1"} fontSize="28px" fontWeight={500}>
+    <Heading
+      as={isHomePage ? "h2" : "h1"}
+      fontSize={{
+        base: "22px",
+        sm: "22x",
+        md: "24px",
+        lg: "26x",
+      }}
+      fontWeight={500}
+    >
       From the Blog
     </Heading>
     <ItemsList

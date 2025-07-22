@@ -31,14 +31,24 @@ const Blog = () => {
 
   return (
     <Container>
-      <Box margin="64px auto 64px auto">
+      <Box
+        margin={{
+          base: 0,
+          md: "64px auto 64px auto",
+        }}
+      >
         <BlogHeader
           data={data}
           isHomePage={isHomePage}
           onSelect={handleSelected}
           selectedId={selectedId}
         />
-        <DoubleSeparator />
+        <DoubleSeparator
+          mt={{
+            sm: 5,
+            smDown: 5,
+          }}
+        />
         <EntityList data={posts} />
         <DoubleSeparator />
       </Box>

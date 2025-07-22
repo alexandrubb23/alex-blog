@@ -1,7 +1,7 @@
-import { Box } from "@chakra-ui/react";
+import { Box, BoxProps } from "@chakra-ui/react";
 
-const DoubleSeparator = () => (
-  <Box borderBottom="6px double" width="100%" mt="32px" mb="32px" />
+const DoubleSeparator = (props: BoxProps) => (
+  <Box borderBottom="6px double" width="100%" mt="32px" mb="32px" {...props} />
 );
 
 export default DoubleSeparator;
