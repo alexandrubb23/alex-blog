@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Box, Grid, GridItem } from "@chakra-ui/react";
 
 import { APIResponse } from "@/app/api/lib/models";
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
@@ -24,9 +24,30 @@ const EntityTechnologiesList = ({
           <AnimatedBox delay={index * 100} key={id}>
             <Grid templateColumns="auto 1fr" mt="24px">
               <GridItem>
-                <TechnologyHeadingWithIcon technology={id} />
+                <TechnologyHeadingWithIcon
+                  technology={id}
+                  iconBoxStyle={{
+                    hideBelow: "md",
+                  }}
+                />
               </GridItem>
-              <TechnologyList name={name} data={data} />
+              <GridItem>
+                <Box
+                  alignItems="center"
+                  height="fit-content"
+                  justifyContent="center"
+                  display="flex"
+                >
+                  <TechnologyHeadingWithIcon
+                    technology={id}
+                    iconBoxStyle={{
+                      hideFrom: "md",
+                      marginBottom: 4,
+                    }}
+                  />
+                </Box>
+                <TechnologyList name={name} data={data} />
+              </GridItem>
             </Grid>
 
             {isLastElement && (

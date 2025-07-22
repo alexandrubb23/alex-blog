@@ -1,12 +1,12 @@
+import { BoxProps } from "@chakra-ui/react";
 import { useMemo } from "react";
 
 import { Technology } from "@/app/api/lib/models";
 import { IconLabel } from "@/components/common";
 import icons from "@/data/icons";
-import { useIconStyle, useIsNotMobile } from "@/hooks";
-import { BoxProps } from "@chakra-ui/react";
+import { useIconStyle } from "@/hooks";
 
-interface TechnologyHeadingWithIconProps {
+interface TechnologyHeadingWithIconProps extends BoxProps {
   label?: string;
   technology: Technology;
   iconSize?: string | number;
@@ -20,8 +20,6 @@ const TechnologyHeadingWithIcon = ({
   iconBoxStyle,
 }: TechnologyHeadingWithIconProps) => {
   const iconStyle = useIconStyle({ ...iconBoxStyle });
-  const isNotMobile = useIsNotMobile();
-
   const getIcon = useMemo(() => (icon: keyof typeof icons) => icons[icon], []);
 
   return (
@@ -29,7 +27,6 @@ const TechnologyHeadingWithIcon = ({
       icon={getIcon(technology)}
       iconWrapperProps={iconStyle}
       label={label}
-      showIcon={isNotMobile}
       iconSize={iconSize}
     />
   );
