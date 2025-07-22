@@ -26,8 +26,8 @@ export const TechnologyList = ({
               sm: "1.25rem",
               md: "1.5rem",
               lg: "1.75rem",
-              xl: "2rem",
-              "2xl": "2.25rem",
+              xl: "1.75rem",
+              "2xl": "1.75rem",
             }}
             w="full"
             lineHeight={{

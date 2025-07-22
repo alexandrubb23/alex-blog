@@ -24,7 +24,7 @@ const EntityItem = ({ postData }: EntityItemProps) => {
         fontSize={{
           base: "18px",
           sm: "20px",
-          md: "22px",
+          md: "24px",
           lg: "24px",
         }}
         fontWeight={500}
