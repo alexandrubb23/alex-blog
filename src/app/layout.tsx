@@ -1,11 +1,11 @@
-import { Inter } from 'next/font/google';
-import Script from 'next/script';
+import { Inter } from "next/font/google";
+import Script from "next/script";
 
-import { AUTHOR } from './constants';
+import { AUTHOR } from "./constants";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
-const title = `Home | ${AUTHOR.NAME}`;
+const title = `Home aaa | ${AUTHOR.NAME}`;
 
 export function generateMetadata() {
   return {
@@ -13,6 +13,9 @@ export function generateMetadata() {
     openGraph: {
       title,
       images: [AUTHOR.PICTURE],
+    },
+    verification: {
+      google: "Za2lcQmbSqNcRvTWGWgwuI40EhMTDycc60wkj3rfp_c",
     },
   };
 }
@@ -23,13 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en'>
-      <Script src='/js/colorMode.js' />
-      <meta
-        name='google-site-verification'
-        content='Za2lcQmbSqNcRvTWGWgwuI40EhMTDycc60wkj3rfp_c'
-      />
+    <html lang="en">
       <body className={inter.className} suppressHydrationWarning={true}>
+        <Script src="/js/colorMode.js" />
         {children}
       </body>
     </html>
