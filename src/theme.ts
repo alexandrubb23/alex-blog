@@ -26,6 +26,19 @@ const tokens = defineTokens({
 
 const config = defineConfig({
   globalCss: {
+    ":root": {
+      "--bar-width": "30px",
+      "--bar-height": "2px",
+      "--hamburger-gap": "8px",
+      "--foreground-color": "#000",
+      "--background-color": "rgba(0, 0, 0, 0.5)",
+      "--backdrop-filter": "20px",
+      "--hamburger-margin": "18px",
+      "--animation-timing": ".5s ease-in-out",
+      "--hamburger-height":
+        "calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2)",
+      "--body-background": "#000",
+    },
     body: {
       backgroundColor: "#F9F7F1",
       fontFamily: "inter",

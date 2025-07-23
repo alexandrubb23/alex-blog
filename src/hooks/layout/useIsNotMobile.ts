@@ -1,11 +1,20 @@
-import { useMediaQuery } from "@chakra-ui/react";
+import { useBreakpointValue } from "@chakra-ui/react";
 
-const MIN_WIDTH = 700; // Minimum width for non-mobile devices
+const DEVICES = {
+  MOBILE: "mobile",
+  DESKTOP: "desktop",
+} as const;
+
+const { MOBILE, DESKTOP } = DEVICES;
 
 const useIsNotMobile = () => {
-  const [isNotMobile] = useMediaQuery([`(min-width: ${MIN_WIDTH}px)`]);
+  const device =
+    useBreakpointValue({
+      base: MOBILE,
+      md: DESKTOP,
+    }) ?? MOBILE;
 
-  return isNotMobile;
+  return device !== "mobile";
 };
 
 export default useIsNotMobile;
