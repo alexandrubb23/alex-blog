@@ -4,7 +4,12 @@ import type { PropsWithChildren } from "react";
 const PageHeading = ({ children }: PropsWithChildren) => (
   <Heading
     as="h1"
-    fontSize="34px"
+    fontSize={{
+      md: "34px",
+      lg: "36px",
+      base: "28px",
+      sm: "30px",
+    }}
     lineHeight="120%"
     fontWeight="600"
     letterSpacing="-0.05rem"

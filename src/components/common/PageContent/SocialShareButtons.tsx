@@ -62,7 +62,7 @@ const SocialShareButtons = () => {
   };
 
   return (
-    <HStack gap={2} hideBelow="md">
+    <HStack gap={2}>
       {socialMedia.map((button) => renderButton(button, shareUrl))}
     </HStack>
   );

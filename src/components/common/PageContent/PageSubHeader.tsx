@@ -15,6 +15,13 @@ const PageSubHeader = () => {
       borderColor="black"
       borderTop="2px solid"
       justify="space-between"
+      flexDir={{
+        base: "column",
+        sm: "column",
+        md: "row",
+        lg: "row",
+      }}
+      gap="1.2rem"
       mt="10px"
       padding="16px 0 16px 0"
       w="100%"
