@@ -7,6 +7,7 @@ import { TechnologyListProps } from "./TechnologyListProps";
 const MobileTechnologySelector = ({
   technologies,
   handleItemClick,
+  selectedId,
 }: TechnologyListProps) => {
   return (
     <Menu.Root>
@@ -20,12 +21,11 @@ const MobileTechnologySelector = ({
           <Menu.Content
             minW="fit-content"
             display="flex"
-            gap={1}
+            gap={2}
             flexDirection="column"
           >
             {technologies.map((technology) => (
               <Menu.Item
-                _hover={{ borderRadius: "full" }}
                 cursor="pointer"
                 display={"flex"}
                 flexDir="column"
@@ -33,15 +33,17 @@ const MobileTechnologySelector = ({
                 onClick={handleItemClick(technology)}
                 padding={0}
                 value={technology}
+                borderRadius="full"
+                bg={selectedId === technology ? "header" : "transparent"}
               >
                 <TechnologyHeadingWithIcon
                   technology={technology}
-                  iconSize={15}
+                  iconSize={20}
                   key={technology}
                   iconBoxStyle={{
                     bg: "non",
                     color: "primary",
-                    padding: 2,
+                    padding: 3,
                   }}
                 />
               </Menu.Item>
