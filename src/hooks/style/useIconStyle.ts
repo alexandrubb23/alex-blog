@@ -9,7 +9,6 @@ const useIconStyle = (props: BoxProps = {}) => {
     borderRadius: "full",
     color: isDark ? "blue.500" : "white",
     padding: "10px",
-    // marginRight: "12px",
     ...props,
   };
 };
