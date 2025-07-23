@@ -12,7 +12,13 @@ const MobileTechnologySelector = ({
   return (
     <Menu.Root>
       <Menu.Trigger asChild outline="none">
-        <IconButton bg="transparent" color="primary" aria-label="Menu">
+        <IconButton
+          bg="transparent"
+          color="primary"
+          aria-label="Menu"
+          size="2xl"
+          h="2rem"
+        >
           <IoFilterSharp />
         </IconButton>
       </Menu.Trigger>
