@@ -25,6 +25,7 @@ const PageSubHeader = () => {
       mt="10px"
       padding="16px 0 16px 0"
       w="100%"
+      fontSize={{ base: "12px", sm: "sm" }}
     >
       <PostAuthor readingTime={readingTime} date={date} />
       <SocialShareButtons />

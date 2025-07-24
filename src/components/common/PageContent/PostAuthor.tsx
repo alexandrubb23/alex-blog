@@ -15,7 +15,13 @@ const PostAuthor = ({ readingTime, date }: PostMetaProps) => (
       <Avatar.Image src={`/images/${AUTHOR.AVATAR}`} />
     </Avatar.Root>
     <Box>
-      <Text fontSize="18" fontWeight="500">
+      <Text
+        fontSize={{
+          base: "16px",
+          sm: "18px",
+        }}
+        fontWeight="500"
+      >
         {AUTHOR.NAME}
       </Text>
       <PostMeta readingTime={readingTime} date={date} />
