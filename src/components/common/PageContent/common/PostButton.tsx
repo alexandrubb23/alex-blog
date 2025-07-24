@@ -22,7 +22,12 @@ const PostButton = ({ children, ...rest }: ButtonProps) => (
       sm: "sm",
     }}
     variant="outline"
-    fontSize={{ base: "9px", sm: "sm" }}
+    px={{ base: 1, sm: 3 }}
+    minW="0"
+    flex="1"
+    whiteSpace="nowrap"
+    overflow="hidden"
+    textOverflow="ellipsis"
     {...rest}
   >
     {children}
