@@ -17,7 +17,10 @@ const PostButton = ({ children, ...rest }: ButtonProps) => (
     border="1.5px solid black"
     borderRadius="2rem"
     fontWeight="500"
-    size="sm"
+    size={{
+      base: "xs",
+      sm: "sm",
+    }}
     variant="outline"
     {...rest}
   >
