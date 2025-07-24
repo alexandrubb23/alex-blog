@@ -9,18 +9,16 @@ export interface PostMetaProps {
 }
 
 const PostAuthor = ({ readingTime, date }: PostMetaProps) => (
-  <HStack gap="16px">
-    <Avatar.Root size="xl">
+  <HStack gap={{ base: "12px", md: "16px" }}>
+    <Avatar.Root size={{ base: "lg", md: "xl" }}>
       <Avatar.Fallback name={AUTHOR.NAME} />
       <Avatar.Image src={`/images/${AUTHOR.AVATAR}`} />
     </Avatar.Root>
     <Box>
       <Text
-        fontSize={{
-          base: "16px",
-          sm: "18px",
-        }}
+        fontSize={{ base: "16px", md: "18px" }}
         fontWeight="500"
+        lineHeight="1.2"
       >
         {AUTHOR.NAME}
       </Text>
