@@ -1,16 +1,16 @@
 import { Box, Breadcrumb } from "@chakra-ui/react";
+import Link from "next/link";
 import { LuHome } from "react-icons/lu";
 
 import icons from "@/data/icons";
-import { shrunkText } from "@/utils/str";
-import Link from "next/link";
+import { useShrunkedText } from "@/hooks/layout";
 import { usePostContext } from "./PostProvider";
 
 const PageBreadcrumb = () => {
   const { topic, title } = usePostContext();
-  const Icon = icons[topic as keyof typeof icons];
+  const shrunkedTitle = useShrunkedText(title);
 
-  const shrunkedTitle = shrunkText(title);
+  const Icon = icons[topic];
 
   return (
     <Breadcrumb.Root>
@@ -41,7 +41,7 @@ const PageBreadcrumb = () => {
           <Breadcrumb.CurrentLink
             color="gray.500"
             fontSize={{
-              base: "11px",
+              base: "12px",
               sm: "16px",
             }}
             lineHeight={{
