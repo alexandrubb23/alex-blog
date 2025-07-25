@@ -5,7 +5,7 @@ import { AUTHOR } from "./constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const title = `Home aaa | ${AUTHOR.NAME}`;
+const title = `Home | ${AUTHOR.NAME}`;
 
 export function generateMetadata() {
   return {
