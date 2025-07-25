@@ -33,7 +33,7 @@ const useShrunkenText = () => {
         const size = options ?? maxLengths;
         return shrunkText(text, size[breakpoint]);
       },
-    [breakpoints],
+    [],
   );
 
   return shrunkenText(breakpoint);
