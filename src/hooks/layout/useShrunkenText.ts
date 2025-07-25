@@ -6,15 +6,6 @@ import { shrunkText } from "@/utils/str";
 type Breakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
 type BreakpointMap = Record<Breakpoint, number>;
 
-const breakpoints = [
-  "base",
-  "sm",
-  "md",
-  "lg",
-  "xl",
-  "2xl",
-] satisfies Breakpoint[];
-
 const defaultMaxLengths: BreakpointMap = {
   base: 20,
   sm: 40,
@@ -23,6 +14,8 @@ const defaultMaxLengths: BreakpointMap = {
   xl: 100,
   "2xl": 120,
 };
+
+const breakpoints = Object.keys(defaultMaxLengths);
 
 const useShrunkenText = () => {
   const breakpoint = (useBreakpoint({ breakpoints }) ?? "base") as Breakpoint;
