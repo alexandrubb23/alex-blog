@@ -1,9 +1,9 @@
 import { Box, Breadcrumb } from "@chakra-ui/react";
-import Link from "next/link";
 import { LuHome } from "react-icons/lu";
 
 import icons from "@/data/icons";
 import { useShrunkenText } from "@/hooks/layout";
+import { GlobalLink } from "../Link";
 import { usePostContext } from "./PostProvider";
 
 const PageBreadcrumb = () => {
@@ -13,28 +13,24 @@ const PageBreadcrumb = () => {
   const Icon = icons[topic];
 
   return (
-    <Breadcrumb.Root>
+    <Breadcrumb.Root w="100%" display="flex" justifyContent="center">
       <Breadcrumb.List listStyleType="none">
         <Breadcrumb.Item fontSize="16px" fontWeight="600">
-          <Link
-            href="/"
-            passHref
-            style={{ display: "flex", alignItems: "center", gap: "8px" }}
-          >
+          <GlobalLink href="/">
             <LuHome />
             <Box as="span" hideBelow="md">
               Home
             </Box>
-          </Link>
+          </GlobalLink>
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item fontSize="16px" fontWeight="600">
-          <Breadcrumb.Link href="#">
+          <GlobalLink href="/">
             <Icon />
             <Box as="span" hideBelow="md">
               {topic}
             </Box>
-          </Breadcrumb.Link>
+          </GlobalLink>
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item fontSize="16px" fontWeight="600">

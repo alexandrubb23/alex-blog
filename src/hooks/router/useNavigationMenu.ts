@@ -5,14 +5,17 @@ const useNavigationMenu = () => {
   const router = useRouter();
   const pathName = usePathname();
 
-  const isActiveItem = (href: string) => pathName === href;
+  const isActiveItem = useCallback(
+    (href: string) => pathName === href,
+    [pathName],
+  );
 
   const goToPage = useCallback(
     (href: string) => {
       if (isActiveItem(href)) return;
       router.push(href);
     },
-    [router],
+    [router, isActiveItem],
   );
 
   const handleItemClick = useCallback(

@@ -1,7 +1,7 @@
-import { Link } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 
 import { Entity } from "@/app/api/lib/models";
+import GlobalLink from "./GlobalLink";
 
 export interface EntitySlug {
   slug: string;
@@ -16,13 +16,12 @@ const EntityLink = ({
   entity,
   children,
 }: PropsWithChildren<EntityLinkProps>) => (
-  <Link
-    aria-label={`${entity} link to ${slug}`}
+  <GlobalLink
     href={`/${entity}/${slug}`}
-    _hover={{ textDecoration: "underline", color: "primary" }}
+    _hover={{ textDecoration: "underline" }}
   >
     {children}
-  </Link>
+  </GlobalLink>
 );
 
 export default EntityLink;

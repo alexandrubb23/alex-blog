@@ -1,7 +1,7 @@
 import { Heading } from "@chakra-ui/react";
 
 import { PostData } from "@/app/api/lib/models";
-import { Link } from "@/components/common";
+import { GlobalLink } from "@/components/common/Link";
 import { PostMeta } from "@/components/common/PostMeta";
 import { usePostHref } from "@/hooks/router";
 import { formatReadingTime } from "@/utils/formatReadingTime";
@@ -27,7 +27,7 @@ const EntityItem = ({ postData }: EntityItemProps) => {
         fontWeight={500}
         _hover={{ textDecoration: "underline", color: "primary" }}
       >
-        <Link href={href}>{title}</Link>
+        <GlobalLink href={href}>{title}</GlobalLink>
       </Heading>
       <PostMeta readingTime={readingTime} date={date} />
     </>
