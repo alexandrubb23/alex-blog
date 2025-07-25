@@ -22,10 +22,7 @@ const EntityItem = ({ postData }: EntityItemProps) => {
         key={title}
         as="h4"
         fontSize={{
-          base: "18px",
-          sm: "20px",
-          md: "24px",
-          lg: "24px",
+          base: "24px",
         }}
         fontWeight={500}
         _hover={{ textDecoration: "underline", color: "primary" }}

@@ -9,11 +9,9 @@ const AuthorName = ({ name }: AuthorNameProps) => {
     <Heading
       as="h1"
       fontSize={{
+        sm: "28px",
         smDown: "28px",
-        sm: "30px",
-        md: "32x",
-        lg: "34px",
-        xl: "36px",
+        lg: "36px",
       }}
       lineHeight="2.5rem"
       size="2xl"

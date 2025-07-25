@@ -18,10 +18,8 @@ const AboutAuthor = () => {
         as="h2"
         fontSize={{
           smDown: "20px",
-          sm: "22px",
-          md: "24px",
-          lg: "26px",
-          xl: "28px",
+          sm: "20px",
+          lg: "24px",
         }}
         fontWeight={400}
       >

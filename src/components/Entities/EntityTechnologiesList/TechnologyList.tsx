@@ -22,20 +22,12 @@ export const TechnologyList = ({
           <Heading
             as="h3"
             fontSize={{
-              sm: "1.25rem",
-              md: "1.5rem",
-              lg: "1.75rem",
-              xl: "1.75rem",
-              "2xl": "1.75rem",
+              sm: "20px",
+              lg: "28px",
             }}
             w="full"
-            lineHeight={{
-              sm: "1.75rem",
-              md: "2rem",
-              lg: "2.25rem",
-              xl: "2.5rem",
-              "2xl": "2.75rem",
-            }}
+            textAlign="center"
+            color="#434343"
           >
             {name}
           </Heading>
