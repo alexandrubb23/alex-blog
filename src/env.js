@@ -13,6 +13,14 @@ export const env = createEnv({
       .enum(["development", "test", "production"])
       .default("development"),
     RESEND_API_KEY: z.string().min(1, "RESEND_API_KEY is required"),
+    GOOGLE_VERIFICATION: z
+      .string()
+      .min(1)
+      .optional()
+      .refine(
+        (val) => process.env.NODE_ENV !== "production" || !!val,
+        "GOOGLE_VERIFICATION is required in production",
+      ),
   },
 
   /**
@@ -23,7 +31,7 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_BASE_URL: z
       .url()
-    .default("https://www.alexandru-barbulescu.com"),
+      .default("https://www.alexandru-barbulescu.com"),
   },
 
   /**
@@ -36,6 +44,7 @@ export const env = createEnv({
     DATABASE_CACHE_TTL: process.env.DATABASE_CACHE_TTL,
     NODE_ENV: process.env.NODE_ENV,
     RESEND_API_KEY: process.env.RESEND_API_KEY,
+    GOOGLE_VERIFICATION: process.env.GOOGLE_VERIFICATION,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

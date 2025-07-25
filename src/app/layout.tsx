@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import Script from "next/script";
 
+import { env } from "@/env";
 import { AUTHOR } from "./constants";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,7 +16,7 @@ export function generateMetadata() {
       images: [AUTHOR.PICTURE],
     },
     verification: {
-      google: "Za2lcQmbSqNcRvTWGWgwuI40EhMTDycc60wkj3rfp_c",
+      google: env.GOOGLE_VERIFICATION,
     },
   };
 }
