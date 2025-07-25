@@ -3,12 +3,12 @@ import Link from "next/link";
 import { LuHome } from "react-icons/lu";
 
 import icons from "@/data/icons";
-import { useShrunkedText } from "@/hooks/layout";
+import { useShrunkenText } from "@/hooks/layout";
 import { usePostContext } from "./PostProvider";
 
 const PageBreadcrumb = () => {
   const { topic, title } = usePostContext();
-  const shrunkedTitle = useShrunkedText(title);
+  const shrunkenText = useShrunkenText();
 
   const Icon = icons[topic];
 
@@ -48,7 +48,7 @@ const PageBreadcrumb = () => {
               base: "1.2",
             }}
           >
-            {shrunkedTitle}
+            {shrunkenText(title)}
           </Breadcrumb.CurrentLink>
         </Breadcrumb.Item>
       </Breadcrumb.List>
