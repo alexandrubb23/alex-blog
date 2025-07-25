@@ -18,7 +18,12 @@ const HamburgerMenu = ({ data }: MenuProps) => {
               backgroundColor="transparent"
             >
               <Drawer.Body>
-                <MenuList data={data} flexDirection="column" />
+                <MenuList
+                  data={data}
+                  flexDirection="column"
+                  gap="48px"
+                  fontSize="28px"
+                />
               </Drawer.Body>
             </Drawer.Content>
           </Drawer.Positioner>

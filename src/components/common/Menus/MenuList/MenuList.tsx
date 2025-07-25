@@ -8,6 +8,9 @@ type MenuListProps = MenuProps & BoxProps;
 const MenuList = ({ data, ...restProps }: MenuListProps) => {
   const { isActiveItem, handleItemClick } = useNavigationMenu();
 
+  const textDecoration = (id: string) =>
+    isActiveItem(id) ? "line-through" : "none";
+
   return (
     <Box
       alignItems="center"
@@ -21,15 +24,19 @@ const MenuList = ({ data, ...restProps }: MenuListProps) => {
       {data.map((item) => (
         <li key={item.id}>
           <Link
-            textDecoration={isActiveItem(item.id) ? "line-through" : "none"}
+            textDecoration={textDecoration(item.id)}
+            color={isActiveItem(item.id) ? "primary" : "black"}
             borderRadius="full"
             paddingX="10px"
             fontFamily="inter"
             paddingY="2px"
             onClick={handleItemClick(item.id)}
             height={7}
-            fontSize="14px"
             fontWeight="500"
+            _hover={{
+              textDecoration: textDecoration(item.id),
+              color: "primary",
+            }}
           >
             {item.title}
           </Link>
