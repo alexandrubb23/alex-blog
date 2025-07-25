@@ -1,7 +1,7 @@
-import { shrunkText } from "@/utils/str";
 import { useBreakpoint } from "@chakra-ui/react";
-
 import { useCallback } from "react";
+
+import { shrunkText } from "@/utils/str";
 
 type Breakpoint = "base" | "sm" | "md" | "lg" | "xl" | "2xl";
 type BreakpointMap = Record<Breakpoint, number>;
@@ -15,7 +15,7 @@ const breakpoints = [
   "2xl",
 ] satisfies Breakpoint[];
 
-const maxLengths: BreakpointMap = {
+const defaultMaxLengths: BreakpointMap = {
   base: 20,
   sm: 40,
   md: 60,
@@ -27,16 +27,15 @@ const maxLengths: BreakpointMap = {
 const useShrunkenText = () => {
   const breakpoint = (useBreakpoint({ breakpoints }) ?? "base") as Breakpoint;
 
-  const shrunkenText = useCallback(
-    (breakpoint: Breakpoint) =>
-      (text: string, options?: Partial<BreakpointMap>) => {
-        const size = options ?? maxLengths;
-        return shrunkText(text, size[breakpoint]);
-      },
-    [],
+  const shrink = useCallback(
+    (text: string, overrides?: Partial<BreakpointMap>) => {
+      const sizes = { ...defaultMaxLengths, ...overrides };
+      return shrunkText(text, sizes[breakpoint]);
+    },
+    [breakpoint],
   );
 
-  return shrunkenText(breakpoint);
+  return shrink;
 };
 
 export default useShrunkenText;

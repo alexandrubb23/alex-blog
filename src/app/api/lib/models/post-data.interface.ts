@@ -1,10 +1,10 @@
-import type { Technology } from ".";
+import type { Entity, Technology } from ".";
 
 interface PostData {
   content: string;
   date: string;
   id: string;
-  postType: string;
+  postType: Entity;
   title: string;
   topic: Technology;
   description: string;

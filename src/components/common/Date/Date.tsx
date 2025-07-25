@@ -1,14 +1,19 @@
-import { parseISO, format } from 'date-fns';
+import { Box } from "@chakra-ui/react";
+import { format, parseISO } from "date-fns";
 
 interface DateProps {
   dateString: string;
 }
 
 const Date = ({ dateString }: DateProps) => {
-  if (dateString === '') return null;
+  if (dateString === "") return null;
 
   const date = parseISO(dateString);
-  return <time dateTime={dateString}>{format(date, 'LLLL d, yyyy')}</time>;
+  return (
+    <Box as="time" data-time={dateString}>
+      {format(date, "LLLL d, yyyy")}
+    </Box>
+  );
 };
 
 export default Date;
