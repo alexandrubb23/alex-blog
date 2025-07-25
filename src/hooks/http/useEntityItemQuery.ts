@@ -15,7 +15,7 @@ const useEntityItemQuery = ({ entity, slug }: EntityItemQuery) => {
   const httpService = factoryApiClient<PostData>(entity);
 
   const path = usePostHref({
-    postType: "",
+    postType: entity,
     id: slug,
   });
 
