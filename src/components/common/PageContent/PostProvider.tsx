@@ -2,16 +2,7 @@ import { createContext, useContext } from "react";
 
 import { PostData } from "@/app/api/lib/models";
 
-export const PostContext = createContext<PostData>({
-  id: "",
-  title: "",
-  date: "",
-  content: "",
-  topic: "React",
-  description: "",
-  image: "",
-  postType: "post",
-});
+export const PostContext = createContext<PostData | undefined>(undefined);
 
 export const usePostContext = () => {
   const context = useContext(PostContext);
