@@ -23,10 +23,14 @@ export const TechnologyList = ({
             as="h3"
             fontSize={{
               sm: "20px",
+              md: "26px",
               lg: "28px",
             }}
             w="full"
-            textAlign="center"
+            textAlign={{
+              base: "center",
+              md: "left",
+            }}
             color="#434343"
           >
             {name}

@@ -13,6 +13,7 @@ const GlobalLink = ({
       color: "primary",
       ...restProps._hover,
     }}
+    outline="none"
   >
     <Link href={href}>{children}</Link>
   </ChakraLink>
