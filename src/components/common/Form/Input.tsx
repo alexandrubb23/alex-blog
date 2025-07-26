@@ -1,16 +1,15 @@
-import { Input as ChakraInput, InputProps } from "@chakra-ui/react";
+import { Input as ChakraInput } from "@chakra-ui/react";
 
-import FormInput from "./FormInput";
+import FormInput, { type InputProps } from "./FormInput";
 
-const Input = ({ children, name, placeholder, ...restProps }: InputProps) => (
+const Input = ({ label, name, placeholder, ...restProps }: InputProps) => (
   <FormInput
     as={ChakraInput}
     name={name}
+    label={label}
     placeholder={placeholder}
     {...restProps}
-  >
-    {children}
-  </FormInput>
+  />
 );
 
 export default Input;

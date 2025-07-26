@@ -26,21 +26,19 @@ const ContactForm = () => (
     validationSchema={schema}
     defaultValues={defaultValues}
   >
-    <VStack gap={4} alignItems="flex-start">
+    <VStack gap={4} alignItems="flex-start" >
       <Field.Root gap={2}>
-        <Input name="name" placeholder="Enter your name">
-          Your Name
-        </Input>
+        <Input name="name" placeholder="Enter your name" label="Your Name" />
       </Field.Root>
       <Field.Root gap={2}>
-        <Input placeholder="e.q. john@doe.com" name="email">
-          Email
-        </Input>
+        <Input placeholder="e.q. john@doe.com" name="email" label="Email" />
       </Field.Root>
       <Field.Root gap={2}>
-        <Textarea name="message" placeholder="Maximum 500 characters">
-          Message
-        </Textarea>
+        <Textarea
+          name="message"
+          placeholder="Maximum 500 characters"
+          label="Message"
+        />
       </Field.Root>
       <Field.Root float="right" gap={2}>
         <Box>

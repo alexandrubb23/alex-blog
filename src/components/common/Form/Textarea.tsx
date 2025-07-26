@@ -1,16 +1,15 @@
-import { Textarea as ChakraTextarea, TextareaProps } from "@chakra-ui/react";
+import { Textarea as ChakraTextarea } from "@chakra-ui/react";
 
-import FormInput from "./FormInput";
+import FormInput, { InputProps } from "./FormInput";
 
-const Textarea = ({ children, placeholder, ...restProps }: TextareaProps) => (
+const Textarea = ({ label, placeholder, ...restProps }: InputProps) => (
   <FormInput
     as={ChakraTextarea}
     placeholder={placeholder}
     rows={6}
+    label={label}
     {...restProps}
-  >
-    {children}
-  </FormInput>
+  />
 );
 
 export default Textarea;

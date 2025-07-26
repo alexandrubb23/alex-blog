@@ -1,17 +1,24 @@
-import { Field, InputProps, TextareaProps } from "@chakra-ui/react";
+import {
+  InputProps as ChakraInputProps,
+  Field,
+  TextareaProps,
+} from "@chakra-ui/react";
 import { ChangeEvent, ElementType, PropsWithChildren } from "react";
 import { ErrorMessage } from ".";
 import useFormContextProvider from "./useFormContextProvider";
 
-type Props = Partial<InputProps> | Partial<TextareaProps>;
+type Props = Partial<ChakraInputProps> | Partial<TextareaProps>;
 
-type FormInputProps = PropsWithChildren<{
+export type FormInputProps = PropsWithChildren<{
   as: ElementType;
+  label: string;
 }> &
   Props;
 
+export type InputProps = ChakraInputProps & Pick<FormInputProps, "label">;
+
 const FormInput = ({
-  children,
+  label,
   name,
   as: Component,
   ...restProps
@@ -24,15 +31,28 @@ const FormInput = ({
 
   return (
     <>
-      <Field.Label fontSize="18px" fontWeight="500">
-        {children}
+      <Field.Label
+        fontSize={{
+          base: "16px",
+          md: "18px",
+          lg: "20px",
+          xl: "22px",
+        }}
+        fontWeight="500"
+      >
+        {label}
       </Field.Label>
       <Component
         borderWidth="1.5px"
         bg="white"
         border={border}
         padding="25px 16px"
-        fontSize="18px"
+        fontSize={{
+          base: "16px",
+          md: "18px",
+          lg: "20px",
+          xl: "22px",
+        }}
         _focus={{
           focusRingColor: "primary",
         }}
