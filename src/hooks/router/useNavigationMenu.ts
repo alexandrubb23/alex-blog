@@ -1,9 +1,10 @@
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useCallback } from "react";
+import { useNavigateToPage } from ".";
 
 const useNavigationMenu = () => {
-  const router = useRouter();
   const pathName = usePathname();
+  const navigateToPage = useNavigateToPage();
 
   const isActiveItem = useCallback(
     (href: string) => pathName === href,
@@ -13,9 +14,9 @@ const useNavigationMenu = () => {
   const goToPage = useCallback(
     (href: string) => {
       if (isActiveItem(href)) return;
-      router.push(href);
+      navigateToPage(href);
     },
-    [router, isActiveItem],
+    [navigateToPage, isActiveItem],
   );
 
   const handleItemClick = useCallback(

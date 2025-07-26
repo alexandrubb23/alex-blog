@@ -1,17 +1,11 @@
 import { Box, Heading, VStack } from "@chakra-ui/react";
-import { useRouter } from "next/navigation";
-import { useCallback } from "react";
 
 import { ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
+import { useNavigateToPage } from "@/hooks/router";
 
 const AboutAuthor = () => {
-  const router = useRouter();
-
-  const handleReadAboutMe = useCallback(() => {
-    router.push(ROUTES.ABOUT_AUTHOR);
-  }, [router]);
-
+  const navigateToPage = useNavigateToPage();
   return (
     <VStack textAlign="center">
       <Heading
@@ -26,7 +20,9 @@ const AboutAuthor = () => {
         I&apos;m a Software Engineer that companies love to hire.
       </Heading>
       <Box mt="24px">
-        <SolidAnimatedButton onClick={handleReadAboutMe}>
+        <SolidAnimatedButton
+          onClick={() => navigateToPage(ROUTES.ABOUT_AUTHOR)}
+        >
           Read about me
         </SolidAnimatedButton>
       </Box>
