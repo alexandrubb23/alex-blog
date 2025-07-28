@@ -1,6 +1,7 @@
 import { Box } from "@chakra-ui/react";
 
 import { useAddClassToSpecificTags } from "@/hooks";
+import { useAnimateOnScroll } from "@/hooks/layout";
 import type { HTMLObject } from "@/hooks/style/useAddClassToSpecificTags";
 import utilStyles from "@/styles/post.module.css";
 import CopyButtonsInjector from "../CopyButton/CopyButton";
@@ -11,17 +12,35 @@ const htmlObject: HTMLObject = {
   className: "language-js",
 };
 
+const ROOT_SELECTOR = "content-container";
+
 const PageBody = () => {
   const { content } = usePostContext();
   const tagsClass = useAddClassToSpecificTags(htmlObject);
 
+  useAnimateOnScroll({
+    rootSelector: `#${ROOT_SELECTOR}`,
+    once: false,
+    animation: {
+      transition: {
+        duration: 0.7,
+        ease: "ease-in-out",
+      },
+    },
+  });
   return (
     <>
       <CopyButtonsInjector />
+
       <Box
+        id={ROOT_SELECTOR}
         className={utilStyles.post}
         dangerouslySetInnerHTML={{
           __html: tagsClass.applyClass(content),
+        }}
+        css={{
+          "& p": { opacity: 0 },
+          "& ul": { opacity: 0 },
         }}
       />
     </>

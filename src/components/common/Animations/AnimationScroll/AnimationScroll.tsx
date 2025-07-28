@@ -15,6 +15,7 @@ type AnimationScrollProps = PropsWithChildren<
     duration?: number;
     offset?: number;
     once?: boolean;
+    threshold?: number;
   } & BoxProps
 >;
 
@@ -26,10 +27,11 @@ export const AnimationScroll = ({
   duration = 0.5,
   offset = 50,
   once = true,
+  threshold = 0.1,
   ...boxProps
 }: AnimationScrollProps) => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ triggerOnce: once, threshold: 0.1 });
+  const [ref, inView] = useInView({ triggerOnce: once, threshold });
 
   const initialTransform = useMemo(() => {
     switch (direction) {

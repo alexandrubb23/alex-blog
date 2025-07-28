@@ -21,7 +21,7 @@ const EntityTechnologiesList = ({
       {technologies.map(({ id, name, data }, index) => {
         const isLastElement = isNotLastElement(technologies, index);
         return (
-          <AnimationScroll key={id}>
+          <AnimationScroll key={id} threshold={0.02}>
             <Grid templateColumns="auto 1fr" mt="24px">
               <GridItem>
                 <TechnologyHeadingWithIcon
