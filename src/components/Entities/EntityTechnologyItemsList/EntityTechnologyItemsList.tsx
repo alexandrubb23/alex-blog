@@ -3,8 +3,8 @@ import { VStack } from "@chakra-ui/react";
 import { PostData } from "@/app/api/lib/models";
 import { EntityItem } from "@/components/Entities/EntityItem";
 import { Separator } from "@/components/Separator";
+import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 import { isNotLastElement } from "@/utils/array";
-import { Fragment } from "react";
 
 interface EntityTechnologyItemsListProps {
   data: PostData[];
@@ -15,12 +15,12 @@ const EntityTechnologyItemsList = ({
 }: EntityTechnologyItemsListProps) => (
   <VStack align="left" paddingRight={{ base: "0", sm: "48px" }}>
     {data.map((postData: PostData, index) => (
-      <Fragment key={postData.id}>
+      <AnimationScroll key={postData.id} delay={index * 0.1}>
         <EntityItem postData={postData} />
         {isNotLastElement(data, index) && (
           <Separator variant="dashed" mt="15px" mb="15px" borderWidth="1px" />
         )}
-      </Fragment>
+      </AnimationScroll>
     ))}
   </VStack>
 );

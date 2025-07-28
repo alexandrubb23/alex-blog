@@ -3,7 +3,7 @@ import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { APIResponse } from "@/app/api/lib/models";
 import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import { Separator } from "@/components/Separator";
-import { AnimatedBox } from "@/components/common/Layout";
+import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 import { isNotLastElement } from "@/utils/array";
 import TechnologyList from "./TechnologyList";
 
@@ -21,7 +21,7 @@ const EntityTechnologiesList = ({
       {technologies.map(({ id, name, data }, index) => {
         const isLastElement = isNotLastElement(technologies, index);
         return (
-          <AnimatedBox delay={index * 100} key={id}>
+          <AnimationScroll key={id}>
             <Grid templateColumns="auto 1fr" mt="24px">
               <GridItem>
                 <TechnologyHeadingWithIcon
@@ -51,12 +51,14 @@ const EntityTechnologiesList = ({
             </Grid>
 
             {isLastElement && (
-              <Separator
-                mt="40px"
-                mb={isLastElement ? "40px" : DIVIDER_MARGIN}
-              />
+              <AnimationScroll key={id} delay={0.5}>
+                <Separator
+                  mt="40px"
+                  mb={isLastElement ? "40px" : DIVIDER_MARGIN}
+                />
+              </AnimationScroll>
             )}
-          </AnimatedBox>
+          </AnimationScroll>
         );
       })}
     </>

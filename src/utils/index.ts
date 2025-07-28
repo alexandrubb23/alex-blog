@@ -1,1 +1,1 @@
-export { default as entityMetaData } from './entityMetaData';
+export { default as entityMetaData } from "./entityMetaData";

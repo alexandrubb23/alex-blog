@@ -35,6 +35,7 @@ const icons = {
   // TODO: Remove this typo after updating all references
   DesingPatterns: GiGearStickPattern,
   DataStructures: SiAlwaysdata,
+  "React Native": GrReactjs,
 } as const;
 
 export default icons;
