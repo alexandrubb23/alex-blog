@@ -51,7 +51,7 @@ const EntityTechnologiesList = ({
             </Grid>
 
             {isLastElement && (
-              <AnimationScroll key={id} delay={0.5}>
+              <AnimationScroll key={id}>
                 <Separator
                   mt="40px"
                   mb={isLastElement ? "40px" : DIVIDER_MARGIN}

@@ -23,7 +23,7 @@ export const AnimationScroll = ({
   children,
   delay = 0,
   direction = "up",
-  duration = 0.8,
+  duration = 0.5,
   offset = 50,
   once = true,
   ...boxProps
