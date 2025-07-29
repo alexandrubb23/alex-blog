@@ -25,7 +25,7 @@ export const AnimationScroll = ({
   delay = 0,
   direction = "up",
   duration = 0.5,
-  offset = 50,
+  offset = 20, // Offset 0 will animate as a fade-in
   once = true,
   threshold = 0.1,
   ...boxProps

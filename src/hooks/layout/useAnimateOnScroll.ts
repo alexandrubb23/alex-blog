@@ -54,7 +54,7 @@ export const useAnimateOnScroll = ({
   selector = "p, pre, code, h1, h2, h3, h4, h5, h6, ul",
   animation,
   direction,
-  offset = 20,
+  offset = 0,
   once = true,
   threshold = 0.1,
   rootSelector,

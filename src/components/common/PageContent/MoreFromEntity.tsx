@@ -6,6 +6,7 @@ import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadi
 import Container from "@/components/Layout/Container";
 import { CenteredSpinner, ErrorAlert } from "@/components/common";
 import { useEntityQuery } from "@/hooks";
+import { AnimationScroll } from "../Animations/AnimationScroll";
 import { usePostContext } from "./PostProvider";
 
 const MoreFromEntity = ({ limit }: { limit: number }) => {
@@ -38,18 +39,20 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
   return (
     <Box bg="header">
       <Container>
-        <Heading
-          as="h2"
-          borderBottom="1.5px solid black"
-          fontSize="2rem"
-          fontWeight="500"
-          pb="1rem"
-        >
-          <TechnologyHeadingWithIcon
-            label={`More from ${topic}`}
-            technology={topic}
-          />
-        </Heading>
+        <AnimationScroll offset={0}>
+          <Heading
+            as="h2"
+            borderBottom="1.5px solid black"
+            fontSize="2rem"
+            fontWeight="500"
+            pb="1rem"
+          >
+            <TechnologyHeadingWithIcon
+              label={`More from ${topic}`}
+              technology={topic}
+            />
+          </Heading>
+        </AnimationScroll>
         <HStack mt="25px" gap="1rem">
           <MoreEntities data={relatePosts} />
         </HStack>

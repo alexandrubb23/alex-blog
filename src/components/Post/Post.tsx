@@ -9,6 +9,7 @@ import MoreFromEntity from "../common/PageContent/MoreFromEntity";
 import PageBody from "../common/PageContent/PageBody";
 import PageHeader from "../common/PageContent/PageHeader";
 import PageSubHeader from "../common/PageContent/PageSubHeader";
+import { AnimationScroll } from "../common/Animations/AnimationScroll";
 
 const NUMBER_OF_MORE_POSTS = 2;
 
@@ -19,8 +20,10 @@ const Post = () => {
     <PageContent>
       <Container>
         <VStack gap={5} alignItems="flex-start">
-          <PageHeader />
-          <PageSubHeader />
+          <AnimationScroll offset={0}>
+            <PageHeader />
+            <PageSubHeader />
+          </AnimationScroll>
           <PageBody />
         </VStack>
       </Container>
