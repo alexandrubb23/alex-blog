@@ -3,15 +3,15 @@ import { Easing, motion, useAnimation } from "framer-motion";
 import { PropsWithChildren, useEffect, useMemo } from "react";
 import { useInView } from "react-intersection-observer";
 
-const MotionBox = motion(Box) as any;
+import { type AnimationDirection } from "@/models/animation.type";
 
-type Direction = "up" | "down" | "left" | "right";
+const MotionBox = motion(Box) as any;
 
 type AnimationScrollProps = PropsWithChildren<
   {
     animation?: Easing | Easing[];
     delay?: number;
-    direction?: Direction;
+    direction?: AnimationDirection;
     duration?: number;
     offset?: number;
     once?: boolean;

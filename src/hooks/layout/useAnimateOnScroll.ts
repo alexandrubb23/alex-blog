@@ -1,3 +1,4 @@
+import { AnimationDirection } from "@/models/animation.type";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
 export type AnimateOnScrollProps = {
@@ -22,7 +23,7 @@ export type AnimateOnScrollProps = {
   once?: boolean;
   rootSelector?: string;
   threshold?: number;
-  direction?: "up" | "down" | "left" | "right";
+  direction?: AnimationDirection;
   offset?: number;
   staggerDelay?: number;
   useRaf?: boolean;
