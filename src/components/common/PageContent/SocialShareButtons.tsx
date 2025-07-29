@@ -2,6 +2,7 @@ import { HStack } from "@chakra-ui/react";
 import { FaLink, FaLinkedin } from "react-icons/fa";
 import { FaFacebook, FaSquareXTwitter } from "react-icons/fa6";
 
+import { AnimationScroll } from "../Animations/AnimationScroll";
 import CopyToClipboardButton from "./CopyToClipboardButton";
 import SocialShareButton from "./SocialShareButton";
 import { type SocialMedia } from "./common/PostButton";
@@ -46,25 +47,40 @@ const socialMedia: SocialMedia[] = [
 const SocialShareButtons = () => {
   const shareUrl = useGetShareUrl();
 
-  const renderButton = (button: SocialMedia, shareUrl: string) => {
+  const renderButton = (
+    button: SocialMedia,
+    shareUrl: string,
+    index: number,
+  ) => {
     const { icon: Icon, label, onClick, isCopy } = button;
 
     const ButtonComponent = isCopy ? CopyToClipboardButton : SocialShareButton;
 
     return (
-      <ButtonComponent
-        icon={Icon}
+      <AnimationScroll
+        animation="backInOut"
+        delay={0.2}
+        direction="down"
+        display="flex"
         key={button.id}
-        label={label}
-        onClick={onClick}
-        shareUrl={shareUrl}
-      />
+        offset={(index + 1) * 7}
+        width="100%"
+      >
+        <ButtonComponent
+          icon={Icon}
+          label={label}
+          onClick={onClick}
+          shareUrl={shareUrl}
+        />
+      </AnimationScroll>
     );
   };
 
   return (
     <HStack gap={2}>
-      {socialMedia.map((button) => renderButton(button, shareUrl))}
+      {socialMedia.map((button, index) =>
+        renderButton(button, shareUrl, index),
+      )}
     </HStack>
   );
 };
