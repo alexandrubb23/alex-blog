@@ -135,7 +135,9 @@ export const useAnimateOnScroll = ({
         animatedElementsRef.current.add(element);
         triggerAnimate(element, index);
 
-        if (once) observerRef.current?.unobserve(element);
+        if (once) {
+          observerRef.current?.unobserve(element);
+        }
       } else if (!once) {
         applyInitialStyles(element);
       }

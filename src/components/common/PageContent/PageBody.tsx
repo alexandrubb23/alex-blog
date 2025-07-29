@@ -20,7 +20,6 @@ const PageBody = () => {
 
   useAnimateOnScroll({
     rootSelector: `#${ROOT_SELECTOR}`,
-    once: false,
     animation: {
       transition: {
         duration: 0.7,
