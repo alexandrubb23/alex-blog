@@ -6,23 +6,12 @@ const SocialMedia = () => {
     <HStack gap="40px">
       {socialMedia.map(({ name, icon: Icon, href }) => (
         <IconButton
-          bg={{
-            _dark: "primary",
-          }}
-          color={{
-            _dark: "white",
-          }}
           key={name}
           aria-label="Call support"
           rounded="full"
           _hover={{
-            bg: {
-              base: "primary",
-              _dark: "white",
-            },
-            color: {
-              _dark: "primary",
-            },
+            bg: "primary",
+            color: "white",
           }}
           onClick={() => {
             window.open(href, "_blank");

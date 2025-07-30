@@ -21,29 +21,35 @@ const MenuList = ({ data, ...restProps }: MenuListProps) => {
       justifyContent="center"
       {...restProps}
     >
-      {data.map((item) => (
-        <li key={item.id}>
-          <Link
-            textDecoration={textDecoration(item.id)}
-            borderRadius="full"
-            paddingX="10px"
-            fontFamily="inter"
-            paddingY="2px"
-            onClick={handleItemClick(item.id)}
-            height={7}
-            fontWeight="500"
-            _hover={{
-              textDecoration: textDecoration(item.id),
-              color: "primary",
-            }}
-            color={{
-              _dark: isActiveItem(item.id) ? "primary" : "gray.400",
-            }}
-          >
-            {item.title}
-          </Link>
-        </li>
-      ))}
+      {data.map((item) => {
+        const color = (defaultColor: string) =>
+          isActiveItem(item.id) ? "primary" : defaultColor;
+
+        return (
+          <li key={item.id}>
+            <Link
+              textDecoration={textDecoration(item.id)}
+              borderRadius="full"
+              paddingX="10px"
+              fontFamily="inter"
+              paddingY="2px"
+              onClick={handleItemClick(item.id)}
+              height={7}
+              fontWeight="500"
+              _hover={{
+                textDecoration: textDecoration(item.id),
+                color: "primary",
+              }}
+              color={{
+                base: color("gray.900"),
+                _dark: color("gray.100"),
+              }}
+            >
+              {item.title}
+            </Link>
+          </li>
+        );
+      })}
     </Box>
   );
 };

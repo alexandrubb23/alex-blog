@@ -10,7 +10,9 @@ const ResumeButton = (props: BoxProps) => (
       borderColor="gray.900"
       borderRadius="2rem"
       _hover={{
-        bg: "primary",
+        bg: {
+          _dark: "primary",
+        },
       }}
     >
       <RiDownload2Fill />
