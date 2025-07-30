@@ -9,7 +9,6 @@ const MobileTechnologySelector = ({
   handleItemClick,
   selectedId,
 }: TechnologyListProps) => {
-  console.log({ selectedId });
   return (
     <Menu.Root>
       <Menu.Trigger asChild outline="none">
