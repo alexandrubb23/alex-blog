@@ -3,9 +3,9 @@ import { Grid, GridItem } from "@chakra-ui/react";
 import "@/app/global.css";
 
 import Providers from "@/app/providers";
+import { Toaster } from "../ui/toaster";
 import Footer from "./Footer";
 import Header from "./Header";
-import { Toaster } from "../ui/toaster";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -17,6 +17,10 @@ const Layout = ({ contentClassName, children }: LayoutProps) => (
     <Grid
       templateAreas={{
         base: `"header" "main" "footer"`,
+      }}
+      color={{
+        base: "gray.800",
+        _dark: "gray.400",
       }}
     >
       <Header />

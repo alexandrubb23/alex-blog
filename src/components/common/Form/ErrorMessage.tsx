@@ -8,7 +8,13 @@ const ErrorMessage = ({ name }: { name: string }) => {
   const error = formState.errors[name] as FieldError;
 
   return error ? (
-    <Box color="red.500" fontSize="12px">
+    <Box
+      color={{
+        _dark: "red.700",
+        _light: "red.500",
+      }}
+      fontSize="12px"
+    >
       {error.message}
     </Box>
   ) : null;

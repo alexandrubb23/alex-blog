@@ -29,6 +29,9 @@ const CertificationsList = ({
                     ? { base: "none", lg: "2px solid black" }
                     : "none"
                 }
+                borderColor={{
+                  _dark: "gray.800",
+                }}
                 paddingLeft={isOdd(index) ? { base: "0", lg: "20px" } : "0"}
               >
                 <AnimationScroll
@@ -40,7 +43,10 @@ const CertificationsList = ({
                 >
                   <Box
                     alignItems="center"
-                    bg="header"
+                    bg={{
+                      base: "secondary",
+                      _dark: "gray.900",
+                    }}
                     borderRadius="24px"
                     display="flex"
                     height="190px"

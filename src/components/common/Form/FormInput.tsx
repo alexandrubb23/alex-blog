@@ -25,9 +25,7 @@ const FormInput = ({
 }: FormInputProps) => {
   const form = useFormContextProvider();
 
-  const border = form.formState.errors[name as string]
-    ? "1px dotted red"
-    : "gray.200";
+  const hasError = form.formState.errors[name as string];
 
   return (
     <>
@@ -44,8 +42,14 @@ const FormInput = ({
       </Field.Label>
       <Component
         borderWidth="1.5px"
-        bg="white"
-        border={border}
+        bg={{
+          _dark: "#000000",
+        }}
+        borderColor={{
+          base: "red.500",
+          _dark: hasError ? "red.700" : "gray.700",
+        }}
+        borderStyle={hasError ? "dashed" : "solid"}
         padding="25px 16px"
         fontSize={{
           base: "16px",

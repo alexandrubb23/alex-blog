@@ -37,7 +37,13 @@ const DesktopTechnologySelector = ({
           >
             {technology}
             {(selectedId === technology || (!selectedId && index === 0)) && (
-              <Separator size="md" borderColor="black" />
+              <Separator
+                size="md"
+                borderColor={{
+                  base: "black",
+                  _dark: "primary",
+                }}
+              />
             )}
           </List.Item>
         </AnimationScroll>

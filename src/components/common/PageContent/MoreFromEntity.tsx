@@ -37,12 +37,20 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
   }
 
   return (
-    <Box bg="header">
+    <Box
+      bg={{
+        base: "header",
+        _dark: "#000000",
+      }}
+    >
       <Container>
         <AnimationScroll offset={0}>
           <Heading
             as="h2"
-            borderBottom="1.5px solid black"
+            borderBottom="1.5px solid"
+            borderColor={{
+              _dark: "gray.900",
+            }}
             fontSize="2rem"
             fontWeight="500"
             pb="1rem"

@@ -14,6 +14,7 @@ const GlobalLink = ({
       ...restProps._hover,
     }}
     outline="none"
+    color={{ _dark: "gray.300" }}
   >
     <Link href={href}>{children}</Link>
   </ChakraLink>

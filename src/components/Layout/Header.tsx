@@ -6,7 +6,14 @@ import { Author, NavBar } from "..";
 import ResumeButton from "../NavBar/ResumeButton";
 
 const Header = () => (
-  <GridItem area="header" bg="header">
+  <GridItem
+    area="header"
+    padding="1.25rem"
+    bg={{
+      base: "header",
+      _dark: "#000000",
+    }}
+  >
     <Container
       margin="auto"
       padding="1.25rem"

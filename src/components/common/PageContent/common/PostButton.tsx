@@ -14,8 +14,17 @@ export type SocialMedia = {
 
 const PostButton = ({ children, ...rest }: ButtonProps) => (
   <Button
-    border="1.5px solid black"
+    border="1.5px solid"
     borderRadius="2rem"
+    borderColor={{
+      _light: "black",
+      _dark: "gray.900",
+    }}
+    _hover={{
+      bg: {
+        _dark: "gray.900",
+      },
+    }}
     fontWeight="500"
     size={{
       base: "2xs",

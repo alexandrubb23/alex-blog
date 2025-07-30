@@ -7,7 +7,7 @@ const useIconStyle = (props: BoxProps = {}) => {
   return {
     bg: isDark ? "{colors.primary}" : "{colors.primary}",
     borderRadius: "full",
-    color: isDark ? "blue.500" : "white",
+    color: isDark ? "white" : "white",
     padding: "10px",
     ...props,
   };

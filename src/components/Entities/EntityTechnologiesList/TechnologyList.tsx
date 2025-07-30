@@ -33,7 +33,6 @@ export const TechnologyList = ({
                 base: "center",
                 md: "left",
               }}
-              color="#434343"
             >
               {name}
             </Heading>

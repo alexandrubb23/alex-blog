@@ -16,6 +16,7 @@ const Footer = () => (
       bg="black"
       px={{ base: 4, md: 10 }}
       py={{ base: 10, md: 20 }}
+      color="gray.400"
     >
       <GratefulFor />
       <SocialMedia />

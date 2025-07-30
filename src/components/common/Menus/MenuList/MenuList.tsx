@@ -25,7 +25,6 @@ const MenuList = ({ data, ...restProps }: MenuListProps) => {
         <li key={item.id}>
           <Link
             textDecoration={textDecoration(item.id)}
-            color={isActiveItem(item.id) ? "primary" : "black"}
             borderRadius="full"
             paddingX="10px"
             fontFamily="inter"
@@ -36,6 +35,9 @@ const MenuList = ({ data, ...restProps }: MenuListProps) => {
             _hover={{
               textDecoration: textDecoration(item.id),
               color: "primary",
+            }}
+            color={{
+              _dark: isActiveItem(item.id) ? "primary" : "gray.400",
             }}
           >
             {item.title}

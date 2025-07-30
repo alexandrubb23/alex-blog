@@ -13,6 +13,7 @@ const tokens = defineTokens({
   colors: {
     header: { value: "#F2EFE5" },
     primary: { value: "#6D54D0" },
+    secondary: { value: "#F2EFE5" },
   },
   sizes: {
     container: {
@@ -40,7 +41,6 @@ const config = defineConfig({
       "--body-background": "#000",
     },
     body: {
-      backgroundColor: "#F9F7F1",
       fontFamily: "inter",
     },
   },
