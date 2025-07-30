@@ -7,8 +7,11 @@ const ResumeButton = (props: BoxProps) => (
     <Button
       variant="outline"
       border="2px solid"
-      borderColor="black"
+      borderColor="gray.900"
       borderRadius="2rem"
+      _hover={{
+        bg: "primary",
+      }}
     >
       <RiDownload2Fill />
       My Resume

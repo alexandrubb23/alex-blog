@@ -43,7 +43,7 @@ const FormInput = ({
       <Component
         borderWidth="1.5px"
         bg={{
-          _dark: "#000000",
+          _dark: "#111111",
         }}
         borderColor={{
           _light: hasError ? "red.500" : "gray.200",
