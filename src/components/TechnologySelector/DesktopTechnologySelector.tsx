@@ -34,7 +34,11 @@ const DesktopTechnologySelector = ({
             key={technology}
             onClick={handleItemClick(technology)}
             cursor="pointer"
-            color={selectedId === technology ? "white" : "inherit"}
+            color={
+              selectedId === technology || (!selectedId && index === 0)
+                ? "white"
+                : "inherit"
+            }
           >
             {technology}
             {(selectedId === technology || (!selectedId && index === 0)) && (
