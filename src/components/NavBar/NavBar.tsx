@@ -8,7 +8,11 @@ const NavBar = () => {
   const isNotMobile = useIsNotMobile();
 
   return (
-    <HStack padding="10px">
+    <HStack
+      padding={{
+        lg: "10px",
+      }}
+    >
       {!isNotMobile && <ColorModeButton mr="5" />}
       <PagesList />
       {isNotMobile && <ColorModeButton />}

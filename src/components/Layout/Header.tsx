@@ -8,7 +8,6 @@ import ResumeButton from "../NavBar/ResumeButton";
 const Header = () => (
   <GridItem
     area="header"
-    padding="1.25rem"
     bg={{
       base: "header",
       _dark: "#111111",
