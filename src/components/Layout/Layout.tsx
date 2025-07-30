@@ -18,6 +18,9 @@ const Layout = ({ contentClassName, children }: LayoutProps) => (
       templateAreas={{
         base: `"header" "main" "footer"`,
       }}
+      bg={{
+        _dark: "gray.900",
+      }}
       color={{
         base: "gray.800",
         _dark: "gray.400",

@@ -40,7 +40,7 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
     <Box
       bg={{
         base: "header",
-        _dark: "#000000",
+        _dark: "#111111",
       }}
     >
       <Container>

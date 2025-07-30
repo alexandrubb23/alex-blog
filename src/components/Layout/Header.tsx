@@ -11,7 +11,7 @@ const Header = () => (
     padding="1.25rem"
     bg={{
       base: "header",
-      _dark: "#000000",
+      _dark: "#111111",
     }}
   >
     <Container

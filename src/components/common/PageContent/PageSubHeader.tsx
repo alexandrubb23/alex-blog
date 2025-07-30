@@ -12,7 +12,9 @@ const PageSubHeader = () => {
   return (
     <Flex
       borderBottom="6px double"
-      borderColor="black"
+      borderColor={{
+        _dark: "gray.800",
+      }}
       borderTop="2px solid"
       justify="space-between"
       flexDir={{
@@ -24,7 +26,7 @@ const PageSubHeader = () => {
       gap="1.2rem"
       mt="10px"
       padding="16px 0 16px 0"
-      w="100%"
+      w="100vh"
       fontSize={{ base: "12px", sm: "sm" }}
     >
       <PostAuthor readingTime={readingTime} date={date} />

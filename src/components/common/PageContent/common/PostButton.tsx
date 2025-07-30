@@ -18,11 +18,11 @@ const PostButton = ({ children, ...rest }: ButtonProps) => (
     borderRadius="2rem"
     borderColor={{
       _light: "black",
-      _dark: "gray.900",
+      _dark: "gray.800",
     }}
     _hover={{
       bg: {
-        _dark: "gray.900",
+        _dark: "primary",
       },
     }}
     fontWeight="500"
