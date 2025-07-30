@@ -46,7 +46,7 @@ const FormInput = ({
           _dark: "#000000",
         }}
         borderColor={{
-          base: "red.500",
+          _light: hasError ? "red.500" : "gray.200",
           _dark: hasError ? "red.700" : "gray.700",
         }}
         borderStyle={hasError ? "dashed" : "solid"}
