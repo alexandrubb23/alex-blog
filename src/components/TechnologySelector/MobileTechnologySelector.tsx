@@ -9,6 +9,7 @@ const MobileTechnologySelector = ({
   handleItemClick,
   selectedId,
 }: TechnologyListProps) => {
+  console.log({ selectedId });
   return (
     <Menu.Root>
       <Menu.Trigger asChild outline="none">
@@ -30,7 +31,7 @@ const MobileTechnologySelector = ({
             gap={2}
             flexDirection="column"
           >
-            {technologies.map((technology) => (
+            {technologies.map((technology, index) => (
               <Menu.Item
                 cursor="pointer"
                 display={"flex"}
@@ -40,7 +41,11 @@ const MobileTechnologySelector = ({
                 padding={0}
                 value={technology}
                 borderRadius="full"
-                bg={selectedId === technology ? "header" : "transparent"}
+                bg={
+                  selectedId === technology || (!selectedId && index === 0)
+                    ? "header"
+                    : "transparent"
+                }
               >
                 <TechnologyHeadingWithIcon
                   technology={technology}
