@@ -45,7 +45,7 @@ const CertificationsList = ({
                     alignItems="center"
                     bg={{
                       base: "secondary",
-                      _dark: "gray.900",
+                      _dark: "#111111",
                     }}
                     borderRadius="24px"
                     display="flex"
