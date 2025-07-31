@@ -16,6 +16,9 @@ const AuthorName = ({ name }: AuthorNameProps) => {
       lineHeight="2.5rem"
       size="2xl"
       textAlign="center"
+      color={{
+        _dark: "white",
+      }}
     >
       {name}
     </Heading>

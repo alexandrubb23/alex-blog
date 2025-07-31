@@ -31,6 +31,9 @@ const Header = () => (
             fontWeight="700"
             display="flex"
             flex="0 0 140px"
+            color={{
+              _dark: "white",
+            }}
           >
             <Link href="/">AB</Link>
           </LinkBox>
