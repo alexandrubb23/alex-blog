@@ -1,13 +1,12 @@
-import { Box } from "@chakra-ui/react";
-
 import { AUTHOR } from "@/app/constants";
 import { Separator } from "@/components/Separator";
+import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 
 const AuthorEmail = () => (
-  <Box fontSize="20px">
+  <AnimationScroll fontSize="20px" wait={1.3} direction="down">
     {AUTHOR.EMAIL_ADDRESS}
     <Separator height="5px" />
-  </Box>
+  </AnimationScroll>
 );
 
 export default AuthorEmail;
