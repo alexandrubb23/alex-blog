@@ -1,5 +1,5 @@
+import { useColorMode } from "@/components/ui/color-mode";
 import { BoxProps } from "@chakra-ui/react";
-import useColorMode from "./useColorMode";
 
 const useIconStyle = (props: BoxProps = {}) => {
   const { isDark } = useColorMode();

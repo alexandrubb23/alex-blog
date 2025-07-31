@@ -19,6 +19,7 @@ export type ColorMode = "light" | "dark";
 
 export interface UseColorModeReturn {
   colorMode: ColorMode;
+  isDark: boolean;
   setColorMode: (colorMode: ColorMode) => void;
   toggleColorMode: () => void;
 }
@@ -30,6 +31,7 @@ export function useColorMode(): UseColorModeReturn {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
   return {
+    isDark: colorMode === "dark",
     colorMode: colorMode as ColorMode,
     setColorMode: setTheme,
     toggleColorMode,

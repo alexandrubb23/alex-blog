@@ -1,4 +1,4 @@
-import { useColorMode } from "@/hooks";
+import { useColorMode } from "@/components/ui/color-mode";
 import { Box } from "@chakra-ui/react";
 
 import { CSSProperties } from "react";

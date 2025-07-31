@@ -1,16 +1,15 @@
-export {
-  useAddClassToSpecificTags,
-  useCodeHighlighting,
-  useColorMode,
-  useIconStyle,
-} from './style';
+export { useParseResponse } from "./content";
 export {
   useContactInfo,
   useContactSocialMedia,
-  useEntityQuery,
   useEntityItemQuery,
+  useEntityQuery,
   useItemQuery,
-} from './http';
-export { useIsHomePage, useNavigationMenu } from './router';
-export { useParseResponse } from './content';
-export { useIsNotMobile } from './layout';
+} from "./http";
+export { useIsNotMobile } from "./layout";
+export { useIsHomePage, useNavigationMenu } from "./router";
+export {
+  useAddClassToSpecificTags,
+  useCodeHighlighting,
+  useIconStyle,
+} from "./style";
