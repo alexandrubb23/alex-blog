@@ -1,3 +1,4 @@
+import type { DependencyList } from "react";
 import { useEffect } from "react";
 
 /**
@@ -16,24 +17,41 @@ import { useEffect } from "react";
  *     }, 1000);
  *
  *     signal.addEventListener("abort", () => clearTimeout(timeout));
+ *
+ *     return () => clearTimeout(timeout); // Optional cleanup
  *   },
  *   [dependency]
  * );
  * ```
  */
 const useAbortableEffect = (
-  effect: (signal: AbortSignal) => Promise<() => void>,
-  deps: any[],
+  effect: (signal: AbortSignal) => Promise<void | (() => void)> | void,
+  deps: DependencyList,
 ) => {
   useEffect(() => {
     const controller = new AbortController();
-    const cleanupPromise = effect(controller.signal);
+    let cleanup: (() => void) | undefined;
+
+    const runEffect = async () => {
+      try {
+        const result = await effect(controller.signal);
+        if (typeof result === "function") {
+          cleanup = result;
+        }
+      } catch (error) {
+        if (error instanceof Error && error.name !== "AbortError") {
+          console.error("Effect error:", error);
+        }
+      }
+    };
+
+    runEffect();
 
     return () => {
       controller.abort();
-      cleanupPromise.then((cleanup) => cleanup());
+      cleanup?.();
     };
-  }, [...deps, effect]);
+  }, deps);
 };
 
 export default useAbortableEffect;
