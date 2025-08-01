@@ -29,6 +29,7 @@ const PageBody = () => {
         ease: "ease-in-out",
       },
     },
+    threshold: 0.2,
   });
 
   return (
@@ -46,6 +47,7 @@ const PageBody = () => {
           "& ul": { opacity: 0 },
           "& h1, & h2, & h3, & h4, & h5, & h6": { opacity: 0 },
           "& a": { color: isDark ? "primary" : "gray.950" },
+          "& pre": { opacity: 0 },
           "& a:hover": {
             color: isDark ? "#B9A8FB" : "primary",
             textDecoration: "underline",
