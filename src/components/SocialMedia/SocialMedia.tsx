@@ -23,6 +23,7 @@ const SocialMedia = () => {
               bg: "primary",
               color: "white",
             }}
+            color="primary"
             onClick={() => {
               window.open(href, "_blank");
             }}
