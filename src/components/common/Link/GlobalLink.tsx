@@ -22,7 +22,7 @@ const GlobalLink = ({
         ...restProps._hover,
       }}
       outline="none"
-      color={{ _dark: isActive ? DARK_COLOR : "inherit" }}
+      color={{ _dark: isActive ? DARK_COLOR : "gray.200" }}
       textDecoration={isActive ? "line-through" : "none"}
       {...restProps}
     >

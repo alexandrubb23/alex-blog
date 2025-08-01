@@ -1,8 +1,8 @@
 import { AiFillHtml5 } from "react-icons/ai";
-import { BsFiletypeJava, BsGithub } from "react-icons/bs";
+import { BsBracesAsterisk, BsFiletypeJava, BsGithub } from "react-icons/bs";
 import { FaNodeJs } from "react-icons/fa";
 import { GiGearStickPattern } from "react-icons/gi";
-import { GrMysql, GrReactjs, GrTechnology } from "react-icons/gr";
+import { GrMysql, GrReactjs } from "react-icons/gr";
 import {
   SiAlwaysdata,
   SiDjango,
@@ -16,7 +16,7 @@ import {
 import { TbBrandNextjs } from "react-icons/tb";
 
 const icons = {
-  All: GrTechnology,
+  All: BsBracesAsterisk,
   Django: SiDjango,
   Docker: SiDocker,
   Git: BsGithub,

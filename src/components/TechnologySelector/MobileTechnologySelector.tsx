@@ -51,9 +51,9 @@ const MobileTechnologySelector = ({
                   iconSize={20}
                   key={technology}
                   iconBoxStyle={{
-                    bg: "non",
+                    bg: "none",
                     color: "primary",
-                    padding: 3,
+                    padding: 2,
                   }}
                 />
               </Menu.Item>
