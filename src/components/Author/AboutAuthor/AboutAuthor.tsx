@@ -17,7 +17,8 @@ const AboutAuthor = () => {
         }}
         fontWeight={400}
       >
-        I&apos;m a Software Engineer that companies love to hire.
+        I&apos;m a Software Engineer 🚀 known for building high-impact solutions
+        that businesses 🤝 trust and scale with confidence.
       </Heading>
       <Box mt="24px">
         <SolidAnimatedButton
