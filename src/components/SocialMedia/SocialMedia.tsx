@@ -1,8 +1,14 @@
 import socialMedia from "@/data/socialMedia";
 import { HStack, IconButton } from "@chakra-ui/react";
 import { AnimationScroll } from "../common/Animations/AnimationScroll";
+
+type SocialMediaProps = {
+  enableStaggerDelay?: boolean;
+};
+
 const TOP = 40;
-const SocialMedia = () => {
+
+const SocialMedia = ({ enableStaggerDelay = false }: SocialMediaProps) => {
   return (
     <HStack gap="40px">
       {socialMedia.map(({ name, icon: Icon, href }, index) => (
@@ -14,7 +20,7 @@ const SocialMedia = () => {
           offset={TOP - index}
           width="100%"
           key={name}
-          wait={0.9}
+          wait={enableStaggerDelay ? 0.9 : 0}
         >
           <IconButton
             aria-label="Call support"

@@ -19,7 +19,7 @@ const Footer = () => (
       color="gray.400"
     >
       <GratefulFor />
-      <SocialMedia />
+      <SocialMedia enableStaggerDelay />
       <AuthorEmail />
       <Copyright />
     </VStack>
