@@ -29,7 +29,9 @@ const SocialMedia = ({ enableStaggerDelay = false }: SocialMediaProps) => {
               bg: "primary",
               color: "white",
             }}
-            color="primary"
+            color={{
+              _dark: "primary",
+            }}
             onClick={() => {
               window.open(href, "_blank");
             }}
