@@ -13,7 +13,7 @@ interface EntityItemProps {
 const EntityItem = ({ postData }: EntityItemProps) => {
   const href = usePostHref(postData);
 
-  const { id, content, date, title } = postData;
+  const { id, content, date, title, postType } = postData;
   const readingTime = formatReadingTime(content, id);
 
   return (
@@ -27,7 +27,13 @@ const EntityItem = ({ postData }: EntityItemProps) => {
         fontWeight={500}
         _hover={{ textDecoration: "underline", color: "primary" }}
       >
-        <GlobalLink href={href}>{title}</GlobalLink>
+        <GlobalLink 
+          href={href}
+          entity={postType}
+          slug={id}
+        >
+          {title}
+        </GlobalLink>
       </Heading>
       <PostMeta readingTime={readingTime} date={date} />
     </>

@@ -6,6 +6,7 @@ export {
   useEntityItemQuery,
   useEntityQuery,
   useItemQuery,
+  usePrefetchPost,
 } from "./http";
 export { useIsNotMobile } from "./layout";
 export { useIsHomePage, useNavigationMenu } from "./router";

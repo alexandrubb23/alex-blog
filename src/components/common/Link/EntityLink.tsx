@@ -18,6 +18,8 @@ const EntityLink = ({
 }: PropsWithChildren<EntityLinkProps>) => (
   <GlobalLink
     href={`/${entity}/${slug}`}
+    entity={entity}
+    slug={slug}
     _hover={{ textDecoration: "underline" }}
   >
     {children}
