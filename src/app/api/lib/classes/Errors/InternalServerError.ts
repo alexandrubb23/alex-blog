@@ -1,7 +1,7 @@
-import HTTPStatusError from './HTTPStatusError';
+import Error from "./HttpError";
 
-class InternalServerError extends HTTPStatusError {
-  constructor(message = 'Internal Server Error.') {
+class InternalServerError extends Error {
+  constructor(message = "Internal Server Error.") {
     super(`500: ${message}`, 500);
   }
 }

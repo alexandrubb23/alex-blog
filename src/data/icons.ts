@@ -1,7 +1,8 @@
-import { AiFillHtml5 } from 'react-icons/ai';
-import { BsFiletypeJava, BsGithub } from 'react-icons/bs';
-import { FaNodeJs } from 'react-icons/fa';
-import { GrMysql, GrReactjs } from 'react-icons/gr';
+import { AiFillHtml5 } from "react-icons/ai";
+import { BsBracesAsterisk, BsFiletypeJava, BsGithub } from "react-icons/bs";
+import { FaNodeJs } from "react-icons/fa";
+import { GiGearStickPattern } from "react-icons/gi";
+import { GrMysql, GrReactjs } from "react-icons/gr";
 import {
   SiAlwaysdata,
   SiDjango,
@@ -11,11 +12,11 @@ import {
   SiPython,
   SiRedux,
   SiTypescript,
-} from 'react-icons/si';
-import { GiGearStickPattern } from 'react-icons/gi';
-import { TbBrandNextjs } from 'react-icons/tb';
+} from "react-icons/si";
+import { TbBrandNextjs } from "react-icons/tb";
 
 const icons = {
+  All: BsBracesAsterisk,
   Django: SiDjango,
   Docker: SiDocker,
   Git: BsGithub,
@@ -31,7 +32,10 @@ const icons = {
   Redux: SiRedux,
   TypeScript: SiTypescript,
   DesignPatterns: GiGearStickPattern,
+  // TODO: Remove this typo after updating all references
+  DesingPatterns: GiGearStickPattern,
   DataStructures: SiAlwaysdata,
-};
+  "React Native": GrReactjs,
+} as const;
 
 export default icons;

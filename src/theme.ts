@@ -1,58 +1,50 @@
-import { extendTheme, ThemeConfig } from '@chakra-ui/react';
-import type { StyleFunctionProps } from '@chakra-ui/styled-system';
+import {
+  createSystem,
+  defaultConfig,
+  defineConfig,
+  defineTokens,
+} from "@chakra-ui/react";
 
-const config: ThemeConfig = {
-  initialColorMode: 'light',
-};
-
-const theme = extendTheme({
-  config,
-  components: {
-    Button: {
-      variants: {
-        blue: (props: StyleFunctionProps) => ({
-          _hover: {
-            bg: 'blue.500',
-            color: 'white'
-          },
-          borderRadius: 'full',
-          color: props.colorMode === 'dark' ? 'white' : 'black',
-        }),
-        'nav-bar': (props: StyleFunctionProps) => ({
-          _hover: {
-            bg: props.colorMode === 'dark' ? 'gray.700' : 'gray.100',
-          },
-          borderRadius: '5px',
-          p: '10px',
-          minWidth: '2rem',
-          height: '2rem',
-        }),
-      },
-    },
+const tokens = defineTokens({
+  fonts: {
+    libre: { value: "Libre Baskerville" },
+    nothingYouCouldDo: { value: "Nothing You Could Do" },
   },
   colors: {
-    gray: {
-      50: '#f9f9f9',
-      100: '#ededed',
-      200: '#d3d3de',
-      300: '#b3b3b3',
-      400: '#a0a0a0',
-      500: '#898989',
-      600: '#6c6c6c',
-      700: '#202020',
-      800: '#121212',
-      900: '#111',
-    },
-    blue: {
-      500: '#1970F1',
-    },
-    yellow: {
-      500: '#E8C127',
-    },
-    midnightBlue: {
-      500: '#181738',
+    header: { value: "#F2EFE5" },
+    primary: { value: "#6D54D0" },
+    secondary: { value: "#F2EFE5" },
+  },
+  sizes: {
+    container: {
+      lg: { value: "980px" },
+      md: { value: "768px" },
+      sm: { value: "100%" },
+      base: { value: "100%" },
     },
   },
 });
 
-export default theme;
+const config = defineConfig({
+  globalCss: {
+    ":root": {
+      "--bar-width": "30px",
+      "--bar-height": "2px",
+      "--hamburger-gap": "8px",
+      "--foreground-color": "#000",
+      "--background-color": "rgba(0, 0, 0, 0.5)",
+      "--backdrop-filter": "20px",
+      "--hamburger-margin": "18px",
+      "--animation-timing": ".5s ease-in-out",
+      "--hamburger-height":
+        "calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2)",
+      "--body-background": "#000",
+    },
+    body: {
+      fontFamily: "inter",
+    },
+  },
+  theme: { tokens },
+});
+
+export default createSystem(defaultConfig, config);

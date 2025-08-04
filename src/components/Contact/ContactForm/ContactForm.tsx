@@ -1,53 +1,52 @@
-/* eslint-disable react/no-children-prop */
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Textarea,
-} from '@chakra-ui/react';
-import { BsPerson } from 'react-icons/bs';
-import { MdOutlineEmail } from 'react-icons/md';
+import { Box, Field, VStack } from "@chakra-ui/react";
+import z from "zod";
 
-const ContactForm = () => {
-  return (
-    <>
-      <FormControl id='name'>
-        <FormLabel>Your Name</FormLabel>
-        <InputGroup>
-          <InputLeftElement pointerEvents='none' children={<BsPerson />} />
-          <Input type='text' size='md' />
-        </InputGroup>
-      </FormControl>
-      <FormControl id='name'>
-        <FormLabel>Mail</FormLabel>
-        <InputGroup>
-          <InputLeftElement
-            pointerEvents='none'
-            children={<MdOutlineEmail />}
-          />
-          <Input type='text' size='md' />
-        </InputGroup>
-      </FormControl>
-      <FormControl id='name'>
-        <FormLabel>Message</FormLabel>
-        <Textarea placeholder='message' />
-      </FormControl>
-      <FormControl id='name' float='right'>
-        <Button
-          variant='solid'
-          bg='#0D74FF'
-          color='white'
-          _hover={{}}
-          isDisabled={true}
-        >
-          Send Message
-        </Button>
-      </FormControl>
-    </>
-  );
+import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
+import { Form, Input, Textarea } from "@/components/common/Form";
+
+const schema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.email("Invalid email address").min(1, "Email is required"),
+  message: z
+    .string()
+    .max(500, "Message cannot exceed 500 characters")
+    .min(1, "Message is required"),
+});
+
+const defaultValues = {
+  name: "",
+  email: "",
+  message: "",
 };
+
+const ContactForm = () => (
+  <Form
+    method="post"
+    action="contact"
+    validationSchema={schema}
+    defaultValues={defaultValues}
+  >
+    <VStack gap={4} alignItems="flex-start" >
+      <Field.Root gap={2}>
+        <Input name="name" placeholder="Enter your name" label="Your Name" />
+      </Field.Root>
+      <Field.Root gap={2}>
+        <Input placeholder="e.q. john@doe.com" name="email" label="Email" />
+      </Field.Root>
+      <Field.Root gap={2}>
+        <Textarea
+          name="message"
+          placeholder="Maximum 500 characters"
+          label="Message"
+        />
+      </Field.Root>
+      <Field.Root float="right" gap={2}>
+        <Box>
+          <SolidAnimatedButton>Send Message</SolidAnimatedButton>
+        </Box>
+      </Field.Root>
+    </VStack>
+  </Form>
+);
 
 export default ContactForm;

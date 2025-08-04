@@ -1,9 +1,9 @@
-import { PostData } from '@/app/api/lib/models';
-import { AUTHOR } from '@/app/constants';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { PostData } from "@/app/api/lib/models";
+import { AUTHOR } from "@/app/constants";
+import { remark } from "remark";
+import html from "remark-html";
 
-const CACHE_KEY_SEPARATOR = ':';
+const CACHE_KEY_SEPARATOR = ":";
 
 // TODO: Replace in-memory markdownCache with persistent cache (e.g., Redis)
 const markdownCache = new Map<string, PostData>();
@@ -27,13 +27,16 @@ const parseMarkdownResponseToHTML = async (response: PostData) => {
     markdownCache.set(cacheKey, result);
     return result;
   } catch (error) {
-    throw new Error('Error occurred during content parsing');
+    throw new Error("Error occurred during content parsing");
   }
 };
 
-export function extractImageFromMarkdown(markdown: string) {
+export function extractImageFromMarkdown(
+  markdown: string,
+  fallbackImage = AUTHOR.PICTURE,
+) {
   const match = markdown.match(/!\[[^\]]*\]\(([^)]+\.(webp|png|jpg|jpeg))\)/i);
-  return match?.[1] ?? AUTHOR.PICTURE;
+  return match?.[1] ?? fallbackImage;
 }
 
 export default parseMarkdownResponseToHTML;

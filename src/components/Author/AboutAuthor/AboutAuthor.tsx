@@ -1,39 +1,33 @@
-import { Box, BoxProps, Button, Heading } from '@chakra-ui/react';
-import { BsArrowRightShort } from 'react-icons/bs';
-import { useRouter } from 'next/navigation';
+import { Box, Heading, VStack } from "@chakra-ui/react";
 
-import { ROUTES } from '@/app/constants';
-import { useIsHomePage } from '@/hooks';
+import { ROUTES } from "@/app/constants";
+import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
+import { useNavigateToPage } from "@/hooks/router";
 
-interface AboutAuthorProps {
-  name: string;
-  textAlign?: BoxProps['textAlign'];
-}
-
-const AboutAuthor = ({ name, textAlign = 'left' }: AboutAuthorProps) => {
-  const router = useRouter();
-  const isHomePage = useIsHomePage();
-
-  if (!isHomePage) return null;
-
+const AboutAuthor = () => {
+  const navigateToPage = useNavigateToPage();
   return (
-    <Box textAlign={textAlign} padding={0}>
-      <Heading as='h2' fontSize='24px'>
-        Hello, I&apos;m {name}, I&apos;m a Software Engineer that companies love
-        to hire.
-      </Heading>
-      <Button
-        rightIcon={<BsArrowRightShort />}
-        colorScheme='teal'
-        bg='yellow.500'
-        color='black'
-        _hover={{ bg: 'yellow.400' }}
-        onClick={() => router.push(ROUTES.ABOUT_AUTHOR)}
-        mt={8}
+    <VStack textAlign="center">
+      <Heading
+        as="h2"
+        fontSize={{
+          smDown: "20px",
+          sm: "20px",
+          lg: "24px",
+        }}
+        fontWeight={400}
       >
-        Read more about me
-      </Button>
-    </Box>
+        I&apos;m a Software Engineer 🚀 known for building high-impact solutions
+        that businesses 🤝 trust and scale with confidence.
+      </Heading>
+      <Box mt="24px">
+        <SolidAnimatedButton
+          onClick={() => navigateToPage(ROUTES.ABOUT_AUTHOR)}
+        >
+          Read about me
+        </SolidAnimatedButton>
+      </Box>
+    </VStack>
   );
 };
 

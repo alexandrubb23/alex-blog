@@ -1,5 +1,6 @@
 export const AUTHOR: Readonly<{
   NAME: string;
+  AVATAR: string;
   PHONE_NUMBER: string;
   EMAIL_ADDRESS: string;
   ADDRESS: {
@@ -9,21 +10,22 @@ export const AUTHOR: Readonly<{
   };
   PICTURE: string;
 }> = {
-  NAME: 'Alexandru Barbulescu',
-  PHONE_NUMBER: '+40-735 538 558',
-  EMAIL_ADDRESS: 'alex_bb23@yahoo.co.uk',
+  NAME: "Alexandru Barbulescu",
+  AVATAR: "alex.png",
+  PHONE_NUMBER: "+40-735 538 558",
+  EMAIL_ADDRESS: "alex_bb23@yahoo.co.uk",
   ADDRESS: {
-    STREET: 'Str. Sf. Vineri, nr. 23',
-    CITY: 'Bucharest',
-    COUNTRY: 'Romania',
+    STREET: "Str. Castelului 6",
+    CITY: "Corbeanca",
+    COUNTRY: "Romania",
   },
-  PICTURE: 'https://github.com/alexandrubb23.png',
+  PICTURE: "https://github.com/alexandrubb23.png",
 };
 
 export const HTTP_QUERY_KEYS: Readonly<{
   PAGE_SOURCE: string;
 }> = {
-  PAGE_SOURCE: 'pageSource',
+  PAGE_SOURCE: "pageSource",
 };
 
 export const QUERY_KEYS: Readonly<{
@@ -31,9 +33,9 @@ export const QUERY_KEYS: Readonly<{
   EXERCISES: string;
   POSTS: string;
 }> = {
-  CERTIFICATIONS: 'certifications',
-  EXERCISES: 'exercises',
-  POSTS: 'posts',
+  CERTIFICATIONS: "certifications",
+  EXERCISES: "exercises",
+  POSTS: "posts",
 };
 
 export const ROUTES: Readonly<{
@@ -42,8 +44,8 @@ export const ROUTES: Readonly<{
   CERTIFICATIONS: string;
   CONTACT: string;
 }> = {
-  HOME: '/',
-  ABOUT_AUTHOR: '/pages/alexandru-barbulescu',
-  CERTIFICATIONS: '/certifications',
-  CONTACT: '/contact',
+  HOME: "/",
+  ABOUT_AUTHOR: "/pages/about-me",
+  CERTIFICATIONS: "/certifications",
+  CONTACT: "/contact",
 };

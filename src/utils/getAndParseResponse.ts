@@ -1,8 +1,8 @@
-import matter from 'gray-matter';
+import matter from "gray-matter";
 
-import { Entity, PostData } from '@/app/api/lib/models';
-import type { PostDataOrUndefined } from '@/app/api/lib/models/post-data.interface';
-import getOnePost from '@/app/api/lib/sql/getOnePost';
+import { Entity, PostData } from "@/app/api/lib/models";
+import type { PostDataOrUndefined } from "@/app/api/lib/models/post-data.interface";
+import getOnePost from "@/app/api/lib/sql/getOnePost";
 const parseData = (id: string, post: PostData) => {
   const matterResult = matter(post.content);
 
@@ -15,7 +15,7 @@ const parseData = (id: string, post: PostData) => {
 
 const getAndParseResponse = async (
   entity: Entity,
-  id: string
+  id: string,
 ): Promise<PostDataOrUndefined> => {
   const post = await getOnePost(entity, id);
   if (!post) return undefined;

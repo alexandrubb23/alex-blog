@@ -1,31 +1,34 @@
-import { Heading } from '@chakra-ui/react';
-import { IconType } from 'react-icons/lib';
+import { BoxProps } from "@chakra-ui/react";
+import { useMemo } from "react";
 
-import { IconLabel } from '@/components/common';
-import { useIconStyle, useIsHomePage, useIsNotMobile } from '@/hooks';
+import { Technology } from "@/app/api/lib/models";
+import { IconLabel } from "@/components/common";
+import icons from "@/data/icons";
+import { useIconStyle } from "@/hooks";
 
-interface TechnologyHeadingWithIconProps {
-  icon: IconType;
-  label: string;
+interface TechnologyHeadingWithIconProps extends BoxProps {
+  label?: string;
+  technology: Technology;
+  iconSize?: string | number;
+  iconBoxStyle?: BoxProps;
 }
 
 const TechnologyHeadingWithIcon = ({
-  icon,
   label,
+  technology,
+  iconSize,
+  iconBoxStyle,
 }: TechnologyHeadingWithIconProps) => {
-  const iconStyle = useIconStyle();
-  const isHomePage = useIsHomePage();
-  const isNotMobile = useIsNotMobile();
+  const iconStyle = useIconStyle({ ...iconBoxStyle });
+  const getIcon = useMemo(() => (icon: keyof typeof icons) => icons[icon], []);
 
   return (
-    <Heading as={isHomePage ? 'h3' : 'h2'} fontSize='22px' mb={4}>
-      <IconLabel
-        icon={icon}
-        iconWrapperProps={iconStyle}
-        label={label}
-        showIcon={isNotMobile}
-      />
-    </Heading>
+    <IconLabel
+      icon={getIcon(technology)}
+      iconWrapperProps={iconStyle}
+      label={label}
+      iconSize={iconSize}
+    />
   );
 };
 

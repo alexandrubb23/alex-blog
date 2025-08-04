@@ -1,30 +1,29 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
-import { HTTPStatusError } from '@/app/api/lib/classes/Errors';
-import { APIResponse } from '@/app/api/lib/models';
-import type { PostDataOrUndefined } from '../models/post-data.interface';
+import { HttpError } from "@/app/api/lib/classes/Errors";
 
-const nextResponse = (status: number, statusText: string) => {
-  return new NextResponse(null, {
-    status,
-    statusText,
-  });
+export const nextResponse = (status: number, statusText: string) => {
+  return NextResponse.json(
+    {
+      error: statusText,
+    },
+    {
+      status,
+    },
+  );
 };
 
-const handleEntityRequestService = async (
-  getData: () => Promise<APIResponse[]> | Promise<PostDataOrUndefined>
-) => {
+export const handleRequestAndRespond = async <T>(handler: () => Promise<T>) => {
   try {
-    const data = await getData();
-    if (!data) return nextResponse(404, 'Not Found');
-
+    const data = await handler();
     return NextResponse.json(data);
   } catch (error) {
-    if (error instanceof HTTPStatusError)
-      return nextResponse(error.statusCode, error.message);
-
-    return nextResponse(500, 'Internal Server Error');
+    const err = error as HttpError;
+    return nextResponse(400, err.message);
   }
 };
+
+const handleEntityRequestService = async <T>(getData: () => Promise<T>) =>
+  handleRequestAndRespond(getData);
 
 export default handleEntityRequestService;

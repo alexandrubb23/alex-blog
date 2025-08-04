@@ -1,11 +1,20 @@
-import { useContactSocialMedia } from '@/hooks';
-import { SocialButton, SocialButtonVariant } from './common/SocialButton';
+import { useCallback } from "react";
+import { useContactSocialMedia } from "@/hooks";
+import { SocialButton, SocialButtonVariant } from "./common/SocialButton";
+
 interface ContactSocialMediaProps {
   variant?: SocialButtonVariant;
 }
 
-const ContactSocialMedia = ({ variant = 'blue' }: ContactSocialMediaProps) => {
+const ContactSocialMedia = ({ variant = "blue" }: ContactSocialMediaProps) => {
   const { data: socialMedia } = useContactSocialMedia();
+
+  const handleSocialClick = useCallback(
+    (href: string) => () => {
+      window.open(href, "_blank", "noopener,noreferrer");
+    },
+    [],
+  );
 
   return (
     <>
@@ -14,7 +23,7 @@ const ContactSocialMedia = ({ variant = 'blue' }: ContactSocialMediaProps) => {
           key={name}
           label={name}
           icon={Icon}
-          onClick={() => window.open(href, '_blank')}
+          onClick={handleSocialClick(href)}
           variant={variant}
         />
       ))}

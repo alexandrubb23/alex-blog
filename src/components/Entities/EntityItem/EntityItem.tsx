@@ -1,10 +1,10 @@
-import { Box } from '@chakra-ui/react';
+import { Heading } from "@chakra-ui/react";
 
-import { PostData } from '@/app/api/lib/models';
-import { Link } from '@/components/common';
-import { PostMeta } from '@/components/common/PostMeta';
-import { usePostHref } from '@/hooks/router';
-import { formatReadingTime } from '@/utils/formatReadingTime';
+import { PostData } from "@/app/api/lib/models";
+import { GlobalLink } from "@/components/common/Link";
+import { PostMeta } from "@/components/common/PostMeta";
+import { usePostHref } from "@/hooks/router";
+import { formatReadingTime } from "@/utils/formatReadingTime";
 
 interface EntityItemProps {
   postData: PostData;
@@ -17,10 +17,20 @@ const EntityItem = ({ postData }: EntityItemProps) => {
   const readingTime = formatReadingTime(content, id);
 
   return (
-    <Box key={title}>
-      <Link href={href}>{title}</Link>
+    <>
+      <Heading
+        key={title}
+        as="h4"
+        fontSize={{
+          base: "24px",
+        }}
+        fontWeight={500}
+        _hover={{ textDecoration: "underline", color: "primary" }}
+      >
+        <GlobalLink href={href}>{title}</GlobalLink>
+      </Heading>
       <PostMeta readingTime={readingTime} date={date} />
-    </Box>
+    </>
   );
 };
 export default EntityItem;

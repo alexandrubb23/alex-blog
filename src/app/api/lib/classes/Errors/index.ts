@@ -1,3 +1,3 @@
-export { default as HTTPStatusError } from './HTTPStatusError';
-export { default as NotFoundError } from './NotFoundError';
-export { default as InternalServerError } from './InternalServerError';
+export { default as HttpError } from "./HttpError";
+export { default as NotFoundError } from "./NotFoundError";
+export { default as InternalServerError } from "./InternalServerError";

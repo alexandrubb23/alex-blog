@@ -1,41 +1,43 @@
-import { Grid, GridItem } from '@chakra-ui/react';
+import { Grid, GridItem } from "@chakra-ui/react";
 
-import { AUTHOR } from '@/app/constants';
-import '@/app/global.css';
-import Providers from '@/app/providers';
-import { Author, NavBar } from '@/components';
+import "@/app/global.css";
+
+import Providers from "@/app/providers";
+import { Toaster } from "../ui/toaster";
+import Footer from "./Footer";
+import Header from "./Header";
 
 interface LayoutProps {
   children: React.ReactNode;
   contentClassName?: string;
 }
 
-const Layout = ({ contentClassName, children }: LayoutProps) => {
-  return (
-    <Providers>
-      <Grid
-        padding={5}
-        rowGap={8}
-        templateAreas={{
-          base: `"nav" "main" "content"`,
-        }}
-        maxW='1024px'
-        margin='auto'
+const Layout = ({ contentClassName, children }: LayoutProps) => (
+  <Providers>
+    <Grid
+      templateAreas={{
+        base: `"header" "main" "footer"`,
+      }}
+      bg={{
+        _dark: "gray.900",
+      }}
+      color={{
+        base: "gray.800",
+        _dark: "gray.400",
+      }}
+    >
+      <Header />
+      <GridItem
+        area="main"
+        className={contentClassName}
+        minHeight="calc(100vh - 128px)"
       >
-        <GridItem area='nav'>
-          <NavBar />
-        </GridItem>
-
-        <GridItem area='main'>
-          <Author name={AUTHOR.NAME} />
-        </GridItem>
-
-        <GridItem area='content' className={contentClassName}>
-          {children}
-        </GridItem>
-      </Grid>
-    </Providers>
-  );
-};
+        {children}
+        <Toaster />
+      </GridItem>
+      <Footer />
+    </Grid>
+  </Providers>
+);
 
 export default Layout;

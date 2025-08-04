@@ -1,14 +1,16 @@
-import useColorMode from "./useColorMode";
+import { useColorMode } from "@/components/ui/color-mode";
+import { BoxProps } from "@chakra-ui/react";
 
-const useIconStyle = () => {
+const useIconStyle = (props: BoxProps = {}) => {
   const { isDark } = useColorMode();
 
   return {
-    bg: isDark ? 'midnightBlue.500' : 'blue.500',
-    borderRadius: 'full',
-    color: isDark ? 'blue.500' : 'white',
-    padding: '10px',
-  }
-}
+    bg: isDark ? "{colors.primary}" : "{colors.primary}",
+    borderRadius: "full",
+    color: isDark ? "white" : "white",
+    padding: "10px",
+    ...props,
+  };
+};
 
 export default useIconStyle;

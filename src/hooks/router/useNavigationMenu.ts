@@ -1,16 +1,32 @@
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from "next/navigation";
+import { useCallback } from "react";
+import { useNavigateToPage } from ".";
 
 const useNavigationMenu = () => {
-  const router = useRouter();
   const pathName = usePathname();
+  const navigateToPage = useNavigateToPage();
 
-  const isActiveItem = (href: string) => pathName === href;
+  const isActiveItem = useCallback(
+    (href: string) => pathName === href,
+    [pathName],
+  );
 
-  const goToPage = (href: string) => {
-    router.push(href);
-  };
+  const goToPage = useCallback(
+    (href: string) => {
+      if (isActiveItem(href)) return;
+      navigateToPage(href);
+    },
+    [navigateToPage, isActiveItem],
+  );
 
-  return { isActiveItem, goToPage };
+  const handleItemClick = useCallback(
+    (id: string) => () => {
+      goToPage(id);
+    },
+    [goToPage],
+  );
+
+  return { isActiveItem, goToPage, handleItemClick };
 };
 
 export default useNavigationMenu;

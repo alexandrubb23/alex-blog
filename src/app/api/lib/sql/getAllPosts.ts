@@ -1,21 +1,43 @@
-import { desc, eq, sql } from 'drizzle-orm';
+import { and, desc, eq, ne, sql } from "drizzle-orm";
 
-import { NotFoundError } from '@/app/api/lib/classes/Errors';
-import { ENTITIES } from '@/app/api/lib/constants';
-import { Entity, PostData } from '@/app/api/lib/models';
-import { posts, topics } from '@/db/schema';
-import PlanetScale, { type DB } from './planetscale';
+import { NotFoundError } from "@/app/api/lib/classes/Errors";
+import { ENTITIES } from "@/app/api/lib/constants";
+import { Entity, PostData, Technology } from "@/app/api/lib/models";
+import { posts, topics } from "@/db/schema";
+import PlanetScale, { type DB } from "./planetscale";
 
-const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
+export type QueryFilter = {
+  limit?: number;
+  excludePost?: string;
+  topic?: Technology;
+};
+
+export type GetAllPosts = {
+  entity: Entity;
+  queryFilter?: QueryFilter;
+};
+
+const DEFAULT_POST_LIMIT = 100;
+
+const getAllPosts = async ({
+  entity,
+  queryFilter,
+}: GetAllPosts): Promise<PostData[]> => {
+  let cacheKey = `${entity}:${Object.values(queryFilter || {}).join(
+    ":",
+  )}`.toLowerCase();
+
   const queryFn = async () => {
     const entities = Object.values(ENTITIES);
-    if (!entities.find(e => e === entity)) {
-      throw new NotFoundError('The provided entity is not valid.');
+    if (!entities.find((e) => e === entity)) {
+      throw new NotFoundError("The provided entity is not valid.");
     }
 
     const db = PlanetScale.connect();
 
-    const results: PostData[] = await db
+    const limit = queryFilter?.limit ? queryFilter.limit : DEFAULT_POST_LIMIT;
+
+    const results: PostData[] = (await db
       .select({
         id: posts.slug,
         title: posts.title,
@@ -27,13 +49,22 @@ const getAllPosts = async (entity: Entity): Promise<PostData[]> => {
       })
       .from(posts)
       .innerJoin(topics, eq(posts.topicId, topics.id))
-      .where(eq(posts.postType, entity))
-      .orderBy(desc(posts.date));
+      .where(
+        and(
+          eq(posts.postType, entity),
+          ...(queryFilter?.topic ? [eq(topics.topic, queryFilter.topic)] : []),
+          ...(queryFilter?.excludePost
+            ? [ne(posts.slug, queryFilter.excludePost)]
+            : []),
+        ),
+      )
+      .limit(limit)
+      .orderBy(desc(posts.date))) as PostData[];
 
     return results;
   };
 
-  return PlanetScale.cachedQuery(entity, queryFn);
+  return PlanetScale.cachedQuery(cacheKey, queryFn);
 };
 
 export const getPostsAccessSQL = (db: DB, entity: Entity) => {
@@ -41,7 +72,7 @@ export const getPostsAccessSQL = (db: DB, entity: Entity) => {
 
   const fields = {
     topicId,
-    date: sql<string>`MAX(${date})`.as('latestDate'),
+    date: sql<string>`MAX(${date})`.as("latestDate"),
   };
 
   const postTypeEqEntity = eq(postType, entity);
@@ -51,7 +82,7 @@ export const getPostsAccessSQL = (db: DB, entity: Entity) => {
     .from(posts)
     .where(postTypeEqEntity)
     .groupBy(topicId)
-    .as('postsSQL');
+    .as("postsSQL");
 };
 
 export default getAllPosts;

@@ -1,10 +1,5 @@
 a {
-  color: #1970f1 !important;
   text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 form {
@@ -28,13 +23,19 @@ ol li {
 pre {
   font-size: 14px;
 }
+p {
+  font-size: 18px;
+}
+strong {
+  font-weight: 500;
+}
 
 em {
-  border-left: 7px solid dodgerblue;
+  border-left: 4px solid #6d54d0;
   border-radius: 5px;
   display: block;
   line-height: inherit;
-  padding: 5px;
+  padding: 5px 5px 5px 16px;
 }
 
 blockquote {
@@ -62,12 +63,12 @@ blockquote:after {
 }
 
 .chakra-ui-light em {
-  background-color: ghostwhite;
+  background-color: #f2efe5;
   color: black;
 }
 
 .chakra-ui-dark em {
-  border-left: 7px solid dodgerblue;
+  border-left: 7px solid #6d54d0;
   border-radius: 5px;
   display: inline-block;
   line-height: inherit;
