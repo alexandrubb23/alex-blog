@@ -6,13 +6,15 @@ import { AUTHOR, ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
 import Container from "@/components/Layout/Container";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
+import { useLazyLoadInjector } from "@/hooks/layout";
 import { useNavigateToPage } from "@/hooks/router";
 import { AuthorAvatar } from "../AuthorAvatar";
 
 const AboutMe = () => {
+  useLazyLoadInjector();
   const navigateToPage = useNavigateToPage();
   return (
-    <Container>
+    <Container id="content-container">
       <Box
         display="flex"
         flexDirection="column"

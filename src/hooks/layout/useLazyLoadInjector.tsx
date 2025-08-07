@@ -1,9 +1,9 @@
 import { useLayoutEffect } from "react";
 
-const useLazyLoadInjector = () => {
+const useLazyLoadInjector = (parent = "content-container") => {
   useLayoutEffect(() => {
     const handleImageLoading = () => {
-      const images = document.querySelectorAll("#content-container img");
+      const images = document.querySelectorAll(`#${parent} img`);
 
       images.forEach((img) => {
         const imageElement = img as HTMLImageElement;
