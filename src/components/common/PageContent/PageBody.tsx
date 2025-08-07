@@ -6,6 +6,7 @@ import { useAnimateOnScroll } from "@/hooks/layout";
 import type { HTMLObject } from "@/hooks/style/useAddClassToSpecificTags";
 import utilStyles from "@/styles/post.module.css";
 import CopyButtonsInjector from "../CopyButton/CopyButton";
+import { ImageLazyLoadInjector } from "../ImageLazyLoad";
 import { usePostContext } from "./PostProvider";
 
 const htmlObject: HTMLObject = {
@@ -35,6 +36,7 @@ const PageBody = () => {
   return (
     <>
       <CopyButtonsInjector />
+      <ImageLazyLoadInjector />
 
       <Box
         id={ROOT_SELECTOR}
@@ -48,6 +50,14 @@ const PageBody = () => {
           "& h1, & h2, & h3, & h4, & h5, & h6": { opacity: 0 },
           "& a": { color: isDark ? "primary" : "gray.950" },
           "& pre": { opacity: 0 },
+          "& img": {
+            maxWidth: "100%",
+            height: "auto",
+            borderRadius: "8px",
+            boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+            display: "block",
+            margin: "1rem auto", // Center images and add some spacing
+          },
           "& a:hover": {
             color: isDark ? "#B9A8FB" : "primary",
             textDecoration: "underline",
