@@ -1,12 +1,17 @@
-import { ENTITIES } from "@/app/api/lib/constants";
-import hydratedPage, { type EntityProps } from "@/app/hydratedPage";
-import AboutMe from "@/components/Author/AboutAuthor/AboutMe";
+"use client";
 
-const Page = ({ params }: EntityProps) =>
-  hydratedPage({
-    params,
-    entity: ENTITIES.PAGES,
-    component: AboutMe,
-  });
+import Providers from "@/app/providers";
+import AboutMe from "@/components/Author/AboutAuthor/AboutMe";
+import { PageLayout } from "@/components/common";
+
+const Page = () => {
+  return (
+    <Providers>
+      <PageLayout>
+        <AboutMe />
+      </PageLayout>
+    </Providers>
+  );
+};
 
 export default Page;

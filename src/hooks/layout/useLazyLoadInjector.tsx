@@ -56,7 +56,6 @@ const useLazyLoadInjector = (parent = "content-container") => {
                   preloadImg.onload = () => {
                     // Image is fully loaded, now animate to sharp and adjust height
                     requestAnimationFrame(() => {
-                      target.style.height = "auto"; // Let it flow naturally now
                       target.style.objectFit = "contain";
                       target.style.transform = "scale(1)";
                       target.style.filter = "blur(0px) brightness(1)";

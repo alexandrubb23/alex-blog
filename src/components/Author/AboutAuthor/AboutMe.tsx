@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
 
 import { AUTHOR, ROUTES } from "@/app/constants";

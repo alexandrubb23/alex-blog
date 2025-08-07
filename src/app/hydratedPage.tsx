@@ -3,7 +3,7 @@ import type { PropsWithChildren } from "react";
 
 import prefetchEntity from "@/utils/prefetchEntity";
 import type { Entity } from "./api/lib/models";
-import EntityHydrationProvider from "./posts/[id]/EntityHydrationProvider";
+import EntityHydrationProvider from "./shared/EntityHydrationProvider";
 
 export type EntityProps = {
   params: Promise<{ id: string }>;
