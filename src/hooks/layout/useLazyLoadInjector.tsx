@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
-const ImageLazyLoadInjector = () => {
-  useEffect(() => {
+const useLazyLoadInjector = () => {
+  useLayoutEffect(() => {
     const handleImageLoading = () => {
       const images = document.querySelectorAll("#content-container img");
 
@@ -125,8 +125,6 @@ const ImageLazyLoadInjector = () => {
       observer.disconnect();
     };
   }, []);
-
-  return null;
 };
 
-export default ImageLazyLoadInjector;
+export default useLazyLoadInjector;

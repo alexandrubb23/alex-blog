@@ -2,11 +2,10 @@ import { Box } from "@chakra-ui/react";
 
 import { useColorMode } from "@/components/ui/color-mode";
 import { useAddClassToSpecificTags } from "@/hooks";
-import { useAnimateOnScroll } from "@/hooks/layout";
+import { useAnimateOnScroll, useLazyLoadInjector } from "@/hooks/layout";
 import type { HTMLObject } from "@/hooks/style/useAddClassToSpecificTags";
 import utilStyles from "@/styles/post.module.css";
 import CopyButtonsInjector from "../CopyButton/CopyButton";
-import { ImageLazyLoadInjector } from "../ImageLazyLoad";
 import { usePostContext } from "./PostProvider";
 
 const htmlObject: HTMLObject = {
@@ -17,10 +16,7 @@ const htmlObject: HTMLObject = {
 const ROOT_SELECTOR = "content-container";
 
 const PageBody = () => {
-  const { content } = usePostContext();
-  const tagsClass = useAddClassToSpecificTags(htmlObject);
-
-  const { isDark } = useColorMode();
+  useLazyLoadInjector();
 
   useAnimateOnScroll({
     rootSelector: `#${ROOT_SELECTOR}`,
@@ -33,10 +29,13 @@ const PageBody = () => {
     threshold: 0.2,
   });
 
+  const { isDark } = useColorMode();
+  const { content } = usePostContext();
+  const tagsClass = useAddClassToSpecificTags(htmlObject);
+
   return (
     <>
       <CopyButtonsInjector />
-      <ImageLazyLoadInjector />
 
       <Box
         id={ROOT_SELECTOR}
