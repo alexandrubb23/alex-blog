@@ -123,7 +123,7 @@ const useLazyLoadInjector = (parent = "content-container") => {
     return () => {
       observer.disconnect();
     };
-  }, []);
+  }, [parent]);
 };
 
 export default useLazyLoadInjector;

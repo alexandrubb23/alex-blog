@@ -51,7 +51,7 @@ const useAbortableEffect = (
       controller.abort();
       cleanup?.();
     };
-  }, deps);
+  }, [deps, effect]); // Ensure effect runs when deps change
 };
 
 export default useAbortableEffect;
