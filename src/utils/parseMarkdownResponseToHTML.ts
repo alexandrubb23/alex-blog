@@ -1,7 +1,8 @@
 import { PostData } from "@/app/api/lib/models";
 import { AUTHOR } from "@/app/constants";
-import { remark } from "remark";
-import html from "remark-html";
+import remarkHtml from "remark-html";
+import remarkParse from "remark-parse";
+import { unified } from "unified";
 
 const CACHE_KEY_SEPARATOR = ":";
 
@@ -17,7 +18,11 @@ const parseMarkdownResponseToHTML = async (response: PostData) => {
       return markdownCache.get(cacheKey) as PostData;
     }
 
-    const content = await remark().use(html).process(response.content);
+    const content = await unified()
+      .use(remarkParse)
+      // TODO: Fix 'as any' by updating remark-html types
+      .use(remarkHtml as any)
+      .process(response.content);
 
     const result = {
       ...response,
