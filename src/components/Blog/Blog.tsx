@@ -1,5 +1,5 @@
 import { Box, Heading } from "@chakra-ui/react";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { ENTITIES } from "@/app/api/lib/constants";
 import { type Technology } from "@/app/api/lib/models";
@@ -15,10 +15,10 @@ const MyList = () => {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const { data, isLoading } = useEntityQuery({ entity: ENTITIES.POSTS });
 
-  const posts = useMemo(() => {
-    if (!selectedId || selectedId === ("All" satisfies Technology)) return data;
-    return data?.filter((post) => post.id === selectedId);
-  }, [selectedId, data]);
+  const posts =
+    !selectedId || selectedId === ("All" satisfies Technology)
+      ? data
+      : data?.filter((post) => post.id === selectedId);
 
   const handleSelected = (id: string) => {
     setSelectedId(id);

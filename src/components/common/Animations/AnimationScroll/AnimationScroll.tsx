@@ -1,6 +1,6 @@
 import { Box, type BoxProps } from "@chakra-ui/react";
 import { Easing, motion, useAnimation } from "framer-motion";
-import { PropsWithChildren, useMemo } from "react";
+import { PropsWithChildren } from "react";
 import { useInView } from "react-intersection-observer";
 
 import { useAbortableEffect } from "@/hooks";
@@ -21,6 +21,21 @@ type AnimationScrollProps = PropsWithChildren<
   } & BoxProps
 >;
 
+const getInitialTransform = (direction: AnimationDirection, offset: number) => {
+  switch (direction) {
+    case "up":
+      return { opacity: 0, y: offset };
+    case "down":
+      return { opacity: 0, y: -offset };
+    case "left":
+      return { opacity: 0, x: offset };
+    case "right":
+      return { opacity: 0, x: -offset };
+    default:
+      return { opacity: 0 };
+  }
+};
+
 export const AnimationScroll = ({
   animation = "easeIn",
   children,
@@ -35,20 +50,6 @@ export const AnimationScroll = ({
 }: AnimationScrollProps) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: once, threshold });
-  const initialTransform = useMemo(() => {
-    switch (direction) {
-      case "up":
-        return { opacity: 0, y: offset };
-      case "down":
-        return { opacity: 0, y: -offset };
-      case "left":
-        return { opacity: 0, x: offset };
-      case "right":
-        return { opacity: 0, x: -offset };
-      default:
-        return { opacity: 0 };
-    }
-  }, [direction, offset]);
 
   useAbortableEffect(
     async (signal) => {
@@ -67,7 +68,7 @@ export const AnimationScroll = ({
   return (
     <MotionBox
       ref={ref}
-      initial={initialTransform}
+      initial={getInitialTransform(direction, offset)}
       animate={controls}
       transition={{
         duration,

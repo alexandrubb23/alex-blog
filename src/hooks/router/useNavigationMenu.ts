@@ -1,30 +1,20 @@
 import { usePathname } from "next/navigation";
-import { useCallback } from "react";
 import { useNavigateToPage } from ".";
 
 const useNavigationMenu = () => {
   const pathName = usePathname();
   const navigateToPage = useNavigateToPage();
 
-  const isActiveItem = useCallback(
-    (href: string) => pathName === href,
-    [pathName],
-  );
+  const isActiveItem = (href: string) => pathName === href;
 
-  const goToPage = useCallback(
-    (href: string) => {
-      if (isActiveItem(href)) return;
-      navigateToPage(href);
-    },
-    [navigateToPage, isActiveItem],
-  );
+  const goToPage = (href: string) => {
+    if (isActiveItem(href)) return;
+    navigateToPage(href);
+  };
 
-  const handleItemClick = useCallback(
-    (id: string) => () => {
-      goToPage(id);
-    },
-    [goToPage],
-  );
+  const handleItemClick = (id: string) => () => {
+    goToPage(id);
+  };
 
   return { isActiveItem, goToPage, handleItemClick };
 };

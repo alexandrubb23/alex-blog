@@ -1,5 +1,3 @@
-import { useCallback } from "react";
-
 import type { APIResponse, Technology } from "@/app/api/lib/models";
 import { useIsNotMobile } from "@/hooks";
 import DesktopTechnologySelector from "./DesktopTechnologySelector";
@@ -22,13 +20,6 @@ const TechnologySelector = ({
   const isNotMobile = useIsNotMobile();
   const technologies = useTechnologies(data, addItems);
 
-  const handleItemClick = useCallback(
-    (technology: Technology) => () => {
-      onSelect?.(technology);
-    },
-    [onSelect],
-  );
-
   const Component = isNotMobile
     ? DesktopTechnologySelector
     : MobileTechnologySelector;
@@ -36,7 +27,7 @@ const TechnologySelector = ({
   return (
     <Component
       technologies={technologies}
-      handleItemClick={handleItemClick}
+      handleItemClick={(technology: Technology) => () => onSelect?.(technology)}
       selectedId={selectedId}
     />
   );

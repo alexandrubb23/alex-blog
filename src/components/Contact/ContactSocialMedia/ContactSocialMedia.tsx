@@ -1,4 +1,5 @@
-import { useCallback } from "react";
+"use client";
+
 import { useContactSocialMedia } from "@/hooks";
 import { SocialButton, SocialButtonVariant } from "./common/SocialButton";
 
@@ -9,13 +10,6 @@ interface ContactSocialMediaProps {
 const ContactSocialMedia = ({ variant = "blue" }: ContactSocialMediaProps) => {
   const { data: socialMedia } = useContactSocialMedia();
 
-  const handleSocialClick = useCallback(
-    (href: string) => () => {
-      window.open(href, "_blank", "noopener,noreferrer");
-    },
-    [],
-  );
-
   return (
     <>
       {socialMedia.map(({ name, icon: Icon, href }) => (
@@ -23,7 +17,7 @@ const ContactSocialMedia = ({ variant = "blue" }: ContactSocialMediaProps) => {
           key={name}
           label={name}
           icon={Icon}
-          onClick={handleSocialClick(href)}
+          onClick={() => window.open(href, "_blank", "noopener,noreferrer")}
           variant={variant}
         />
       ))}

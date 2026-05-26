@@ -1,5 +1,4 @@
 import { BoxProps } from "@chakra-ui/react";
-import { useMemo } from "react";
 
 import { Technology } from "@/app/api/lib/models";
 import { IconLabel } from "@/components/common";
@@ -20,11 +19,10 @@ const TechnologyHeadingWithIcon = ({
   iconBoxStyle,
 }: TechnologyHeadingWithIconProps) => {
   const iconStyle = useIconStyle({ ...iconBoxStyle });
-  const getIcon = useMemo(() => (icon: keyof typeof icons) => icons[icon], []);
 
   return (
     <IconLabel
-      icon={getIcon(technology)}
+      icon={icons[technology]}
       iconWrapperProps={iconStyle}
       label={label}
       iconSize={iconSize}
