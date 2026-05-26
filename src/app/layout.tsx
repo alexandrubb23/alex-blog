@@ -1,13 +1,15 @@
 import { Inter } from "next/font/google";
 
+import { ColorModeProvider } from "@/components/ui/color-mode";
 import { env } from "@/env";
+import type { Metadata } from "next";
 import { AUTHOR } from "./constants";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const title = `Home | ${AUTHOR.NAME}`;
 
-export function generateMetadata() {
+export function generateMetadata(): Metadata {
   return {
     title,
     openGraph: {
@@ -28,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
-        {children}
+        <ColorModeProvider>{children}</ColorModeProvider>
       </body>
     </html>
   );
