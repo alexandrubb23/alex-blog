@@ -1,4 +1,4 @@
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { useState } from "react";
 
 import { ENTITIES } from "@/app/api/lib/constants";
@@ -31,22 +31,52 @@ const MyList = () => {
 
   return (
     <>
-      <Box display="flex" justifyContent="space-between">
-        <Heading
-          as={isHomePage ? "h2" : "h1"}
-          fontSize={{ base: "22px", sm: "22px", md: "24px", lg: "26px" }}
-          fontWeight={500}
-        >
-          From the Blog
-        </Heading>
+      <Flex direction="row" justify="space-between" align="flex-end" gap={4}>
+        <Box flex="1" minW={0}>
+          <Box
+            fontFamily="mono"
+            fontSize="11px"
+            fontWeight="500"
+            letterSpacing="0.32em"
+            textTransform="uppercase"
+            color="iris"
+            mb={3}
+          >
+            ── ./logs · stream 01
+          </Box>
+          <Heading
+            as={isHomePage ? "h2" : "h1"}
+            fontFamily="display"
+            fontSize={{ base: "32px", sm: "36px", md: "46px", lg: "54px" }}
+            fontWeight="700"
+            letterSpacing="-0.025em"
+            lineHeight="1.05"
+            color="bone"
+            textTransform="uppercase"
+            m={0}
+          >
+            From the{" "}
+            <Box
+              as="span"
+              color="iris"
+              textShadow={{
+                base: "none",
+                _dark:
+                  "0 0 24px rgba(139,92,246,0.35), 0 0 60px rgba(139,92,246,0.15)",
+              }}
+            >
+              Blog
+            </Box>
+          </Heading>
+        </Box>
         <TechnologySelector
           addItems={["All"]}
           data={data}
           onSelect={handleSelected}
           selectedId={selectedId}
         />
-      </Box>
-      <DoubleSeparator mt={{ sm: 5, smDown: 5 }} />
+      </Flex>
+      <DoubleSeparator mt={{ base: 6, md: 8 }} mb={{ base: 6, md: 10 }} />
       <EntityList data={posts} />
     </>
   );
@@ -57,8 +87,8 @@ const Blog = () => {
     <Container>
       <Box
         margin={{
-          base: 0,
-          md: "64px auto 64px auto",
+          base: "32px auto",
+          md: "96px auto",
         }}
       >
         <MyList />

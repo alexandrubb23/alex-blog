@@ -1,3 +1,4 @@
+export { CornerTicks } from "./CornerTicks";
 export { Date } from "./Date";
 export { ErrorAlert } from "./ErrorAlert";
 export { IconLabel } from "./IconLabel";

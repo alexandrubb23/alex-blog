@@ -1,5 +1,3 @@
-import { IoArrowForwardCircle } from "react-icons/io5";
-
 import { Box, ButtonProps, RecipeVariantProps } from "@chakra-ui/react";
 import { PropsWithChildren } from "react";
 import { Button } from "./Button";
@@ -16,23 +14,28 @@ const SolidButton = ({
   children,
   onClick,
   visual = "solidPurple",
-  icon = <IoArrowForwardCircle size={28} />,
+  icon,
   ...restProps
 }: SolidButtonProps) => (
   <Button
     alignItems="center"
-    display="flex"
+    display="inline-flex"
     gap={2}
-    justifyContent="space-between"
+    justifyContent="center"
     onClick={onClick}
     size="lg"
     visual={visual}
     {...restProps}
   >
-    <Box as="span">{children}</Box>
-    <Box as="span" className="button-icon">
-      {icon}
+    <Box as="span" fontWeight="700" opacity={0.7} className="button-prompt">
+      &gt;_
     </Box>
+    <Box as="span">{children}</Box>
+    {icon ? (
+      <Box as="span" className="button-icon">
+        {icon}
+      </Box>
+    ) : null}
   </Button>
 );
 

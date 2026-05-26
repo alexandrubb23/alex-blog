@@ -8,9 +8,15 @@ export interface PostMetaProps extends BoxProps {
 }
 
 const PostMeta = ({ readingTime, date }: PostMetaProps) => (
-  <Box display="flex" gap="0.5rem">
+  <Box
+    display="inline-flex"
+    alignItems="center"
+    gap="0.65rem"
+    fontFamily="mono"
+    fontVariantNumeric="tabular-nums"
+  >
     <Box>{readingTime}</Box>
-    <Box transform="translateY(-4px)">.</Box>
+    <Box opacity={0.5}>·</Box>
     <Date dateString={date} />
   </Box>
 );

@@ -1,4 +1,4 @@
-import { GridItem, VStack } from "@chakra-ui/react";
+import { Box, Flex, GridItem, VStack } from "@chakra-ui/react";
 
 import {
   AuthorEmail,
@@ -9,20 +9,50 @@ import {
 import { SocialMedia } from "../SocialMedia";
 
 const Footer = () => (
-  <GridItem area="footer" color="white" textAlign="center" w="100%">
+  <GridItem area="footer" color="bone" w="100%">
     <LetsWorkTogether />
-    <VStack
-      gap="40px"
-      bg="black"
-      px={{ base: 4, md: 10 }}
-      py={{ base: 10, md: 20 }}
-      color="gray.400"
+    <Box
+      bg="canvasDeep"
+      color="ash"
+      px={{ base: 5, md: 10 }}
+      py={{ base: 12, md: 18 }}
+      borderTop="1px solid"
+      borderColor="rule"
+      position="relative"
     >
-      <GratefulFor />
-      <SocialMedia enableStaggerDelay />
-      <AuthorEmail />
-      <Copyright />
-    </VStack>
+      <Box maxW="container.lg" margin="auto">
+        <VStack gap={{ base: 8, md: 10 }}>
+          <GratefulFor />
+          <SocialMedia enableStaggerDelay />
+          <AuthorEmail />
+          <Flex
+            w="full"
+            direction={{ base: "column", md: "row" }}
+            align="center"
+            justify="space-between"
+            gap={3}
+            pt={{ base: 6, md: 8 }}
+            borderTop="1px dashed"
+            borderColor="rule"
+            fontFamily="mono"
+            fontSize="10px"
+            fontWeight="500"
+            letterSpacing="0.24em"
+            textTransform="uppercase"
+            color="ashMuted"
+          >
+            <Box>// build · ibm plex · v4.7</Box>
+            <Box>
+              <Box as="span" color="signal" mr={2}>
+                ●
+              </Box>
+              uptime 99.97
+            </Box>
+            <Copyright />
+          </Flex>
+        </VStack>
+      </Box>
+    </Box>
   </GridItem>
 );
 

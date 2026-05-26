@@ -1,8 +1,7 @@
-import { Box, HStack, Heading } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 
 import { ENTITIES } from "@/app/api/lib/constants";
 import { MoreEntities } from "@/components/Entities/MoreEntities";
-import { TechnologyHeadingWithIcon } from "@/components/Entities/TechnologyHeadingWithIcon";
 import Container from "@/components/Layout/Container";
 import { CenteredSpinner, ErrorAlert } from "@/components/common";
 import { useEntityQuery } from "@/hooks";
@@ -36,34 +35,97 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
     return null;
   }
 
+  const count = String(relatePosts.length).padStart(2, "0");
+
   return (
     <Box
-      bg={{
-        base: "header",
-        _dark: "#111111",
-      }}
+      bg="surface"
+      borderTop="1px solid"
+      borderBottom="1px solid"
+      borderColor="rule"
+      py={{ base: 10, md: 16 }}
+      position="relative"
+      overflow="hidden"
     >
-      <Container>
+      {/* faint grid texture */}
+      <Box
+        position="absolute"
+        inset="0"
+        opacity={{ base: 0.35, _dark: 0.4 }}
+        pointerEvents="none"
+        backgroundImage="linear-gradient(var(--rule) 1px, transparent 1px), linear-gradient(90deg, var(--rule) 1px, transparent 1px)"
+        backgroundSize="56px 56px"
+      />
+      <Container position="relative">
         <AnimationScroll offset={0}>
-          <Heading
-            as="h2"
-            borderBottom="1.5px solid"
-            borderColor={{
-              _dark: "gray.900",
-            }}
-            fontSize="2rem"
-            fontWeight="500"
-            pb="1rem"
+          <Flex
+            align={{ base: "flex-start", md: "flex-end" }}
+            justify="space-between"
+            direction={{ base: "column", md: "row" }}
+            gap={3}
+            pb={4}
+            borderBottom="1px dashed"
+            borderColor="rule"
           >
-            <TechnologyHeadingWithIcon
-              label={`More from ${topic}`}
-              technology={topic}
-            />
-          </Heading>
+            <Box>
+              <Box
+                fontFamily="mono"
+                fontSize="11px"
+                fontWeight="500"
+                letterSpacing="0.3em"
+                textTransform="uppercase"
+                color="iris"
+                mb={2}
+              >
+                // related_node
+              </Box>
+              <Flex align="baseline" gap={3} wrap="wrap">
+                <Box
+                  fontFamily="mono"
+                  fontSize="12px"
+                  fontWeight="500"
+                  letterSpacing="0.2em"
+                  textTransform="uppercase"
+                  color="ashMuted"
+                >
+                  class
+                </Box>
+                <Heading
+                  as="h2"
+                  fontFamily="display"
+                  fontWeight="700"
+                  fontSize={{ base: "28px", md: "40px", lg: "46px" }}
+                  letterSpacing="-0.025em"
+                  lineHeight="1"
+                  color="bone"
+                  textTransform="uppercase"
+                  m={0}
+                >
+                  {topic}
+                </Heading>
+              </Flex>
+            </Box>
+            <Flex
+              align="center"
+              gap={3}
+              fontFamily="mono"
+              fontSize="10px"
+              letterSpacing="0.24em"
+              textTransform="uppercase"
+              color="ashMuted"
+            >
+              <Box>queue · {count}</Box>
+              <Box w="22px" h="1px" bg="currentColor" opacity={0.45} />
+              <Box>
+                <Box as="span" color="signal" mr={1.5}>
+                  ●
+                </Box>
+                ready
+              </Box>
+            </Flex>
+          </Flex>
         </AnimationScroll>
-        <HStack mt="25px" gap="1rem">
-          <MoreEntities data={relatePosts} />
-        </HStack>
+        <MoreEntities data={relatePosts} />
       </Container>
     </Box>
   );

@@ -20,7 +20,7 @@ const EntityLink = ({
     href={`/${entity}/${slug}`}
     entity={entity}
     slug={slug}
-    _hover={{ textDecoration: "underline" }}
+    _hover={{ textDecoration: "none" }}
   >
     {children}
   </GlobalLink>

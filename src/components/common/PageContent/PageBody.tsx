@@ -50,7 +50,6 @@ const PageBody = () => {
           "& pre": { opacity: 0 },
           "& a:hover": {
             color: isDark ? "#B9A8FB" : "primary",
-            textDecoration: "underline",
           },
         }}
       />

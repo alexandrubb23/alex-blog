@@ -18,19 +18,17 @@ const Layout = ({ contentClassName, children }: LayoutProps) => (
       templateAreas={{
         base: `"header" "main" "footer"`,
       }}
-      bg={{
-        _dark: "gray.900",
-      }}
-      color={{
-        base: "gray.800",
-        _dark: "gray.400",
-      }}
+      bg="graphite"
+      color="bone"
+      minH="100vh"
+      position="relative"
     >
       <Header />
       <GridItem
         area="main"
         className={contentClassName}
         minHeight="calc(100vh - 128px)"
+        position="relative"
       >
         {children}
         <Toaster />
