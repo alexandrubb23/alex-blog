@@ -6,7 +6,6 @@ interface AnimatedBoxProps extends BoxProps {
 
 const AnimatedBox = ({ children, delay, ...rest }: AnimatedBoxProps) => (
   <Box
-    key={Date.now()}
     animationName="fade-in"
     animationDuration="600ms"
     animationFillMode="forwards"

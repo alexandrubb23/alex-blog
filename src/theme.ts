@@ -39,6 +39,10 @@ const config = defineConfig({
       "--hamburger-height":
         "calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2)",
       "--body-background": "#000",
+      "--hamburger-bar-color": "#000",
+    },
+    ".dark": {
+      "--hamburger-bar-color": "#A0AEC0",
     },
     body: {
       fontFamily: "inter",
