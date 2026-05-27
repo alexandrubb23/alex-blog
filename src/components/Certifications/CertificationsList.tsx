@@ -18,7 +18,11 @@ const CertificationsList = ({
   const isNotMobile = useIsNotMobile();
 
   return (
-    <Grid templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }} gap={6}>
+    <Grid
+      templateColumns={{ base: "1fr", lg: "repeat(2, 1fr)" }}
+      rowGap={6}
+      columnGap={0}
+    >
       {certifications.map(({ id, data, name }, index) => {
         return (
           <Fragment key={id}>
@@ -30,6 +34,7 @@ const CertificationsList = ({
                 }
                 borderColor="rule"
                 paddingLeft={isOdd(index) ? { base: "0", lg: "24px" } : "0"}
+                paddingRight={isEven(index) ? { base: "0", lg: "24px" } : "0"}
               >
                 <AnimationScroll
                   animation="backInOut"
