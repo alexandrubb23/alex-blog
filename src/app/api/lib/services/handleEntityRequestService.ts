@@ -18,8 +18,12 @@ export const handleRequestAndRespond = async <T>(handler: () => Promise<T>) => {
     const data = await handler();
     return NextResponse.json(data);
   } catch (error) {
-    const err = error as HttpError;
-    return nextResponse(400, err.message);
+    if (error instanceof HttpError) {
+      return nextResponse(error.statusCode, error.message);
+    }
+
+    console.error("Unexpected error:", error);
+    return nextResponse(500, "Internal server error");
   }
 };
 

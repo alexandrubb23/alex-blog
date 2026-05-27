@@ -1,13 +1,16 @@
 import { Box } from '@chakra-ui/react';
 import Link from 'next/link';
 
-import { HTTP_QUERY_KEYS } from '@/app/constants';
+import { HTTP_QUERY_KEYS, ROUTES } from '@/app/constants';
 import { useIsHomePage } from '@/hooks';
 import { useSearchParams } from 'next/navigation';
 
+const VALID_SOURCES = Object.values(ROUTES);
+
 const BackToPreviousLocationLink = () => {
   const searchParams = useSearchParams();
-  const href = searchParams?.get(HTTP_QUERY_KEYS.PAGE_SOURCE);
+  const raw = searchParams?.get(HTTP_QUERY_KEYS.PAGE_SOURCE) ?? "";
+  const href = VALID_SOURCES.includes(raw) ? raw : "";
 
   const isHomePage = useIsHomePage();
 
@@ -15,7 +18,7 @@ const BackToPreviousLocationLink = () => {
 
   return (
     <Box marginY={2}>
-      <Link href={`/${href || ''}`}>← Back to {href || 'home'}</Link>
+      <Link href={href || '/'}>{`← Back to ${href || 'home'}`}</Link>
     </Box>
   );
 };
