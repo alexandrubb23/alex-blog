@@ -136,10 +136,6 @@ const Author = ({ name }: AuthorProps) => {
               opacity={0.55}
               css={{
                 animation: "rotate-reticle 32s linear infinite",
-                "@keyframes rotate-reticle": {
-                  "0%": { transform: "rotate(0deg)" },
-                  "100%": { transform: "rotate(360deg)" },
-                },
               }}
             />
             <Box
@@ -160,7 +156,8 @@ const Author = ({ name }: AuthorProps) => {
                   filter: "grayscale(0.45) contrast(1.08) brightness(0.92)",
                   width: "100%",
                   height: "100%",
-                  objectFit: "none",
+                  objectFit: "cover",
+                  objectPosition: "center top",
                 },
               }}
             >
