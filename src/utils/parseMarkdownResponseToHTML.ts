@@ -31,7 +31,8 @@ const parseMarkdownResponseToHTML = async (response: PostData) => {
 
     markdownCache.set(cacheKey, result);
     return result;
-  } catch {
+  } catch (error) {
+    console.error("Error parsing markdown content:", error);
     throw new Error("Error occurred during content parsing");
   }
 };

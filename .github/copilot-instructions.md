@@ -18,7 +18,7 @@ No test suite exists yet.
 
 ## Architecture
 
-This is a Next.js 15 (App Router) personal profile/blog site backed by **PlanetScale serverless MySQL** via **Drizzle ORM**, with **TanStack Query v5** for data fetching and **Chakra UI v3** for components.
+This is a Next.js 16 (App Router) personal profile/blog site backed by **PlanetScale serverless MySQL** via **Drizzle ORM**, with **TanStack Query v5** for data fetching and **Chakra UI v3** for components.
 
 ### Data Flow
 

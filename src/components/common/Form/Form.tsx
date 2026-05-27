@@ -51,7 +51,8 @@ const Form = ({
 
       form.reset(defaultValues);
       setResetKey();
-    } catch {
+    } catch (error) {
+      console.error("Error submitting form:", error);
       toaster.create({
         description: "An error occurred while submitting the form.",
         type: "error",
