@@ -643,6 +643,41 @@ const AboutMe = () => {
                   ))}
                 </Box>
               </Box>
+
+              {/* AI agent image */}
+              <Box
+                position="relative"
+                border="1px solid"
+                borderColor="rule"
+                overflow="hidden"
+              >
+                <CornerTicks color="iris" size="12px" />
+                <Image
+                  src="/images/ai-agent.jpg"
+                  alt="AI Agent — multi-agent orchestration"
+                  display="block"
+                  w="100%"
+                  css={{
+                    filter: "contrast(1.05) brightness(0.88) saturate(0.9)",
+                  }}
+                />
+                <Box
+                  position="absolute"
+                  bottom={0}
+                  left={0}
+                  right={0}
+                  px={3}
+                  py={2}
+                  bg="rgba(11,13,16,0.72)"
+                  fontFamily="mono"
+                  fontSize="10px"
+                  letterSpacing="0.2em"
+                  textTransform="uppercase"
+                  color="ashMuted"
+                >
+                  AI Agents · Multi-Agent Orchestration
+                </Box>
+              </Box>
             </AnimationScroll>
           </GridItem>
         </Grid>
