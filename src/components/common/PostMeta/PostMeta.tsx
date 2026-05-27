@@ -13,10 +13,13 @@ const PostMeta = ({ readingTime, date }: PostMetaProps) => (
     alignItems="center"
     gap="0.65rem"
     fontFamily="mono"
+    fontSize="12px"
+    letterSpacing="0.04em"
     fontVariantNumeric="tabular-nums"
+    color="ash"
   >
     <Box>{readingTime}</Box>
-    <Box opacity={0.5}>·</Box>
+    <Box opacity={0.45}>·</Box>
     <Date dateString={date} />
   </Box>
 );
