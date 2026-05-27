@@ -4,6 +4,7 @@ import { Box, Flex } from "@chakra-ui/react";
 import { useState } from "react";
 import { useInterval, useTimeout } from "usehooks-ts";
 
+import styles from "./AuthorCodeSnippet.module.css";
 import type { CodeLine, Lines, Token } from "./types";
 
 const CODE_LINES: CodeLine[] = [
@@ -16,7 +17,7 @@ const CODE_LINES: CodeLine[] = [
   ],
   [
     { text: "  role", color: "irisSoft" },
-    { text: ":     ", color: "ashMuted" },
+    { text: ": ", color: "ashMuted" },
     { text: '"Software Engineer"', color: "signal" },
     { text: ",", color: "ashMuted" },
   ],
@@ -28,13 +29,13 @@ const CODE_LINES: CodeLine[] = [
   ],
   [
     { text: "  status", color: "irisSoft" },
-    { text: ":   ", color: "ashMuted" },
+    { text: ": ", color: "ashMuted" },
     { text: '"Open to collaboration"', color: "signal" },
     { text: ",", color: "ashMuted" },
   ],
   [
     { text: "  ai", color: "irisSoft" },
-    { text: ":      ", color: "ashMuted" },
+    { text: ": ", color: "ashMuted" },
     { text: '"Claude Code · Copilot CLI · multi-agent"', color: "signal" },
     { text: ",", color: "ashMuted" },
   ],
@@ -122,8 +123,9 @@ const AuthorCodeSnippet = () => {
       borderRadius="6px"
       border="1px solid"
       borderColor="rule"
-      overflow="hidden"
+      overflowY="hidden"
       maxW="520px"
+      w="100%"
     >
       {/* title bar */}
       <Flex
@@ -159,13 +161,13 @@ const AuthorCodeSnippet = () => {
       </Flex>
 
       {/* code body */}
-      <Box px={{ base: 3, md: 4 }} py={3} bg="surface">
-        <style>{`
-          @keyframes cursor-blink {
-            0%, 49% { opacity: 1; }
-            50%, 100% { opacity: 0; }
-          }
-        `}</style>
+      <Box
+        px={{ base: 3, md: 4 }}
+        py={3}
+        bg="surface"
+        minH={{ base: "140px", md: "150px" }}
+        className={styles.codeBody}
+      >
         {lines.map(({ tokens, key }, lineIdx) => {
           const isLastLine = lineIdx === lines.length - 1;
           return (
@@ -175,8 +177,8 @@ const AuthorCodeSnippet = () => {
                   {token.text}
                 </Box>
               ))}
-              {/* cursor on last visible line */}
-              {isLastLine && (
+              {/* cursor on last visible line while typing */}
+              {isLastLine && !done && (
                 <Box
                   as="span"
                   display="inline-block"
@@ -185,10 +187,6 @@ const AuthorCodeSnippet = () => {
                   bg="bone"
                   verticalAlign="middle"
                   ml="1px"
-                  style={{
-                    animation: "cursor-blink 1s step-end infinite",
-                    animationPlayState: done ? "running" : "paused",
-                  }}
                 />
               )}
             </Box>

@@ -112,3 +112,7 @@ type Phase = "idle" | "waiting" | "typing" | "done";
 ```
 
 Apply this pattern for any new domain that introduces named states, modes, or keys (e.g., animation phases, form states, UI modes).
+
+### CSS
+
+Never write inline CSS (via the `css` prop, `style` attribute, or similar). Use CSS Modules (`.module.css`) for component-scoped styles that cannot be expressed as Chakra UI props.

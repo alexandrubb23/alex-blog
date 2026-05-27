@@ -5,9 +5,10 @@ import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useInterval, useTimeout } from "usehooks-ts";
 
+import { CURSOR_BLINK_ANIMATION } from "@/components/common/Animations/CursorBlink";
+
 const CHAR_INTERVAL_MS = 22;
 const DEFAULT_DELAY_MS = 300;
-const CURSOR_ANIMATION = "typewriter-cursor-blink";
 /** The static prefix shown immediately when the element enters the viewport. */
 export const LABEL_PREFIX = "//";
 
@@ -74,12 +75,6 @@ const TypewriterLabel = ({
 
   return (
     <Box ref={ref} {...boxProps}>
-      <style>{`
-        @keyframes ${CURSOR_ANIMATION} {
-          0%, 49% { opacity: 1; }
-          50%, 100% { opacity: 0; }
-        }
-      `}</style>
       {/* prefix ("//") is always visible once in view; the rest types in */}
       {phase !== PHASE.IDLE && prefix}
       {restText.slice(0, charCount)}
@@ -93,7 +88,7 @@ const TypewriterLabel = ({
           verticalAlign="middle"
           ml="1px"
           style={{
-            animation: `${CURSOR_ANIMATION} 1s step-end infinite`,
+            animation: `${CURSOR_BLINK_ANIMATION} 1s step-end infinite`,
             animationPlayState: cursorBlinking ? "running" : "paused",
           }}
         />

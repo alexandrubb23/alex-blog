@@ -97,7 +97,7 @@ const Author = ({ name }: AuthorProps) => {
         px={{ base: 4, md: 8 }}
         alignItems="center"
       >
-        <GridItem>
+        <GridItem minW="0">
           <AuthorName name={name} />
           <Box mt={{ base: 6, md: 8 }}>
             <AuthorCodeSnippet />
