@@ -1,6 +1,6 @@
 import { Box, Flex, VStack } from "@chakra-ui/react";
 
-import { CornerTicks } from "@/components/common";
+import { CornerTicks, LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { useContactInfo } from "@/hooks";
 
 const ContactInfo = () => {
@@ -8,7 +8,7 @@ const ContactInfo = () => {
 
   return (
     <Box w="full">
-      <Box
+      <TypewriterLabel
         fontFamily="mono"
         fontSize="10px"
         fontWeight="500"
@@ -17,8 +17,8 @@ const ContactInfo = () => {
         color="iris"
         mb={3}
       >
-        // contact.info
-      </Box>
+        {`${LABEL_PREFIX} contact.info`}
+      </TypewriterLabel>
       <Box
         position="relative"
         border="1px solid"

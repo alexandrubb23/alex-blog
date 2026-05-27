@@ -2,6 +2,7 @@ import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
 
 import { ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 import { useNavigateToPage } from "@/hooks/router";
 
@@ -49,7 +50,7 @@ const LetsWorkTogether = () => {
               textTransform="uppercase"
               color="iris"
             >
-              <Box>// channel · open</Box>
+              <TypewriterLabel>{`${LABEL_PREFIX} channel · open`}</TypewriterLabel>
               <Box
                 as="span"
                 w="6px"

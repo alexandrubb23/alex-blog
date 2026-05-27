@@ -1,5 +1,7 @@
 import { Box, Heading } from "@chakra-ui/react";
 
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
+
 interface AuthorNameProps {
   name: string;
 }
@@ -10,7 +12,7 @@ const AuthorName = ({ name }: AuthorNameProps) => {
 
   return (
     <Box>
-      <Box
+      <TypewriterLabel
         fontFamily="mono"
         fontSize="10px"
         fontWeight="500"
@@ -19,8 +21,8 @@ const AuthorName = ({ name }: AuthorNameProps) => {
         color="iris"
         mb={3}
       >
-        // identity
-      </Box>
+        {`${LABEL_PREFIX} identity`}
+      </TypewriterLabel>
       <Heading
         as="h1"
         fontFamily="display"

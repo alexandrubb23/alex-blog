@@ -3,7 +3,12 @@ import { Box, Flex, Heading } from "@chakra-ui/react";
 import { ENTITIES } from "@/app/api/lib/constants";
 import { MoreEntities } from "@/components/Entities/MoreEntities";
 import Container from "@/components/Layout/Container";
-import { CenteredSpinner, ErrorAlert } from "@/components/common";
+import {
+  CenteredSpinner,
+  ErrorAlert,
+  LABEL_PREFIX,
+  TypewriterLabel,
+} from "@/components/common";
 import { useEntityQuery } from "@/hooks";
 import { AnimationScroll } from "../Animations/AnimationScroll";
 import { usePostContext } from "./PostProvider";
@@ -68,7 +73,7 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
             borderColor="rule"
           >
             <Box>
-              <Box
+              <TypewriterLabel
                 fontFamily="mono"
                 fontSize="11px"
                 fontWeight="500"
@@ -77,8 +82,8 @@ const MoreFromEntity = ({ limit }: { limit: number }) => {
                 color="iris"
                 mb={2}
               >
-                // related_node
-              </Box>
+                {`${LABEL_PREFIX} related_node`}
+              </TypewriterLabel>
               <Flex align="baseline" gap={3} wrap="wrap">
                 <Box
                   fontFamily="mono"

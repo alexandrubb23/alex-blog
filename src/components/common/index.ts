@@ -7,3 +7,4 @@ export { HamburgerMenu, HorizontalMenu } from "./Menus";
 export { PageContent } from "./PageContent";
 export { PageLayout } from "./PageLayout";
 export { CenteredSpinner } from "./Spinner";
+export { TypewriterLabel, LABEL_PREFIX } from "./TypewriterLabel";

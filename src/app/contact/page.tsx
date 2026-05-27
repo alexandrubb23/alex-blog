@@ -2,6 +2,7 @@
 
 import { Box, Grid, GridItem, Heading, VStack } from "@chakra-ui/react";
 
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { DoubleSeparator } from "@/components/common/DoubleSeparator";
 import { ContactForm, ContactInfo } from "@/components/Contact";
 import { Layout } from "@/components/Layout";
@@ -67,7 +68,7 @@ const Contact = () => {
             <VStack gap="32px" alignItems="flex-start">
               <ContactInfo />
               <Box>
-                <Box
+                <TypewriterLabel
                   fontFamily="mono"
                   fontSize="10px"
                   fontWeight="500"
@@ -76,14 +77,14 @@ const Contact = () => {
                   color="iris"
                   mb={4}
                 >
-                  // social · links
-                </Box>
+                  {`${LABEL_PREFIX} social · links`}
+                </TypewriterLabel>
                 <SocialMedia />
               </Box>
             </VStack>
           </GridItem>
           <GridItem>
-            <Box
+            <TypewriterLabel
               fontFamily="mono"
               fontSize="10px"
               fontWeight="500"
@@ -92,8 +93,8 @@ const Contact = () => {
               color="iris"
               mb={4}
             >
-              // send · transmission
-            </Box>
+              {`${LABEL_PREFIX} send · transmission`}
+            </TypewriterLabel>
             <ContactForm />
           </GridItem>
         </Grid>

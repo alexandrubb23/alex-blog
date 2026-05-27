@@ -2,13 +2,14 @@ import { Box } from "@chakra-ui/react";
 
 import { ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { useNavigateToPage } from "@/hooks/router";
 
 const AboutAuthor = () => {
   const navigateToPage = useNavigateToPage();
   return (
     <Box maxW="560px">
-      <Box
+      <TypewriterLabel
         fontFamily="mono"
         fontSize="10px"
         fontWeight="500"
@@ -17,8 +18,8 @@ const AboutAuthor = () => {
         color="ashMuted"
         mb={3}
       >
-        // about
-      </Box>
+        {`${LABEL_PREFIX} about`}
+      </TypewriterLabel>
       <Box
         as="p"
         fontFamily="body"

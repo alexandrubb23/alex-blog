@@ -37,15 +37,19 @@ This is a Next.js 15 (App Router) personal profile/blog site backed by **PlanetS
 ## Key Conventions
 
 ### Path Alias
+
 All imports from `src/` use `@/` (e.g., `@/hooks`, `@/utils`, `@/app/api/lib/models`).
 
 ### Barrel Exports
+
 Every component folder exports via `index.ts`. Import from the folder, not the file (e.g., `import { Blog } from '@/components'`).
 
 ### Environment Variables
+
 All env vars are declared and validated with **Zod** in `src/env.js` using `@t3-oss/env-nextjs`. Always import `env` from `@/env` rather than accessing `process.env` directly.
 
 Required env vars:
+
 - `DATABASE_URL` — PlanetScale connection string
 - `DATABASE_CACHE_TTL` — LRU cache TTL in ms
 - `RESEND_API_KEY` — for contact form emails
@@ -53,28 +57,58 @@ Required env vars:
 - `GOOGLE_VERIFICATION` — required in production only
 
 ### Query Key Conventions
+
 - List queries: `[entity, queryFilter]`
 - Single-item queries: `[singular(entity), id]` (using `pluralize` package)
 
 ### API Error Handling
+
 API routes throw `HttpError` subclasses (`NotFoundError`, `InternalServerError`). `handleEntityRequestService` catches these and returns a `400` JSON error response.
 
 ### Zod Validation in API Routes
+
 Each route defines its own `z.object()` schema and calls `parseQuery(schema, req)` to validate and parse `searchParams`.
 
 ### Chakra UI Theme
+
 Custom tokens are in `src/theme.ts`:
+
 - `primary`: `#6D54D0`
 - `secondary` / `header`: `#F2EFE5`
 - Custom fonts: `libre` (Libre Baskerville), `nothingYouCouldDo`
 - Max container width: `980px`
 
 ### Markdown Rendering
+
 Post content is parsed from Markdown to HTML via `remark` (`unified` + `remark-parse` + `remark-html`) in `src/utils/parseMarkdownResponseToHTML.ts`, with an in-memory `Map` cache keyed by `topic:id`.
 
 ### Timer Hooks
+
 Prefer **`usehooks-ts`** hooks over raw browser timer APIs:
+
 - `useTimeout(callback, delay)` — replaces `setTimeout`/`clearTimeout`
 - `useInterval(callback, delay | null)` — replaces `setInterval`/`clearInterval`; pass `null` to stop the interval
 
 Always fetch up-to-date API signatures via **context7** (`/websites/usehooks-ts`) before using a hook.
+
+### Domain String Constants
+
+Never use raw string literals for domain-specific values (state machine phases, status codes, animation names, entity keys, etc.). Always extract them into a `const` object and derive the TypeScript type from it:
+
+```ts
+// ✅ correct
+const PHASE = {
+  IDLE: "idle",
+  WAITING: "waiting",
+  TYPING: "typing",
+  DONE: "done",
+} as const;
+
+type Phase = (typeof PHASE)[keyof typeof PHASE];
+
+// ❌ avoid
+type Phase = "idle" | "waiting" | "typing" | "done";
+// and comparing with raw strings: phase === "idle"
+```
+
+Apply this pattern for any new domain that introduces named states, modes, or keys (e.g., animation phases, form states, UI modes).

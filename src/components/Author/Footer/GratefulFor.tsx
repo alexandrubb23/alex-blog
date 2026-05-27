@@ -1,11 +1,12 @@
 import { Box } from "@chakra-ui/react";
 
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 
 const GratefulFor = () => (
   <AnimationScroll offset={0} delay={0.5}>
     <Box display="flex" flexDirection="column" alignItems="center" gap={3}>
-      <Box
+      <TypewriterLabel
         fontFamily="mono"
         fontSize="11px"
         fontWeight="500"
@@ -13,8 +14,8 @@ const GratefulFor = () => (
         textTransform="uppercase"
         color="iris"
       >
-        // end_of_transmission
-      </Box>
+        {`${LABEL_PREFIX} end_of_transmission`}
+      </TypewriterLabel>
       <Box
         as="h4"
         fontFamily="display"

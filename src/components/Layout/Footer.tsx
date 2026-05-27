@@ -1,5 +1,6 @@
 import { Box, Flex, GridItem, VStack } from "@chakra-ui/react";
 
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import {
   AuthorEmail,
   Copyright,
@@ -41,7 +42,16 @@ const Footer = () => (
             textTransform="uppercase"
             color="ashMuted"
           >
-            <Box>// build · ibm plex · v4.7</Box>
+            <TypewriterLabel
+              fontFamily="mono"
+              fontSize="10px"
+              fontWeight="500"
+              letterSpacing="0.24em"
+              textTransform="uppercase"
+              color="ashMuted"
+            >
+              {`${LABEL_PREFIX} build · ibm plex · v4.7`}
+            </TypewriterLabel>
             <Box>
               <Box as="span" color="signal" mr={2}>
                 ●

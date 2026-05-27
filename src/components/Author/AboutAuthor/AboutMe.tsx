@@ -5,14 +5,14 @@ import { Box, Flex, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
 import { AUTHOR, ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
 import Container from "@/components/Layout/Container";
-import { CornerTicks } from "@/components/common";
+import { CornerTicks, LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 import { DoubleSeparator } from "@/components/common/DoubleSeparator";
 import { useNavigateToPage } from "@/hooks/router";
 import { AuthorAvatar } from "../AuthorAvatar";
 
-const SectionLabel = ({ children }: { children: React.ReactNode }) => (
-  <Box
+const SectionLabel = ({ children }: { children: string }) => (
+  <TypewriterLabel
     fontFamily="mono"
     fontSize="10px"
     fontWeight="500"
@@ -22,7 +22,7 @@ const SectionLabel = ({ children }: { children: React.ReactNode }) => (
     mb={3}
   >
     {children}
-  </Box>
+  </TypewriterLabel>
 );
 
 const StatRow = ({
@@ -82,7 +82,7 @@ const AboutMe = () => {
             align={{ base: "center", md: "flex-start" }}
             gap={4}
           >
-            <SectionLabel>// sys.profile / AB-001</SectionLabel>
+            <SectionLabel>{`${LABEL_PREFIX} sys.profile / AB-001`}</SectionLabel>
             <Heading
               as="h1"
               fontFamily="display"
@@ -192,7 +192,7 @@ const AboutMe = () => {
 
               {/* spec rows */}
               <GridItem>
-                <SectionLabel>// identity</SectionLabel>
+                <SectionLabel>{`${LABEL_PREFIX} identity`}</SectionLabel>
                 <StatRow label="Name" value={AUTHOR.NAME} />
                 <StatRow label="Role" value="Software Engineer" />
                 <StatRow label="Focus" value="Distributed systems · web" />
@@ -249,7 +249,7 @@ const AboutMe = () => {
               flexDirection="column"
               gap={5}
             >
-              <SectionLabel>// background</SectionLabel>
+              <SectionLabel>{`${LABEL_PREFIX} background`}</SectionLabel>
               <Heading
                 as="h2"
                 fontFamily="display"
@@ -394,7 +394,7 @@ const AboutMe = () => {
               flexDirection="column"
               gap={5}
             >
-              <SectionLabel>// discipline · hakko_denshin_ryu</SectionLabel>
+              <SectionLabel>{`${LABEL_PREFIX} discipline · hakko_denshin_ryu`}</SectionLabel>
               <Heading
                 as="h2"
                 fontFamily="display"
@@ -516,7 +516,7 @@ const AboutMe = () => {
               flexDirection="column"
               gap={5}
             >
-              <SectionLabel>// ai_workflow · multi_agent</SectionLabel>
+              <SectionLabel>{`${LABEL_PREFIX} ai_workflow · multi_agent`}</SectionLabel>
               <Heading
                 as="h2"
                 fontFamily="display"
@@ -735,7 +735,7 @@ const AboutMe = () => {
               flexDirection="column"
               gap={5}
             >
-              <SectionLabel>// archive · classic_gaming</SectionLabel>
+              <SectionLabel>{`${LABEL_PREFIX} archive · classic_gaming`}</SectionLabel>
               <Heading
                 as="h2"
                 fontFamily="display"
