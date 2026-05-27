@@ -8,6 +8,7 @@ import Container from "@/components/Layout/Container";
 import {
   CornerTicks,
   LABEL_PREFIX,
+  PulsateDot,
   TypewriterLabel,
 } from "@/components/common";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
@@ -161,10 +162,6 @@ const AboutMe = () => {
                     opacity={0.5}
                     css={{
                       animation: "rotate-reticle 28s linear infinite",
-                      "@keyframes rotate-reticle": {
-                        "0%": { transform: "rotate(0deg)" },
-                        "100%": { transform: "rotate(360deg)" },
-                      },
                     }}
                   />
                   <Box
@@ -180,7 +177,8 @@ const AboutMe = () => {
                         filter: "grayscale(0.35) contrast(1.08)",
                         width: "100%",
                         height: "100%",
-                        objectFit: "none",
+                        objectFit: "cover",
+                        objectPosition: "center top",
                       },
                     }}
                     boxShadow={{
@@ -215,20 +213,7 @@ const AboutMe = () => {
                   label="Status"
                   value={
                     <Flex align="center" gap={2}>
-                      <Box
-                        w="6px"
-                        h="6px"
-                        bg="signal"
-                        borderRadius="full"
-                        flexShrink={0}
-                        css={{
-                          animation: "pulse-dot 2s ease-in-out infinite",
-                          "@keyframes pulse-dot": {
-                            "0%, 100%": { opacity: 1 },
-                            "50%": { opacity: 0.3 },
-                          },
-                        }}
-                      />
+                      <PulsateDot />
                       <Box>Open to collaboration</Box>
                     </Flex>
                   }

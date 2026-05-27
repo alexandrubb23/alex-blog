@@ -4,6 +4,7 @@ import { ClientOnly, HStack, Skeleton } from "@chakra-ui/react";
 
 import { useAccentColor } from "@/hooks/useAccentColor";
 import { ACCENT_HEX, AccentColor } from "@/lib/palette";
+import styles from "./AccentColorSwitcher.module.css";
 
 const ACCENTS: { id: AccentColor; label: string }[] = [
   { id: AccentColor.Purple, label: "Purple" },
@@ -35,33 +36,14 @@ const Swatches = () => {
               aria-label={label}
               aria-pressed={active}
               title={label}
-              style={{
-                position: "relative",
-                width: "14px",
-                height: "14px",
-                borderRadius: "50%",
-                background: color,
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-                transition: "transform 150ms",
-                outline: "none",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = "scale(1.25)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "scale(1)")
-              }
+              className={styles.swatch}
+              style={{ background: color }}
             >
               {active && (
                 <span
                   aria-hidden
+                  className={styles.activeIndicator}
                   style={{
-                    pointerEvents: "none",
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: "50%",
                     boxShadow: `0 0 8px ${color}, 0 0 0 2px var(--body-background), 0 0 0 3px ${color}`,
                   }}
                 />

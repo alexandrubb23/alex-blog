@@ -2,7 +2,7 @@ import { Box, Flex, Heading, VStack } from "@chakra-ui/react";
 
 import { ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
-import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
+import { LABEL_PREFIX, PulsateDot, TypewriterLabel } from "@/components/common";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 import { useNavigateToPage } from "@/hooks/router";
 
@@ -51,21 +51,7 @@ const LetsWorkTogether = () => {
               color="iris"
             >
               <TypewriterLabel>{`${LABEL_PREFIX} channel · open`}</TypewriterLabel>
-              <Box
-                as="span"
-                w="6px"
-                h="6px"
-                bg="signal"
-                borderRadius="full"
-                display="inline-block"
-                css={{
-                  animation: "pulse-dot 2s ease-in-out infinite",
-                  "@keyframes pulse-dot": {
-                    "0%, 100%": { opacity: 1 },
-                    "50%": { opacity: 0.3 },
-                  },
-                }}
-              />
+              <PulsateDot />
             </Flex>
           </AnimationScroll>
           <AnimationScroll offset={0}>
