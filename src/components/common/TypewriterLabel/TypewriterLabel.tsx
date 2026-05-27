@@ -69,8 +69,8 @@ const TypewriterLabel = ({
     phase === PHASE.TYPING ? CHAR_INTERVAL_MS : null
   );
 
-  const showCursor = phase !== PHASE.IDLE;
-  const cursorBlinking = phase === PHASE.WAITING || phase === PHASE.DONE;
+  const showCursor = phase === PHASE.WAITING || phase === PHASE.TYPING;
+  const cursorBlinking = phase === PHASE.WAITING;
 
   return (
     <Box ref={ref} {...boxProps}>
