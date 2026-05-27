@@ -11,7 +11,7 @@ export const AUTHOR: Readonly<{
   PICTURE: string;
 }> = {
   NAME: "Alexandru Barbulescu",
-  AVATAR: "alex.png",
+  AVATAR: "alex.jpeg",
   PHONE_NUMBER: "+40-735 538 558",
   EMAIL_ADDRESS: "alex_bb23@yahoo.co.uk",
   ADDRESS: {

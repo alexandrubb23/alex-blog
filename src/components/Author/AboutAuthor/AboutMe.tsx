@@ -185,7 +185,7 @@ const AboutMe = () => {
                         "0 0 0 5px rgba(139,92,246,0.12), 0 20px 40px -20px rgba(139,92,246,0.5)",
                     }}
                   >
-                    <AuthorAvatar alt={AUTHOR.NAME} fileName="alex.png" />
+                    <AuthorAvatar alt={AUTHOR.NAME} fileName={AUTHOR.AVATAR} />
                   </Box>
                 </Box>
               </GridItem>

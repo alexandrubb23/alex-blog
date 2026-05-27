@@ -1,5 +1,6 @@
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 
+import { AUTHOR } from "@/app/constants";
 import { CornerTicks } from "@/components/common";
 import { useIsHomePage } from "@/hooks";
 import { AboutAuthor } from "./AboutAuthor";
@@ -177,7 +178,7 @@ const Author = ({ name }: AuthorProps) => {
                 },
               }}
             >
-              <AuthorAvatar alt={name} fileName="alex.png" />
+              <AuthorAvatar alt={name} fileName={AUTHOR.AVATAR} />
             </Box>
             {/* tiny coords label */}
             <Box
