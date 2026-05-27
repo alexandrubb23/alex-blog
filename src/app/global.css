@@ -1,3 +1,13 @@
+@keyframes pulsate-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
 /* ── Accent color overrides ────────────────────────────────────────────────── */
 /* Purple is the default; no override needed.
    Uses html[data-accent] (specificity 0,1,1) to beat:

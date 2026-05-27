@@ -1,3 +1,4 @@
+export { PulsateDot } from "./Animations/PulsateDot";
 export { CornerTicks } from "./CornerTicks";
 export { Date } from "./Date";
 export { ErrorAlert } from "./ErrorAlert";

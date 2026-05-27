@@ -1,5 +1,7 @@
 import { Box, BoxProps } from "@chakra-ui/react";
 
+import { PulsateDot } from "@/components/common";
+
 const DoubleSeparator = (props: BoxProps) => (
   <Box
     display="flex"
@@ -17,13 +19,7 @@ const DoubleSeparator = (props: BoxProps) => (
       bg="rule"
       backgroundImage="repeating-linear-gradient(90deg, var(--rule) 0 8px, transparent 8px 16px)"
     />
-    <Box
-      w="6px"
-      h="6px"
-      bg="iris"
-      flexShrink={0}
-      boxShadow="0 0 12px var(--iris)"
-    />
+    <PulsateDot shape="square" bg="iris" boxShadow="0 0 12px var(--iris)" />
     <Box
       flex="1"
       h="1px"

@@ -1,7 +1,7 @@
 import { Box, Flex, Grid, GridItem } from "@chakra-ui/react";
 
 import { AUTHOR } from "@/app/constants";
-import { CornerTicks } from "@/components/common";
+import { CornerTicks, PulsateDot } from "@/components/common";
 import { useIsHomePage } from "@/hooks";
 import { AboutAuthor } from "./AboutAuthor";
 import { AuthorAvatar } from "./AuthorAvatar";
@@ -86,21 +86,7 @@ const Author = ({ name }: AuthorProps) => {
           model_card / AB-001
         </Box>
         <Flex gap={2} align="center">
-          <Box
-            as="span"
-            w="6px"
-            h="6px"
-            borderRadius="full"
-            bg="signal"
-            display="inline-block"
-            css={{
-              animation: "pulse-dot 2s ease-in-out infinite",
-              "@keyframes pulse-dot": {
-                "0%, 100%": { opacity: 1 },
-                "50%": { opacity: 0.35 },
-              },
-            }}
-          />
+          <PulsateDot />
           <Box>online · available</Box>
         </Flex>
       </Flex>

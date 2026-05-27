@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AUTHOR } from "@/app/constants";
 import { ColorModeButton } from "@/components/ui/color-mode";
 import { Author, NavBar } from "..";
+import { PulsateDot } from "../common";
 import { AccentColorSwitcher } from "../NavBar/AccentColorSwitcher";
 import ResumeButton from "../NavBar/ResumeButton";
 
@@ -40,12 +41,10 @@ const Header = () => (
       >
         <Flex justify="space-between" align="center" gap={4} wrap="wrap">
           <Flex gap={5} align="center">
-            <Box>
-              <Box as="span" color="signal" mr="6px">
-                ●
-              </Box>
+            <Flex as="span" align="center" gap="6px">
+              <PulsateDot />
               SYS / ONLINE
-            </Box>
+            </Flex>
             <Box display={{ base: "none", md: "block" }}>NODE: AB-001</Box>
             <Box display={{ base: "none", md: "block" }}>
               BUILD: 2026.05 / v4.7
