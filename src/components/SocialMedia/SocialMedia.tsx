@@ -1,5 +1,5 @@
 import socialMedia from "@/data/socialMedia";
-import { HStack, IconButton } from "@chakra-ui/react";
+import { Box, Flex, IconButton } from "@chakra-ui/react";
 import { AnimationScroll } from "../common/Animations/AnimationScroll";
 
 type SocialMediaProps = {
@@ -10,7 +10,7 @@ const TOP = 40;
 
 const SocialMedia = ({ enableStaggerDelay = false }: SocialMediaProps) => {
   return (
-    <HStack gap="40px">
+    <Flex gap={3} wrap="wrap">
       {socialMedia.map(({ name, icon: Icon, href }, index) => (
         <AnimationScroll
           animation="backInOut"
@@ -18,29 +18,44 @@ const SocialMedia = ({ enableStaggerDelay = false }: SocialMediaProps) => {
           direction="down"
           display="flex"
           offset={TOP - index}
-          width="100%"
           key={name}
           wait={enableStaggerDelay ? 0.9 : 0}
         >
           <IconButton
-            aria-label="Call support"
-            rounded="full"
+            aria-label={name}
+            border="1px solid"
+            borderColor="rule"
+            borderRadius="full"
+            color="ash"
+            bg="transparent"
+            size="md"
             _hover={{
-              bg: "primary",
-              color: "white",
+              bg: "irisGlow",
+              borderColor: "iris",
+              color: "iris",
             }}
-            color={{
-              _dark: "primary",
-            }}
+            transition="all 0.2s ease"
             onClick={() => {
               window.open(href, "_blank");
             }}
           >
             <Icon />
           </IconButton>
+          <Box
+            fontFamily="mono"
+            fontSize="10px"
+            letterSpacing="0.14em"
+            textTransform="uppercase"
+            color="ashMuted"
+            mt="4px"
+            textAlign="center"
+            display={{ base: "none", md: "block" }}
+          >
+            {name}
+          </Box>
         </AnimationScroll>
       ))}
-    </HStack>
+    </Flex>
   );
 };
 

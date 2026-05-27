@@ -30,36 +30,31 @@ const FormInput = ({
   return (
     <>
       <Field.Label
-        fontSize={{
-          base: "16px",
-          md: "18px",
-          lg: "20px",
-          xl: "22px",
-        }}
+        fontFamily="mono"
+        fontSize="11px"
         fontWeight="500"
+        letterSpacing="0.22em"
+        textTransform="uppercase"
+        color="ashMuted"
+        mb={1}
       >
         {label}
       </Field.Label>
       <Component
-        borderWidth="1.5px"
-        bg={{
-          _dark: "#111111",
-        }}
-        borderColor={{
-          _light: hasError ? "red.500" : "gray.200",
-          _dark: hasError ? "red.700" : "gray.700",
-        }}
+        borderWidth="1px"
+        bg="elevated"
+        borderColor={hasError ? "red.500" : "rule"}
         borderStyle={hasError ? "dashed" : "solid"}
-        padding="25px 16px"
-        fontSize={{
-          base: "16px",
-          md: "18px",
-          lg: "20px",
-          xl: "22px",
-        }}
+        padding="14px 16px"
+        fontSize={{ base: "14px", md: "15px" }}
+        fontFamily="body"
+        color="bone"
+        _placeholder={{ color: "ashMuted" }}
         _focus={{
-          focusRingColor: "primary",
+          focusRingColor: "iris",
+          borderColor: "iris",
         }}
+        transition="border-color 0.2s ease"
         onChange={(e: ChangeEvent<HTMLInputElement>) =>
           form.setValue(name as string, e.target.value, {
             shouldValidate: true,
