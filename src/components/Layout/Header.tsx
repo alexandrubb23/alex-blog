@@ -2,7 +2,9 @@ import { Box, Container, Flex, GridItem, LinkBox } from "@chakra-ui/react";
 import Link from "next/link";
 
 import { AUTHOR } from "@/app/constants";
+import { ColorModeButton } from "@/components/ui/color-mode";
 import { Author, NavBar } from "..";
+import { AccentColorSwitcher } from "../NavBar/AccentColorSwitcher";
 import ResumeButton from "../NavBar/ResumeButton";
 
 const Header = () => (
@@ -49,7 +51,9 @@ const Header = () => (
               BUILD: 2026.05 / v4.7
             </Box>
           </Flex>
-          <Flex gap={5} align="center">
+          <Flex gap={4} align="center">
+            <AccentColorSwitcher />
+            <ColorModeButton size="xs" variant="ghost" color="ashMuted" />
             <Box display={{ base: "none", sm: "block" }}>LOC: EET</Box>
             <Box>
               <Box as="span" color="iris">
