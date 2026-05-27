@@ -1,6 +1,6 @@
 "use client";
 
-import { HStack } from "@chakra-ui/react";
+import { ClientOnly, HStack, Skeleton } from "@chakra-ui/react";
 
 import { useAccentColor } from "@/hooks/useAccentColor";
 import { ACCENT_HEX, AccentColor } from "@/lib/palette";
@@ -12,7 +12,7 @@ const ACCENTS: { id: AccentColor; label: string }[] = [
   { id: AccentColor.Green, label: "Green" },
 ];
 
-const AccentColorSwitcher = () => {
+const Swatches = () => {
   const { accent, setAccent } = useAccentColor();
 
   return (
@@ -73,5 +73,25 @@ const AccentColorSwitcher = () => {
     </HStack>
   );
 };
+
+const AccentColorSwitcher = () => (
+  <ClientOnly
+    fallback={
+      <HStack gap="1.5" aria-hidden>
+        {ACCENTS.map(({ id }) => (
+          <Skeleton
+            key={id}
+            w="14px"
+            h="14px"
+            borderRadius="full"
+            flexShrink={0}
+          />
+        ))}
+      </HStack>
+    }
+  >
+    <Swatches />
+  </ClientOnly>
+);
 
 export default AccentColorSwitcher;

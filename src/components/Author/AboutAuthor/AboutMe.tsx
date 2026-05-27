@@ -503,6 +503,152 @@ const AboutMe = () => {
 
         <DoubleSeparator mt={0} mb={0} />
 
+        {/* ── AI WORKFLOW ── */}
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+          gap={{ base: 8, md: 14 }}
+          alignItems="start"
+        >
+          <GridItem>
+            <AnimationScroll
+              direction="right"
+              display="flex"
+              flexDirection="column"
+              gap={5}
+            >
+              <SectionLabel>// ai_workflow · multi_agent</SectionLabel>
+              <Heading
+                as="h2"
+                fontFamily="display"
+                fontWeight="700"
+                fontSize={{ base: "34px", md: "42px", lg: "52px" }}
+                letterSpacing="-0.025em"
+                lineHeight="1.05"
+                textTransform="uppercase"
+                color="bone"
+                m={0}
+              >
+                AI{" "}
+                <Box as="span" color="iris">
+                  Agents
+                </Box>
+              </Heading>
+              <Box
+                fontFamily="body"
+                fontSize={{ base: "16px", md: "17px" }}
+                lineHeight="1.75"
+                color="bone"
+                letterSpacing="0.005em"
+              >
+                I&apos;m genuinely excited about the new frontier of AI-assisted
+                engineering. Working with{" "}
+                <Box as="span" color="iris" fontWeight="600">
+                  Claude Code
+                </Box>{" "}
+                and{" "}
+                <Box as="span" color="iris" fontWeight="600">
+                  GitHub Copilot CLI
+                </Box>{" "}
+                has fundamentally changed how I approach complex problems —
+                spinning up multiple specialised sub-agents in parallel to
+                tackle security audits, code reviews, test generation, and
+                architecture analysis simultaneously.
+              </Box>
+              <Box
+                fontFamily="body"
+                fontSize={{ base: "15px", md: "16px" }}
+                lineHeight="1.7"
+                color="ash"
+              >
+                The ability to orchestrate agents concurrently — each focused on
+                a distinct concern — compresses feedback loops that once took
+                hours into minutes. It&apos;s the kind of leverage that makes
+                ambitious systems feel tractable.
+              </Box>
+            </AnimationScroll>
+          </GridItem>
+
+          <GridItem>
+            <AnimationScroll
+              direction="left"
+              display="flex"
+              flexDirection="column"
+              gap={5}
+            >
+              {/* agent dispatch terminal */}
+              <Box
+                fontFamily="mono"
+                fontSize={{ base: "11px", md: "12px" }}
+                lineHeight="1.75"
+                borderRadius="6px"
+                border="1px solid"
+                borderColor="rule"
+                overflow="hidden"
+              >
+                <Flex
+                  align="center"
+                  gap={2}
+                  px={3}
+                  py="7px"
+                  borderBottom="1px solid"
+                  borderColor="rule"
+                  bg="canvasStrip"
+                >
+                  <Flex gap="5px">
+                    {(["#FF5F57", "#FFBD2E", "#28C840"] as const).map(
+                      (c, i) => (
+                        <Box
+                          key={i}
+                          w="8px"
+                          h="8px"
+                          borderRadius="full"
+                          bg={c}
+                          opacity={0.7}
+                        />
+                      )
+                    )}
+                  </Flex>
+                  <Box
+                    color="ashMuted"
+                    fontSize="10px"
+                    letterSpacing="0.18em"
+                    textTransform="uppercase"
+                    ml={1}
+                  >
+                    agent.dispatch
+                  </Box>
+                </Flex>
+                <Box
+                  px={4}
+                  py={3}
+                  bg="surface"
+                  display="flex"
+                  flexDirection="column"
+                  gap={1}
+                >
+                  {(
+                    [
+                      ["security-auditor", "scanning · vulnerabilities"],
+                      ["code-reviewer", "quality · best-practices"],
+                      ["test-generator", "coverage · edge-cases"],
+                      ["arch-analyst", "design · trade-offs"],
+                    ] as const
+                  ).map(([agent, detail]) => (
+                    <Box key={agent} display="flex" gap={3}>
+                      <Box color="iris" minW="16ch">
+                        {agent}
+                      </Box>
+                      <Box color="ash">{detail}</Box>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
+            </AnimationScroll>
+          </GridItem>
+        </Grid>
+
+        <DoubleSeparator mt={0} mb={0} />
+
         {/* ── ARCADE / GAMING ── */}
         <Grid
           templateColumns={{ base: "1fr", lg: "1fr 1fr" }}

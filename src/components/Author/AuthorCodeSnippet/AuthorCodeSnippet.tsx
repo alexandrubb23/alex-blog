@@ -32,6 +32,12 @@ const CODE_LINES: CodeLine[] = [
     { text: '"Open to collaboration"', color: "signal" },
     { text: ",", color: "ashMuted" },
   ],
+  [
+    { text: "  ai", color: "irisSoft" },
+    { text: ":      ", color: "ashMuted" },
+    { text: '"Claude Code · Copilot CLI · multi-agent"', color: "signal" },
+    { text: ",", color: "ashMuted" },
+  ],
   [{ text: "}", color: "ashMuted" }],
 ];
 

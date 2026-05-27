@@ -57,6 +57,18 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${plexSans.variable} ${plexMono.variable} ${plexCondensed.variable}`}
     >
+      {/*
+       * Blocking script — runs before first paint to apply the stored accent
+       * colour, eliminating the flash of the default purple on page load.
+       * Must stay inline and synchronous (no defer/async).
+       */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var a=localStorage.getItem('accent-color');if(a&&a!=='purple')document.documentElement.setAttribute('data-accent',a);}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body suppressHydrationWarning>
         <ColorModeProvider defaultTheme="dark">{children}</ColorModeProvider>
       </body>
