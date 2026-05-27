@@ -4,13 +4,20 @@ import { CornerTicks } from "@/components/common";
 import { useIsHomePage } from "@/hooks";
 import { AboutAuthor } from "./AboutAuthor";
 import { AuthorAvatar } from "./AuthorAvatar";
+import { AuthorCodeSnippet } from "./AuthorCodeSnippet";
 import { AuthorName } from "./AuthorName";
 
 interface AuthorProps {
   name: string;
 }
 
-const SpecRow = ({ label, value }: { label: string; value: React.ReactNode }) => (
+const SpecRow = ({
+  label,
+  value,
+}: {
+  label: string;
+  value: React.ReactNode;
+}) => (
   <Flex
     fontFamily="mono"
     fontSize={{ base: "11px", md: "12px" }}
@@ -105,10 +112,10 @@ const Author = ({ name }: AuthorProps) => {
       >
         <GridItem>
           <AuthorName name={name} />
-          <Box mt={{ base: 6, md: 8 }} maxW="520px">
-            <SpecRow label="Role" value="Software Engineer" />
-            <SpecRow label="Function" value="Distributed systems · web" />
-            <SpecRow label="Status" value="Open to collaboration" />
+          <Box mt={{ base: 6, md: 8 }}>
+            <AuthorCodeSnippet />
+          </Box>
+          <Box mt={{ base: 4, md: 5 }} maxW="520px">
             <SpecRow
               label="Location"
               value={

@@ -71,3 +71,10 @@ Custom tokens are in `src/theme.ts`:
 
 ### Markdown Rendering
 Post content is parsed from Markdown to HTML via `remark` (`unified` + `remark-parse` + `remark-html`) in `src/utils/parseMarkdownResponseToHTML.ts`, with an in-memory `Map` cache keyed by `topic:id`.
+
+### Timer Hooks
+Prefer **`usehooks-ts`** hooks over raw browser timer APIs:
+- `useTimeout(callback, delay)` — replaces `setTimeout`/`clearTimeout`
+- `useInterval(callback, delay | null)` — replaces `setInterval`/`clearInterval`; pass `null` to stop the interval
+
+Always fetch up-to-date API signatures via **context7** (`/websites/usehooks-ts`) before using a hook.
