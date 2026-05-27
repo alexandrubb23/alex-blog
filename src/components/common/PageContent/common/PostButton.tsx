@@ -14,30 +14,33 @@ export type SocialMedia = {
 
 const PostButton = ({ children, ...rest }: ButtonProps) => (
   <Button
-    border="1.5px solid"
+    border="1px solid"
     borderRadius="2rem"
-    borderColor={{
-      _light: "black",
-      _dark: "gray.800",
-    }}
+    borderColor="rule"
+    color="ash"
     _hover={{
-      bg: {
-        _dark: "primary",
-      },
+      bg: "irisGlow",
+      borderColor: "iris",
+      color: "iris",
     }}
+    fontFamily="mono"
+    fontSize={{ base: "10px", sm: "11px" }}
     fontWeight="500"
+    letterSpacing="0.12em"
+    textTransform="uppercase"
     size={{
       base: "2xs",
       sm: "sm",
     }}
     variant="outline"
-    px={{ base: 1, sm: 3 }}
+    px={{ base: 2, sm: 3 }}
     py={{ base: 4, sm: 2 }}
     minW="0"
     flex="1"
     whiteSpace="nowrap"
     overflow="hidden"
     textOverflow="ellipsis"
+    transition="all 0.2s ease"
     {...rest}
   >
     {children}

@@ -11,17 +11,15 @@ const SolidAnimatedButton: React.FC<SolidButtonProps> = ({
     <SolidButton
       icon={icon}
       onClick={onClick}
-      transition="all 0.3s ease"
-      width="100%"
       css={{
-        transition: "width 0.3s ease",
-        width: "100%",
-        "&:hover": {
-          width: "107%",
+        position: "relative",
+        overflow: "hidden",
+        "& .button-prompt": {
+          transition: "color 0.2s ease, opacity 0.2s ease",
         },
-        "& .button-icon": {
-          display: "inline-flex",
-          transition: "transform 0.3s ease",
+        "&:hover .button-prompt": {
+          opacity: 1,
+          color: "var(--graphite)",
         },
       }}
       visual={visual}

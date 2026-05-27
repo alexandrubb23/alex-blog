@@ -1,33 +1,49 @@
-import { Box, Heading, VStack } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 import { ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
+import { LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { useNavigateToPage } from "@/hooks/router";
 
 const AboutAuthor = () => {
   const navigateToPage = useNavigateToPage();
   return (
-    <VStack textAlign="center">
-      <Heading
-        as="h2"
-        fontSize={{
-          smDown: "20px",
-          sm: "20px",
-          lg: "24px",
-        }}
-        fontWeight={400}
+    <Box maxW="560px">
+      <TypewriterLabel
+        fontFamily="mono"
+        fontSize="10px"
+        fontWeight="500"
+        letterSpacing="0.32em"
+        textTransform="uppercase"
+        color="ashMuted"
+        mb={3}
       >
-        I&apos;m a Software Engineer 🚀 known for building high-impact solutions
-        that businesses 🤝 trust and scale with confidence.
-      </Heading>
-      <Box mt="24px">
-        <SolidAnimatedButton
-          onClick={() => navigateToPage(ROUTES.ABOUT_AUTHOR)}
-        >
-          Read about me
-        </SolidAnimatedButton>
+        {`${LABEL_PREFIX} about`}
+      </TypewriterLabel>
+      <Box
+        as="p"
+        fontFamily="body"
+        fontSize={{ base: "16px", md: "18px" }}
+        lineHeight="1.65"
+        color="bone"
+        letterSpacing="0.005em"
+        mb={5}
+      >
+        Engineer behind systems that businesses{" "}
+        <Box as="span" color="iris" fontWeight="600">
+          trust
+        </Box>{" "}
+        and{" "}
+        <Box as="span" color="iris" fontWeight="600">
+          scale
+        </Box>{" "}
+        with confidence — distributed services, calm interfaces, and the
+        infrastructure that keeps them quiet.
       </Box>
-    </VStack>
+      <SolidAnimatedButton onClick={() => navigateToPage(ROUTES.ABOUT_AUTHOR)}>
+        Read briefing
+      </SolidAnimatedButton>
+    </Box>
   );
 };
 

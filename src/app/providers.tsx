@@ -5,7 +5,6 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "@fontsource/libre-baskerville/700.css";
 import "@fontsource/nothing-you-could-do/400.css";
 
-import { ColorModeProvider } from "@/components/ui/color-mode";
 import theme from "@/theme";
 import { getQueryClient } from "@/utils/createQueryClient";
 
@@ -16,9 +15,7 @@ interface ProvidersProps {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <QueryClientProvider client={getQueryClient()}>
-      <ChakraProvider value={theme}>
-        <ColorModeProvider>{children}</ColorModeProvider>
-      </ChakraProvider>
+      <ChakraProvider value={theme}>{children}</ChakraProvider>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

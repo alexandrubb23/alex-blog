@@ -32,13 +32,14 @@ const parseMarkdownResponseToHTML = async (response: PostData) => {
     markdownCache.set(cacheKey, result);
     return result;
   } catch (error) {
+    console.error("Error parsing markdown content:", error);
     throw new Error("Error occurred during content parsing");
   }
 };
 
 export function extractImageFromMarkdown(
   markdown: string,
-  fallbackImage = AUTHOR.PICTURE,
+  fallbackImage = AUTHOR.PICTURE
 ) {
   const match = markdown.match(/!\[[^\]]*\]\(([^)]+\.(webp|png|jpg|jpeg))\)/i);
   return match?.[1] ?? fallbackImage;

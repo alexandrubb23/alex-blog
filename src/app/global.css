@@ -1,5 +1,102 @@
+@keyframes pulsate-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* ── Accent color overrides ────────────────────────────────────────────────── */
+/* Purple is the default; no override needed.
+   Uses html[data-accent] (specificity 0,1,1) to beat:
+     - Chakra's  `html, .chakra-theme { ... }`  (0,0,1)
+     - Chakra's  `.dark { ... }`                 (0,1,0)
+   Both --iris (used in global CSS) and --chakra-colors-iris (used in Chakra
+   component styles) must be overridden. */
+
+html[data-accent="cyan"] {
+  --iris: #0891b2;
+  --iris-soft: #22d3ee;
+  --ember: #0891b2;
+  --chakra-colors-iris: #0891b2;
+  --chakra-colors-iris-soft: #22d3ee;
+  --chakra-colors-iris-glow: rgba(8, 145, 178, 0.1);
+  --chakra-colors-primary: #0891b2;
+  --chakra-colors-ember: #0891b2;
+  --chakra-colors-ember-soft: #22d3ee;
+}
+html[data-accent="cyan"].dark {
+  --iris: #06b6d4;
+  --iris-soft: #67e8f9;
+  --ember: #06b6d4;
+  --chakra-colors-iris: #06b6d4;
+  --chakra-colors-iris-soft: #67e8f9;
+  --chakra-colors-iris-glow: rgba(6, 182, 212, 0.18);
+  --chakra-colors-primary: #06b6d4;
+  --chakra-colors-ember: #06b6d4;
+  --chakra-colors-ember-soft: #67e8f9;
+}
+
+html[data-accent="amber"] {
+  --iris: #d97706;
+  --iris-soft: #f59e0b;
+  --ember: #d97706;
+  --chakra-colors-iris: #d97706;
+  --chakra-colors-iris-soft: #f59e0b;
+  --chakra-colors-iris-glow: rgba(217, 119, 6, 0.1);
+  --chakra-colors-primary: #d97706;
+  --chakra-colors-ember: #d97706;
+  --chakra-colors-ember-soft: #f59e0b;
+}
+html[data-accent="amber"].dark {
+  --iris: #f59e0b;
+  --iris-soft: #fbbf24;
+  --ember: #f59e0b;
+  --chakra-colors-iris: #f59e0b;
+  --chakra-colors-iris-soft: #fbbf24;
+  --chakra-colors-iris-glow: rgba(245, 158, 11, 0.18);
+  --chakra-colors-primary: #f59e0b;
+  --chakra-colors-ember: #f59e0b;
+  --chakra-colors-ember-soft: #fbbf24;
+}
+
+html[data-accent="green"] {
+  --iris: #059669;
+  --iris-soft: #10b981;
+  --ember: #059669;
+  --chakra-colors-iris: #059669;
+  --chakra-colors-iris-soft: #10b981;
+  --chakra-colors-iris-glow: rgba(5, 150, 105, 0.1);
+  --chakra-colors-primary: #059669;
+  --chakra-colors-ember: #059669;
+  --chakra-colors-ember-soft: #10b981;
+}
+html[data-accent="green"].dark {
+  --iris: #10b981;
+  --iris-soft: #34d399;
+  --ember: #10b981;
+  --chakra-colors-iris: #10b981;
+  --chakra-colors-iris-soft: #34d399;
+  --chakra-colors-iris-glow: rgba(16, 185, 129, 0.18);
+  --chakra-colors-primary: #10b981;
+  --chakra-colors-ember: #10b981;
+  --chakra-colors-ember-soft: #34d399;
+}
+
+html,
+body {
+  font-feature-settings: "kern", "liga", "calt", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--graphite);
+  color: var(--bone);
+}
+
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 form {
@@ -7,72 +104,129 @@ form {
 }
 
 p {
-  line-height: 1.75rem;
+  line-height: 1.7;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  color: var(--bone);
 }
 
 ol {
-  padding-left: 20px;
+  padding-left: 1.5rem;
   margin: 0;
   list-style-type: decimal;
+  font-variant-numeric: tabular-nums;
 }
 
 ol li {
-  font-weight: 900;
+  font-weight: 600;
 }
 
-pre {
+ol li::marker {
+  color: var(--iris);
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+pre,
+code {
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
   font-size: 14px;
+  line-height: 1.6;
 }
-p {
-  font-size: 18px;
-}
-strong {
+
+:not(pre) > code {
+  background: rgba(139, 92, 246, 0.08);
+  border-radius: 3px;
+  padding: 0.05em 0.4em;
+  color: var(--iris-soft);
+  font-size: 0.9em;
   font-weight: 500;
 }
 
+strong {
+  font-weight: 700;
+  color: var(--bone);
+}
+
 em {
-  border-left: 4px solid #6d54d0;
-  border-radius: 5px;
+  border-left: 2px solid var(--iris);
   display: block;
+  font-style: normal;
   line-height: inherit;
-  padding: 5px 5px 5px 16px;
+  padding: 8px 12px 8px 18px;
+  margin: 12px 0;
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-size: 14px;
+  color: var(--bone);
+  background: rgba(139, 92, 246, 0.04);
+  position: relative;
+}
+
+em::before {
+  content: "//";
+  color: var(--iris);
+  margin-right: 0.5rem;
+  font-weight: 600;
 }
 
 blockquote {
-  margin: 0;
-  padding: 20px;
-  border-left: 4px solid #333;
-  background-color: #f5f5f5;
-  color: #333;
-  font-style: italic;
+  margin: 1.75rem 0;
+  padding: 1.25rem 1.5rem;
+  border-left: 2px solid var(--iris);
+  background: rgba(139, 92, 246, 0.04);
+  color: var(--bone);
+  font-family: var(--font-plex-sans), system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  position: relative;
+  font-style: normal;
 }
 
 blockquote p {
   margin: 0;
+  font-size: 1.05rem;
 }
 
-blockquote:before {
-  content: "\201C";
-  font-size: 30px;
-  margin-right: 10px;
-  vertical-align: middle;
+blockquote::before {
+  content: ">";
+  font-family: var(--font-plex-mono), ui-monospace, monospace;
+  font-weight: 700;
+  color: var(--iris);
+  position: absolute;
+  left: -0.85rem;
+  top: 1.15rem;
+  background: var(--body-background);
+  padding: 0 4px;
+  font-size: 1rem;
 }
 
-blockquote:after {
+blockquote::after {
   content: "";
 }
 
-.chakra-ui-light em {
-  background-color: #f2efe5;
-  color: black;
+.chakra-ui-light em,
+.chakra-ui-light blockquote {
+  background: rgba(139, 92, 246, 0.06);
+  color: var(--graphite);
 }
 
-.chakra-ui-dark em {
-  border-left: 7px solid #6d54d0;
+::selection {
+  background: var(--iris);
+  color: var(--graphite);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--graphite);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rule);
+  border: 2px solid var(--graphite);
   border-radius: 5px;
-  display: inline-block;
-  line-height: inherit;
-  padding: 5px;
-  background-color: #222;
-  color: #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--iris);
 }

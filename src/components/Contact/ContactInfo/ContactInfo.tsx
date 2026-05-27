@@ -1,32 +1,57 @@
-import { IconLabel } from "@/components/common";
+import { Box, Flex, VStack } from "@chakra-ui/react";
+
+import { CornerTicks, LABEL_PREFIX, TypewriterLabel } from "@/components/common";
 import { useContactInfo } from "@/hooks";
-import { VStack } from "@chakra-ui/react";
 
 const ContactInfo = () => {
   const { data: contactInfo } = useContactInfo();
 
   return (
-    <VStack
-      fontSize={{
-        base: "16px",
-        md: "18px",
-        lg: "20px",
-        xl: "22px",
-      }}
-      display={"flex"}
-      gap={4}
-      alignItems="flex-start"
-    >
-      {contactInfo?.map(({ icon: Icon, label, iconColor }) => (
-        <IconLabel
-          key={label}
-          icon={Icon}
-          label={label}
-          iconWrapperProps={{ color: iconColor }}
-          iconSize={30}
-        />
-      ))}
-    </VStack>
+    <Box w="full">
+      <TypewriterLabel
+        fontFamily="mono"
+        fontSize="10px"
+        fontWeight="500"
+        letterSpacing="0.32em"
+        textTransform="uppercase"
+        color="iris"
+        mb={3}
+      >
+        {`${LABEL_PREFIX} contact.info`}
+      </TypewriterLabel>
+      <Box
+        position="relative"
+        border="1px solid"
+        borderColor="rule"
+        bg="surface"
+        px={{ base: 4, md: 6 }}
+        py={{ base: 2, md: 3 }}
+      >
+        <CornerTicks />
+        <VStack gap={0} align="stretch">
+          {contactInfo?.map(({ icon: Icon, label }) => (
+            <Flex
+              key={label}
+              align="center"
+              gap={3}
+              py="12px"
+              borderBottom="1px dashed"
+              borderColor="rule"
+              _last={{ borderBottom: "none" }}
+              fontFamily="mono"
+              fontSize={{ base: "13px", md: "14px" }}
+              color="bone"
+              letterSpacing="0.02em"
+            >
+              <Box color="iris" flexShrink={0}>
+                <Icon size={15} />
+              </Box>
+              <Box>{label}</Box>
+            </Flex>
+          ))}
+        </VStack>
+      </Box>
+    </Box>
   );
 };
 

@@ -12,35 +12,55 @@ const PageBreadcrumb = () => {
 
   return (
     <Breadcrumb.Root w="100%" display="flex" justifyContent="center">
-      <Breadcrumb.List listStyleType="none">
-        <Breadcrumb.Item fontSize="16px" fontWeight="600">
-          <GlobalLink href="/">
+      <Breadcrumb.List
+        listStyleType="none"
+        fontFamily="mono"
+        fontSize="11px"
+        fontWeight="500"
+        letterSpacing="0.2em"
+        textTransform="uppercase"
+        color="ashMuted"
+        gap={1}
+      >
+        <Breadcrumb.Item>
+          <GlobalLink
+            href="/"
+            display="inline-flex"
+            alignItems="center"
+            gap={1.5}
+            color="iris"
+            _hover={{ color: "irisSoft" }}
+            transition="color 0.2s ease"
+          >
             <LuHome />
             <Box as="span" hideBelow="md">
               Home
             </Box>
           </GlobalLink>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
-        <Breadcrumb.Item fontSize="16px" fontWeight="600">
-          <GlobalLink href="/">
+        <Breadcrumb.Separator color="ashMuted" opacity={0.5} />
+        <Breadcrumb.Item>
+          <GlobalLink
+            href="/"
+            display="inline-flex"
+            alignItems="center"
+            gap={1.5}
+            color="iris"
+            _hover={{ color: "irisSoft" }}
+            transition="color 0.2s ease"
+          >
             <Icon />
             <Box as="span" hideBelow="md">
               {topic}
             </Box>
           </GlobalLink>
         </Breadcrumb.Item>
-        <Breadcrumb.Separator />
-        <Breadcrumb.Item fontSize="16px" fontWeight="600">
+        <Breadcrumb.Separator color="ashMuted" opacity={0.5} />
+        <Breadcrumb.Item>
           <Breadcrumb.CurrentLink
-            color="gray.500"
-            fontSize={{
-              base: "12px",
-              sm: "16px",
-            }}
-            lineHeight={{
-              base: "1.2",
-            }}
+            color="ashMuted"
+            fontSize="11px"
+            lineHeight="1.3"
             whiteSpace="nowrap"
             textOverflow="ellipsis"
             overflow="hidden"

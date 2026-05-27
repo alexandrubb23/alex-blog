@@ -1,7 +1,7 @@
 import { useNavigationMenu, usePrefetchPost } from "@/hooks";
 import { Link as ChakraLink, LinkProps } from "@chakra-ui/react";
 import Link from "next/link";
-import { type PropsWithChildren, useCallback } from "react";
+import { type PropsWithChildren } from "react";
 import { Entity } from "@/app/api/lib/models";
 
 // TODO: Move this color to the theme
@@ -25,12 +25,6 @@ const GlobalLink = ({
 
   const isActive = isActiveItem(href);
 
-  const handleMouseEnter = useCallback(() => {
-    if (entity && slug) {
-      prefetchPost(entity, slug);
-    }
-  }, [entity, slug, prefetchPost]);
-
   return (
     <ChakraLink
       asChild
@@ -41,7 +35,7 @@ const GlobalLink = ({
       outline="none"
       color={{ _dark: isActive ? DARK_COLOR : "gray.200" }}
       textDecoration={isActive ? "line-through" : "none"}
-      onMouseEnter={handleMouseEnter}
+      onMouseEnter={() => entity && slug && prefetchPost(entity, slug)}
       {...restProps}
     >
       <Link href={href}>{children}</Link>

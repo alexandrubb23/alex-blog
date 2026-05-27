@@ -1,3 +1,5 @@
+import type { JSX } from "react";
+
 type HTMLTags = keyof JSX.IntrinsicElements;
 
 export type HTMLObject = {

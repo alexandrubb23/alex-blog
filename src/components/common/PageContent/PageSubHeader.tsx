@@ -11,11 +11,9 @@ const PageSubHeader = () => {
 
   return (
     <Flex
-      borderBottom="6px double"
-      borderColor={{
-        _dark: "gray.800",
-      }}
-      borderTop="2px solid"
+      borderBottom="1px dashed"
+      borderTop="1px solid"
+      borderColor="rule"
       justify="space-between"
       flexDir={{
         base: "column",

@@ -1,13 +1,13 @@
-import z from "zod";
-import { PropsWithChildren } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { PropsWithChildren } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import z from "zod";
 
+import { Entity } from "@/app/api/lib/models";
 import { toaster } from "@/components/ui/toaster";
 import useForceRender from "@/hooks/useForceRender";
-import { Entity } from "@/app/api/lib/models";
-import type APIClient from "@/services/api-client";
 import { factoryApiClient } from "@/services";
+import type APIClient from "@/services/api-client";
 
 type HttpMethod = {
   [K in keyof APIClient<any>]: APIClient<any>[K] extends Function ? K : never;
@@ -52,6 +52,7 @@ const Form = ({
       form.reset(defaultValues);
       setResetKey();
     } catch (error) {
+      console.error("Error submitting form:", error);
       toaster.create({
         description: "An error occurred while submitting the form.",
         type: "error",

@@ -1,4 +1,3 @@
-import { useColorMode } from "@/components/ui/color-mode";
 import { Box } from "@chakra-ui/react";
 
 import { CSSProperties } from "react";
@@ -10,14 +9,12 @@ const HamburgerButton = ({
   isOpen: boolean;
   onToggle: () => void;
 }) => {
-  const { isDark } = useColorMode();
-
   const commonBarStyle: CSSProperties = {
     content: '""',
     position: "absolute",
     top: "0",
     left: "0",
-    backgroundColor: isDark ? "gray.400" : "var(--foreground-color)",
+    backgroundColor: "var(--hamburger-bar-color)",
     borderRadius: "var(--bar-height)",
     boxSizing: "border-box",
     height: "var(--bar-height)",
@@ -53,7 +50,7 @@ const HamburgerButton = ({
           position: "absolute",
           bottom: "0",
           left: "0",
-          backgroundColor: isDark ? "gray.400" : "var(--foreground-color)",
+          backgroundColor: "var(--hamburger-bar-color)",
           borderRadius: "var(--bar-height)",
           boxSizing: "border-box",
           height: "var(--bar-height)",
@@ -71,7 +68,7 @@ const HamburgerButton = ({
           position: "absolute",
           top: "calc(var(--bar-height) + var(--hamburger-gap))",
           left: "0",
-          backgroundColor: isDark ? "gray.400" : "var(--foreground-color)",
+          backgroundColor: "var(--hamburger-bar-color)",
           borderRadius: "var(--bar-height)",
           boxSizing: "border-box",
           height: "var(--bar-height)",

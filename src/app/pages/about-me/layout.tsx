@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: `Learn more about the author, ${AUTHOR.NAME}, and his journey in web development.`,
   openGraph: {
     title,
-    images: "/images/alex.png",
+    images: `/images/${AUTHOR.AVATAR}`,
   },
 };
 

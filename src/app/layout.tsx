@@ -1,13 +1,39 @@
-import { Inter } from "next/font/google";
+import {
+  IBM_Plex_Mono,
+  IBM_Plex_Sans,
+  IBM_Plex_Sans_Condensed,
+} from "next/font/google";
 
+import { ColorModeProvider } from "@/components/ui/color-mode";
 import { env } from "@/env";
+import type { Metadata } from "next";
 import { AUTHOR } from "./constants";
 
-const inter = Inter({ subsets: ["latin"] });
+const plexSans = IBM_Plex_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-plex-sans",
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-plex-mono",
+});
+
+const plexCondensed = IBM_Plex_Sans_Condensed({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["500", "600", "700"],
+  variable: "--font-plex-condensed",
+});
 
 const title = `Home | ${AUTHOR.NAME}`;
 
-export function generateMetadata() {
+export function generateMetadata(): Metadata {
   return {
     title,
     openGraph: {
@@ -26,9 +52,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
-        {children}
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${plexSans.variable} ${plexMono.variable} ${plexCondensed.variable}`}
+    >
+      {/*
+       * Blocking script — runs before first paint to apply the stored accent
+       * colour, eliminating the flash of the default purple on page load.
+       * Must stay inline and synchronous (no defer/async).
+       */}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var a=localStorage.getItem('accent-color');if(a&&a!=='purple')document.documentElement.setAttribute('data-accent',a);}catch(e){}})();`,
+          }}
+        />
+      </head>
+      <body suppressHydrationWarning>
+        <ColorModeProvider defaultTheme="dark">{children}</ColorModeProvider>
       </body>
     </html>
   );

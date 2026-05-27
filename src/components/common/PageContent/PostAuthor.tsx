@@ -16,9 +16,12 @@ const PostAuthor = ({ readingTime, date }: PostMetaProps) => (
     </Avatar.Root>
     <Box>
       <Text
+        fontFamily="display"
         fontSize={{ base: "16px", md: "18px" }}
-        fontWeight="500"
+        fontWeight="600"
+        letterSpacing="-0.01em"
         lineHeight="1.2"
+        color="bone"
       >
         {AUTHOR.NAME}
       </Text>

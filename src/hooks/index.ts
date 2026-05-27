@@ -15,3 +15,4 @@ export {
   useCodeHighlighting,
   useIconStyle,
 } from "./style";
+export { useAccentColor } from "./useAccentColor";
