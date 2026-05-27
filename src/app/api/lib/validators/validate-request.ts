@@ -12,7 +12,8 @@ export const validateRequest = <T extends z.ZodSchema>(
 
   const parsed = schema.safeParse(data);
   if (!parsed.success) {
-    throw badRequestError(z.treeifyError(parsed.error) as unknown as string);
+    const message = parsed.error.issues.map((i) => i.message).join(", ");
+    throw badRequestError(message);
   }
 
   return parsed.data;

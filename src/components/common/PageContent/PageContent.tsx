@@ -10,11 +10,11 @@ const PageContent = ({ children }: PropsWithChildren) => {
   const { data, isLoading, error } = useItemQuery();
   const parsedResponse = useParseResponse(data);
 
-  if (!data) notFound();
+  if (isLoading || !parsedResponse) return <CenteredSpinner />;
 
   if (error) return <ErrorAlert error={error.message} />;
 
-  if (isLoading || !parsedResponse) return <CenteredSpinner />;
+  if (!data) notFound();
 
   return <PostProvider value={{ ...parsedResponse }}>{children}</PostProvider>;
 };
