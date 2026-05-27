@@ -4,4 +4,5 @@ export const ENTITIES = {
   PAGES: "pages",
   POSTS: "posts",
   CONTACT: "contact",
+  RESUME: "resume",
 } as const;
