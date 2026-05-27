@@ -5,7 +5,11 @@ import { Box, Flex, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
 import { AUTHOR, ROUTES } from "@/app/constants";
 import SolidAnimatedButton from "@/components/Button/SolidAnimatedButton";
 import Container from "@/components/Layout/Container";
-import { CornerTicks, LABEL_PREFIX, TypewriterLabel } from "@/components/common";
+import {
+  CornerTicks,
+  LABEL_PREFIX,
+  TypewriterLabel,
+} from "@/components/common";
 import { AnimationScroll } from "@/components/common/Animations/AnimationScroll";
 import { DoubleSeparator } from "@/components/common/DoubleSeparator";
 import { useNavigateToPage } from "@/hooks/router";
@@ -176,7 +180,7 @@ const AboutMe = () => {
                         filter: "grayscale(0.35) contrast(1.08)",
                         width: "100%",
                         height: "100%",
-                        objectFit: "cover",
+                        objectFit: "none",
                       },
                     }}
                     boxShadow={{
